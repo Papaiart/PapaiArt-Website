@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <div class="container">
+        <article class="article-formatted">
+            <article>
+        <h1>PapaiArt Animation Studio 3D Workflow: Materials and Outlines</h1>
+        <div class="subtitle">The perfect intersection of spatial 3D models and 2D stylized aesthetics</div>
+
+        <p>The graphics engine within <strong>PapaiArt Animation Studio</strong> is not just designed for traditional <strong>3D modeling</strong> and animation; its true power lies in how seamlessly it integrates spatial objects into a drawn, 2D cartoon aesthetic. Let's explore how the software's 3D animation, specialized material management, and revolutionary 3D Outline system work under the hood.</p>
+
+        <h2>1. Precise 3D Animation and Keyframes</h2>
+        <p>Spatial 3D animation in PapaiArt Animation Studio operates on a rock-solid <span class="code-inline">Keyframe</span> foundation. The transform properties of any 3D Entity—Position, Rotation, and Scale—can be recorded onto dedicated animation tracks (<span class="code-inline">AnimTrack</span>) along the master timeline. Complex motions are fine-tuned using a Graph Editor and various interpolation modes. This deeply integrated system ensures that 3D camera movements and object transformations are in perfect, frame-accurate synchronization with all 2D drawing clips.</p>
+
+        <h2>2. Stylized (NPR) Material Management and Cel-Shading</h2>
+        <p>While most modern 3D software focuses entirely on physically based rendering (PBR), <strong>PapaiArt Animation Studio</strong> is explicitly engineered for <strong>stylized, Non-Photorealistic Rendering (NPR)</strong> and cel-shading. The software's <span class="code-inline">MaterialGroup</span> architecture allows artists to build complex visual rules rather than just applying flat textures.</p>
+        
+        <p>For every 3D material layer, properties like <strong>Light Sensitivity (<span class="code-inline">LightVisibility</span>)</strong> and <strong>Texture Mapping (<span class="code-inline">ProjectionMode</span>)</strong> can be individually programmed. Here are two standout examples:</p>
+
+        <div class="example-box">
+            <strong>Dynamic Comic-Book Cross-hatching:</strong><br>
+            Using the <span class="code-inline">LightVisibility</span> parameter, a material can be configured to render <em>only in the shadows</em> (<span class="code-inline">OnlyInShadow</span>). If a 3D character is given a cross-hatch texture, the lit parts of the character remain clean, while the hand-drawn hatching automatically appears exclusively over the unlit areas. As the 3D light source moves, the 2D hatched texture dynamically tracks the shadow's path.
+        </div>
+
+        <div class="example-box">
+            <strong>Screen-space Halftone Effects:</strong><br>
+            The <span class="code-inline">ProjectionMode</span> controls how a texture wraps around a 3D model. Beyond standard UV mapping, PapaiArt Animation Studio offers <span class="code-inline">Camera</span> (Screen-space) projection. If a halftone dot pattern is applied via Camera projection, the pattern is "baked" onto the screen, and the 3D object acts as a moving mask revealing the static 2D pattern underneath—a core visual technique used in award-winning comic-style feature animations.
+        </div>
+
+        <h2>3. The Magic: PapaiArt's 3D Outline Generator</h2>
+        <p>Perhaps the most groundbreaking technological feature of <strong>PapaiArt Animation Studio</strong> is its highly customizable, real-time <strong>3D Outline</strong> rendering pass (<span class="code-inline">RenderPass::Outline</span>). This generative tool can instantly make a dense 3D polygonal mesh look exactly as if it were hand-drawn by a traditional animator.</p>
+        
+        <p>Traditional 3D animation software typically just adds a simple, uniform black stroke around a model. In stark contrast, the PapaiArt Outline system <strong>utilizes the exact same vector brush engine (<span class="code-inline">BrushParams</span>) on 3D edges as the artist uses for 2D drawing!</strong></p>
+        
+        <p>The software's edge detection algorithms can be fine-tuned using:</p>
+        <ul>
+            <li><strong>Silhouette:</strong> Draws only the outer boundary of the 3D model as seen from the camera's perspective.</li>
+            <li><strong>Crease:</strong> Draws internal geometric edges based on a user-defined angle threshold (<span class="code-inline">creaseThreshold</span>).</li>
+            <li><strong>Material Border:</strong> Generates dynamic strokes wherever two different materials meet on the 3D mesh.</li>
+        </ul>
+        <p>Because these generated 3D outlines inherit the software's 2D brush styles, a 3D model's edges can be angle-sensitive (<strong>Calligraphy</strong>) or even procedurally wobbly to mimic raw, hand-drawn imperfections (<strong>Rough</strong>). This flawless hybrid integration is what makes <strong>PapaiArt Animation Studio</strong> the ultimate tool for 2.5D animation production.</p>
+        </article>
+    </div>
+</body>
+</html>

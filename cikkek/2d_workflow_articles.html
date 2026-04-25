@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <div class="container">
+        <article class="article-formatted">
+            <article>
+        <h1>The PapaiArt Animation Studio 2D Animation Workflow</h1>
+        <div class="subtitle">How 2D drawings come to life in 3D space</div>
+
+        <p>The 2D animation system within <strong>PapaiArt Animation Studio</strong> flawlessly merges the traditions of classical frame-by-frame animation with the flexibility of modern <strong>vector graphics technology</strong>. While the underlying engine operates entirely in 3D space, the drawn elements retain the highly sought-after organic, handcrafted feel of traditional 2D cartoons.</p>
+
+        <h3>1. Timeline and Global Drawing Tracks</h3>
+        <p>The workflow inside <strong>PapaiArt Animation Studio</strong> begins on the timeline. Artists can create <span class="tech-word">DrawingTrack</span>s, which act as global animation layers. These tracks hold 2D drawing clips (<span class="tech-word">Drawing2D</span>) that span across a specific number of frames. This gives 2D animators the ability to adjust timing and exposure effortlessly, utilizing standard "exposure sheet" logic without needing to redraw static elements.</p>
+
+        <h3>2. Vector Drawing Tools, Images, and Dynamic Brushes</h3>
+        <p>When an artist draws, the software generates mathematical vector paths (<span class="tech-word">Stroke2D</span>). Because <strong>PapaiArt Animation Studio</strong> is vector-based rather than raster-based, every stroke can be infinitely tweaked and scaled without quality loss. The professional toolset includes:</p>
+        <ul>
+            <li><strong>Pencil:</strong> Intuitive freehand drawing paths in 3D space.</li>
+            <li><strong>Pen:</strong> Precise, Bezier-curve based vector editing.</li>
+            <li><strong>Shapes:</strong> Geometric lines, rectangles, and ellipses.</li>
+            <li><strong>Image Insertion:</strong> External image files can be loaded as strokes (<span class="tech-word">StrokeType::Image</span>). These 2D textures can be manipulated via their corner points to perfectly integrate with the spatial drawn environment.</li>
+        </ul>
+        <p>Brush aesthetics are fully customizable via the <span class="tech-word">BrushParams</span> system. From <strong>Calligraphy</strong> (angle-sensitive thickness) to the highly stylized <strong>Rough</strong> engine (adding procedural wobble to mimic raw, hand-drawn lines), the software supports diverse 2D artistic styles.</p>
+
+        <h3>3. Polygonal Fill System and Flat Design</h3>
+        <p>Coloring 2D animations in PapaiArt Animation Studio is far more advanced than basic flood-filling. Any drawn vector shape can utilize the <strong>Fill</strong> function. Because strokes form mathematical polygons, the fill color and the vector outline are entirely independent. Artists can set distinct opacities or disable the outline entirely (<span class="tech-word">BrushStyle::None</span>) to create clean, shape-driven "flat design" animated artworks.</p>
+
+        <h3>4. Granular Layer Management (Drawing Layers Panel)</h3>
+        <p>While the main Timeline handles overall 2D/3D animation logic, the dedicated <strong>Drawing Layers Panel</strong> empowers micro-management within a single drawing clip. Every individual stroke, shape, or inserted image behaves as a local layer. Artists can seamlessly drag and drop these elements to change their z-index (draw order), duplicate them, or delete them. This granular management is crucial for constructing complex, overlapping 2.5D illustrations.</p>
+
+        <h3>5. The Classical Animator's Best Friend: Onion Skinning</h3>
+        <p>Nailing spacing and timing is the absolute core of classical 2D animation. <strong>PapaiArt Animation Studio's</strong> integrated <span class="tech-word">Onion Skinning</span> renders ghosts of the previous and upcoming drawings on the canvas with customizable semi-transparent tints. This essential feature provides the ultimate visual reference for animating fluid, frame-by-frame motion.</p>
+        </article>
+    </div>
+</body>
+</html>

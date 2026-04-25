@@ -46,7 +46,7 @@
         </div>
 
         <div class="article-grid">
-            <a class="article-card" href="../Tudorial Documents/core/articles.html">
+            <a class="article-card" href="cikkek/articles.html">
                 <div class="article-card__cover"><img src="assets/images/screenshot-hero.png" alt=""></div>
                 <div class="article-card__body">
                     <span class="article-card__tag" data-i18n="learn.card.overview.tag">Overview</span>
@@ -56,7 +56,7 @@
                 </div>
             </a>
 
-            <a class="article-card" href="../Tudorial Documents/core/capabilities.html">
+            <a class="article-card" href="cikkek/capabilities.html">
                 <div class="article-card__cover"><img src="assets/images/screenshot-render.png" alt=""></div>
                 <div class="article-card__body">
                     <span class="article-card__tag" data-i18n="learn.card.cap.tag">Reference</span>
@@ -78,7 +78,7 @@
         </div>
 
         <div class="article-grid">
-            <a class="article-card" href="../Tudorial Documents/core/2d_workflow_articles.html">
+            <a class="article-card" href="cikkek/2d_workflow_articles.html">
                 <div class="article-card__cover"><img src="assets/images/screenshot-2d.png" alt=""></div>
                 <div class="article-card__body">
                     <span class="article-card__tag" data-i18n="learn.card.2d.tag">2D workflow</span>
@@ -88,7 +88,7 @@
                 </div>
             </a>
 
-            <a class="article-card" href="../Tudorial Documents/core/3d_workflow_articles.html">
+            <a class="article-card" href="cikkek/3d_workflow_articles.html">
                 <div class="article-card__cover"><img src="assets/images/screenshot-viewport.png" alt=""></div>
                 <div class="article-card__body">
                     <span class="article-card__tag" data-i18n="learn.card.3d.tag">3D workflow</span>
@@ -98,8 +98,8 @@
                 </div>
             </a>
 
-            <a class="article-card" href="../Tudorial Documents/core/rigging_constraints_articles.html">
-                <div class="article-card__cover"><img src="assets/images/screenshot-uv.png" alt=""></div>
+            <a class="article-card" href="cikkek/rigging_constraints_articles.html">
+                <div class="article-card__cover"><img src="assets/images/screenshot-rig.png" alt=""></div>
                 <div class="article-card__body">
                     <span class="article-card__tag" data-i18n="learn.card.rig.tag">Rigging</span>
                     <h3 data-i18n="learn.card.rig.title">Rigging and constraints</h3>
@@ -108,7 +108,7 @@
                 </div>
             </a>
 
-            <a class="article-card" href="../Tudorial Documents/core/render_export_articles.html">
+            <a class="article-card" href="cikkek/render_export_articles.html">
                 <div class="article-card__cover"><img src="assets/images/screenshot-render.png" alt=""></div>
                 <div class="article-card__body">
                     <span class="article-card__tag" data-i18n="learn.card.render.tag">Render &amp; Export</span>
@@ -118,7 +118,7 @@
                 </div>
             </a>
 
-            <a class="article-card" href="../Tudorial Documents/core/ui_architecture_articles.html">
+            <a class="article-card" href="cikkek/ui_architecture_articles.html">
                 <div class="article-card__cover"><img src="assets/images/screenshot-viewport.png" alt=""></div>
                 <div class="article-card__body">
                     <span class="article-card__tag" data-i18n="learn.card.ui.tag">Architecture</span>
@@ -128,7 +128,7 @@
                 </div>
             </a>
 
-            <a class="article-card" href="../Tudorial Documents/core/articles.html">
+            <a class="article-card" href="cikkek/articles.html">
                 <div class="article-card__cover"><img src="assets/images/concept-art.png" alt=""></div>
                 <div class="article-card__body">
                     <span class="article-card__tag" data-i18n="learn.card.style.tag">Inspiration</span>
@@ -189,6 +189,72 @@
         </div>
     </div>
 </footer>
+
+<!-- Article Modal -->
+<div class="article-modal-overlay" id="articleModal">
+    <div class="article-modal-content">
+        <button class="article-modal-close" id="closeModalBtn">&times;</button>
+        <div class="article-modal-body" id="articleModalBody">
+            <!-- Fetched content will go here -->
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("articleModal");
+    const modalBody = document.getElementById("articleModalBody");
+    const closeBtn = document.getElementById("closeModalBtn");
+
+    document.querySelectorAll(".article-card").forEach(card => {
+        card.addEventListener("click", (e) => {
+            e.preventDefault();
+            const url = card.getAttribute("href");
+            
+            modalBody.innerHTML = '<div class="article-loader" data-i18n="learn.loading">Betöltés / Loading...</div>';
+            modal.style.display = "flex";
+            // force reflow
+            void modal.offsetWidth;
+            modal.classList.add("is-active");
+            document.body.style.overflow = "hidden"; // Prevent background scrolling
+
+            fetch(url)
+                .then(res => {
+                    if (!res.ok) throw new Error("Network error");
+                    return res.text();
+                })
+                .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseDocumentFromString(html, "text/html");
+                    const content = doc.querySelector(".container") || doc.querySelector("body");
+                    if (content) {
+                        modalBody.innerHTML = content.innerHTML;
+                    } else {
+                        modalBody.innerHTML = "<p>Nem sikerült betölteni a tartalmat.</p>";
+                    }
+                })
+                .catch(err => {
+                    console.error(err);
+                    modalBody.innerHTML = "<p>Hiba a cikk betöltésekor. Próbáld újra később.</p>";
+                });
+        });
+    });
+
+    const closeModal = () => {
+        modal.classList.remove("is-active");
+        document.body.style.overflow = ""; // Restore background scrolling
+        setTimeout(() => {
+            modal.style.display = "none";
+            modalBody.innerHTML = "";
+        }, 300);
+    };
+
+    closeBtn.addEventListener("click", closeModal);
+    modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+    });
+});
+</script>
 
 </body>
 </html>

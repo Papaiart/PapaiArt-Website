@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <div class="container">
+        <article class="article-formatted">
+            <article>
+        <h1>PapaiArt Animation Studio: System Architecture & Modular UI</h1>
+        <div class="subtitle">What drives the engine behind the scenes?</div>
+
+        <p>The power of a professional <strong>animation software</strong> lies not only in its features but in how it delivers those features to the user. When designing the C++ core of <strong>PapaiArt Animation Studio</strong>, the focus was entirely on stability, memory efficiency, and complete customizability.</p>
+
+        <h2>1. Modular, Dockable UI (DockSpace)</h2>
+        <p>Workflows in a 3D/2D hybrid software can vary wildly. A rigger needs the hierarchy and constraint parameters front and center, while a 2D animator needs maximum canvas space and timeline visibility. Because of this, <strong>PapaiArt Animation Studio</strong> discards rigid, static layouts in favor of a dynamic <strong>DockSpace</strong>.</p>
+        <p>Every panel (Viewport, Timeline, Inspector, Hierarchy, Drawing Layers) can be freely moved, resized, snapped to screen edges, or nested as tabs. Users can easily drag and drop panels to construct their own custom Workspace, ensuring that the interface adapts to their specific task rather than the other way around.</p>
+
+        <h2>2. Infinite Undo Architecture (Undo/Redo)</h2>
+        <p>The creative process is inherently full of mistakes and experimentation. The software's built-in <span class="code-inline">UndoRedo</span> system is built on a robust Command Pattern architecture. It goes far beyond reversing simple parameter tweaks; it handles complex topological changes (3D mesh editing) and vector alterations (2D stroke manipulation).</p>
+        <div class="info-box">
+            Instead of saving the entire scene state for every undo step (which would rapidly exhaust computer memory), the <strong>PapaiArt Animation Studio</strong> system stores localized "diffs" (differences). For instance, the <span class="code-inline">DrawingCommand</span> only records the previous and new states of the specific drawing track that was modified. This highly optimized approach allows for a virtually infinite undo history without any performance degradation.
+        </div>
+
+        <h2>3. Data-Driven Serialization (Save & Load)</h2>
+        <p>Saving and loading project files (<span class="code-inline">ProjectSerializer</span> and <span class="code-inline">EntitySerializer</span>) relies on a modern, JSON-based architecture within the engine. Because the core data structure is built on a tree of Entities, the serializer recursively traverses the scene. This approach heavily guarantees <strong>backward compatibility</strong>: if new parameters (such as a new brush style) are added to the PapaiArt software in the future, older project files will still load flawlessly, safely falling back to default values for the missing data.</p>
+        </article>
+    </div>
+</body>
+</html>

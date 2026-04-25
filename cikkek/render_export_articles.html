@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <div class="container">
+        <article class="article-formatted">
+            <article>
+        <h1>PapaiArt Animation Studio Rendering: Image Sequences and Video Export</h1>
+        <div class="subtitle">Finalizing the workflow: exporting animation without compromise</div>
+
+        <p>Once the animation, camera movements, and visual effects are perfectly timed, the final step is finalizing the project. Most animation software forces you to choose between exporting professional (but massive) image sequences, or heavily compressed video files. <strong>PapaiArt Animation Studio's</strong> dedicated <strong>Render Panel</strong> brings the best of both worlds directly into the engine, requiring no external plugins or third-party compilers.</p>
+
+        <h2>Resolution and Camera Selection</h2>
+        <p>High-quality <strong>video rendering</strong> is strictly tied to framing. Users can set a custom resolution or use industry-standard presets, ranging from SD (640x480) all the way up to cinematic <strong>4K (3840x2160)</strong>. The rendering process is always calculated from the perspective of a specific <span class="code-inline">Camera Entity</span> placed within the 3D scene, guaranteeing that exactly what you frame is what you get.</p>
+
+        <h2>1. Image Sequence Export</h2>
+        <p>Image sequences are the backbone of professional post-production and VFX pipelines. In this mode, <strong>PapaiArt Animation Studio</strong> saves every single frame of the timeline as an individual image file. Supported formats include:</p>
+        <ul>
+            <li><strong>PNG and TGA:</strong> Lossless formats. Their standout feature is <strong>Alpha channel (Transparency)</strong> support. When the <span class="code-inline">Transparent Background</span> option is enabled, the background behind the 3D and 2D drawn elements becomes completely transparent. This is crucial if you intend to composite the character animation over live-action footage in external software like After Effects or Nuke.</li>
+            <li><strong>JPG and BMP:</strong> Smaller file sizes (with adjustable quality for JPG), ideal for quick preview renders and daily checks.</li>
+        </ul>
+
+        <div class="feature-box">
+            <strong>Why use Image Sequences?</strong><br>
+            If a long, heavy 4K render crashes halfway through (e.g., due to a power outage), a video file export would be completely corrupted and lost. With an image sequence, you can simply resume the render from the exact frame it stopped, saving hours of computation time.
+        </div>
+
+        <h2>2. Direct Video Export (Built-in Video Encoder)</h2>
+        <p>One of the software's most powerful productivity features is its integrated <span class="code-inline">VideoEncoder</span> architecture. This eliminates the frustrating, time-consuming step of taking thousands of exported images into a separate video editing program just to compile a reviewable video.</p>
+        <ul>
+            <li><strong>MP4 (H.264 Encoding):</strong> The absolute industry standard for web and social media. The Render Panel exposes fine-tuning controls like <span class="code-inline">QP (Quantization Parameter) Min/Max</span> limits, allowing users within <strong>PapaiArt Animation Studio</strong> to find the perfect balance between crystal-clear visual quality and minimal file size. Encoding speed can also be adjusted.</li>
+            <li><strong>AVI (MJPEG Encoding):</strong> A fast, intra-frame compressed format that is excellent for immediately dropping the rendered file into a Non-Linear Editor (NLE) for further cutting.</li>
+        </ul>
+
+        <p>The software handles video requirements intelligently behind the scenes: it automatically forces the resolution to be even numbers (a strict requirement for H.264 encoders) and disables the alpha background option when video export is selected, preventing common user errors before they happen.</p>
+        </article>
+    </div>
+</body>
+</html>

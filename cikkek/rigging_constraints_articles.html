@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <div class="container">
+        <article class="article-formatted">
+            <article>
+        <h1>PapaiArt Animation Studio: Rigging and Constraints</h1>
+        <div class="subtitle">The engine behind 3D character animation and automated motion</div>
+
+        <p>"Rigging" is the process of preparing a lifeless 3D model for animation by building its internal skeletal structure and defining its rules of motion. It is rare to find an advanced Constraint system in compact, lightweight software, yet <strong>PapaiArt Animation Studio</strong> bridges exactly this gap: bringing <strong>professional-grade character animation tools</strong> to a streamlined interface.</p>
+
+        <h2>"Smart" Objects: The Constraint System</h2>
+        <p>Constraints are mathematical rules assigned to 3D entities. They override or dynamically modify manual transformations (position, rotation), effectively automating complex mechanical or biological motions. <strong>PapaiArt Animation Studio's</strong> built-in constraint library includes:</p>
+
+        <ul>
+            <li><strong>Inverse Kinematics (IK Chain):</strong> <strong>Inverse Kinematics</strong> is the "Holy Grail" of character animation. In traditional Forward Kinematics (FK), to move a hand, the animator must manually rotate the shoulder, then the elbow. IK works backwards: the user simply grabs and moves the "hand" (the target), and the software's mathematical algorithm (<span class="code-inline">ConstraintSolver</span>) automatically calculates the correct bending angles for the shoulder and elbow in real-time.</li>
+            <li><strong>Track To (Look At):</strong> The perfect tool for cameras and eyes. The <span class="code-inline">TrackToConstraint</span> forces an object to continually rotate to face a target entity. If the target moves, the camera (or a character's gaze) automatically follows it without the animator needing to set a single rotation Keyframe.</li>
+            <li><strong>Copy Transform:</strong> This constraint exactly duplicates the position, rotation, or scale of another entity. It is highly useful for creating proxy objects or synchronizing mechanical parts (e.g., copying the rotation of one gear to another).</li>
+            <li><strong>Child Of (Dynamic Parenting):</strong> While standard hierarchy is static (an entity is permanently a child of another), the <span class="code-inline">ChildOfConstraint</span> is animatable (it can be toggled on and off over time). This is what allows a character to pick up a cup from a table (toggle on: cup follows hand), and put it down later (toggle off: cup stays on the table).</li>
+        </ul>
+
+        <h2>Real-Time Constraint Solver</h2>
+        <p>These constraints do not operate in isolation. The <strong>PapaiArt Animation Studio</strong> engine features a dedicated <span class="code-inline">ConstraintSolver</span> that evaluates the chain of constraints frame-by-frame. The system is capable of handling nested and chained rules (e.g., an IK hand target tracks a moving vehicle, while a camera tracks the hand), ensuring stable, jitter-free 3D rendering even under the most complex mechanical animation setups.</p>
+        </article>
+    </div>
+</body>
+</html>
