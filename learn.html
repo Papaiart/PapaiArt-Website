@@ -211,14 +211,10 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             const url = card.getAttribute("href");
             
-            // Fix GitHub Pages path resolution when accessed without .html
-            let basePath = window.location.pathname;
-            basePath = basePath.substring(0, basePath.lastIndexOf('/'));
-            if (basePath === '') basePath = '/';
-            
-            // Ensure href is just the relative path we want
-            const relativeHref = card.getAttribute("href");
-            const absoluteUrl = window.location.origin + (basePath.endsWith('/') ? basePath : basePath + '/') + relativeHref;
+            // Fix GitHub Pages path resolution (handles trailing slashes, missing .html, queries, etc.)
+            let basePath = window.location.pathname.replace(/\/learn(\.html)?\/?$/, '/');
+            if (!basePath.endsWith('/')) basePath += '/';
+            const absoluteUrl = new URL(card.getAttribute("href"), window.location.origin + basePath).href;
             
             modalBody.innerHTML = '<div class="article-loader" data-i18n="learn.loading">Betöltés / Loading...</div>';
             modal.style.display = "flex";
