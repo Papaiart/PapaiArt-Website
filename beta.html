@@ -191,8 +191,39 @@
 document.getElementById("beta-form").addEventListener("submit", function(e) {
     e.preventDefault();
     if (!this.checkValidity()) { this.reportValidity(); return; }
-    document.getElementById("form-success").classList.add("is-shown");
-    this.querySelector('button[type="submit"]').disabled = true;
+
+    var submitBtn = this.querySelector('button[type="submit"]');
+    var successMsg = document.getElementById("form-success");
+    
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending...";
+
+    // --- GOOGLE FORMS INTEGRÁCIÓ ---
+    var formUrl = "https://docs.google.com/forms/d/e/1FAIpQLScndkLO8lQnxeD9JkrI2-ity7lY6AvA9ltg6OEh8mfqE0XHmQ/formResponse";
+    
+    var formData = new FormData();
+    formData.append("entry.885757129", document.getElementById("name").value); // Név
+    formData.append("entry.1175524891", document.getElementById("email").value); // Email
+    formData.append("entry.870007757", document.getElementById("role").value); // Szerepkör
+    
+    if (document.getElementById("consent").checked) {
+        formData.append("entry.2106578328", "Elfogadom az Általános Szerződési Feltételeket és az Adatkezelési Tájékoztatót."); // Hozzájárulás
+    }
+
+    fetch(formUrl, {
+        method: "POST",
+        mode: "no-cors", // Fontos: ez akadályozza meg a CORS hibát a böngészőben
+        body: formData
+    }).then(function() {
+        // A no-cors mód miatt mindig sikeresnek tűnik a kérés, ha elment.
+        successMsg.classList.add("is-shown");
+        submitBtn.textContent = "Pre-registration sent";
+    }).catch(function(error) {
+        console.error("Hiba:", error);
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Send pre-registration";
+        alert("Sajnos hiba történt az adatok küldésekor. Kérlek próbáld újra.");
+    });
 });
 </script>
 
