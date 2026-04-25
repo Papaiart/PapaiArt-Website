@@ -1,0 +1,70 @@
+import os
+import re
+
+def build_articles():
+    # Read learn.html for template
+    with open('learn.html', 'r', encoding='utf-8') as f:
+        learn_html = f.read()
+    
+    # Extract header (up to end of nav)
+    header_match = re.search(r'(<!DOCTYPE html>.*?</nav>)', learn_html, re.DOTALL)
+    if not header_match:
+        print("Could not find header in learn.html")
+        return
+    header = header_match.group(1)
+    
+    # Extract footer (from footer to end of file, EXCLUDING the modal)
+    # The footer ends at </footer>. We don't want the modal script.
+    footer_match = re.search(r'(<footer class="site-footer">.*?</footer>)', learn_html, re.DOTALL)
+    if not footer_match:
+        print("Could not find footer in learn.html")
+        return
+    footer = footer_match.group(1)
+    footer += "\n</body>\n</html>"
+    
+    # Function to fix relative paths for files in cikkek/ (one level deep)
+    def fix_paths(text):
+        # Fix assets
+        text = re.sub(r'href="assets/', r'href="../assets/', text)
+        text = re.sub(r'src="assets/', r'src="../assets/', text)
+        # Fix html links
+        text = re.sub(r'href="([^"]+\.html)(#[^"]*)?"', r'href="../\1\2"', text)
+        return text
+
+    header = fix_paths(header)
+    footer = fix_paths(footer)
+
+    cikkek_dir = 'cikkek'
+    for filename in os.listdir(cikkek_dir):
+        if not filename.endswith('.html'):
+            continue
+        filepath = os.path.join(cikkek_dir, filename)
+        
+        with open(filepath, 'r', encoding='utf-8') as f:
+            content = f.read()
+            
+        # Extract everything inside the container or article
+        body_match = re.search(r'<div class="container">(.*?)</div>\s*</body>', content, re.DOTALL)
+        if body_match:
+            inner_content = body_match.group(1)
+        else:
+            inner_content = content # Fallback
+            
+        # Assemble new page
+        new_page = f"""{header}
+
+<section class="section" style="padding-top: 120px;">
+    <div class="container">
+        <a href="../learn.html" class="btn" style="margin-bottom: 32px;">&larr; <span data-i18n="article.back">Back to Learn</span></a>
+        {inner_content}
+    </div>
+</section>
+
+{footer}"""
+        
+        with open(filepath, 'w', encoding='utf-8') as f:
+            f.write(new_page)
+        print(f"Processed {filename}")
+
+if __name__ == '__main__':
+    build_articles()
