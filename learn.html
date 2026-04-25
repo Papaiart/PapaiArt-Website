@@ -209,12 +209,10 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".article-card").forEach(card => {
         card.addEventListener("click", (e) => {
             e.preventDefault();
-            const url = card.getAttribute("href");
             
-            // Fix GitHub Pages path resolution (handles trailing slashes, missing .html, queries, etc.)
-            let basePath = window.location.pathname.replace(/\/learn(\.html)?\/?$/, '/');
-            if (!basePath.endsWith('/')) basePath += '/';
-            const absoluteUrl = new URL(card.getAttribute("href"), window.location.origin + basePath).href;
+            // A böngésző natív módon tökéletesen feloldja a relatív linkeket,
+            // így a card.href mindig a helyes, teljes URL-t tartalmazza.
+            const absoluteUrl = card.href;
             
             modalBody.innerHTML = '<div class="article-loader" data-i18n="learn.loading">Betöltés / Loading...</div>';
             modal.style.display = "flex";
@@ -235,12 +233,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (content) {
                         modalBody.innerHTML = content.innerHTML;
                     } else {
-                        modalBody.innerHTML = "<p>Nem sikerült betölteni a tartalmat.</p>";
+                        modalBody.innerHTML = '<p data-i18n="learn.error.content">Nem sikerült betölteni a tartalmat. / Failed to load content.</p>';
                     }
                 })
                 .catch(err => {
                     console.error(err);
-                    modalBody.innerHTML = "<p>Hiba a cikk betöltésekor. Próbáld újra később.</p>";
+                    modalBody.innerHTML = '<p data-i18n="learn.error.load">Hiba a cikk betöltésekor. Próbáld újra később. / Error loading article. Please try again later.</p>';
                 });
         });
     });
