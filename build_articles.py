@@ -22,6 +22,12 @@ def build_articles():
     footer = footer_match.group(1)
     footer += "\n</body>\n</html>"
     
+    # Extract article cover images
+    image_mapping = {}
+    cards = re.findall(r'<a class="article-card" href="cikkek/([^"]+)">.*?<img src="([^"]+)"', learn_html, re.DOTALL)
+    for filename, img_src in cards:
+        image_mapping[filename] = img_src
+
     # Function to fix relative paths for files in cikkek/ (one level deep)
     def fix_paths(text):
         # Fix assets
@@ -50,12 +56,27 @@ def build_articles():
         else:
             inner_content = content # Fallback
             
+        # Add banner if image found
+        banner_html = ""
+        if filename in image_mapping:
+            img_src = image_mapping[filename]
+            # Make sure img_src is pointing properly when we are in cikkek folder
+            if not img_src.startswith('../'):
+                img_src = '../' + img_src
+                
+            banner_html = f"""
+        <div style="width: 100%; height: 240px; overflow: hidden; margin-bottom: 40px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+            <img src="{img_src}" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: center 30%;">
+        </div>
+"""
+
         # Assemble new page
         new_page = f"""{header}
 
 <section class="section" style="padding-top: 120px;">
     <div class="container">
-        <a href="../learn.html" class="btn" style="margin-bottom: 32px;">&larr; <span data-i18n="article.back">Back to Learn</span></a>
+        <a href="../learn.html" class="btn" style="margin-bottom: 24px; display: inline-block;">&larr; <span data-i18n="article.back">Back to Learn</span></a>
+        {banner_html}
         {inner_content}
     </div>
 </section>
@@ -64,7 +85,7 @@ def build_articles():
         
         with open(filepath, 'w', encoding='utf-8') as f:
             f.write(new_page)
-        print(f"Processed {filename}")
+        print(f"Processed {filename} with banner: {'Yes' if banner_html else 'No'}")
 
 if __name__ == '__main__':
     build_articles()
