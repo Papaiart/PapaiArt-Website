@@ -49,8 +49,8 @@ def build_articles():
         with open(filepath, 'r', encoding='utf-8') as f:
             content = f.read()
             
-        # Extract everything inside the container or article
-        body_match = re.search(r'<div class="container">(.*?)</div>\s*</body>', content, re.DOTALL)
+        # Extract the core article content, avoiding duplicate headers if run multiple times
+        body_match = re.search(r'(<article class="article-formatted">.*?</article>)', content, re.DOTALL)
         if body_match:
             inner_content = body_match.group(1)
         else:
