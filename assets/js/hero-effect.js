@@ -26,42 +26,42 @@ if (heroEl) {
 
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
-        camera.position.z = 5.2;
+        camera.position.z = 3.8;
 
         const additive = THREE.AdditiveBlending;
 
         const teapotGeo = new TeapotGeometry(1.15, 5, true, true, true, false, true);
         const teapot = new THREE.LineSegments(
             new THREE.WireframeGeometry(teapotGeo),
-            new THREE.LineBasicMaterial({ color: 0x5fb8f5, transparent: true, opacity: 0.38, blending: additive })
+            new THREE.LineBasicMaterial({ color: 0x5fb8f5, transparent: true, opacity: 0.26, blending: additive })
         );
         teapot.position.y = -0.2;
         scene.add(teapot);
 
         const knot = new THREE.LineSegments(
             new THREE.WireframeGeometry(new THREE.TorusKnotGeometry(0.7, 0.18, 100, 14)),
-            new THREE.LineBasicMaterial({ color: 0x1e9cf0, transparent: true, opacity: 0.30, blending: additive })
+            new THREE.LineBasicMaterial({ color: 0x1e9cf0, transparent: true, opacity: 0.20, blending: additive })
         );
         knot.position.set(3.9, -1.5, -0.6);
         scene.add(knot);
 
         const oct = new THREE.LineSegments(
             new THREE.WireframeGeometry(new THREE.OctahedronGeometry(0.55, 0)),
-            new THREE.LineBasicMaterial({ color: 0xef233c, transparent: true, opacity: 0.32, blending: additive })
+            new THREE.LineBasicMaterial({ color: 0xef233c, transparent: true, opacity: 0.22, blending: additive })
         );
         oct.position.set(-4.0, 1.8, 0.4);
         scene.add(oct);
 
         const torus = new THREE.LineSegments(
             new THREE.WireframeGeometry(new THREE.TorusGeometry(0.45, 0.14, 12, 24)),
-            new THREE.LineBasicMaterial({ color: 0x5fb8f5, transparent: true, opacity: 0.22, blending: additive })
+            new THREE.LineBasicMaterial({ color: 0x5fb8f5, transparent: true, opacity: 0.15, blending: additive })
         );
         torus.position.set(-3.6, -1.9, 0.2);
         scene.add(torus);
 
         const meshes = [teapot, knot, oct, torus];
         const speeds = [
-            { x: 0.0, y: 0.12, z: 0.0 },
+            { x: 0.07, y: 0.11, z: 0.05 },
             { x: -0.12, y: 0.15, z: 0.0 },
             { x: 0.20, y: 0.0, z: 0.10 },
             { x: 0.05, y: -0.18, z: 0.0 },
