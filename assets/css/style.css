@@ -226,6 +226,29 @@ p { margin: 0 0 1em; color: var(--text-soft); }
     transform: rotate(.6deg);
 }
 
+.hero__shot--overflow {
+    overflow: visible;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    position: relative;
+    z-index: 5;
+    transform: translateY(-20px) scale(1.6);
+    transform-origin: center top;
+}
+
+.hero__shot--overflow img {
+    filter: drop-shadow(0 22px 50px rgba(0,0,0,.5));
+}
+
+.hero { overflow: visible; }
+
+@media (max-width: 880px) {
+    .hero__shot--overflow {
+        transform: none;
+    }
+}
+
 .hero__meta {
     margin-top: 24px;
     color: #8d99ae;
