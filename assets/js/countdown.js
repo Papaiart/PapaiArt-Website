@@ -1,9 +1,9 @@
 /* ====================================================
    PapaiArt — Open Beta Countdown
-   Target: 2026-05-22 09:00:00 (local)
+   Target: 2026-05-28 09:00:00 (local)
    ==================================================== */
 
-const BETA_TARGET = new Date("2026-05-22T09:00:00").getTime();
+const BETA_TARGET = new Date("2026-05-28T09:00:00").getTime();
 
 function updateCountdown() {
     const now = Date.now();
