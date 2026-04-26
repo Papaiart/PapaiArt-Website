@@ -1,0 +1,26 @@
+# PapaiArt Animation Studio — robots.txt
+# https://www.papaiart.com/
+
+User-agent: *
+Allow: /
+Disallow: /process.py
+Disallow: /process_cap.py
+Disallow: /build_articles.py
+Disallow: /interview/about.txt
+
+# Common AI / scraper bots — explicitly allowed (remove if you wish to opt out)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# Sitemap
+Sitemap: https://www.papaiart.com/sitemap.xml
+Host: https://www.papaiart.com

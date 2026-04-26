@@ -1,0 +1,21 @@
+{
+  "name": "PapaiArt Animation Studio",
+  "short_name": "PapaiArt",
+  "description": "Hybrid 2D/3D animation software by Babhár Kft. Draw in 3D space, model non-destructively, rig with IK, render to MP4 in one click.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0b0d12",
+  "theme_color": "#0b0d12",
+  "lang": "en",
+  "categories": ["graphics", "productivity", "design", "art"],
+  "icons": [
+    {
+      "src": "/assets/images/software-icon.png",
+      "type": "image/png",
+      "sizes": "any",
+      "purpose": "any"
+    }
+  ]
+}

@@ -79,8 +79,75 @@ def build_articles():
         </div>
 """
 
+        # Extract title and description for SEO
+        article_title = "PapaiArt Animation Studio Article"
+        h1_m = re.search(r'<h[12][^>]*>(.*?)</h[12]>', inner_content, re.IGNORECASE | re.DOTALL)
+        if h1_m:
+            article_title = re.sub(r'<[^>]+>', '', h1_m.group(1)).strip() + " — PapaiArt Animation Studio"
+            
+        article_desc = "Articles, tutorials, and documentation for PapaiArt Animation Studio."
+        p_m = re.search(r'<p[^>]*>(.*?)</p>', inner_content, re.IGNORECASE | re.DOTALL)
+        if p_m:
+            raw_desc = re.sub(r'<[^>]+>', '', p_m.group(1)).strip()
+            raw_desc = re.sub(r'\s+', ' ', raw_desc)
+            if len(raw_desc) > 160:
+                article_desc = raw_desc[:157] + "..."
+            elif len(raw_desc) > 10:
+                article_desc = raw_desc
+
+        custom_header = header
+        custom_header = re.sub(r'<title>.*?</title>', f'<title>{article_title}</title>', custom_header, flags=re.DOTALL)
+        custom_header = re.sub(r'<meta\s+name="description"\s+content="[^"]*">', f'<meta name="description" content="{article_desc}">', custom_header, flags=re.DOTALL)
+        custom_header = re.sub(r'<meta\s+property="og:title"\s+content="[^"]*">', f'<meta property="og:title" content="{article_title}">', custom_header, flags=re.DOTALL)
+        custom_header = re.sub(r'<meta\s+property="og:description"\s+content="[^"]*">', f'<meta property="og:description" content="{article_desc}">', custom_header, flags=re.DOTALL)
+        custom_header = re.sub(r'<meta\s+name="twitter:title"\s+content="[^"]*">', f'<meta name="twitter:title" content="{article_title}">', custom_header, flags=re.DOTALL)
+        custom_header = re.sub(r'<meta\s+name="twitter:description"\s+content="[^"]*">', f'<meta name="twitter:description" content="{article_desc}">', custom_header, flags=re.DOTALL)
+        custom_header = re.sub(r'<meta\s+property="og:url"\s+content="[^"]*">', f'<meta property="og:url" content="https://www.papaiart.com/cikkek/{filename}">', custom_header, flags=re.DOTALL)
+        custom_header = re.sub(r'<meta\s+property="og:type"\s+content="[^"]*">', '<meta property="og:type" content="article">', custom_header, flags=re.DOTALL)
+        custom_header = re.sub(r'<link\s+rel="canonical"\s+href="[^"]*">', f'<link rel="canonical" href="https://www.papaiart.com/cikkek/{filename}">', custom_header, flags=re.DOTALL)
+        custom_header = re.sub(r'<link\s+rel="alternate"\s+hreflang="en"\s+href="[^"]*">', f'<link rel="alternate" hreflang="en" href="https://www.papaiart.com/cikkek/{filename}">', custom_header, flags=re.DOTALL)
+        custom_header = re.sub(r'<link\s+rel="alternate"\s+hreflang="hu"\s+href="[^"]*">', f'<link rel="alternate" hreflang="hu" href="https://www.papaiart.com/cikkek/{filename}">', custom_header, flags=re.DOTALL)
+        custom_header = re.sub(r'<link\s+rel="alternate"\s+hreflang="x-default"\s+href="[^"]*">', f'<link rel="alternate" hreflang="x-default" href="https://www.papaiart.com/cikkek/{filename}">', custom_header, flags=re.DOTALL)
+
+        # Replace schema.org json-ld scripts
+        schema_article = f"""
+    <script type="application/ld+json">
+    {{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.papaiart.com/" }},
+            {{ "@type": "ListItem", "position": 2, "name": "Learn", "item": "https://www.papaiart.com/learn.html" }},
+            {{ "@type": "ListItem", "position": 3, "name": "{article_title.replace(' — PapaiArt Animation Studio', '')}", "item": "https://www.papaiart.com/cikkek/{filename}" }}
+        ]
+    }}
+    </script>
+    <script type="application/ld+json">
+    {{
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "{article_title.replace(' — PapaiArt Animation Studio', '')}",
+        "description": "{article_desc}",
+        "url": "https://www.papaiart.com/cikkek/{filename}",
+        "image": "https://www.papaiart.com/assets/images/screenshot-hero.png",
+        "author": {{
+            "@type": "Organization",
+            "name": "Babhár Kft."
+        }},
+        "publisher": {{
+            "@type": "Organization",
+            "name": "Babhár Kft.",
+            "logo": {{
+                "@type": "ImageObject",
+                "url": "https://www.papaiart.com/assets/images/company-logo.png"
+            }}
+        }}
+    }}
+    </script>"""
+        custom_header = re.sub(r'<script\s+type="application/ld\+json">.*?</script>\s*<script\s+type="application/ld\+json">.*?</script>', schema_article, custom_header, flags=re.DOTALL)
+        
         # Assemble new page
-        new_page = f"""{header}
+        new_page = f"""{custom_header}
 
 <section class="section" style="padding-top: 120px;">
     <div class="container">
