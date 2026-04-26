@@ -31,7 +31,7 @@
     <div class="container">
         <span class="tagline tagline--on-dark" data-i18n="about.tag">About</span>
         <h1 data-i18n="about.title">An independent Hungarian dev team — one focused animation tool</h1>
-        <p data-i18n="about.lead">Babhár Kft. was founded to dissolve the artificial boundary between 2D and 3D animation. PapaiArt Animation Studio is the result of years of C++ and OpenGL development — razor-sharp, compact, and exactly as much tool as you actually need.</p>
+        <p data-i18n="about.lead">Babhár Kft. was founded to dissolve the artificial boundary between 2D and 3D animation. PapaiArt Animation Studio is the result of years of specialized development — razor-sharp, compact, and exactly as much tool as you actually need.</p>
     </div>
 </section>
 
@@ -45,7 +45,7 @@
                 <span class="section__eyebrow" data-i18n="about.mission.eyebrow">Our mission</span>
                 <h2 data-i18n="about.mission.title">Tools for hybrid creators</h2>
                 <p data-i18n="about.mission.p1">Digital art has long separated 2D drawing and 3D modeling — forcing the artist to use two different software ecosystems. We don't think that's necessary.</p>
-                <p data-i18n="about.mission.p2">PapaiArt Animation Studio combines both worlds in one compact program — without becoming bloatware. We build it on our own C++ codebase and OpenGL engine so we never have to compromise on performance.</p>
+                <p data-i18n="about.mission.p2">PapaiArt Animation Studio combines both worlds in one compact program — without becoming bloatware. We build it on our own optimized engine so we never have to compromise on performance.</p>
             </div>
         </div>
     </div>
@@ -97,6 +97,37 @@
                 <p data-i18n="about.team.p1">Babhár Kft. is a Hungary-based, independent development studio. PapaiArt Animation Studio is the team's flagship product — built by a small core team of animation enthusiasts.</p>
                 <p data-i18n="about.team.p2">If you'd like to join us or discuss a partnership, reach out via the contact details below.</p>
             </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="interview">
+    <div class="container">
+        <div class="section__head">
+            <span class="section__eyebrow" data-i18n="about.interview.eyebrow">Behind the Scenes</span>
+            <h2 data-i18n="about.interview.title">Interview with the Creator</h2>
+        </div>
+        
+        <div style="background: var(--bg-soft); padding: 40px; border-radius: 12px; border: 1px solid var(--border);">
+            <div style="display: flex; align-items: center; gap: 24px; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid var(--border);">
+                <img src="assets/images/creator_profil_picture.png" alt="Creator Avatar" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary);">
+                <div>
+                    <h3 style="margin: 0 0 4px 0; font-size: 20px;">Bence Pápai</h3>
+                    <p style="margin: 0; color: var(--text-muted); font-size: 15px;">Lead Engine Developer & Founder · <a href="https://www.linkedin.com/in/bence-papai-papaiart/" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: none;">LinkedIn Profile</a></p>
+                </div>
+            </div>
+
+            <p><strong>Q: What was the spark that ignited the idea for PapaiArt Animation Studio?</strong></p>
+            <p style="margin-bottom: 24px; color: var(--text-muted);">A: It really came from a place of frustration. I saw animators constantly fighting against their tools. They'd have one massive, sluggish program for 3D modeling, and a completely different, disconnected tool for their 2D frame-by-frame work. The process of moving assets between them was a nightmare. I wanted to build a single, high-performance engine where you could draw directly in a 3D viewport without any friction.</p>
+            
+            <p><strong>Q: You built the core engine from scratch. What was the hardest part of that engineering journey?</strong></p>
+            <p style="margin-bottom: 24px; color: var(--text-muted);">A: Definitely the Undo/Redo architecture and memory management. When you're dealing with both polygonal mesh data and vector strokes simultaneously, memory can balloon incredibly fast. We had to design a highly optimized command pattern that stores just the 'diffs' of changes. It took months to get right, but it's the reason the software starts instantly and doesn't hog RAM, even with complex scenes.</p>
+            
+            <p><strong>Q: PapaiArt Animation Studio includes advanced rigging tools like IK. Why include that in a lightweight package?</strong></p>
+            <p style="margin-bottom: 24px; color: var(--text-muted);">A: "Lightweight" shouldn't mean "basic." I wanted to prove that you don't need a bloated UI with a thousand sub-menus to offer professional-grade rigging. Inverse Kinematics and constraints are essential for modern character animation. By integrating them natively, we allow creators to build complex skeletal rigs that interact seamlessly with both their 3D models and 2D drawing layers.</p>
+            
+            <p><strong>Q: What are you most excited to see users create once the beta launches?</strong></p>
+            <p style="margin-bottom: 0; color: var(--text-muted);">A: I built the canvas, but I can't wait to see the art. I'm hoping to see entirely new visual styles—true "2.5D" shorts where the line between traditional hand-drawn animation and dynamic 3D environments completely blurs. The tool is ready; now it's up to the community's imagination.</p>
         </div>
     </div>
 </section>

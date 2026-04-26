@@ -1,0 +1,4 @@
+Name: Bence Papai
+
+I'm a Technical Artist with over 15 years of experience in video game and visual software development. I primarily work in C++ and C#, with specializations in real-time rendering, shader development, custom framework creation, procedural environment generation, gameplay mechanics implementation, physics simulation, and web-based communication systems. My experience spans across multiple platforms: I've worked on mobile, PC, web, VR, and AR projects, and have contributed to several published video games.
+For the past six years, I've been teaching Game Design at Budapest Metropolitan University, where I share my practical expertise to prepare the next generation for the challenges of game development. In my free time, I engage in writing, painting, generative AI experimentation, and vibe coding—activities that not only fuel my creativity but also help me bring fresh perspectives and innovative solutions to my technical work.
