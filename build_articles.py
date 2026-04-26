@@ -49,12 +49,21 @@ def build_articles():
         with open(filepath, 'r', encoding='utf-8') as f:
             content = f.read()
             
-        # Extract the core article content, avoiding duplicate headers if run multiple times
-        body_match = re.search(r'(<article class="article-formatted">.*?</article>)', content, re.DOTALL)
+        # Extract the core article content
+        # We look for the first <article> tag and the last </article> tag
+        body_match = re.search(r'(<article.*?>.*?</article>)', content, re.DOTALL)
         if body_match:
             inner_content = body_match.group(1)
+            # Ensure it has the correct class for styling if it's the main wrapper
+            if 'class="article-formatted"' not in inner_content and '<article class=' not in inner_content:
+                inner_content = inner_content.replace('<article>', '<article class="article-formatted">')
         else:
-            inner_content = content # Fallback
+            # If no article tag, try to find the content between the first <h1> and the footer
+            h1_match = re.search(r'(<h1.*?>.*?)<footer', content, re.DOTALL)
+            if h1_match:
+                inner_content = f'<article class="article-formatted">{h1_match.group(1)}</article>'
+            else:
+                inner_content = content # Last resort
             
         # Add banner if image found
         banner_html = ""
