@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>PapaiArt Animation Studio: System Architecture & Modular UI — PapaiArt Animation Studio</title>
-    <meta name="description" content="The power of a professional animation software lies not only in its features but in how it delivers those features to the user. When designing the high-perfo...">
+    <meta name="description" content="The system architecture behind PapaiArt Animation Studio: dockable UI, Command Pattern Undo/Redo and JSON-based project save/load.">
     <meta name="keywords" content="PapaiArt tutorials, animation tutorials, 2D 3D animation guide, IK rigging tutorial, render export tutorial, 2.5D animation tutorials, hybrid animation documentation">
     <meta name="author" content="Babhár Kft.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
@@ -20,7 +20,7 @@
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="PapaiArt Animation Studio">
     <meta property="og:title" content="PapaiArt Animation Studio: System Architecture & Modular UI — PapaiArt Animation Studio">
-    <meta property="og:description" content="The power of a professional animation software lies not only in its features but in how it delivers those features to the user. When designing the high-perfo...">
+    <meta property="og:description" content="The system architecture behind PapaiArt Animation Studio: dockable UI, Command Pattern Undo/Redo and JSON-based project save/load.">
     <meta property="og:url" content="https://www.papaiart.com/cikkek/ui_architecture_articles.html">
     <meta property="og:locale" content="en_US">
     <meta property="og:locale:alternate" content="hu_HU">
@@ -32,7 +32,7 @@
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="PapaiArt Animation Studio: System Architecture & Modular UI — PapaiArt Animation Studio">
-    <meta name="twitter:description" content="The power of a professional animation software lies not only in its features but in how it delivers those features to the user. When designing the high-perfo...">
+    <meta name="twitter:description" content="The system architecture behind PapaiArt Animation Studio: dockable UI, Command Pattern Undo/Redo and JSON-based project save/load.">
     <meta name="twitter:image" content="https://www.papaiart.com/assets/images/screenshot-hero.png">
 
     <link rel="icon" type="image/png" href="../assets/images/software-icon.png">
@@ -62,7 +62,7 @@
         "@context": "https://schema.org",
         "@type": "Article",
         "headline": "PapaiArt Animation Studio: System Architecture & Modular UI",
-        "description": "The power of a professional animation software lies not only in its features but in how it delivers those features to the user. When designing the high-perfo...",
+        "description": "The system architecture behind PapaiArt Animation Studio: dockable UI, Command Pattern Undo/Redo and JSON-based project save/load.",
         "url": "https://www.papaiart.com/cikkek/ui_architecture_articles.html",
         "image": "https://www.papaiart.com/assets/images/screenshot-hero.png",
         "author": {
@@ -108,23 +108,23 @@
 
         <article class="article-formatted">
             <article>
-        <h1>PapaiArt Animation Studio: System Architecture & Modular UI</h1>
-        <div class="subtitle">What drives the engine behind the scenes?</div>
+        <h1>System architecture and modular UI</h1>
+        <div class="subtitle">What runs the engine behind the scenes</div>
 
-        <p>The power of a professional <strong>animation software</strong> lies not only in its features but in how it delivers those features to the user. When designing the high-performance architecture of <strong>PapaiArt Animation Studio</strong>, the focus was entirely on stability, memory efficiency, and complete customizability.</p>
+        <p>How an <strong>animation software</strong> delivers its features matters as much as the features themselves. The architecture of <strong>PapaiArt Animation Studio</strong> focuses on three things: stability, memory efficiency and a UI you can rearrange to fit the task.</p>
 
-        <h2>1. Modular, Dockable UI (DockSpace)</h2>
-        <p>Workflows in a 3D/2D hybrid software can vary wildly. A rigger needs the hierarchy and constraint parameters front and center, while a 2D animator needs maximum canvas space and timeline visibility. Because of this, <strong>PapaiArt Animation Studio</strong> discards rigid, static layouts in favor of a dynamic <strong>DockSpace</strong>.</p>
-        <p>Every panel (Viewport, Timeline, Inspector, Hierarchy, Drawing Layers) can be freely moved, resized, snapped to screen edges, or nested as tabs. Users can easily drag and drop panels to construct their own custom Workspace, ensuring that the interface adapts to their specific task rather than the other way around.</p>
+        <h2>1. Modular, dockable UI (DockSpace)</h2>
+        <p>Workflows in a hybrid 3D/2D software vary a lot. A rigger needs the hierarchy and constraint parameters in view; a 2D animator wants the canvas and the timeline to take up most of the space. PapaiArt Animation Studio uses a <strong>DockSpace</strong> instead of a fixed layout.</p>
+        <p>Every panel (Viewport, Timeline, Inspector, Hierarchy, Drawing Layers) can be moved, resized, snapped to screen edges or nested as tabs. You drag and drop panels into the layout that fits your task, and the interface stays out of the way.</p>
 
-        <h2>2. Infinite Undo Architecture (Undo/Redo)</h2>
-        <p>The creative process is inherently full of mistakes and experimentation. The software's built-in <span class="code-inline">UndoRedo</span> system is built on a robust Command Pattern architecture. It goes far beyond reversing simple parameter tweaks; it handles complex topological changes (3D mesh editing) and vector alterations (2D stroke manipulation).</p>
+        <h2>2. Undo/Redo architecture</h2>
+        <p>The creative process involves a lot of trial and error. The built-in <span class="code-inline">UndoRedo</span> system is based on the Command Pattern. It covers more than parameter tweaks: it handles topological changes (3D mesh editing) and vector edits (2D stroke manipulation).</p>
         <div class="info-box">
-            Instead of saving the entire scene state for every undo step (which would rapidly exhaust computer memory), the <strong>PapaiArt Animation Studio</strong> system stores localized "diffs" (differences). For instance, the <span class="code-inline">DrawingCommand</span> only records the previous and new states of the specific drawing track that was modified. This highly optimized approach allows for a virtually infinite undo history without any performance degradation.
+            Instead of saving the full scene state for every undo step, which would eat through memory fast, the system stores localised "diffs". For example, <span class="code-inline">DrawingCommand</span> only records the previous and new state of the specific drawing track that was modified. This keeps the undo history long without growing the memory footprint.
         </div>
 
-        <h2>3. Data-Driven Serialization (Save & Load)</h2>
-        <p>Saving and loading project files (<span class="code-inline">ProjectSerializer</span> and <span class="code-inline">EntitySerializer</span>) relies on a modern, JSON-based architecture within the engine. Because the core data structure is built on a tree of Entities, the serializer recursively traverses the scene. This approach heavily guarantees <strong>backward compatibility</strong>: if new parameters (such as a new brush style) are added to the PapaiArt software in the future, older project files will still load flawlessly, safely falling back to default values for the missing data.</p>
+        <h2>3. Data-driven save and load</h2>
+        <p>Saving and loading project files (<span class="code-inline">ProjectSerializer</span> and <span class="code-inline">EntitySerializer</span>) uses a JSON-based format. The scene is structured as a tree of entities, so the serializer walks the tree recursively. The format is designed for <strong>backward compatibility</strong>: if new parameters are added later (a new brush style for example), older project files still load, falling back to default values for the missing data.</p>
         </article>
     </div>
 </section>
