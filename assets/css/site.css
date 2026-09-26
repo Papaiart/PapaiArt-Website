@@ -38,6 +38,29 @@ body.pa-dark {
     overflow-x: hidden;
 }
 .pa-dark *, .pa-dark *::before, .pa-dark *::after { box-sizing: border-box; }
+
+/* topographic contour pattern behind the dark pages, tinted with the page accent */
+body.pa-dark::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: calc(100% + 1000px);
+    height: calc(100% + 1000px);
+    z-index: -1;
+    pointer-events: none;
+    background: var(--p);
+    opacity: .1;
+    -webkit-mask: url(../images/topo.svg) 0 0 / 1000px 1000px repeat;
+    mask: url(../images/topo.svg) 0 0 / 1000px 1000px repeat;
+    animation: pa-topo-drift 260s linear infinite;
+    will-change: transform;
+}
+@keyframes pa-topo-drift { to { transform: translate(-1000px, -1000px); } }
+@media (prefers-reduced-motion: reduce) { body.pa-dark::before { animation: none; } }
+/* with JS the pattern is drawn live (assets/js/topo.js) and morphs; the SVG above is the fallback */
+.has-topo body.pa-dark::before { display: none; }
+.pa-topo { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; opacity: .1; }
 .pa-dark img { max-width: 100%; height: auto; display: block; }
 .pa-dark a { color: var(--p); text-decoration: none; transition: color .15s ease; }
 .pa-dark a:hover { color: #fff; }
@@ -58,7 +81,7 @@ body.pa-dark {
 .pa-wrap { max-width: var(--pa-max); margin: 0 auto; padding: 0 24px; }
 .pa-section { padding: 110px 0; position: relative; }
 .pa-section--tight { padding: 72px 0; }
-.pa-section--alt { background: var(--pa-bg-2); border-top: 1px solid var(--pa-line); border-bottom: 1px solid var(--pa-line); }
+.pa-section--alt { background: rgba(15, 17, 24, .38); border-top: 1px solid var(--pa-line); border-bottom: 1px solid var(--pa-line); }
 
 .pa-eyebrow {
     display: inline-flex;
@@ -750,7 +773,7 @@ body.pa-dark {
 
 /* ---------- footer (shared) ---------- */
 
-.pa-footer { background: #07080c; border-top: 1px solid rgba(255, 255, 255, .07); color: #9ea6b8; padding: 72px 0 32px; font-family: var(--pa-font); }
+.pa-footer { background: rgba(7, 8, 12, .9); border-top: 1px solid rgba(255, 255, 255, .07); color: #9ea6b8; padding: 72px 0 32px; font-family: var(--pa-font); }
 .pa-footer *, .pa-footer *::before { box-sizing: border-box; }
 .pa-footer__grid { max-width: var(--pa-max); margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; }
 .pa-footer h4 { font: 500 .74rem var(--pa-mono); letter-spacing: .14em; text-transform: uppercase; color: #fff; margin: 0 0 18px; }

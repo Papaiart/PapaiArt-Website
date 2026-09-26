@@ -601,7 +601,7 @@ def head(r, title, desc, canonical, image=None, three=False, extra='', og_type='
 
 
 def scripts(r, hero=False):
-    s = f'\n<script src="{r}assets/js/site.js" defer></script>'
+    s = f'\n<script src="{r}assets/js/site.js" defer></script>\n<script src="{r}assets/js/topo.js" defer></script>'
     if hero:
         s += f'\n<script type="module" src="{r}assets/js/heroes.js"></script>'
     return s + '\n</body>\n</html>\n'
