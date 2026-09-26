@@ -1,0 +1,767 @@
+[
+ {
+  "id": "1670151",
+  "product": "level-editor",
+  "title": "PaTool_LevelEditor_2.0.0",
+  "date": "2026-09-19",
+  "url": "https://papaiart.itch.io/papaiart-tools-level-editor/devlog/1670151/patool-leveleditor-200",
+  "version": "2.0.0",
+  "excerpt": "light, wall parts, free walls, and Doom WADs This is 2.0, and it is a milestone for the editor. Rooms are no longer uniformly lit boxes: a sector has a brightness and a colour. A wall can show a different texture above and below a doorway.…",
+  "words": 836,
+  "body": "<h3>light, wall parts, free walls, and Doom WADs</h3>\r\n<p>This is 2.0, and it is a milestone for the editor. Rooms are no longer uniformly lit boxes: a sector has a brightness and a colour. A wall can show a different texture above and below a doorway. Walls can stand on their own, belonging to no room at all. And the editor opens Doom WADs — a level from a WAD lands in the editor as real, editable geometry, with its textures.\r\n</p>\r\n<p><strong>LIGHT AND COLOUR</strong>\r\n</p>\r\n<p>Every sector has a Brightness (0 to 255) and a Colour in the sidebar. Together they tint the floor, the ceiling and the walls of that room — a dark corridor, a red-lit machine room, a bright courtyard — without touching a single texture.\r\n</p>\r\n<p>The tint rides on the geometry, not on the material, which matters more than it sounds: the same texture used in a dark room and a bright one is still one material. Nothing duplicates.\r\n</p>\r\n<p>It shows in the editor's 3D view, in the viewer, and in the OBJ and GLB exports. The Unity importer ships with a shader for it, so an imported map arrives lit the way you built it.\r\n</p>\r\n<p>Old maps look exactly as before — no light level means full bright and white.\r\n</p>\r\n<p><strong>UPPER AND LOWER WALL TEXTURES</strong>\r\n</p>\r\n<p>Where two rooms meet, the wall is really three pieces: the strip above the opening, the opening itself, and the step below it. You can now give the upper strip and the lower step their own texture; leave one empty and it stays \"same as the wall\", which is how every existing map behaves. Offsets and Tile Mode are shared by the whole wall, as in Doom.\r\n</p>\r\n<p>This is what makes a doorway with a lintel, a window band, or a step with its own trim look right — without faking it with extra sectors.\r\n</p>\r\n<p><strong>FREE WALLS</strong>\r\n</p>\r\n<p>Tools &gt; Free Wall (W) draws a wall that belongs to no sector: a fence, a railing, a partition across a hall, a facade out in the void.\r\n</p>\r\n<p>Click to drop a point, click again to finish that wall and start the next from where it ended; Enter, Escape or right-click ends the run. A new wall automatically spans the floor and ceiling of whatever room it stands in, so the common case needs no typing.\r\n</p>\r\n<p>Each one has its own top and bottom height, texture, offsets and Tile Mode, its own brightness and colour, and two switches: Double-sided (visible from both sides, on by default) and Blocks movement, which the exporters turn into collision.\r\n</p>\r\n<p><strong>IMPORT DOOM WAD</strong>\r\n</p>\r\n<p>File &gt; Import Doom WAD opens a WAD, lists the levels in it, and brings the one you pick into the editor. Doom, Hexen and UDMF maps all work.\r\n</p>\r\n<p>Textures come along. Each one the map uses is saved as a PNG in the folder you choose, next to a project file that is opened for you, so the level shows its textures straight away. Walls keep their Doom proportions — a texture is drawn at its real pixel size, not stretched to a 64-unit square.\r\n</p>\r\n<p>Doom maps do things this editor's rooms cannot, so the import adapts them and then tells you what it did: sectors with separate parts became several sectors, closed-off empty space became a solid pillar, a gap in an outline was closed with a short wall, and a grate or railing hanging in a doorway became a free wall. It also lists what could not come across — doors, lifts and switches arrive as shapes without their movement, and special-effect lines are dropped.\r\n</p>\r\n<p>The result is a new, unsaved map. Look at it first, then save it where you want it.\r\n</p>\r\n<p><strong>TEXTURES KEEP THEIR OWN SIZE</strong>\r\n</p>\r\n<p>A texture used to be assumed square, 64 by 64. A map can now record what size a texture really is, and the editor, the 3D view and the exports use it. Long, thin or higher-resolution textures finally sit on a wall the way they were drawn.\r\n</p>\r\n<p><strong>EXPORTS</strong>\r\n</p>\r\n<p>Quake .map: textures now actually appear in TrenchBroom. The images were copied to the right place all along, but the faces did not name the folder they sit in, so the editor listed them and still drew every wall untextured.\r\n</p>\r\n<p>EasyFPSEditor .eem: levels came out spotted with magenta. A wall between two rooms carries its texture on one side only, and the export looked at just one of them; it now checks both, and never writes a texture name the EFPSE project has no image for.\r\n</p>\r\n<p><strong>BEFORE YOU UPDATE</strong>\r\n</p>\r\n<p>Your maps open as they are, and look as they did. The file format has grown — light, wall parts, free walls, texture sizes — and a map saved by 2.0 that uses any of them will not show those things in an older build, though the settings are kept rather than destroyed. Opening a map from a newer build than yours now says so, instead of quietly dropping what it does not understand.</p>",
+  "videos": [],
+  "images": [
+   {
+    "src": "1670151-1.webp",
+    "w": 1400,
+    "h": 1008
+   },
+   {
+    "src": "1670151-2.webp",
+    "w": 1400,
+    "h": 805
+   }
+  ]
+ },
+ {
+  "id": "1661756",
+  "product": "level-editor",
+  "title": "PaTool_LevelEditor_1.9.3 - Quake .map export",
+  "date": "2026-09-12",
+  "url": "https://papaiart.itch.io/papaiart-tools-level-editor/devlog/1661756/patool-leveleditor-193-quake-map-export",
+  "version": "1.9.3",
+  "excerpt": "This build adds one menu item: File > Export to Quake .map. Your map comes out as a level that other tools can open and compile. There is also Tile Mode for floors and ceilings, and a texture bug that had been turning every wall the wrong…",
+  "words": 741,
+  "body": "<p>This build adds one menu item: File &gt; Export to Quake .map. Your map<br>comes out as a level that other tools can open and compile. There is<br>also Tile Mode for floors and ceilings, and a texture bug that had been<br>turning every wall the wrong way round finally got caught.</p>\r\n<p>EXPORT TO QUAKE .MAP</p>\r\n<p>File &gt; Export to Quake .map writes a single file that TrenchBroom,<br>J.A.C.K. and NetRadiant open directly, and that func_godot (Godot),<br>Scopa (Unity), the Unreal map importer and Blender's qmap importer can<br>all read.</p>\r\n<p>Textures come along. The export copies them into a \"textures\" folder<br>next to the .map. In TrenchBroom, open the file with the \"Generic\" game<br>and point the game path at the folder your .map is in. There is also a<br>PapaiArtLevelEditor.fgd next to the editor - give it to TrenchBroom or<br>func_godot and your player start stops being an \"unknown entity\".<br>Before writing anything, the dialog builds the level and tells you what<br>it found. The one to watch for is a thing standing outside every sector:<br>level compilers refuse to finish a map they can escape from, and this<br>tells you which thing to move.<br>Two settings are worth a look. Scale keeps a metre at 64 units by<br>default, which is the grid you drew on; the other option is 32, the<br>proportion Quake uses. Wall thickness is how thick walls come out - 16<br>is fine, and you rarely need to change it.</p>\r\n<p>WHAT COMES ACROSS</p>\r\n<p>Slopes stay real slopes, not stairs. A height difference between two<br>sectors becomes a step, with the texture you gave that wall. A sector<br>drawn inside another becomes a hole in the floor; one whose ceiling sits<br>at its floor becomes a solid pillar. Per-wall textures, offsets and Tile<br>Mode all come across.<br>Your player start becomes info_player_start. For anything else, name a<br>thing's type QMAP_ plus a classname - QMAP_func_door, say - and exactly<br>that comes out.</p>\r\n<p>One thing to know: a Quake level is solid by default. Where your editor<br>sees a room, Quake sees rock with a room-shaped hole in it. So the export<br>builds the rock around your rooms. That is why walls have thickness now,<br>and why an open doorway has visible sides.</p>\r\n<p>TILE MODE FOR FLOORS AND CEILINGS</p>\r\n<p>A floor or ceiling texture normally repeats every 64 units. With Tile<br>Mode on, it stretches to fit the sector instead, as many times across as<br>you ask for. One copy over a whole room, or four, or a neat 2 x 2 - good<br>for a floor pattern, a logo or a rug that should not care how big the room is.<br>It works everywhere now: in the 3D view, in the Quake export, in OBJ and<br>GLB, in the Unity importer, and in Level Modeller and FPS Lab when they <br>import a map.</p>\r\n<p>WALL TEXTURES WERE MIRRORED</p>\r\n<p>A test wall with a letter on it showed something nobody had spotted:<br>wall textures were flipped left to right. Not in the new export - in the<br>editor's own 3D view, in the viewer, in OBJ and GLB, and in the Unity<br>importer. All of them, since forever.<br>It hid for so long because wall textures are usually brick or panels,<br>and a mirrored brick just looks like another brick. Put a letter, an<br>arrow or a logo on a wall and it reads backwards at once.<br>Fixed in all of them at the same time, so they still agree.<br>While fixing it, the surfaces down the side of a doorway and the front<br>of a step turned out to have no texture at all - the editor never draws<br>them, so nobody ever set one. They now take the texture of the wall<br>right next to them.</p>\r\n<p>LEVEL MODELLER AND FPS LAB</p>\r\n<p>Both import Level Editor maps, and both had fallen behind. They are<br>caught up: Tile Mode works, and in Level Modeller imported wall textures<br>were upside down, which is fixed.</p>\r\n<p>BEFORE YOU UPDATE</p>\r\n<p>Your existing maps will look different, on purpose. Wall textures are no<br>longer mirrored, so if you ever nudged a wall's texture offset to line<br>something up, that nudge will now be off. Check the walls where the exact<br>position mattered. In Level Modeller, re-import any map you imported<br>earlier.</p>\r\n<p>The map file format has not changed. Old maps open as before, and maps<br>saved by this build open in older versions.</p>",
+  "videos": [],
+  "images": [
+   {
+    "src": "1661756-1.webp",
+    "w": 1400,
+    "h": 847
+   },
+   {
+    "src": "1661756-2.webp",
+    "w": 1400,
+    "h": 844
+   }
+  ]
+ },
+ {
+  "id": "1661174",
+  "product": "level-modeller",
+  "title": "PapaiArt Tools - Level Modeller - 1.7.2 snapping",
+  "date": "2026-09-12",
+  "url": "https://papaiart.itch.io/papaiart-tools-level-modeller/devlog/1661174/papaiart-tools-level-modeller-172-snapping",
+  "version": "1.7.2",
+  "excerpt": "Snapping: things that actually line up Up to now, putting a wall next to another wall in PapaiArt Tools – Level Modeller meant eyeballing it, squinting at the seam, and then typing coordinates into the Inspector until the gap went away.…",
+  "words": 738,
+  "body": "<h2>Snapping: things that actually line up</h2>\r\n<p>Up to now, putting a wall next to another wall in <strong>PapaiArt Tools – Level Modeller</strong> meant eyeballing it, squinting at the seam, and then typing coordinates into the Inspector until the gap went away. Your box landed at x = 2.4374 and the two rooms <em>almost</em> met.\r\n</p>\r\n<p>That's over. This update adds a full snapping system.\r\n</p>\r\n<h3>The grid you see is the grid you get</h3>\r\n<p>The viewport grid used to be decoration — a fixed 1-metre pattern that had nothing to do with where anything landed. Now it <strong>is</strong> the snap grid. Change the step to 0.5 m and the grid redraws at 0.5 m. Zoom out and the fine lines retire on their own instead of smearing into grey mush; zoom back in and they return.\r\n</p>\r\n<p>And if you switch snapping off, the snap grid goes with it. What's left is a plain ground reference, so the viewport still has a floor to stand on — but it stops promising you something it isn't doing.\r\n</p>\r\n<h3>It snaps to what's actually there</h3>\r\n<p>Corners, edges, edge centres, surfaces, object pivots, bounding boxes — turn on as many as you like.\r\n</p>\r\n<p>One detail worth calling out: it snaps to <strong>the edges you can see</strong>. A cube has twelve edges. Under the hood every flat face is split into triangles, which means there are invisible lines running diagonally across each wall — and a naive snap system happily grabs those, which is exactly why snapping in some tools feels like it has a mind of its own. Those diagonals are not targets here. Curved surfaces are treated the same way: a cylinder offers its two rims, not its twenty-four seams, and a sphere offers no edges at all, because it hasn't got any.\r\n</p>\r\n<p>Corners also outrank everything else. Near a corner you get the corner, not the edge that happens to pass a pixel closer.\r\n</p>\r\n<h3>Which part of your object lands there</h3>\r\n<p>This is the half most snapping leaves out. It's not just <em>what do I snap to</em> — it's <em>which part of the thing I'm dragging goes there</em>.\r\n</p>\r\n<ul><li><strong>Origin</strong> — the object's own centre point.\r\n</li><li><strong>Nearest</strong> — whichever corner of the object faces the target. This is the one you want: grab a crate anywhere, shove it toward a room corner, and it goes in flush.\r\n</li><li><strong>Center</strong> — the middle of its bounds.\r\n</li><li><strong>Grabbed</strong> — the corner you were pointing at when you started dragging.\r\n</li></ul>\r\n<h3>Drop it on the floor</h3>\r\n<p>Select something, press <strong>End</strong>, and it lands on the level — on the actual surface the player walks on, not on an imaginary plane. It probes across the object's footprint and takes the highest support, so a crate hanging half over a step rests on the step instead of sinking through it.\r\n</p>\r\n<p>There's also <em>Snap Selection To → Grid / Ground / Active</em> in the popover and in the Edit menu.\r\n</p>\r\n<h3>Turning in steps</h3>\r\n<p>Rotation snaps too — 15° by default, with 5 / 10 / 22.5 / 30 / 45 / 90 a click away. Doors and corridors stop being 87.3°.\r\n</p>\r\n<h3>One magnet, one panel</h3>\r\n<p>All of this lives behind two small buttons at the top of the viewport: a <strong>magnet</strong> that says whether snapping is on, and the <strong>current grid step</strong>. Click the step and the whole panel opens — targets, options, the operators. Click anywhere else and it's gone.\r\n</p>\r\n<p>While you're dragging, a marker appears on whatever you're locking onto and a small label names it: <em>Vertex</em>, <em>Edge Center</em>, <em>Surface</em>, <em>Grid 0.25 m</em>. No more guessing why something jumped.\r\n</p>\r\n<h3>Small things that add up</h3>\r\n<ul><li>The Inspector's number fields snap to the <strong>same</strong> grid. A 2.4374 m thick wall is just as wrong as a position of 2.4374, and wall thickness is something you type.\r\n</li><li>Cutter objects count as snap targets, because lining a door cutter up with a wall is half of level building.\r\n</li><li>Drop a prop on a ramp with <em>Align to the surface</em> on and it lies on the ramp.\r\n</li><li>Your snap settings are saved with the map — reopen a level and it's still on the grid it was built on.\r\n</li></ul><p>Shortcuts</p><p>Shift+Tab -&gt; snapping on/off</p><p><code>Ctrl</code> (held) -&gt; invert it for a moment</p><p><code>Shift</code> (held) -&gt; half-step, for fine work</p><p><code>-</code> / <code>+ -&gt; halve / double the grid step</code></p><p>End -&gt; drop the selection onto the level</p>",
+  "videos": [],
+  "images": [
+   {
+    "src": "1661174-1.webp",
+    "w": 1278,
+    "h": 720
+   }
+  ]
+ },
+ {
+  "id": "1653463",
+  "product": "fps-lab",
+  "title": "FPS Lab 0.8.8 - New animation features",
+  "date": "2026-09-05",
+  "url": "https://papaiart.itch.io/papaiart-tools-fps-lab/devlog/1653463/fps-lab-088-new-animation-features",
+  "version": "0.8.8",
+  "excerpt": "Animation that doesn't snap This update is all about the animation system. Three things, and each one removes a workaround you were probably already writing. Clips can now blend into each other The Play Animation node has a new Blend…",
+  "words": 672,
+  "body": "<h3>Animation that doesn't snap</h3>\r\n<p>This update is all about the animation system. Three things, and each one removes a workaround you were probably already writing.\r\n</p>\r\n<h3>Clips can now blend into each other</h3>\r\n<p>The <strong>Play Animation</strong> node has a new <strong>Blend</strong> input: how long, in seconds, the object takes to drift from the pose it's in into the new clip. Leave it empty and you get the old behaviour — an instant switch.\r\n</p>\r\n<p><code>0.15</code> to <code>0.3</code> is the range you want. On a door nobody ever noticed the snap; on a character it's a visible pop — the gun jerks, the foot slides. Now it doesn't.\r\n</p>\r\n<p>The fade starts from the pose your objects are <strong>actually in</strong>, not from where the outgoing clip happens to be. That matters more than it sounds: it means blending works correctly out of a clip that already finished and is holding its last pose, out of a rest pose no clip ever played, and out of a transform a script just moved. Rotations take the short way round too — fading from 350° to 10° crosses zero instead of unwinding backwards.\r\n</p>\r\n<h3>On Animation End</h3>\r\n<p>A new event node. When a non-looping clip reaches its last frame, it fires — and its <strong>Clip</strong> output tells you which one finished.\r\n</p>\r\n<p>That's the end of polling <code>Is Animation Playing</code> in every <code>On Update</code> just to know when a reload is done. Wire <code>On Animation End</code> straight into <code>Play Animation</code> with your idle clip and a small Blend, and the weapon settles back by itself. (A looping clip never ends, so it never fires — and Stop Animation isn't an ending either.)\r\n</p>\r\n<h3>Frame events: \"play the footstep <em>here</em>\"</h3>\r\n<p>Often it isn't the end of a clip that matters but one moment in the middle — the bullet leaving the barrel, the boot landing, the magazine clicking home.\r\n</p>\r\n<p>The Animation tab has a new <strong>Events</strong> row. Put the playhead where it should happen, press <strong>+ Event</strong>, double-click the marker to name it. Drag markers to move them, right-click to delete.\r\n</p>\r\n<p>When playback reaches one, the name is broadcast: <strong>any</strong> script with a matching <code>On &lt;name&gt;</code> node runs. So the script that plays your footstep sound doesn't have to live on the animator — it can stay on the character, on the weapon, even on the HUD.\r\n</p>\r\n<p>Some details worth knowing:\r\n</p>\r\n<ul><li>A frame event fires <strong>even when the game skips over it</strong>. A hitch won't swallow your gunshot.\r\n</li><li>On a looping clip they fire every lap — put two footsteps in a walk cycle and the walk clicks along by itself.\r\n</li><li>Events live on the <strong>clip</strong>, not on its keyframes. So if you carved Idle / Reload / Fire out of one long imported take with <strong>Slice</strong>, each slice gets its own events, and Reload's magazine click won't go off during Idle.\r\n</li><li>Markers that fall outside the clip's play window are drawn faded — those can never fire.\r\n</li></ul>\r\n<p>Existing projects load unchanged: Blend starts at 0, and a clip with no events behaves exactly as before.\r\n</p>\r\n<h3>Also: two new handbook chapters</h3>\r\n<p>The beginner handbook got a chapter on all of the above, and a second one on things that were in the editor but never written down:\r\n</p>\r\n<ul><li>the four viewport display modes — <strong>Wireframe</strong>, <strong>Material Preview</strong>, <strong>Rendered</strong>, and <strong>Rendered + Post Processing</strong> (which runs your post-process chain live in the editor, so you can tune fog and vignette with the camera still in your hands)\r\n</li><li>the <strong>Statistics</strong> overlay, and what its numbers actually tell you — the gap between <em>draws</em> and <em>objects</em> is your batching, and <em>culled</em> is what the camera's field of view saved you\r\n</li><li><strong>LOD</strong>: cheaper meshes at a distance, why it switches on screen size rather than distance, and the one thing it deliberately doesn't change — collision, navigation and your shots always use the full-detail mesh\r\n</li><li>the <strong>collision matrix</strong> in Game Settings, which is the single rule for what collides, what a bullet can hit, and what navigation sees\r\n</li></ul>",
+  "videos": [],
+  "images": [
+   {
+    "src": "1653463-1.webp",
+    "w": 1400,
+    "h": 786
+   }
+  ]
+ },
+ {
+  "id": "1647790",
+  "product": "level-modeller",
+  "title": "PapaiArt Tools - Level Modeller - 1.7.0",
+  "date": "2026-08-31",
+  "url": "https://papaiart.itch.io/papaiart-tools-level-modeller/devlog/1647790/papaiart-tools-level-modeller-170",
+  "version": "1.7.0",
+  "excerpt": "The Spline Profile editor grew up The newest build is mostly about one thing: the profile editor on Spline Mesh objects was too cramped to actually shape anything in. You can now navigate it, select properly, and transform whole groups of…",
+  "words": 571,
+  "body": "<p>The Spline Profile editor grew up</p>\r\n<p>The newest build is mostly about one thing: the profile editor on Spline Mesh objects was too cramped to actually shape anything in. You can now navigate it, select properly, and transform whole groups of points at once. On the way there the whole editor got a density pass, because the Inspector was clipping its own labels.\r\n</p>\r\n<p>THE SPLINE PROFILE EDITOR\r\n</p>\r\n<p>You can move around in it now. The wheel zooms at the cursor, not at the middle of the box, so whatever you were looking at stays where you put it. Middle-drag pans (Alt+drag does the same if your mouse has no middle button). Home, or the Fit button, frames the section again. The view no longer snaps back to a fit every time the shape changes; it stays where you left it until you ask for a fit.\r\n</p>\r\n<p>Real multi-selection. Click a point to select it, Shift+click to add or remove one, drag empty space to rubber-band a rectangle. If your shape is thin and there is no empty space to start from, Shift+drag boxes from anywhere and adds to what is already selected.\r\n</p>\r\n<p>A transform box. Select two or more points and you get a bounding box with eight scale handles, four rotate handles just outside the corners, and a centre to move from. The box edge moves too, which matters on a flat selection where everything sits on top of everything. Hold Shift for uniform scaling or 15 degree rotation steps, Ctrl to snap to the grid. Dragging any selected point moves the whole selection.\r\n</p>\r\n<p>Adding points is no longer a guessing game. Hover the outline and a small \"+\" ghost shows exactly where a new point would land. Press there and it is inserted on the edge, so inserting alone never deforms the section - the drag that follows does. Away from that ghost, a press is always a rectangle select.\r\n</p>\r\n<p>Press versus drag. Every mouse action is now decided by whether you actually moved: a press that travels a few pixels is a drag, a press that does not is a click. No more \"I meant to box-select and it added a point instead\".\r\n</p>\r\n<p>Room to work. The canvas has a drag grip on its bottom edge, so you can make it as tall as you like. And if the panel is still not enough, Pop Out opens the profile in a resizable window - same view, same selection, so you keep your place switching between the two.</p>\r\n<p>EDITOR INTERFACE\r\n</p>\r\n<p>A new UI face. The editor was using a bitmap font that could not be scaled down and had a wide letter spacing - that is why labels like \"Interpolation\" ran out of room and got clipped. It is now a proper vector face at the same nominal size: narrower, cleaner, and the row heights are unchanged.\r\n</p>\r\n<p>Tighter spacing. Input fields, row spacing and tree indentation all came down a few pixels, so a panel reads as an ordered table instead of a stack of chunky boxes. The colours are exactly as they were.\r\n</p>\r\n<p>Wider Inspector, and both side panels are resizable. The Inspector starts wider than before, and you can drag the inner edge of either the Hierarchy or the Inspector to set its width. Everything that sits next to a panel - the tool column, the primitive bar, the navigation gizmo, the collapse toggles - follows along.</p>",
+  "videos": [],
+  "images": [
+   {
+    "src": "1647790-1.webp",
+    "w": 1400,
+    "h": 801
+   }
+  ]
+ },
+ {
+  "id": "1642873",
+  "product": "level-editor",
+  "title": "PaTool_LevelEditor_1.9 - EFPSE Export 2.0",
+  "date": "2026-08-27",
+  "url": "https://papaiart.itch.io/papaiart-tools-level-editor/devlog/1642873/patool-leveleditor-19-efpse-export-20",
+  "version": "1.9",
+  "excerpt": "Your EFPSE maps are no longer stuck on the grid Until now, exporting to EasyFPSEditor meant surrendering to its 64-unit cube grid: a diagonal wall came out as a staircase, and any floor height that wasn't a whole tile got rounded to one.…",
+  "words": 600,
+  "body": "<h2>Your EFPSE maps are no longer stuck on the grid</h2>\r\n<p>Until now, exporting to EasyFPSEditor meant surrendering to its 64-unit cube grid: a diagonal wall came out as a staircase, and any floor height that wasn't a whole tile got rounded to one. That's over.\r\n</p>\r\n<p>Angled walls, curved rooms, floors and ceilings <em>between</em> tile levels — they now export <strong>exactly as you drew them</strong>. Sloped floors come out as real ramps you can walk up smoothly, not a stack of steps. And a climb that spans more than one tile level stays smooth the whole way; no more mystery step in the middle of your ramp.\r\n</p>\r\n<p>The best part: if your map <em>is</em> drawn on the grid, nothing changes and nothing extra is added to your project. You only pay for the freedom where you actually use it.\r\n</p>\r\n<h2>It works with your EFPSE, old or new</h2>\r\n<p>There are two generations of EFPSE out there, and they disagree about the format of almost every project file. Pick the wrong one and your map shows up in the list and then renders completely empty — or worse, renders someone <em>else's</em> blocks.\r\n</p>\r\n<p>The exporter now detects which generation your project is and writes accordingly. You don't have to know, or care, which one you have.\r\n</p>\r\n<h2>The export dialog tells you what you're getting</h2>\r\n<p>Before anything is written, the dialog now shows you the cost of the export: how many cells need special handling, how many ramps you'll get, how much of it fits the grid perfectly. Toggle an option and the numbers update live.\r\n</p>\r\n<p>New options:\r\n</p>\r\n<ul><li><strong>Custom blocks on/off</strong> — off keeps your project's block list completely untouched.\r\n</li><li><strong>Real ramps</strong> for sloped floors.\r\n</li><li><strong>A mirror switch</strong>, in case your export ever comes out back-to-front.\r\n</li><li><strong>Border cell texture</strong> — where a wall cuts through a cell, that cell has room for only one texture. You decide whether the wall or the floor keeps its look; the preview tells you how many cells that affects.\r\n</li></ul>\r\n<h2>Your project won't get eaten</h2>\r\n<p>Exporting into an existing EFPSE project is now genuinely safe. Files are replaced only after the new version is verified, the old one is kept as a backup, existing textures never get renumbered, your map's music, fog and lighting settings survive re-exports, and every texture entry gets an actual image on disk — with a visible placeholder if the original was missing, so the project always opens.\r\n</p>\r\n<h2>EFPSE mode: a guide, not a cage</h2>\r\n<p>EFPSE mode used to lock your grid to 64 units and snap every point to it, because anything else got mangled on export. That's no longer true, so the handcuffs are gone.\r\n</p>\r\n<p>Instead you get the cell grid drawn clearly <strong>over</strong> your map, with a brighter line every 8 cells for counting, the map-size boundary always visible, and a status readout of how much of the 62×62 usable area you've used. Your own grid size is yours again.\r\n</p>\r\n<p>In 3D, the mouse wheel moves floors and ceilings freely — and <strong>Ctrl + wheel</strong> snaps to exactly one engine cube when you want a surface to land on a proper level.\r\n</p>\r\n<h2>3D editing fixes</h2>\r\n<ul><li><strong>Pillars are clickable again.</strong> Freestanding blocks inside a room used to be invisible to the mouse — clicks went straight through to the wall behind them.\r\n</li><li><strong>The selection outline is honest.</strong> It now frames the surface you actually clicked instead of the empty air above it.\r\n</li><li><strong>The camera stays on the floor.</strong> Raise a floor under your feet with the wheel and you rise with it, instead of ending up buried inside the surface you're editing.</li></ul>",
+  "videos": [],
+  "images": [
+   {
+    "src": "1642873-1.webp",
+    "w": 1400,
+    "h": 829
+   },
+   {
+    "src": "1642873-2.webp",
+    "w": 1282,
+    "h": 722
+   },
+   {
+    "src": "1642873-3.webp",
+    "w": 1278,
+    "h": 720
+   },
+   {
+    "src": "1642873-4.webp",
+    "w": 1002,
+    "h": 434
+   },
+   {
+    "src": "1642873-5.webp",
+    "w": 1275,
+    "h": 721
+   }
+  ]
+ },
+ {
+  "id": "1638664",
+  "product": "fps-lab",
+  "title": "FPS Lab 0.8.1 - LOD - UI - Prformance optimalization",
+  "date": "2026-08-23",
+  "url": "https://papaiart.itch.io/papaiart-tools-fps-lab/devlog/1638664/fps-lab-081-lod-ui-prformance-optimalization",
+  "version": "0.8.1",
+  "excerpt": "Level of Detail — the whole feature, in five phases Mesh objects can now carry cheaper stand-in geometry. LOD0 stays SceneObject::mesh ; the extra levels live in a new lods list, each with the relative screen height below which it takes…",
+  "words": 644,
+  "body": "<p><strong>Level of Detail — the whole feature, in five phases</strong></p><p>\r\nMesh objects can now carry cheaper stand-in geometry. LOD0 stays <code>SceneObject::mesh</code>; the extra levels live in a new <code>lods</code> list, each with the <em>relative screen height</em> below which it takes over. Screen height rather than distance was deliberate — the same 30 m can't mean the same thing for a pebble and a cathedral, or for a 60° and a 90° FOV (<code>core/Lod.h</code>). Pieces that landed:\r\n</p>\r\n<ul><li><strong>Data + selection math</strong>: real world-space bounding spheres (the old <code>boundRadius()</code> never looked at the mesh at all), a pure <code>lodPick()</code> with a hysteresis dead band so an object sitting on a boundary can't flicker, and <code>bias</code> / <code>maxLevel</code> quality knobs.\r\n</li><li><strong>Renderer</strong>: one resolve pass per frame feeds both the skinning pre-count and the draw builder, so all eight scene passes agree on which level they're looking at. Skinned meshes have an explicit fallback rule.\r\n</li><li><strong>Inspector</strong>: a draggable band ruler with a live needle, per-level mesh + threshold rows, triangle deltas, four warning classes, read-only when prefab-sealed, plus a <strong>LOD Preview</strong> toggle that shows the switching live in the viewport.\r\n</li><li><strong>Import</strong>: <code>_LOD1</code>, <code>_LOD2</code> … suffixed nodes in FBX/GLB/glTF are grouped into one object automatically (validated on synthetic node trees <em>and</em> a real <code>.gltf</code> fixture).\r\n</li><li><strong>Project-wide settings</strong>: a <em>Level of Detail</em> section in Game Settings, a player-side <code>lodBias</code> preference, and <code>Set / Get LOD Bias</code> script nodes.\r\n</li></ul>\r\n<p><strong>Performance: the hierarchy stopped being quadratic</strong>\r\nObject identity is a string and lookup was a linear scan — on the 709-object Gomenstein3D scene that came to <strong>2.66 million string comparisons per frame</strong>. Two fixes, neither of which asks anything of the ~100 places that mutate <code>objects_</code>: a validate-on-read <code>id → index</code> accelerator (99.97% hit rate; a stale entry costs a scan, never a wrong answer), and a one-pass first-child/next-sibling chain for the Hierarchy tree.</p><p><strong>Two-column Project browser</strong>\r\nThe bottom Project tab is now a folder tree │ folder contents │ asset inspector layout: breadcrumb, search-scope chips (whole project vs. this folder), list/grid view with an icon-size slider, draggable splitter, F2 rename, reveal-an-asset, Alt+click recursive expand. Folders are scanned lazily — only what's open. It moved out of <code>AppUI.cpp</code> into its own <code>AppProjectPanel.cpp</code> with the path/geometry rules as testable free functions.</p>\r\n<p><strong>Editor &amp; runtime odds and ends</strong>\r\n</p>\r\n<ul><li><strong>Add &gt; Mesh</strong> now groups imported meshes into submenus by source file — otherwise a LOD-heavy project turns the menu into a wall of near-identical names.\r\n</li><li><strong>Post-FX effects can be switched off</strong> per effect: it stays configured on the scene but is compiled out of the chain entirely — no pipeline, no pass, no cost, in editor preview, play and builds alike.\r\n</li><li><strong>Hierarchy</strong>: multi-object drag, Shift+click range select over <em>visible</em> rows, and one undo step per gesture instead of one per touched object.\r\n</li><li><strong>Camera Preview</strong> can look through the <strong>avatar's eye</strong> in Prefab Mode, which is what makes a viewmodel prefab placeable — the stage origin <em>is</em> the eye the weapon hangs off.\r\n</li><li><strong>Player abilities</strong>: <code>Can Run</code> / <code>Can Jump</code> switches on the FPS Avatar, plus <code>Set Can Run</code> / <code>Set Can Jump</code> / <code>Player Abilities</code> nodes — take an ability away for a cutscene or exhaustion and Stop restores the authored values.\r\n</li><li><strong>Screen Size</strong> node (width / height / aspect) in both the shader graph and post-FX codegen — pixel grids and letterboxing now survive a window resize.\r\n</li><li><strong>Sprite Atlas</strong>: a per-object UV0 sub-rect (<code>spriteCols × spriteRows</code>, row-major <code>spriteFrame</code>) reaching the GPU through <code>ScenePC::uvST</code>. It's a renderer property, not a material one, so one shared sheet serves every enemy while each keeps its own frame.\r\n</li><li><strong>Level Modeller maps</strong>: the <code>.lmmap</code> importer reads <strong>multi-page</strong> lightmap atlases (<code>bakedPages</code>), with the page joining (texture, colour) as part of the material slot key. Old single-page maps load unchanged.\r\n</li></ul>",
+  "videos": [],
+  "images": [
+   {
+    "src": "1638664-1.webp",
+    "w": 1400,
+    "h": 824
+   }
+  ]
+ },
+ {
+  "id": "1638605",
+  "product": "level-editor",
+  "title": "Exporting to EasyFPSEditor",
+  "date": "2026-08-23",
+  "url": "https://papaiart.itch.io/papaiart-tools-level-editor/devlog/1638605/exporting-to-easyfpseditor",
+  "version": "",
+  "excerpt": "Exporting to EasyFPSEditor, and drawing for it The problem with exporting to a tile engine Level Editor draws maps the way a portal engine wants them: sectors with arbitrary polygonal outlines, per-wall textures, sloped floors, heights…",
+  "words": 1292,
+  "body": "<h2>Exporting to EasyFPSEditor, and drawing for it</h2>\r\n<h2>The problem with exporting to a tile engine</h2>\r\n<p>Level Editor draws maps the way a portal engine wants them: sectors with arbitrary polygonal outlines, per-wall textures, sloped floors, heights anywhere you like. EasyFPSEditor wants something else entirely. An EFPSE map is a 3D grid of 64-unit cubes, and every cell is one of three things: empty, a solid cube, or a walkable floor quad. There is no diagonal, no half tile, no floor height between two levels.\r\n</p>\r\n<p>So an export is not a file conversion — it is a rasterisation. And the honest part of the job is not the writing, it is telling the author <em>what the rasterisation cost them</em>.\r\n</p>\r\n<h2>The format</h2>\r\n<p><code>.eem</code> has no magic bytes and no compression. It is a v2 header followed by five int16 planes over the grid, plane-major then y-major:\r\n</p>\r\n<pre>\r\nint16 version, floorCount, width, height int16 plane[5][floorCount][height][width]</pre>\r\n<p>Plane 0 holds tiles, and the value is a <code>Textures.dat</code> id <strong>plus one</strong>, so 0 can mean empty. What decides whether a cell is a wall cube or a walkable floor is not the plane — it is the <code>type</code> column of the texture row in <code>Textures.dat</code>: type 2 is a wall, type 3 is a floor. Plane 4 holds modifiers; planes 1–3 hold objects, entities and models.\r\n</p>\r\n<p>Those three id tables are not documented anywhere, and I refuse to guess into a user's project. So the exporter writes only what it can justify: the player start (object id 9, which is what a freshly authored EFPSE map puts on its player cell), plus any Thing whose type string carries an explicit id — <code>EFPSE_OBJ_56</code>, <code>EFPSE_ENT_…</code>, <code>EFPSE_MDL_…</code>, <code>EFPSE_MOD_…</code>. That prefix is the escape hatch: anything the community identifies later is usable immediately, with no new build, and it is what a future <code>.eem</code> importer would round-trip through.\r\n</p>\r\n<p>One happy accident: an EFPSE tile is 64 units on a side, which is exactly this toolchain's metre. Nothing is rescaled on the way out.\r\n</p>\r\n<h2>What the rasteriser does</h2>\r\n<p>Each cell is classified from its centre point: which sector contains it, and what the floor and ceiling heights are <em>there</em> — sampling the slope plane per cell is what turns a smooth LE ramp into an EFPSE stepped ramp, and nothing else in the pipeline has to know slopes exist. A cell whose ceiling is at or below its floor isn't a room, it's a pillar, so it stays solid.\r\n</p>\r\n<p>Then three things get built that a hand-made EFPSE map also has:\r\n</p>\r\n<ul><li><strong>Supports.</strong> An EFPSE floor quad has no sides. A raised sector would show a gap at the step, so every cell below a raised floor is filled with wall cubes.\r\n</li><li><strong>A roof layer</strong> (optional, on by default). EFPSE has no ceiling surface of its own — what you see overhead is the underside of the cube above. Without that layer, every room is open to the skybox.\r\n</li><li><strong>An enclosure ring.</strong> Every empty cell touching walkable space — diagonally too, so corners have no pinhole — becomes a solid column up to the tallest ceiling next to it. Its texture comes from the nearest wall edge of the straight neighbour, because that shared face is the wall the player actually looks at.\r\n</li></ul>\r\n<p>Two limits get handled instead of silently breaking things. Negative floor heights are legal in the editor and don't exist in EFPSE, so the whole map slides up rather than losing its basement (and the report says by how many tiles). And the grid is a fixed 64×64 with the outer ring spent on the closing wall, so the map is centred in it — which both guarantees the wall margin and leaves 62×62 cells for actual geometry. Over that, the export fails with a real number in the message rather than writing a truncated level.\r\n</p>\r\n<h2>The report is the feature</h2>\r\n<p>Every export comes back with a count of <strong>partial cells</strong>: cells where the centre and the four inset corners disagree about which sector they're in. That is exactly the set of cells where the map is off the 64 grid, and exactly the geometry that came out stair-stepped. Zero partial cells means the conversion was exact.\r\n</p>\r\n<p>The dialog runs the same rasteriser as a dry run <em>before</em> anything is written, so the two things worth knowing up front — does it fit, and how much stair-stepping is coming — are on screen while you can still cancel: \"22 x 18 tiles, 4 floor(s). Fully on the 64-unit grid: the geometry converts exactly.\"\r\n</p>\r\n<h2>Not breaking someone's project</h2>\r\n<p>The export target is a whole EFPSE project folder — the one holding <code>Textures.dat</code> — because an <code>.eem</code> means nothing without the <code>Textures.dat</code> that numbers its tiles and the <code>Maps.dat</code> that lists it. Writing into a project someone has been building for months calls for some paranoia:\r\n</p>\r\n<ul><li><strong>Existing texture ids are never renumbered.</strong> Every other map in the project refers to them by id; a renumber would silently repaint the whole game. New rows are appended, and they inherit the trailing columns from whatever the project already writes.\r\n</li><li><strong>Texture files get copied in</strong> next to their row, because EFPSE treats a missing texture as a hard load error, not a placeholder. Names are sanitised — a space in a file name splits a space-separated <code>.dat</code> row and the engine loads the wrong file.\r\n</li><li><strong>An existing <code>Maps.dat</code> block is left completely alone.</strong> It holds music, fog, light radii and door sounds this exporter has no business inventing. A new map's 34-line block is cloned from an existing one so it inherits the project's conventions, with script references reset to <code>None</code> — those belong to the other map.\r\n</li><li><strong>Every write is atomic:</strong> temp file, verify the byte count landed, move the previous file aside as <code>.bak</code>, then take its place. A half-written <code>Textures.dat</code> would break the project, not just this map.\r\n</li></ul>\r\n<h2>The mode: stop losing geometry at export time</h2>\r\n<p>The exporter knows all the rules above. The problem is that it learns them <em>too late</em>. By the time you export, the wall you placed at x=31 has already become a staircase and the floor you set to 100 has already been rounded away.\r\n</p>\r\n<p>So the rules moved into the editor as <strong>EFPSE Editing Mode</strong> (View menu, sticky per user like a chosen grid size):\r\n</p>\r\n<ul><li>The 2D grid locks to 64 units and <strong>every</strong> placed point snaps to it. Alt (free placement) and hiding the grid both stop being bypasses — in this mode the lattice is a constraint, not an aid.\r\n</li><li>Floor and ceiling push-pull moves by exactly one cube (Ctrl+wheel in the 3D view; the badge says so, because which of the two you're doing is otherwise invisible until export). The nudge is deliberately not plain ±64: from an off-lattice value it lands <em>on</em> the lattice boundary in the direction of travel, so one nudge per surface makes a pre-mode map exact instead of carrying its rounding error up the level.\r\n</li><li>The viewport draws the 64×64 cell map area as a guide, with 8-cell blocks emphasised — an EFPSE level is planned by counting cubes. The fine cell lines fade out when you zoom out far enough that they'd turn into mush, so a whole map stays readable at once.\r\n</li><li>A mode badge reads <code>EFPSE MODE - GRID 64 - MAP 22 X 18 OF 62 X 62 TILES</code>, and turns into a red <code>TOO LARGE TO EXPORT</code> the moment the map outgrows the grid — because in the exporter that's a hard error, not a warning.\r\n</li></ul>\r\n<p>It is an editing constraint, not a file format. A map authored in this mode is an ordinary map, and turning the mode off leaves it untouched.\r\n</p>",
+  "videos": [],
+  "images": [
+   {
+    "src": "1638605-1.webp",
+    "w": 1257,
+    "h": 708
+   }
+  ]
+ },
+ {
+  "id": "1637012",
+  "product": "level-modeller",
+  "title": "PapaiArt Tools - Level Modeller - 1.6.3",
+  "date": "2026-08-22",
+  "url": "https://papaiart.itch.io/papaiart-tools-level-modeller/devlog/1637012/papaiart-tools-level-modeller-163",
+  "version": "1.6.3",
+  "excerpt": "Spline Mesh in PapaiArt Tools · Level Modeller Some shapes are miserable to build out of boxes. A curved tunnel. A road that bends around a hill. A handrail following a staircase. A pipe run along a ceiling. You can do all of it by…",
+  "words": 752,
+  "body": "<h2>Spline Mesh in PapaiArt Tools · Level Modeller</h2>\r\n<p>Some shapes are miserable to build out of boxes. A curved tunnel. A road that bends around a hill. A handrail following a staircase. A pipe run along a ceiling. You <em>can</em> do all of it by hand-placing forty rotated cylinders — and then you change your mind about where the corridor goes, and you do it again.\r\n</p>\r\n<p><strong>Spline Mesh</strong> is the new primitive that solves that class of problem: a 2D cross-section swept along a 3D curve.\r\n</p>\r\n<h3>The curve</h3>\r\n<p>You place control points; the curve runs through them. Three interpolation modes:\r\n</p>\r\n<ul><li><strong>Poly</strong> — straight segments, hard corners. Perfect for a fence line or a blocky duct.\r\n</li><li><strong>Bezier</strong> — per-point in/out handles for real control. The default.\r\n</li><li><strong>Catmull-Rom</strong> — the curve just passes smoothly through the points, no handle babysitting.\r\n</li></ul>\r\n<p>New points get <strong>auto handles</strong> — a fresh point is smooth by default, because a point that appears as a kink is never what you meant. Every point also carries its own <strong>tilt</strong> (roll around the tangent) and <strong>scale</strong> (taper), so a run can bank into a corner or narrow as it goes.\r\n</p>\r\n<p>Extra switches: <strong>Closed Loop</strong> to join the last point back to the first, <strong>Segments per Span</strong> for tessellation along the run, and <strong>Miter</strong>, which widens the section at bends so a road keeps its width through a corner instead of pinching.\r\n</p>\r\n<h3>Which way is up</h3>\r\n<p>This one detail is the difference between \"looks right\" and \"looks broken\", so it's an explicit choice:\r\n</p>\r\n<ul><li><strong>World Up</strong> — the section keeps its +Y aimed at world up and only rolls when the curve goes near-vertical. This is what you want for anything architectural: a wall, a kerb, a handrail must <em>not</em> bank into a curve.\r\n</li><li><strong>Min Twist</strong> — a rotation-minimizing frame carried along the curve. This is what you want for pipes and cables, where continuity of the section beats \"which way is up\".\r\n</li></ul>\r\n<h3>The profile</h3>\r\n<p>Eight built-in parametric sections: <strong>Rectangle, Circle, Pipe, L-Profile, Channel, Road Slab, Kerb, Handrail</strong> — plus <strong>Custom</strong>. Each preset exposes only the parameters it actually uses, under names that mean something for that shape (a Circle asks for <em>Diameter</em> and <em>Segments</em>, a Kerb asks for <em>Width</em>, <em>Height</em> and <em>Batter</em>).\r\n</p>\r\n<p>The profile editor sits right in the Inspector, with a live preview on a grid. Switch a preset to Custom and it converts to an editable polygon exactly as it was — no re-drawing from scratch. From there: <strong>left-click an edge</strong> to insert a point (it lands on the nearest edge, so the polygon never ties itself in a knot), <strong>drag</strong> to move, <strong>right-click</strong> to delete, <strong>hold Ctrl</strong> to snap to the grid.\r\n</p>\r\n<h3>Drawing on the level</h3>\r\n<p>Turn on <strong>Draw on surface</strong> and <strong>Ctrl+click</strong> in the viewport appends a control point exactly where your cursor hits the built geometry — so a road follows the ground you already have. It extends from whichever end of the run you're working on, so you can grow a curve backwards just as easily as forwards.\r\n</p>\r\n<p>Every control point gets its own gizmo in the viewport, with the active point's bezier handles drawn alongside. It isn't a modal \"spline mode\" — normal selection, the normal gizmo keys and every other tool keep working while you edit.\r\n</p>\r\n<h3>It's a real solid</h3>\r\n<p>A closed profile plus <strong>Cap Ends</strong> produces a watertight mesh, which means a Spline Mesh is an ordinary boolean participant. Set one to <strong>Negative</strong> and it carves a tunnel through your level — a curved tunnel, done in about a minute. Turn Cap Ends off (or author an open profile) and you get a surface instead; the Inspector tells you so right where the switch is.\r\n</p>\r\n<h3>And it just works everywhere else</h3>\r\n<p>This was the design goal from the start: the sweep generator is the <em>only</em> new geometry code. Everything downstream consumes the resulting mesh unchanged — CSG booleans, triangle picking, texturing, the xatlas lightmap unwrap, the lightmap bake, and all exports: OBJ, GLB/glTF, the Unity package, and <code>.lmmap</code> for <strong>PapaiArt Tools · FPS Lab</strong>. Nothing needed a special case.\r\n</p>\r\n<p>One nice extra: with <strong>Follow UV</strong> on, UV0 is generated from the sweep itself — U is arclength along the curve, V is distance around the profile, both in scene units. So a road texture keeps square texels no matter how long the road is, and tiling doesn't stretch through a corner. Turn it off and it falls back to the standard box projection every other primitive uses.\r\n</p>",
+  "videos": [],
+  "images": [
+   {
+    "src": "1637012-1.webp",
+    "w": 1400,
+    "h": 824
+   },
+   {
+    "src": "1637012-2.webp",
+    "w": 1279,
+    "h": 714
+   },
+   {
+    "src": "1637012-3.webp",
+    "w": 1276,
+    "h": 716
+   }
+  ]
+ },
+ {
+  "id": "1629848",
+  "product": "level-modeller",
+  "title": "PapaiArt Tools - Level Modeller - 1.5.2",
+  "date": "2026-08-15",
+  "url": "https://papaiart.itch.io/papaiart-tools-level-modeller/devlog/1629848/papaiart-tools-level-modeller-152",
+  "version": "1.5.2",
+  "excerpt": "Terrain, and a hard look under the hood The feature the level layout has been missing is here, and alongside it went a lot of work on editor speed and on getting the lighting right. Terrain Terrain is a new object type, not a separate…",
+  "words": 813,
+  "body": "<p>Terrain, and a hard look under the hood<br>The feature the level layout has been missing is here, and alongside it went a lot of<br>work on editor speed and on getting the lighting right.</p>\r\n<p>Terrain</p>\r\n<p>Terrain is a new object type, not a separate editing mode. A heightfield is built as a<br>closed solid, with a surface, a skirt and a bottom cap, so it is an ordinary<br>participant in the boolean: a Negative box carves a cave or a building foundation<br>straight into the ground, a Positive wall unions onto it. Nothing downstream needed a</p>\r\n<p>special case.</p>\r\n<p>The Field settings run from 32x32 to 192x192 cells, with Size, Height and Base, the<br>last of which decides how deep the solid runs below the lowest point. The Height brush<br>works in Raise, Lower, Smooth and Flatten modes; Flatten levels to the height you click<br>first, so a building pad takes one stroke.<br>Ground Layers gives you four layers. Layer 0 is the object's own Material texture, so<br>an unpainted terrain looks exactly like any other object, while layers 1 to 3 are<br>painted in with their own tiling. Paint resolution is independent of the mesh: the<br>weights live in a texture rather than in vertices, so you get crisp material edges on a<br>low-poly heightfield. The choices run from 256 up to 2048, saved as a PNG next to the map.<br>Exports carry the result. On OBJ, glTF/GLB and the Unity bundle, each terrain's splat is<br>composited into a single albedo texture, so engines with no terrain shader of their own<br>still show what you painted. Lightmaps bake over terrain like any other geometry.<br>Two light leaks, both fixed<br>If a point light sat exactly above a receiver, or lined up with an axis-aligned wall, a<br>bright line ran across the shadow. One divide was to blame: a ray direction component<br>of exactly zero makes its reciprocal infinite, and multiplying that by the difference<br>of bound and origin gives NaN. GLSL leaves min and max undefined for NaN, so the BVH<br>node quietly failed its test, the occluder inside it was never traced, and those texels<br>stayed lit. The reciprocal is now clamped to a large finite value: the search slab on<br>that axis simply becomes very wide, which for a ray that does not move along the axis is also the correct answer.<br>The second one was thinner and meaner. Two triangles sharing an edge do not evaluate<br>that edge from the same numbers, so a ray aimed exactly at it could be rejected by both<br>and pass through a surface with no hole in it, and a light straight over the diagonal<br>of a quad did it every time. The edge tests now carry a small tolerance: erring towards<br>a hit costs a millionth of a triangle, while the alternative was an unshadowed line<br>across the floor.<br>Both now have headless regression tests, so neither can come back unnoticed.</p><p>Speed</p>\r\n<p>Bake preparation is multithreaded. Texel rasterization and page assembly run per atlas<br>page in parallel; on a level with hundreds of pages this was the bulk of the wait<br>before a single ray was traced. Cancel also does what it says now, where before it did<br>nothing until the whole preparation stage was over.<br>Walk mode and face hover trace an acceleration structure instead of scanning every<br>triangle in the level, and picking rejects whole objects by their world bounding box<br>first. Selection outlines cache their edge table; it used to be rebuilt from scratch,<br>every frame, for every selected object, even though the topology it comes from does not<br>change per frame. Vertex buffers upload only when the mesh actually changed, which on a<br>big level saves pushing around 19 MB per frame of data that had not moved.<br>Terrain painting streams through a per-frame staging buffer. Every brush dab used to be<br>its own submit with a full pipeline drain, and that stall was the hitch you could feel<br>mid-stroke.</p>\r\n<p>Fixes<br>Present synchronisation now uses one semaphore per swapchain image rather than one per<br>frame in flight. The CSG cache is keyed by object id instead of by pointer: a deleted<br>object's address could be reused by a different one, which in the wrong circumstances<br>rendered somebody else's baked geometry. Gizmo handles scale correctly in orthographic<br>views and follow the avatar's field of view in walk mode.<br>A reopened map redraws its terrain splatted in the baked view and keeps its own<br>painting instead of, in one unlucky case, the previous map's. Terrain layer textures<br>now refresh when a project is opened: every other object resolves its texture by name<br>each frame, but a terrain's splat descriptor caches the image, and a document opened<br>mid-frame could leave it holding the fallback checker for good.</p>\r\n<p>As always, a bug report with a .lmmap attached is worth ten without one.</p>",
+  "videos": [],
+  "images": [
+   {
+    "src": "1629848-1.webp",
+    "w": 1276,
+    "h": 724
+   }
+  ]
+ },
+ {
+  "id": "1625876",
+  "product": "level-modeller",
+  "title": "Level Modeller 1.4.2 GPU Lightbake",
+  "date": "2026-08-12",
+  "url": "https://papaiart.itch.io/papaiart-tools-level-modeller/devlog/1625876/level-modeller-142-gpu-lightbake",
+  "version": "1.4.2",
+  "excerpt": "The atlas grows in pages Until now the lightmap was one texture, and a bigger level simply meant coarser shadows — the same 2048 px stretched over more square meters. That is backwards: texel density is the quality setting , and the atlas…",
+  "words": 999,
+  "body": "<p><b>The atlas grows in pages</b><br> <br>Until now the lightmap was one texture, and a bigger level simply meant coarser<br>shadows — the same 2048 px stretched over more square meters. That is backwards:<br><b>texel density is the quality setting</b>, and the atlas should grow to hold it.</p><p> <br>So it does. The Lightmap menu now offers:<br> <br>-<b> </b><b>Texel density</b> (texels per world unit) — the real quality knob, with the<br> centimeter equivalent spelled out under it (`1 texel = 5.0 cm`). Set it to 0 for<br> the old behavior: everything squeezed into a single page.</p>\r\n<p>-<b> </b><b>Page size</b> — how big <i>*</i><i>one</i><i>*</i> page is (256…4096 px). The atlas adds pages as<br> needed to keep the density.</p>\r\n<p>- A <b>page estimate before you bake</b>: `~12 pages (48 MB)`, turning orange past 32<br> pages, so a density that would cost hours is visible up front. Generating the<br> atlas once calibrates the estimate against the real unwrap instead of the<br> theoretical maximum.<br> <br>Everything downstream followed: the baker outputs one image per page, the preview</p>\r\n<p>thumbnail and the full-size viewer got a page stepper, Save PNG names the page,</p>\r\n<p>the OBJ atlas export rasterizes per page, and the export bundle ships</p>\r\n<p>`&lt;map&gt;_lightmap_0.png`, `_1.png`, … next to the map.<br> <br><b>Big flat surfaces no longer lose their detail</b><br>A subtle one that cost real quality: xatlas merges coplanar faces into a single<br>planar chart, and silently scales down anything that will not fit a page —<br>measured at <b>66% of the requested density on a 200×200 m floor</b>. Cell ids fed as<br>per-face materials break those charts up, but only if the geometry is actually cut<br>at the cell borders.</p><p>So there is now a grid clipper: triangles are cut along a <b>global</b> cell grid, so<br>two triangles sharing an edge are cut at the same point on it and the surface<br>stays watertight. (Bisecting each triangle on its own terms would leave T-vertices,<br>which show up in the bake as black seams along every cut.) Covered by its own test.</p><p><b>Per-object lightmap density</b><br> <br>New Inspector slider under Material: <b>Density</b>, a multiplier on the scene's texel<br>density for that object (Unity calls it <i>*</i><i>Scale In Lightmap</i><i>*</i>). Pages are the budget<br>— spend texels on the feature wall the player studies, save them on the ceiling.<br>It rides through the CSG boolean the same way per-face textures do, so a cut<br>surface inherits the cutter's density.</p><p><b>The bake finally tells you what it did</b><br>The Lightmap panel stopped being optimistic:<br> <br>- `Tris: 8412 of 8590 atlased` — a gap means xatlas rejected faces (degenerate or<br> duplicate); those surfaces carry no lightmap at all.</p>\r\n<p>- `Density: 6.2 of 8.0 tx/unit (78%)` — what the atlas actually delivers versus<br> what you asked for.</p>\r\n<p>- `3 charts shrunk to fit a page` — the surfaces that lost detail, with the hint<br> that a bigger page size keeps them intact.</p>\r\n<p>- A warning when the mesh hits the vertex cap.<br> <br><b>Indirect Only</b><br> <br>New bake mode: bake <b>ambient and bounced light only</b> and leave the direct term to<br>the engine's realtime lights. Indirect light is soft, so it needs far less texel<br>density — a much cheaper bake for a game that lights itself in realtime.</p><p>The editor's baked view adds a stand-in direct term on top, otherwise the preview<br>would be near-black and tell you nothing. The Unity importer knows about it too:<br>the package's Baked Lit shader <i>*</i><i>replaces</i><i>*</i> lighting and takes no realtime light, so<br>an indirect-only map is imported with plain lit materials + realtime lights, and<br>the import log explains why.</p><p> <br><b>GPU bake</b><br> <br>The whole ray-tracing part of the bake now runs in a compute shader<br>(`lightmap.comp`), one invocation per texel — same math as the CPU worker. Only the<br>tracing moved; the atlas rasterization, the BVH build and the final dilate stay on<br>the CPU, where they are cheap.</p><p>The interesting part is <i>*</i><i>how</i><i>*</i> it runs. A bake is not one dispatch — it is a state<br>machine stepped once per frame from the main thread (a Vulkan queue may only be<br>used from one thread at a time, and the renderer owns it). Each step submits one<br>batch of texels and returns; the next frame polls the fence. That keeps the editor<br>drawing, keeps progress and cancel working, and keeps every submit far below the OS<br>GPU watchdog timeout — the one that resets your GPU after ~2 seconds and takes the<br>whole application with it. The batch size adapts to the measured time per batch.</p><p>Two command buffers, not one: with a single slot the GPU sat idle from the moment a<br>batch finished until the next frame noticed, and at 120 fps that idle time<br>dominated enough to make the \"GPU\" bake <i>*</i><i>slower</i><i>*</i> than the CPU one.</p><p>Both devices now share one bake core, so they cannot drift apart on what a texel<br>is — and that shared BVH got a <b>**</b><b>binned SAH split</b><b>**</b> instead of the old median split<br>(2–3× fewer node visits per ray; the build itself is milliseconds either way) plus<br>triangles reordered into leaf order for the cache.</p><p>Pick the device in <b>Lightmap → Device</b>. Anything that stops the GPU path (no<br>compute, does not fit in VRAM) falls back to the CPU silently and says why right<br>there, and the menu reports `Last bake: 12.4 s on the GPU`. Two new test harnesses<br>came with it: a correctness test (CPU vs GPU on small scenes) and a benchmark on<br>a scene with a genuinely deep BVH, printing rays/second for both — so a change can<br>be judged instead of guessed at.</p><p><b>Unity package 0.2.0</b><br> <br>Kept in step with all of the above: multi-page lightmaps (one material per texture<br>× page, so every surface samples the page its UV1 belongs to), the per-page PNG</p>\r\n<p>sidecars, indirect-only handling with a proper import warning, and an importer<br>version bump so existing maps re-import cleanly.</p>",
+  "videos": [],
+  "images": []
+ },
+ {
+  "id": "1625852",
+  "product": "fps-lab",
+  "title": "FPS Lab 0.7.7 Updates",
+  "date": "2026-08-12",
+  "url": "https://papaiart.itch.io/papaiart-tools-fps-lab/devlog/1625852/fps-lab-077-updates",
+  "version": "0.7.7",
+  "excerpt": "Avatar View: place a viewmodel against what the player sees Prefab Mode got a new toolbar toggle. With it on, the camera preview no longer shows a selected camera object — it looks through the player's eye : the stage origin is the eye the…",
+  "words": 599,
+  "body": "<p><strong>Avatar View: place a viewmodel against what the player sees</strong><br> <br>Prefab Mode got a new toolbar toggle. With it on, the camera preview no longer<br>shows a selected camera object — it looks through the <strong>player's eye</strong>: the stage<br>origin is the eye the weapon hangs off, framed with the avatar's viewmodel FOV.<br>That is exactly the picture a weapon prefab is authored against, so you can place<br>a gun by looking at it instead of guessing and hitting Play.</p>\r\n<p>The missing half of that: a prefab's authored root position is now kept when it is<br>saved, and the viewmodel instantiation reads it back. Before, the offset a weapon<br>was placed with relative to the eye was quietly reset to zero — the one place<br>where that offset is the whole point.</p>\r\n<p> <br><strong>Textures are no longer upside down on primitives</strong><br><br>The UV convention is now written down and enforced everywhere: <strong>V grows downward<br></strong>— `v=0` samples the image's first row, which is its top. Nothing flips the load, so<br>every generator (box, cylinder, cone, caps included) had to follow, and the<br>importers already did (the FBX/OBJ paths flip their V-up source, glTF needs none).<br>Locked in by tests.</p>\r\n<p> <br><strong>Hierarchy: real multi-selection</strong><br> <br>-<strong> </strong><strong>Shift+click</strong> selects every visible row between the anchor and the clicked one<br> — over the rows as <em>*</em><em>drawn</em><em>*</em>, so a collapsed subtree counts as one row, not its<br> whole contents.</p>\r\n<p>-<strong> </strong><strong>Ctrl+click</strong> toggles and moves the anchor.</p>\r\n<p>- Grabbing a row that is part of the selection now drags the <strong>whole selection</strong><br> (its top level — children travel with their parents), and the drop is a</p>\r\n<p><strong>single undo step</strong>. Grabbing anything else drags just that row and leaves the<br> selection alone. Drop targets outside the tree (an Inspector object field) are<br> unchanged.<br> <br><strong>Can Run / Can Jump</strong><br> <br>The FPS Avatar gained two whole-ability switches, not just tuning numbers. A<br>walk-only avatar — survival horror, a walking sim, an old-school shooter with no<br>jump — turns them off and the controller ignores the Sprint / Jump actions<br>entirely. The tuning values stay authored (the sliders grey out but keep their<br>numbers), so the ability comes back exactly as it was, and the avatar illustration<br>stops drawing a jump apex the player cannot reach.</p>\r\n<p>Scripts can take an ability away and give it back at runtime — exhaustion, a<br>cutscene, deep water, a story beat:</p>\r\n<p>-<strong> </strong><strong>Set Can Run</strong> / <strong>Set Can Jump</strong> (actions)</p>\r\n<p>-<strong> </strong><strong>Player Abilities</strong> (value node: Can Run / Can Jump)<br> <br>Stop restores the authored values with the rest of the play state. Old scenes load<br>with both abilities on, exactly as they behaved before.</p>\r\n<p><strong>Shader graphs: Screen Size</strong><br>New input node in both the material and post-processing graph editors: Screen<br>Size — Width, Height and Aspect. It is what an effect needs to know how <em>*</em><em>wide</em><em>*</em> a<br>screen pixel is: pixel grids, letterboxing, anything that must survive a window<br>resize. Live in post effects and in material graphs alike; the CPU preview stands<br>in with 16:9.</p>\r\n<p><strong>Level Modeller maps: multi-page lightmaps</strong><br>A big level's lightmap does not fit one texture at a usable texel density, so the<br>atlas is split into pages. The `.lmmap` importer now reads the page list, resolves<br>one baked sidecar per page, and treats the page as part of the material slot key —<br>two draw groups sharing a texture and a color still land in different slots when<br>they sit on different pages, otherwise half the level would sample the wrong<br>ightmap. Older single-page maps are read unchanged. Covered by a new test.</p>",
+  "videos": [],
+  "images": [
+   {
+    "src": "1625852-1.webp",
+    "w": 1400,
+    "h": 782
+   }
+  ]
+ },
+ {
+  "id": "1621070",
+  "product": "level-modeller",
+  "title": "PapaiArt Tools - Level Modeller - 1.3.1",
+  "date": "2026-08-08",
+  "url": "https://papaiart.itch.io/papaiart-tools-level-modeller/devlog/1621070/papaiart-tools-level-modeller-131",
+  "version": "1.3.1",
+  "excerpt": "Level Modeller devlog - July 12 to August 8 Four weeks of work on PapaiArt Tools - Level Modeller. Less flash this time, more foundation: the boolean result got noticeably cleaner, saved maps got a lot smaller, and a handful of…",
+  "words": 729,
+  "body": "<p>Level Modeller devlog - July 12 to August 8</p>\r\n<p>Four weeks of work on PapaiArt Tools - Level Modeller. Less flash this time, more foundation: the boolean result got noticeably cleaner, saved maps got a lot smaller, and a handful of long-standing annoyances in the editor are gone.</p>\r\n<p>Spiral staircases</p>\r\n<p>The Staircase primitive now has a Spiral switch. Turn it on and the steps wind around the object's local Y axis, with controls for the total turn (Sweep deg, signed - the sign picks the handedness, and anything past 360 degrees is fine for multi-storey towers), Inner R, Tread Thk, a centre pole (Pole R, 0 for none) and the arc resolution per step.</p>\r\n<p>Each step is an annular sector: radius from inner to inner+width, spanning one step's slice of the turn, rising height/steps. Because the sectors never share an angle, the treads can never intersect each other whatever the thickness - which is what keeps the result a valid solid for booleans. Set the tread thickness equal to the per-step rise and the soffits meet the tread below, so it reads as one continuous helix; leave it thinner and you get the classic open-riser look. Face ids match the straight staircase, so per-face texturing carries over between the two modes.</p>\r\n<p>Cleaner booleans</p>\r\n<p>The cleanup pass that merges the raw boolean output back into flat faces used to give up on faces with several holes - a floor with a row of subtracted pillars, the single most common shape in a level. The old code bridged each hole to the boundary by casting a ray, which crosses a nearer hole when there is more than one; the merged outline became self-intersecting, the pass threw the face away, and the biggest surfaces in a scene silently kept their raw boolean soup - thousands of triangles where hundreds do.</p>\r\n<p>Holes are now spliced in rightmost-first, each bridge picked by an exact visibility test. On top of that, the cleanup tolerances are scaled by the scene's extent instead of being absolute: at coordinates in the hundreds, a fixed tiny epsilon sits below float noise, so vertices that genuinely lie on an edge stopped being recognised as such, and big levels degraded exactly where you'd least want them to. There's a headless test for the pass now.</p>\r\n<p>Smaller maps, and saving is exporting</p>\r\n<p>A saved .lmmap carries its baked geometry inline, and that block is what the runtime consumers actually load. It's now stored welded and indexed - corners merge only when they agree on every attribute, so box corners and lightmap chart seams still split correctly - which cuts a real level's vertex count to about a third. That's a smaller file and less vertex bandwidth in-game.</p>\r\n<p>Saving also rebuilds the geometry first if it's out of date, so a map edited and saved without a re-bake no longer stores a stale mesh (or none at all, if you saved before the first build). Older maps in the previous layout still open.</p>\r\n<p>A texture library that survives moving a project</p>\r\n<p>Adding or removing a texture used to churn the whole GPU library mid-frame - which could hang the app, because descriptors the current frame was still drawing with were being destroyed. The sync is now incremental and runs at frame start: unchanged entries keep their images, only new ones upload. Add/remove is also no longer treated as a geometry change, so it doesn't trigger a multi-second re-bake on a large level.</p>\r\n<p>Library paths are stored relative to the project root when that's actually possible (a pick from another drive keeps its absolute path instead of silently resolving to nothing), the .project file is rewritten on every save so later additions aren't missing from it, and a project copied to another machine now re-anchors its root from the offset the file itself carries - no guessing, and a candidate is only adopted if it exists on disk. When a root really is gone, the manager says so in place instead of just rendering everything as the fallback checker.</p>\r\n<p>Level Editor maps</p>\r\n<p>Importing a Level Editor map accepts the new .pamap extension alongside legacy .json saves - the same document either way. The vendored geometry core was also re-synced: the old snapshot predated per-wall UV offsets and Tile Mode, so imported walls could be misaligned against what the Level Editor's own 3D view showed.</p>",
+  "videos": [],
+  "images": [
+   {
+    "src": "1621070-1.webp",
+    "w": 1400,
+    "h": 848
+   }
+  ]
+ },
+ {
+  "id": "1620655",
+  "product": "fps-lab",
+  "title": "FPS Lab 0.7.3 - Navigation Volume and Agent System",
+  "date": "2026-08-07",
+  "url": "https://papaiart.itch.io/papaiart-tools-fps-lab/devlog/1620655/fps-lab-073-navigation-volume-and-agent-system",
+  "version": "0.7.3",
+  "excerpt": "Enemies that find their own way Until this build, an enemy in FPS Lab could only walk the straight line to you. That is what Move Towards does, and it is what the zombie in the handbook's project 4 does — which works beautifully in an open…",
+  "words": 923,
+  "body": "<h3>Enemies that find their own way</h3>\r\n<p>Until this build, an enemy in FPS Lab could only walk the straight line to you. That is what Move Towards does, and it is what the zombie in the handbook's project 4 does — which works beautifully in an open room and stops dead at the first wall.\r\n</p>\r\n<p>This build adds navigation: your monsters can now work out a route through the level themselves.\r\n</p>\r\n<h3>Nav Volume — the map</h3>\r\n<p>Place a Nav Volume over your level, press Bake, and the engine chops everything inside the box into cells and works out where a body of a given size can actually stand. Tick Show Cells and the walkable floor is drawn in the viewport in green — the floor pulls back from every wall by the agent's radius, closes under anything too low to stand beneath, follows stairs up to Max Step and stops a step short of a drop deeper than Max Drop.\r\n</p>\r\n<p>It's a voxel field rather than a navigation mesh, and that's a deliberate trade. A flying enemy needs no second structure — the free space <em>is</em> the flight graph. A rebake is a rasterization rather than a global mesh regeneration. And there is no mesh-generation step that can quietly invent a surface your level doesn't have: what you see in green is what the search runs on. The cost is memory, which the cell budget bounds.\r\n</p>\r\n<h3>Nav Agent — the walker</h3>\r\n<p>Add a Nav Agent, parent the monster's model under it, and give it a destination. It walks (or flies) the route: turning at its own turn rate, accelerating, braking into its stopping distance, and stepping around the other agents on the way.\r\n</p>\r\n<p>Eleven script nodes drive it, plus an arrival event:\r\n</p>\r\n<ul><li>Set Nav Destination, Nav Follow (chase — it re-reads where the target went by itself), Nav Stop / Nav Resume, Nav Set Speed\r\n</li><li>Nav Has Path, Nav Remaining Distance, Nav Is At Destination, On Nav Destination Reached\r\n</li><li>Random Nav Point — a patrol in three nodes, no waypoints to author\r\n</li><li>Sample Nav Position — place a spawn somewhere the AI can actually stand\r\n</li><li>Nav Raycast — \"could I charge straight at the player, or do I have to go around?\"\r\n</li></ul>\r\n<p>While the game runs, the agent's Inspector tells you what it is doing — moving, arrived, stopped, or NO ROUTE — and the route it is following is drawn in the viewport. Searches are budgeted per tick, so a room full of enemies noticing you at once costs a frame's worth of planning instead of a stall, and the volume's Inspector shows that load while you play.\r\n</p>\r\n<h3>The settings draw themselves</h3>\r\n<p>Both components draw a live diagram in the Inspector, the way the FPS Avatar already did.\r\n</p>\r\n<p>The Nav Volume's is a side view: the agent standing against a wall, a step it can climb, a ledge it can drop off, and the green walkable line the bake would actually produce. It shows one rule that is invisible in the numbers — the floor is eroded a radius from the wall and from the drop, but <em>not</em> at the step, because something you climb onto is not something you keep your distance from.\r\n</p>\r\n<p>The Nav Agent's is top-down: a route with the corner rounded by its turn rate, the ring it counts as arrived in, and a dot for every fixed slice of time. Those dots are the agent's own acceleration and braking laws run forward, so Speed and Acceleration stop being two numbers and become one picture — how far apart the dots settle, how long the ramp-up takes, how early it starts bunching up before the target.\r\n</p>\r\n<h3>Level Editor maps import</h3>\r\n<p>Both PapaiArt level tools now land in the engine: Level Modeller levels with their baked lighting, and Level Editor maps (.pamap) straight out of the level editor. If a map changes extension on disk, the references in your scene are repointed at the file that replaced it instead of silently breaking.\r\n</p>\r\n<h3>Objects land where you're looking</h3>\r\n<p>Small change, noticed every day: a new object — from the Add menu or dragged in from the Project panel — now appears on the surface in front of the camera rather than at the world origin. It lands on whatever you're looking at; failing that, on the ground under the view; failing that, a few metres ahead.\r\n</p>\r\n<h3>Handbook</h3>\r\n<p>The beginner handbook has a new chapter on navigation: from the first bake to a patrolling guard, with a settings table for each component, the script nodes, and a troubleshooting list for the questions this feature actually generates (\"why is the whole room empty?\" — the ceiling is lower than your Agent Height).\r\n</p>\r\n<p>Both language versions also got an accuracy pass. Node names in the book now match the editor exactly, including the ones the editor builds from your own names: a variable called Health gives you Get Health / Set Health, an event called Hit gives you On Hit / Send Hit, and the book now says so instead of showing a placeholder.\r\n</p>\r\n<h3>Fixes worth naming</h3>\r\n<ul><li>You could jump through a ceiling and end up standing on top of the level. The player controller tested walls and the floor but nothing above it — rising is now a collision test too, so a low ceiling stops your jump instead of being scenery.\r\n</li><li>The rotation gizmo grabbed the ring segment hidden behind the object. The back-facing half of each ring is rejected now, so the ring you click is the one you meant.\r\n</li></ul>",
+  "videos": [],
+  "images": [
+   {
+    "src": "1620655-1.webp",
+    "w": 1400,
+    "h": 845
+   },
+   {
+    "src": "1620655-2.webp",
+    "w": 1400,
+    "h": 841
+   },
+   {
+    "src": "1620655-3.webp",
+    "w": 1400,
+    "h": 815
+   },
+   {
+    "src": "1620655-4.webp",
+    "w": 1400,
+    "h": 845
+   }
+  ]
+ },
+ {
+  "id": "1614622",
+  "product": "level-editor",
+  "title": "PaTool_LevelEditor 1.8.4",
+  "date": "2026-08-02",
+  "url": "https://papaiart.itch.io/papaiart-tools-level-editor/devlog/1614622/patool-leveleditor-184",
+  "version": "1.8.4",
+  "excerpt": "Floor textures in 2D view The 2D plan view now paints each sector with its actual floor texture, faintly, underneath the grid. It uses exactly the same UV mapping as the 3D view — world position divided by the tile size, plus the sector's…",
+  "words": 489,
+  "body": "<h3>Floor textures in 2D view</h3>\r\n<p>The 2D plan view now paints each sector with its actual floor texture, faintly, underneath the grid. It uses exactly the same UV mapping as the 3D view — world position divided by the tile size, plus the sector's own floor UV offset — so what you see in the plan is what the player will walk on, alignment and all.\r\n</p>\r\n<p>A few details that matter in practice:\r\n</p>\r\n<ul><li>The flats are drawn under the grid, so the grid, walls and vertices stay perfectly readable on top of them.\r\n</li><li>The texture fades out as you zoom out. Once a tile shrinks below a few screen pixels it stops being information and starts being noise, so it gracefully disappears on the way to a whole-map overview instead of shimmering.\r\n</li><li>Nested sectors are already cut out of their container, so holes stay holes.\r\n</li><li>Toggle it from the toolbar, from <code>View → Show Floor Textures</code>, or with F.\r\n</li></ul>\r\n<h3>3D View Settings</h3>\r\n<p>Everything about moving around in 3D used to be a constant in the source: move speed, eye height, mouse sensitivity, field of view, fog distance. Now there's a proper settings dialog under <code>View → 3D View Settings...</code>:\r\n</p>\r\n<ul><li>Movement — move speed, sprint multiplier, turn speed, eye height, head clearance\r\n</li><li>Mouse Look — sensitivity on a plain 1–20 scale, invert Y, invert X\r\n</li><li>View — field of view, view distance, distance fog, crosshair\r\n</li><li>Editing — height step sizes, and an option to <em>keep</em> the mouse captured after selecting a surface, so you can pick several faces in one sweep\r\n</li><li>Movement Keys — rebind forward/backward/strafe/turn/sprint. Pick an action, press the key, done. A key already used by another movement action is taken off it automatically, so you can't end up with two actions on one key.\r\n</li></ul>\r\n<p>The settings are saved automatically to your user profile and reloaded on startup, so they follow you from project to project. There's a <em>Restore Defaults</em> button when you want the original feel back.\r\n</p>\r\n<p>Two nice side effects: the in-viewport help legend and the window title now spell out your <em>actual</em> keys instead of a hard-coded \"WASD\", and the view distance now drives both the fog density and the geometry culling from one number, instead of the two being tuned by hand to match.\r\n</p>\r\n<h3>Retro automap overlay</h3>\r\n<p>The 3D view now has a small line map in the top-right corner, in the spirit of the automaps from 90s shooters — but &gt;span class=\"_wordAnimating_yu34g_11\"&gt;quiet.\r\n</p>\r\n<ul><li>Player-centred and north-up, the same orientation as the 2D editor, so switching views doesn't force you to re-orient.\r\n</li><li>Solid walls are drawn in muted amber; portals — the edges you can actually walk through — are much fainter, which is what makes an automap readable at a glance.\r\n</li><li>The only bright thing on it is the player arrow, with a faint cone showing your real field of view.\r\n</li><li>Toggle with M; size and covered range are in the settings.</li></ul>",
+  "videos": [],
+  "images": [
+   {
+    "src": "1614622-1.webp",
+    "w": 1264,
+    "h": 713
+   },
+   {
+    "src": "1614622-2.webp",
+    "w": 1261,
+    "h": 714
+   },
+   {
+    "src": "1614622-3.webp",
+    "w": 1260,
+    "h": 710
+   }
+  ]
+ },
+ {
+  "id": "1593789",
+  "product": "level-editor",
+  "title": "Doom like level editor 1.6.2",
+  "date": "2026-07-19",
+  "url": "https://papaiart.itch.io/papaiart-tools-level-editor/devlog/1593789/doom-like-level-editor-162",
+  "version": "1.6.2",
+  "excerpt": "Dev Update: Multi-Select Gizmo, Wall Tiling & More Two busy weeks on the 2D editor. Here's everything that landed. Marquee selection + transform gizmo You can now drag a rectangle over empty space to select multiple vertices and Things at…",
+  "words": 413,
+  "body": "<p><b>Dev Update: Multi-Select Gizmo, Wall Tiling &amp; More</b><br> <br>Two busy weeks on the 2D editor. Here's everything that landed.<br> <br><b>Marquee selection + transform gizmo</b></p>\r\n<p>You can now drag a rectangle over empty space to select multiple vertices and</p>\r\n<p>Things at once. A bounding-box gizmo appears around the selection with:</p>\r\n<p>-<b> </b><b>8 scale handles -</b> to resize,</p>\r\n<p>-<b> </b><b>4 corner rotate zones -</b> to spin the whole selection,</p>\r\n<p>- a <b>center handle -</b> to move everything.<br> <br>It works UV-editor style — grab a handle and go. Hold -<b>Shift-</b> while rotating</p>\r\n<p>for 15° snapping, and while scaling for uniform (aspect-locked) resize.<br> <br><b>Duplication that behaves</b></p>\r\n<p>Press <b>Ctrl+D</b>, or <b>Alt-drag</b> the gizmo, to duplicate the current selection.</p>\r\n<p>The copy now stays \"floating\" — fully selected and movable — until you click</p>\r\n<p>away, hit Escape, or switch tools. Only then does it stitch itself into the map.</p>\r\n<p>This fixes the old behavior where a copy would immediately fuse into surrounding</p>\r\n<p>sectors before you could position it.<br> <br>Copies dropped flush against another sector's wall now connect properly: the</p>\r\n<p>shared edge becomes a real passage (portal) instead of staying a solid wall.<br> <br><b>Grab the sector, not just the handle</b></p>\r\n<p>Moving a selection no longer requires the tiny center cross. Click -anywhere</p>\r\n<p>inside a selected sector- and drag — the whole selection follows.<br> <br><b>Wall Tile Mode</b></p>\r\n<p>Each wall now has a <b>-</b><b>Tile Mode</b><b>-</b> toggle next to its UV offset. Turn it on and</p>\r\n<p>the texture stretches to fill that wall exactly, instead of repeating at world</p>\r\n<p>scale. You control how many times it repeats with adjustable <b>Tiles X / Tiles Y</b></p>\r\n<p>values (fractional tiling supported, e.g. 2.5×). <br>Splitting a tiled wall automatically turns Tile Mode off on both halves — \"fill</p>\r\n<p>the whole wall\" no longer makes sense once it's cut — while keeping every other</p>\r\n<p>wall's textures and settings correctly aligned.<br> <br>Your existing maps load exactly as before: the new settings default to off, so</p>\r\n<p>nothing changes visually until you opt in. The Unity importer package has been</p>\r\n<p>updated to match, so tiled walls render identically in-engine.<br> <br><b>Origin gizmo in the 2D view</b></p>\r\n<p>The world origin (0,0) is now marked with a clean, professional gizmo — tinted</p>\r\n<p>X/Y axis lines across the viewport plus a fixed-size marker with directional</p>\r\n<p>arrows (red +X, green +Y). Much easier to keep your bearings while building.<br> <br><b>Also</b></p>\r\n<p>- New application icon.</p>\r\n<p>- Various robustness fixes around vertex insertion, cutting, and per-wall<br> texture/UV bookkeeping.<br> <br>Thanks for playing along — more soon!</p>",
+  "videos": [],
+  "images": [
+   {
+    "src": "1593789-1.webp",
+    "w": 1289,
+    "h": 893
+   },
+   {
+    "src": "1593789-2.webp",
+    "w": 1267,
+    "h": 711
+   },
+   {
+    "src": "1593789-3.webp",
+    "w": 1262,
+    "h": 707
+   },
+   {
+    "src": "1593789-4.webp",
+    "w": 1400,
+    "h": 825
+   }
+  ]
+ },
+ {
+  "id": "1581010",
+  "product": "level-modeller",
+  "title": "PapaiArt Tools - Level Modeller - 1.2.0",
+  "date": "2026-07-10",
+  "url": "https://papaiart.itch.io/papaiart-tools-level-modeller/devlog/1581010/papaiart-tools-level-modeller-120",
+  "version": "1.2.0",
+  "excerpt": "Per-Face Texturing Update — Paint Every Wall Its Own Way You can now texture individual faces! Until now a texture applied to the whole object — from this update, every wall, floor, tread and cut surface can have its own material. Face…",
+  "words": 322,
+  "body": "<h2>Per-Face Texturing Update — Paint Every Wall Its Own Way\r\n</h2>\r\n<p>You can now texture individual faces! Until now a texture applied to the whole object — from this update, every wall, floor, tread and cut surface can have its own material.\r\n</p>\r\n<h3>Face Select mode</h3>\r\n<p>A new tool joined the viewport toolbar (or press F): Face Select mode. Hover the level and the surface under your cursor lights up; click to select it, Shift-click to grab several at once. Selected faces glow orange so you always see exactly what you're about to change.\r\n</p>\r\n<p>Faces are <em>logical</em> surfaces, not raw triangles: a box side is one face, a cylinder wall is one face, a staircase knows its treads and risers as separate groups. Imported meshes and level maps are split into their natural flat surfaces automatically — every wall and floor of an imported map is individually selectable.\r\n</p>\r\n<h3>Face Textures in the Inspector</h3>\r\n<p>With faces selected, hit Assign in the Inspector's new <em>Face Textures</em> section. Each entry gets:\r\n</p>\r\n<ul><li>its own texture from your project library,\r\n</li><li>its own scale, and\r\n</li><li>a full UV transform (offset, rotation, tiling) — independent of the object's.\r\n</li></ul>\r\n<p>New entries start out looking exactly like the object, so nothing jumps until you edit it. Entries can be re-selected, retextured or removed at any time; removing one simply reverts those faces to the object's texture.\r\n</p>\r\n<h3>It plays nice with everything</h3>\r\n<ul><li>Booleans: cut a doorway through a wall and the wall keeps its per-face textures. The interior of the cut takes the cutter's texture — and yes, those cut walls are face-selectable too.\r\n</li><li>Smart picking: face selection targets what you actually <em>see</em>. Wireframe cutters never swallow the click — you select the wall behind them; surfaces carved away by a boolean can't be picked through the hole.\r\n</li><li>Saved &amp; exported: face textures are stored in your map file, travel through undo/redo, and come out correctly in OBJ, GLB and the Unity export.\r\n</li></ul>",
+  "videos": [],
+  "images": [
+   {
+    "src": "1581010-1.webp",
+    "w": 1279,
+    "h": 750
+   },
+   {
+    "src": "1581010-2.webp",
+    "w": 1400,
+    "h": 846
+   }
+  ]
+ },
+ {
+  "id": "1580800",
+  "product": "level-modeller",
+  "title": "PapaiArt Tools - Level Modeller - 1.1.5",
+  "date": "2026-07-10",
+  "url": "https://papaiart.itch.io/papaiart-tools-level-modeller/devlog/1580800/papaiart-tools-level-modeller-115",
+  "version": "1.1.5",
+  "excerpt": "Instant Rooms & FPS Avatar (with full Unity support) Two big features landed in Level Modeller over the last two days: an inside-out room workflow and a configurable FPS avatar — both carried all the way through to the Unity package.…",
+  "words": 395,
+  "body": "<h2>Instant Rooms &amp; FPS Avatar (with full Unity support)\r\n</h2>\r\n<p>Two big features landed in Level Modeller over the last two days: an inside-out room workflow and a configurable FPS avatar — both carried all the way through to the Unity package.\r\n</p>\r\n<h3>Instant rooms with Flip Normals</h3>\r\n<p>Every object now has a <em>Flip (inside-out)</em> option in the Inspector. Flipping turns the faces inward, so a single flipped box becomes a finished room interior you can walk into — no manual wall building. Rooms use classic subtractive-style semantics:\r\n</p>\r\n<ul><li>Overlapping rooms merge into one continuous space instead of fighting each other.\r\n</li><li>Negative objects cut windows and doorways through room walls, just like they cut solids.\r\n</li><li>A lone cutter never shows up as phantom geometry.\r\n</li></ul>\r\n<h3>Room hierarchies</h3>\r\n<p>A flipped object declares a room for its <em>entire subtree</em>, and inside a room the world mirrors:\r\n</p>\r\n<ul><li>Positive children extend the air — build L-shaped rooms and corridors from simple boxes.\r\n</li><li>Negative children carve solid matter into the space — pillars, columns, built-in furniture.\r\n</li><li>Outside cutters overlapping the room widen it from the outside — windows and doorways between rooms and the world.\r\n</li></ul>\r\n<p>Clicking in the viewport picks exactly what you see, rooms respect prefab/sealed-group boundaries, everything is saved with the map, and the CSG cache keeps editing fast.\r\n</p>\r\n<h3>FPS Avatar</h3>\r\n<p>The new Avatar menu defines your player character: capsule height, eye height, radius, step height, walk speed, run multiplier, jump height, gravity, and camera FOV. It drives the first-person walk mode (so you playtest with the exact character your game will use), and an optional reference silhouette stands in the viewport so you always see how big the player is against your level. Avatar settings are saved inside the map and can also be stored as a reusable standalone <code>.lmavatar</code> profile shared across maps.\r\n</p>\r\n<h3>Unity support</h3>\r\n<p>Both features are fully wired into the Unity package:\r\n</p>\r\n<ul><li>Rooms import correctly — the importer applies the inside-out orientation, including flips inherited down room subtrees, so interiors look in Unity exactly as they do in the editor.\r\n</li><li>New <code>LmAvatarInfo</code> component — the importer attaches it to the map root with every authored value (capsule dimensions, step offset, speeds, jump height, gravity, FOV). Size your <code>CharacterController</code> and camera rig from it and the level plays <em>exactly</em> like the editor's walk mode. Values are in source units (meters), ready to scale by your build's world scale.\r\n</li></ul>",
+  "videos": [],
+  "images": [
+   {
+    "src": "1580800-1.webp",
+    "w": 1278,
+    "h": 750
+   },
+   {
+    "src": "1580800-2.webp",
+    "w": 1400,
+    "h": 832
+   }
+  ]
+ },
+ {
+  "id": "1579846",
+  "product": "level-editor",
+  "title": "PapaiArt Level Editor 1.4.4 - multi select in 3D view",
+  "date": "2026-07-09",
+  "url": "https://papaiart.itch.io/papaiart-tools-level-editor/devlog/1579846/papaiart-level-editor-144-multi-select-in-3d-view",
+  "version": "1.4.4",
+  "excerpt": "Multi-Select Texturing in 3D Mode Texturing just got a lot faster. Until now, applying a texture in the 3D view meant clicking one surface, picking a texture, then hunting down the next surface — one at a time. This update introduces…",
+  "words": 247,
+  "body": "<p><strong>Multi-Select Texturing in 3D Mode</strong><br> <br>Texturing just got a lot faster. Until now, applying a texture in the 3D view meant</p>\r\n<p>clicking one surface, picking a texture, then hunting down the next surface — one at</p>\r\n<p>a time. This update introduces <strong>multi-face selection</strong>.<br> <br><strong>Shift+Click to select multiple surfaces</strong><br> <br>While walking around in the 3D view, hold <strong>Shift</strong> and click any floor, ceiling or</p>\r\n<p>wall to add it to your selection. Shift+Click a selected face again to remove it.</p>\r\n<p>The mouse stays captured during the sweep, so you can keep walking and picking</p>\r\n<p>surfaces in one continuous flow — press ESC (or plain click) when you're done.<br> <br>Every selected face is highlighted with a yellow outline, so you always see exactly</p>\r\n<p>what you're about to paint. Walls now get a proper selection highlight too, which</p>\r\n<p>they were missing before.<br> <br><strong>Apply a texture to everything at once</strong><br> <br>Once you have your selection:<br> <br>- The <strong>quick-apply texture buttons</strong> on the toolbar now paint <em>*</em><em>all</em><em>*</em> selected faces<br> in one click — floors, ceilings and walls each receive the texture in their own slot.</p>\r\n<p>- The <strong>sidebar texture dropdowns</strong> fan out as well: the Floor combo retextures every<br> selected floor, Ceiling every selected ceiling, and Wall every selected wall.<br> <br>The whole batch is a single undo step, so one Ctrl+Z takes you right back.<br> <br>Small change, big time saver — especially on large maps where a corridor's worth of</p>\r\n<p>walls used to mean a dozen round trips. Enjoy!</p><p><em><a href=\"https://discord.gg/ecC59ZpbQ3\" target=\"_blank\" rel=\"noopener\">https://discord.gg/ecC59ZpbQ3</a></em><br></p>",
+  "videos": [],
+  "images": [
+   {
+    "src": "1579846-1.webp",
+    "w": 1265,
+    "h": 710
+   }
+  ]
+ },
+ {
+  "id": "1576861",
+  "product": "level-modeller",
+  "title": "PapaiArt Tools - Level Modeller - 1.0.0",
+  "date": "2026-07-06",
+  "url": "https://papaiart.itch.io/papaiart-tools-level-modeller/devlog/1576861/papaiart-tools-level-modeller-100",
+  "version": "1.0.0",
+  "excerpt": "Version 1.0 — Early Access is over! (80% off until Friday) Today is a big day: PapaiArt Tools - Level Modeller has officially left Early Access. This release is version 1.0 — thank you to everyone who tested, reported bugs, and shaped the…",
+  "words": 267,
+  "body": "<h2>Version 1.0 — Early Access is over! (80% off until Friday)</h2>\r\n<p>Today is a big day: PapaiArt Tools - Level Modeller has officially left Early Access. This release is version 1.0 — thank you to everyone who tested, reported bugs, and shaped the tool along the way.\r\n</p>\r\n<p>To celebrate, the launch discount stays live a little longer: 80% off until Friday, July 10. If you've been waiting to grab it, this is the moment.\r\n</p>\r\n<h2>What's new in 1.0</h2>\r\n<h3>Walk Mode — explore your level in first person</h3>\r\n<p>The headline feature of 1.0: press Shift+W (or use <em>View → Walk Mode (FPS)</em>) and drop straight into your level as if it were a game.\r\n</p>\r\n<ul><li>WASD to move, Space to jump, Shift to run, mouse wheel to adjust walking speed\r\n</li><li>Real collision against your built geometry — walls block you, and you slide along them naturally\r\n</li><li>Gravity, jumping, and automatic step-up on stairs and small ledges\r\n</li><li>Fell off the level? You respawn right where you entered Walk Mode\r\n</li><li>Esc returns to your editor camera exactly as you left it; Enter exits but keeps the walked viewpoint — great for framing screenshots\r\n</li><li>A clean crosshair + on-screen help strip so you always know the controls</li></ul>\r\n<h3>Negative Wireframe toggle on the toolbar</h3>\r\n<p>The <em>Negative Wireframe</em> view (previously only in the View menu) now has its own one-click toggle button in the viewport toolbar, so you can flip it on and off without breaking your flow.\r\n</p>\r\n<h2>What's next</h2>\r\n<p>1.0 is a milestone, not a finish line. Development continues — and your feedback matters more than ever. See you in the comments!\r\n</p>",
+  "videos": [],
+  "images": [
+   {
+    "src": "1576861-1.webp",
+    "w": 1359,
+    "h": 782
+   }
+  ]
+ },
+ {
+  "id": "1575387",
+  "product": "level-modeller",
+  "title": "PapaiArt - Level Editor maps come to Level Modeller",
+  "date": "2026-07-05",
+  "url": "https://papaiart.itch.io/papaiart-tools-level-modeller/devlog/1575387/papaiart-level-editor-maps-come-to-level-modeller",
+  "version": "",
+  "excerpt": "Today's update is a big one: PapaiArt Tools - Level Modeller and Level Editor now properly talk to each other, and the modeller got a round of engine and workflow upgrades. Import your Level Editor maps — as real meshes New File → Import…",
+  "words": 255,
+  "body": "<p>Today's update is a big one: PapaiArt Tools - Level Modeller and Level Editor now properly talk to each other, and the modeller got a round of engine and workflow upgrades.\r\n</p>\r\n<p>Import your Level Editor maps — as real meshes\r\n</p>\r\n<ul><li>New <em>File → Import Level Editor Map…</em> brings any Level Editor map into the modeller as a mesh object: floors, ceilings, walls, portal steps between connected rooms, nested rooms and slopes all come across exactly as the Level Editor builds them.\r\n</li><li>The map's texture project loads along with it, and the imported mesh keeps every floor/ceiling/wall texture assignment. Everything arrives ready to render.\r\n</li><li>The two tools now share the same texture project file format and name, so one <code>.project</code> file can serve both. Older library files still open fine.\r\n</li></ul>\r\n<p>Multi-material meshes\r\n</p>\r\n<ul><li>The engine now supports multiple materials on a single object — no more one-texture-per-mesh limit. Imported OBJ files with material groups get this automatically too.\r\n</li></ul>\r\n<p>Booleans on big meshes\r\n</p>\r\n<ul><li>You can now carve into an imported map (or any large mesh) with positive/negative objects. The CSG core was rewritten to handle thousands of polygons without breaking a sweat — a whole class of freezes and crashes on large inputs is gone.\r\n</li></ul>\r\n<p>Rendering &amp; selection\r\n</p>\r\n<ul><li>The viewport is now anti-aliased (4x MSAA) — clean edges on walls, wireframes and gizmos.\r\n</li><li>Backfaces are no longer drawn: look into a room from outside just like you'd expect in a level editor.\r\n</li><li>Clicking now selects what you actually <em>see</em> — hidden back walls don't swallow your clicks anymore.\r\n</li></ul>",
+  "videos": [],
+  "images": [
+   {
+    "src": "1575387-1.webp",
+    "w": 1277,
+    "h": 746
+   }
+  ]
+ },
+ {
+  "id": "1574752",
+  "product": "level-modeller",
+  "title": "PapaiArt Tools - Level Modeller - 0.9.6 EA",
+  "date": "2026-07-04",
+  "url": "https://papaiart.itch.io/papaiart-tools-level-modeller/devlog/1574752/papaiart-tools-level-modeller-096-ea",
+  "version": "0.9.6",
+  "excerpt": "Multi-Select, Group Editing & OBJ Import Hey everyone! This update is all about working with more than one thing at a time — plus a long-requested feature: bringing your own meshes into the editor. Box Select & Multi-Selection You can…",
+  "words": 338,
+  "body": "<p><b> Multi-Select, Group Editing &amp; OBJ Import</b><br> <br>Hey everyone! This update is all about working with more than one thing at a time — plus a long-requested feature: bringing your own meshes into the editor.<br> <br><b>Box Select &amp; Multi-Selection</b><br> <br>You can finally select multiple objects at once:<br> <br>-<b>Drag on empty space  - </b>to draw a selection rectangle — everything it touches gets selected.</p>\r\n<p>-<b> </b><b>Shift+drag -</b> adds the result to your current selection instead of replacing it.</p>\r\n<p>-<b> </b><b>Shift+click - </b>(in the viewport or in the Hierarchy panel) toggles a single object in and out of the selection.</p>\r\n<p>- Clicking empty space still clears the selection, and every selected object gets its own outline highlight.<br> <br><b>Group Move &amp; Duplicate</b><br> <br>A multi-selection isn't just for show:<br> <br>-<b> </b><b>Move / Rotate / Scale -</b> now applies to the whole selection. The group moves rigidly together; rotating or scaling pivots around the active object, so arranging clusters of geometry feels natural.</p>\r\n<p>-<b> </b><b>Ctrl+D duplicates the entire selection</b><b>**</b> and selects the copies — grab-and-drag a whole room in two keystrokes.</p>\r\n<p>-<b> </b><b>Delete</b> removes everything selected.</p>\r\n<p>- Parent/child safety is built in: if a parent and its child are both selected, the operation runs once, on the parent — no double moves, no double copies.<br> <br><b> New: Mesh Primitive (OBJ Import)</b><br> <br>There's a new primitive in the add bar: <b>Mesh</b>. Drop one in, open the Inspector, and hit  <b>Import OBJ...</b> to load any Wavefront .obj file. Until you pick a file it shows as a placeholder box, so it's always visible and selectable.<br> <br>Imported meshes are first-class citizens: they work with boolean carving (positive/negative), precise triangle picking, lightmap baking, and OBJ/GLB export — exactly like the built-in primitives.<br> <br><b>Your UVs or Ours</b><br> <br>Each Mesh object has a \"<b>Use OBJ's own UVs\"</b> toggle in the Inspector:<br> <br>-<b> </b><b>On</b> — the texture coordinates authored in your 3D tool are used as-is.</p>\r\n<p>-<b> </b><b>Off</b> — the mesh gets the same automatic box-projection texturing as every other primitive (with texture scale, offset and rotation controls).</p>",
+  "videos": [],
+  "images": [
+   {
+    "src": "1574752-1.webp",
+    "w": 1280,
+    "h": 750
+   }
+  ]
+ },
+ {
+  "id": "1573692",
+  "product": "level-editor",
+  "title": "PapaiArt Tools - LevelEditor 1.4.3",
+  "date": "2026-07-03",
+  "url": "https://papaiart.itch.io/papaiart-tools-level-editor/devlog/1573692/papaiart-tools-leveleditor-143",
+  "version": "1.4.3",
+  "excerpt": "A big drawing-focused update for the Level Editor. Here's everything new. New shape tools A new Shapes strip appears next to the canvas whenever the Sector tool is active. Besides classic point-by-point drawing you now get drag-to-draw…",
+  "words": 385,
+  "body": "<p>A big drawing-focused update for the Level Editor. Here's everything new.</p>\r\n<p>New shape tools</p>\r\n<p>A new Shapes strip appears next to the canvas whenever the Sector tool is active. Besides classic point-by-point drawing you now get drag-to-draw shapes:</p>\r\n<p>- Rectangle, Ellipse, Half-ellipse, Quarter-ellipse — hold Shift for perfect squares/circles</p>\r\n<p>- Star — drag from the center, Shift snaps the rotation to 15° steps</p>\r\n<p>- Stairs — drag a box and it splits into strips with automatically rising floors</p>\r\n<p>Arc segments, star points and stair step counts are all adjustable right in the strip.</p>\r\n<p>Sector inside a sector</p>\r\n<p>Draw a sector fully inside another and it becomes a true nested sector. It inherits everything from its surroundings — heights, slopes, textures — so nothing changes until *you* change it. Raise its floor and you get a pedestal; the surrounding floor and ceiling get a real hole cut around it, and the boundary behaves like a portal: step and upper walls appear exactly where the heights differ.</p>\r\n<p>Nesting is unlimited — a pillar on a pedestal in a room just works. Selection, camera collision and Thing placement now always pick the innermost sector. And the map format didn't change, so old maps load exactly as before.</p>\r\n<p>Overlaps split properly</p>\r\n<p>Drawing over an existing sector no longer creates broken overlapping geometry. The editor splits everything along your drawing:</p>\r\n<p>- the overlapped part becomes its own sector and inherits the old properties,</p>\r\n<p>- the rest of the old sector keeps its identity untouched,</p>\r\n<p>- whatever falls outside becomes a fresh new sector.</p>\r\n<p>This includes the tricky cases — alcoves drawn flush against a wall and stairs pushed right up to a room edge now carve in cleanly instead of spawning phantom walls. Under the hood: robust integer polygon clipping (Clipper2).</p>\r\n<p>Undo/redo fixed</p>\r\n<p>The undo stack got a rework — no more duplicate steps or lost states; Ctrl+Z / Ctrl+Y now walk the history exactly as you'd expect.</p>\r\n<p>## Unity importer 0.2.0</p>\r\n<p>The Unity package learned all of the above: floors and ceilings with holes, portal walls at hole boundaries, innermost-sector lookup for Things. Just reimport your maps — no settings to touch.</p>\r\n<p>As always: bug reports are gold. If you manage to break something, tell me how — the last report turned into two of the features above.</p><p><br></p><p><em><a href=\"https://discord.gg/ecC59ZpbQ3\" target=\"_blank\" rel=\"noopener\">https://discord.gg/ecC59ZpbQ3</a></em><br></p>",
+  "videos": [],
+  "images": []
+ },
+ {
+  "id": "1573019",
+  "product": "level-modeller",
+  "title": "PapaiArt Tools - Level Modeller - 0.9.1 EA",
+  "date": "2026-07-03",
+  "url": "https://papaiart.itch.io/papaiart-tools-level-modeller/devlog/1573019/papaiart-tools-level-modeller-091-ea",
+  "version": "0.9.1",
+  "excerpt": "GLB Export is Here — Proper Materials, Two UV Channels, One File Level Modeller can now export your levels as GLB (glTF 2.0 binary) — alongside the existing OBJ export. This is a big quality-of-life upgrade if you're bringing levels into…",
+  "words": 401,
+  "body": "<h2>GLB Export is Here — Proper Materials, Two UV Channels, One File</h2>\r\n<p>Level Modeller can now export your levels as GLB (glTF 2.0 binary) — alongside the existing OBJ export. This is a big quality-of-life upgrade if you're bringing levels into Unity, Godot, Unreal, Blender, or three.js.\r\n</p>\r\n<h3>Why GLB?</h3>\r\n<p>OBJ only supports a single UV channel, so getting a lightmap-ready mesh out meant baking everything into one texture atlas. GLB doesn't have that limitation — it carries multiple UV channels and real material definitions natively, so your level exports the way it's actually built:\r\n</p>\r\n<ul><li>TEXCOORD_0 — the tiled box-projection UVs, with one material per texture, exactly as you see it in the editor.\r\n</li><li>TEXCOORD_1 — a clean, non-overlapping lightmap unwrap, ready for the lightmap baker in your engine. And here's the nice part: you don't need to bake lighting first — if the unwrap doesn't exist yet, the exporter generates it automatically on export.\r\n</li></ul>\r\n<h3>Export options at a glance</h3>\r\n<ul><li>Mesh scale — uniform multiplier, so you can match your engine's units.\r\n</li><li>Pivot point — choose what lands at the origin: scene origin, center of bounds, bottom center (the model \"stands\" on the origin), the selected object, or custom coordinates.\r\n</li><li>Texture storage — your choice:<ul><li>Embedded (default): everything packed into a single, self-contained <code>.glb</code> — one file to drag and drop.\r\n</li><li>External: images referenced as separate files, copied either next to the <code>.glb</code> or into a <code>textures/</code> subfolder.\r\n</li></ul>\r\n</li><li>Baked lightmap — if you've baked lighting in Level Modeller, you can include the lightmap in the file as the material's occlusion texture, sampled from UV1.\r\n</li><li>Atlas mode — the OBJ-style workflow is still here for pipelines that want exactly one material: all albedo baked into a single texture laid out by the lightmap UVs, with an optional \"burn baked lighting into the atlas\" toggle that multiplies your baked lighting straight into the albedo. Great for quick previews and engines/renderers where you want zero material setup.\r\n</li><li>Vertex tints — per-object color tints export as vertex colors (COLOR_0), so tinted geometry looks the same outside the editor.\r\n</li></ul>\r\n<p>Textures are embedded as-is when they're PNG/JPEG; other formats (TGA, BMP, …) are converted to PNG automatically, so the file always loads everywhere.\r\n</p>\r\n<p>The OBJ (+MTL) export isn't going anywhere — but if your target understands glTF, GLB is now the recommended path.\r\n</p>\r\n<p>As always, let me know if an exported file misbehaves in your engine of choice!\r\n</p>",
+  "videos": [],
+  "images": [
+   {
+    "src": "1573019-1.webp",
+    "w": 1400,
+    "h": 883
+   },
+   {
+    "src": "1573019-2.webp",
+    "w": 1279,
+    "h": 746
+   },
+   {
+    "src": "1573019-3.webp",
+    "w": 1280,
+    "h": 747
+   },
+   {
+    "src": "1573019-4.webp",
+    "w": 1278,
+    "h": 746
+   },
+   {
+    "src": "1573019-5.webp",
+    "w": 1280,
+    "h": 749
+   },
+   {
+    "src": "1573019-6.webp",
+    "w": 1400,
+    "h": 844
+   }
+  ]
+ },
+ {
+  "id": "1566929",
+  "product": "level-editor",
+  "title": "OBJ Export: Material & Texture Fixes",
+  "date": "2026-06-28",
+  "url": "https://papaiart.itch.io/papaiart-tools-level-editor/devlog/1566929/obj-export-material-texture-fixes",
+  "version": "",
+  "excerpt": "OBJ Export — Three Fixes 1. map_Kd lines in the MTL (user-reported bug) The MTL file only contained newmtl , Kd , Ka , Ks , Ns , d — no map_Kd line, so renderers that rely on it (Raylib, others) showed no texture. Fix: ExportObjOptions now…",
+  "words": 183,
+  "body": "<p>OBJ Export — Three Fixes\r\n</p>\r\n<p>1. map_Kd lines in the MTL (user-reported bug)<br>The MTL file only contained <code>newmtl</code>, <code>Kd</code>, <code>Ka</code>, <code>Ks</code>, <code>Ns</code>, <code>d</code> — no <code>map_Kd</code> line, so renderers that rely on it (Raylib, others) showed no texture. Fix: <code>ExportObjOptions</code> now carries a <code>texture_paths</code> map (<code>texture name → absolute file path</code>) and an optional <code>copy_textures</code> flag. In <code>OnExportOBJ</code>, the map is populated from <code>g_projectSettings.textures</code> before calling the exporter. <code>ObjWriter</code> stores a <code>mat_to_tex</code> map built at triangle-add time. <code>write_mtl</code> now emits <code>map_Kd &lt;path&gt;</code> for every material that has a resolved path. When <code>copy_textures</code> is true, the files are copied into a <code>textures/</code> subfolder next to the OBJ and the MTL references them with a relative path.\r\n</p>\r\n<p>2. Duplicate materials<br>Every texture previously produced three MTL entries: <code>FLOOR_X</code>, <code>CEIL_X</code>, <code>WALL_X</code>. A map with ten unique textures generated thirty material slots in Blender. The fix removes the prefix entirely — the material name is now the texture name itself. Floor, ceiling, and wall surfaces that share the same texture automatically share one MTL entry.\r\n</p>",
+  "videos": [],
+  "images": [
+   {
+    "src": "1566929-1.webp",
+    "w": 1259,
+    "h": 780
+   }
+  ]
+ },
+ {
+  "id": "1565894",
+  "product": "level-editor",
+  "title": "PaTool LevelEditor 1.2.6",
+  "date": "2026-06-27",
+  "url": "https://papaiart.itch.io/papaiart-tools-level-editor/devlog/1565894/patool-leveleditor-126",
+  "version": "1.2.6",
+  "excerpt": "New: OBJ Export Options Exporting your level to OBJ just got a lot more flexible. Instead of dumping the mesh at a fixed size and position, File → Export to OBJ… now opens an options dialog first. Mesh Scale A single uniform multiplier for…",
+  "words": 224,
+  "body": "<p>New: OBJ Export Options</p>\r\n<p>Exporting your level to OBJ just got a lot more flexible. Instead of dumping the mesh at a fixed size and position, File → Export to OBJ… now opens an options dialog first.\r\n</p>\r\n<p>Mesh Scale<br>A single uniform multiplier for the whole mesh. Need your level to come in at real-world units, or match the scale of another tool's import settings? Just set the multiplier — no more rescaling everything by hand after import. (This is independent of texture scaling, so your UVs stay exactly as authored.)\r\n</p>\r\n<p>Pivot Point (Origin)<br>You can now decide <em>where</em> the exported mesh's origin sits, which matters a lot when you drop it into another engine:\r\n</p>\r\n<ul><li>Center of first sector — handy when your starting room is the natural anchor\r\n</li><li>Center of whole map — keeps everything balanced around (0,0,0)\r\n</li><li>Player start position — origin lands right where the player spawns\r\n</li><li>Custom coordinates — type exact X/Y if you know precisely what you want\r\n</li><li>Origin (0,0) — the original behavior, no recentering\r\n</li></ul>\r\n<p>The dialog also shows a live readout of which map point will end up at the origin, and it automatically disables options your current map can't satisfy (e.g. \"Player start\" when no player is placed).\r\n</p>\r\n<p>Small quality-of-life change, but it removes a whole round-trip of fixing scale and pivot after every export. Enjoy!\r\n</p>",
+  "videos": [],
+  "images": [
+   {
+    "src": "1565894-1.webp",
+    "w": 1264,
+    "h": 710
+   },
+   {
+    "src": "1565894-2.webp",
+    "w": 1284,
+    "h": 832
+   }
+  ]
+ },
+ {
+  "id": "1565409",
+  "product": "level-editor",
+  "title": "PapaiArt Tools - Level Editor 1.2.5",
+  "date": "2026-06-26",
+  "url": "https://papaiart.itch.io/papaiart-tools-level-editor/devlog/1565409/papaiart-tools-level-editor-125",
+  "version": "1.2.5",
+  "excerpt": "On-screen controls help Both the 2D and 3D views now have a built-in controls overlay. It's off by default — you'll just see a small H : HELP marker in the bottom-left corner. Press H to pop open the full list of what every key and mouse…",
+  "words": 153,
+  "body": "<p>On-screen controls help</p>\r\n<p>Both the 2D and 3D views now have a built-in controls overlay. It's off by default — you'll just see a small <code>H : HELP</code> marker in the bottom-left corner. Press H to pop open the full list of what every key and mouse button does, and H again to tuck it away.<br><br>Fog</p>\r\n<p>The old fog started so far away you basically never saw it. It's now proper exponential atmospheric fog that builds up gradually with distance and blends seamlessly into the background — distant geometry softly fades into the horizon. Toggle with G.</p><p>The camera remembers where you were</p>\r\n<p>Leaving and re-entering 3D used to dump you back at the start every time. Now, when you return to 3D, you pick up exactly where you left off (position and look direction) — as long as that spot is still inside a sector. Loading a new map resets it.\r\n</p>",
+  "videos": [],
+  "images": [
+   {
+    "src": "1565409-1.webp",
+    "w": 1264,
+    "h": 712
+   },
+   {
+    "src": "1565409-2.webp",
+    "w": 1267,
+    "h": 711
+   }
+  ]
+ },
+ {
+  "id": "1564295",
+  "product": "animation-studio",
+  "title": "Blender-style transform hotkeys (G / R / S) in v1.0.1",
+  "date": "2026-06-25",
+  "url": "https://papaiart.itch.io/papaiart-animation-studio-open-beta/devlog/1564295/blender-style-transform-hotkeys-g-r-s-in-v101",
+  "version": "1.0.1",
+  "excerpt": "Blender-style transform hotkeys (G / R / S) This is the bigger one: we added modal transforms, just like you're used to in Blender. No more dragging gizmo arrows — one key press and a mouse move, and you're transforming instantly. The…",
+  "words": 357,
+  "body": "<h3>Blender-style transform hotkeys (G / R / S)</h3>\r\n<p>This is the bigger one: we added modal transforms, just like you're used to in Blender. No more dragging gizmo arrows — one key press and a mouse move, and you're transforming instantly.\r\n</p>\r\n<p>The basics:\r\n</p>\r\n<ul><li>G – grab (move)\r\n</li><li>R – rotate\r\n</li><li>S – scale\r\n</li></ul>\r\n<p>Press the key, move the mouse, and the selection follows. Left click or Enter confirms, right click or Esc cancels (everything snaps back to its original state).\r\n</p>\r\n<p>Axis constraints: while transforming, press X, Y or Z to lock the operation to a single axis. Press the same key again to release it. The constrained axis is shown with a colored guide line (X = red, Y = green, Z = blue).\r\n</p>\r\n<p>Exact numeric input: just type a value mid-transform. For example <code>G</code> <code>Z</code> <code>2</code> moves exactly 2 units along Z; <code>R</code> <code>X</code> <code>45</code> rotates 45 degrees around X. <code>-</code> and <code>.</code> are supported, and Backspace edits your input.\r\n</p>\r\n<p>Visual feedback: a header at the top-center of the viewport shows the current mode and value (e.g. <code>Rotate Z: 45</code>), so you always know where you stand.\r\n</p>\r\n<p>All of this works in both Object and Edit mode (on objects, or on selected vertices/edges/faces) and is fully integrated with the undo/redo system.\r\n</p>\r\n<blockquote>⚠️ Change: the <code>R</code> key previously switched to the scale gizmo — it now triggers rotation, matching Blender. The <code>Q</code> (select), <code>W</code> (move) and <code>E</code> (rotate) gizmo shortcuts are still available.\r\n</blockquote><h3>Yellow pivot dot while modeling</h3>\r\n<p>A small yellow dot now marks the pivot point of the selected model — the reference point that rotation and scaling happen around.\r\n</p>\r\n<ul><li>In Object mode the dot sits on the object's origin (or the shared center when multiple objects are selected), and it's visible in every tool mode — even \"Select\" mode, where no gizmo is otherwise drawn.\r\n</li><li>In Edit mode (vertex/edge/face editing) the dot stays on the model's origin, so you always have a reference point while working on the geometry.\r\n</li></ul>\r\n<p>The marker is drawn in world space, exactly on the pivot, and uses the same yellow tone as the selection outline for a consistent look.\r\n</p>",
+  "videos": [],
+  "images": [
+   {
+    "src": "1564295-1.webp",
+    "w": 1277,
+    "h": 720
+   },
+   {
+    "src": "1564295-2.webp",
+    "w": 1276,
+    "h": 721
+   }
+  ]
+ },
+ {
+  "id": "1563631",
+  "product": "animation-studio",
+  "title": "Papaiart Animation Studio 1.0",
+  "date": "2026-06-25",
+  "url": "https://papaiart.itch.io/papaiart-animation-studio-open-beta/devlog/1563631/papaiart-animation-studio-10",
+  "version": "1.0",
+  "excerpt": "We have reached the first milestone. Version 1.0 is already a highly useful tool for animators and game developers alike. What is an even bigger step forward: FBX export — brand-new system (the biggest item) New standalone…",
+  "words": 216,
+  "body": "<p>We have reached the first milestone. Version 1.0 is already a highly useful tool for animators and game developers alike.\r\n</p>\r\n<p>What is an even bigger step forward:\r\n</p><p>FBX export — brand-new system (the biggest item)\r\n</p>\r\n<ul><li>New standalone <code>MeshLoaderFBX_Export.cpp</code> (~1,370 lines) and a Blender-style export popup with a full settings set (<code>FbxExportSettings</code> + presets).\r\n</li><li>Bone/skinning and animation export, axis conversion (Forward/Up), global scale, <code>Apply Transform</code> (bakes world transform into geometry), n-gon triangulation.\r\n</li><li>Materials: diffuse + normal map + emissive map, PBR scalars (metallic/roughness), and per-face multi-material (submesh) support.\r\n</li><li>Texture path modes: Absolute / Relative / Strip Path / Copy (copies textures next to the FBX).\r\n</li><li>Vertex color round-trip (import → edit → export).\r\n</li></ul>\r\n<p>FBX import — major rework\r\n</p>\r\n<ul><li>Rewritten <code>MeshLoaderFBX.cpp</code>, new <code>FbxNode.h</code>, FBX animation import, multi-material import, texture path resolution, import settings + presets UI.\r\n</li></ul>\r\n<p>OBJ import/export UI — dedicated settings &amp; preset system (<code>ObjImport/ExportSettings</code>, <code>…Presets</code>).\r\n</p>\r\n<p>Material &amp; UV system\r\n</p>\r\n<ul><li>New <code>MaterialRegistry</code>, multi-material groups, fully reworked material inspector.\r\n</li><li>Multi-UV (multiple UV channels), large UV editor panel rewrite, 2D drawing gizmo (<code>Gizmo2D</code>).\r\n</li></ul>\r\n<p>Rendering refactor + performance\r\n</p>\r\n<ul><li><code>EntityRenderer</code> / <code>RendererManager</code> / <code>MeshGPUBuffer</code> moved to GPU-buffer-based rendering; consolidated duplicated texture loaders. Updated shaders.\r\n</li><li>Detailed refactor plan and FBX export checklist docs added (<code>docs/</code>).\r\n</li><li>Timeline panel, mirror/subdivision modifiers, undo/redo refinements.\r\n</li></ul>",
+  "videos": [],
+  "images": [
+   {
+    "src": "1563631-1.webp",
+    "w": 1279,
+    "h": 720
+   },
+   {
+    "src": "1563631-2.webp",
+    "w": 1278,
+    "h": 721
+   },
+   {
+    "src": "1563631-3.webp",
+    "w": 1277,
+    "h": 824
+   },
+   {
+    "src": "1563631-4.webp",
+    "w": 1278,
+    "h": 692
+   },
+   {
+    "src": "1563631-5.webp",
+    "w": 1276,
+    "h": 718
+   },
+   {
+    "src": "1563631-6.webp",
+    "w": 1280,
+    "h": 717
+   }
+  ]
+ },
+ {
+  "id": "1548680",
+  "product": "level-editor",
+  "title": "Level Editor 1.2",
+  "date": "2026-06-08",
+  "url": "https://papaiart.itch.io/papaiart-tools-level-editor/devlog/1548680/level-editor-12",
+  "version": "1.2",
+  "excerpt": "Level mirroring fix (Level Editor → Unity / OBJ) The 2D editor works in Y-down screen space, which was causing exported levels to come out mirrored along their north-south axis. We fixed the handedness properly for each target: Unity…",
+  "words": 212,
+  "body": "<p><strong></strong><strong>Level mirroring fix (Level Editor → Unity / OBJ)</strong></p><p>The 2D editor works in Y-down screen space, which was causing exported levels to come out mirrored along their north-south axis. We fixed the handedness properly for each target: Unity (left-handed) now maps <code>mapY → -Z</code>, with triangle winding swapped to keep culling correct, thing positions negated on Z, and thing rotation corrected to <code>90 + angle</code>. Importantly, we then realized the OBJ exporter is right-handed and needs no negation at all — the two targets are mirror opposites — so the OBJ path was reverted to write Z verbatim. Net result: geometry now lands the right way round in both Unity and Blender. Also cleaned a stray <code>buildlog.txt</code> out of the repo.\r\n</p>\r\n<p><strong>Recent textures on the toolbar (Level Editor)</strong></p><p>Added a quick-apply row of 5 recent-texture slots to the toolbar. Picking a texture from a sidebar combo (floor / ceiling / wall) pushes it onto a de-duplicated most-recently-used list; clicking a toolbar slot then applies that texture straight to the current selection — the picked face in 3D, or the selected wall / sector floor in 2D. Slots render real texture thumbnails (with grey \"empty\" and red-cross \"missing\" placeholders), and the row refreshes whenever the project or texture set changes.\r\n</p>",
+  "videos": [],
+  "images": [
+   {
+    "src": "1548680-1.webp",
+    "w": 1251,
+    "h": 701
+   },
+   {
+    "src": "1548680-2.webp",
+    "w": 1400,
+    "h": 846
+   },
+   {
+    "src": "1548680-3.webp",
+    "w": 1400,
+    "h": 848
+   }
+  ]
+ },
+ {
+  "id": "1539600",
+  "product": "level-editor",
+  "title": "Unity package for Level Editor",
+  "date": "2026-05-31",
+  "url": "https://papaiart.itch.io/papaiart-tools-level-editor/devlog/1539600/unity-package-for-level-editor",
+  "version": "",
+  "excerpt": "Welcome, and thanks for trying PapaiArt Level Editor. This project started as a love letter to the sector-based level design of the old shooters — fast iteration, hand-placed geometry, a grid you can feel under your feet. If that's the…",
+  "words": 469,
+  "body": "<p>Welcome, and thanks for trying PapaiArt Level Editor. This project started as a love letter to the sector-based level design of the old shooters — fast iteration, hand-placed geometry, a grid you can feel under your feet. If that's the kind of map-making you've been missing, you're in the right place. Build something weird, share what you make, and don't be shy about telling me what's broken — every map you draw makes the tool sharper.\r\n</p>\r\n<p>Unity package: bundle export + auto-import\r\n</p>\r\n<p>Polished the <code>com.papaiart.leveleditor</code> Unity package to make importing maps a one-drop operation.\r\n</p>\r\n<p>Importer defaults cleaned up. Dropped <code>textureScale</code> from the inspector (it duplicated per-surface UV offsets already in the map JSON — now an internal constant <code>TextureTileSize = 64</code>). Set <code>worldScale = 0.041675</code> as the default so the editor's grid lands at the right size in Unity meters. Flipped the <code>flipWinding</code> default to <code>false</code> — kept as a toggle for the rare case where faces look inverted.\r\n</p>\r\n<p>File format rename. Map export now writes <code>.pamap</code> instead of <code>.papaimap</code> (shorter, cleaner). The <code>ScriptedImporter</code>, file-dialog filter, menu label, and package.json description all moved over together.\r\n</p>\r\n<p>Bundle export from the C++ editor. <code>File → Export for Unity (.pamap)…</code> now writes three things side-by-side instead of just the map JSON:\r\n</p>\r\n<ul><li><code>&lt;map&gt;.pamap</code> — the map itself\r\n</li><li><code>&lt;map&gt;.papaiproj</code> — texture sidecar, mirrors the editor's project texture list but with paths relative to the bundle\r\n</li><li><code>Textures/</code> — copies of <em>only</em> the textures actually referenced by the map's floor/ceil/wall names (no project-wide dump)\r\n</li></ul>\r\n<p>New Unity-side <code>.papaiproj</code> ScriptedImporter. Picks up the sidecar and generates a <code>MaterialDatabase</code> sub-asset plus one <code>Material</code> sub-asset per texture name, wired to the matching PNG in <code>Textures/</code>. <code>FLOOR_&lt;n&gt;</code>, <code>CEIL_&lt;n&gt;</code>, <code>WALL_&lt;n&gt;</code> all point at the same material. Source-asset dependencies are registered so the database re-imports when a texture changes.\r\n</p>\r\n<p>Sibling auto-discovery. When the <code>.pamap</code> importer's <code>materialDatabase</code> field is left empty, it scans the map's folder for a sibling <code>.papaiproj</code> and binds the generated database automatically. End-user workflow is now: export from the editor → drop the folder into Unity → drag the prefab into the scene. Zero clicks in between.\r\n</p>\r\n<p>Docs. PDF user guides walking through the full flow with annotated screenshots.\r\n</p>\r\n<p>Thank you. To everyone who tried the early builds, filed bug reports with screenshots, sketched maps that broke the importer in interesting ways, and kept asking <em>\"can it also do…\"</em> — this release exists because you didn't give up on it. Special thanks to the open-beta testers for their patience while sectors split themselves at the worst possible moments, and to the Blender, Doom, and Unity communities whose decades of accumulated wisdom on geometry, sloped sectors, and asset pipelines saved me from reinventing more than I already did. If your name belongs here and isn't, write to me — I'll fix it in the next release.\r\n</p>",
+  "videos": [],
+  "images": [
+   {
+    "src": "1539600-1.webp",
+    "w": 668,
+    "h": 577
+   },
+   {
+    "src": "1539600-2.webp",
+    "w": 1400,
+    "h": 784
+   },
+   {
+    "src": "1539600-3.webp",
+    "w": 1400,
+    "h": 729
+   }
+  ]
+ },
+ {
+  "id": "1418111",
+  "product": "level-editor",
+  "title": "Level Editor 0.5.2",
+  "date": "2026-02-24",
+  "url": "https://papaiart.itch.io/papaiart-tools-level-editor/devlog/1418111/level-editor-052",
+  "version": "0.5.2",
+  "excerpt": "The new version comes with a few but all the more useful features. One of them is support for multiple image formats, including PNG, JPG, and BMP . The other addition is the ability to slide textures for a perfect fit. By pressing the TAB…",
+  "words": 335,
+  "body": "<p>The new version comes with a few but all the more useful features. One of them is support for multiple image formats, including <strong>PNG, JPG, and BMP</strong>.</p>\r\n<p>The other addition is the ability to slide textures for a perfect fit. By pressing the <strong>TAB</strong> key to switch to <strong>3D view</strong>, you can select the walls and use the <strong>arrow keys</strong> on your keyboard to position the textures.\r\n</p>\r\n<p><strong>Have fun!</strong>\r\n</p>\r\n<p>If you notice any bugs or have any suggestions, I look forward to hearing them in the comments section.<br><br></p>\r\n<p>La nouvelle version s'enrichit de quelques fonctionnalités, mais elles n'en sont pas moins utiles. L'une d'entre elles est la prise en charge de plusieurs formats d'image : <strong>PNG, JPG, BMP</strong>. L'autre nouveauté est la possibilité de faire glisser les textures pour les ajuster. En passant à la <strong>vue 3D</strong> à l'aide de la touche <strong>TAB</strong>, vous pouvez sélectionner les murs et positionner la texture à l'aide des <strong>flèches</strong> du clavier.\r\n</p>\r\n<p><strong>Amusez-vous bien !</strong>\r\n</p>\r\n<p>Si vous remarquez des erreurs ou si vous avez des idées, je les attends dans la section des commentaires.\r\n</p>\r\n<p><br></p>\r\n<p>La nuova versione include poche ma utilissime funzioni. Una di queste è il supporto a più formati di immagine: <strong>PNG, JPG, BMP</strong>. L'altra è la possibilità di far scorrere le texture per adattarle meglio. Passando alla <strong>vista 3D</strong> con il tasto <strong>TAB</strong>, è possibile selezionare le pareti e posizionare la texture usando le <strong>frecce</strong> della tastiera.\r\n</p>\r\n<p><strong>Buon divertimento!</strong>\r\n</p>\r\n<p>Se notate errori o avete suggerimenti, scriveteli pure nella sezione commenti.\r\n</p>\r\n<p>В новую версию добавлено несколько, но очень полезных функций. Одна из них — поддержка нескольких форматов изображений: <strong>PNG, JPG, BMP</strong>. Другая — возможность сдвигать текстуры для их выравнивания. Переключившись в <strong>3D-вид</strong> с помощью клавиши <strong>TAB</strong>, вы можете выбрать стены и позиционировать текстуру с помощью <strong>стрелок</strong> на клавиатуре.\r\n</p>\r\n<p><strong>Желаем удачи!</strong> (vagy: <strong>Приятного пользования!</strong>)\r\n</p>\r\n<p>Если вы заметили ошибку или у вас есть идеи, жду ваших отзывов в комментариях.\r\n</p>\r\n<p><br></p>\r\n<p>新バージョンでは、数は少ないものの、非常に便利な機能がいくつか追加されました。一つは、<strong>PNG、JPG、BMP</strong>といった複数の画像形式に対応したことです。もう一つは、テクスチャをスライドさせて調整できる機能です。<strong>TABキー</strong>で<strong>3Dビュー</strong>に切り替え、壁を選択した後、キーボードの<strong>矢印キー</strong>を使ってテクスチャの位置を合わせることができます。\r\n</p>\r\n<p><strong>楽しんでください！</strong>\r\n</p>\r\n<p>バグを見つけた場合やアイデアがある場合は、コメント欄でお待ちしております。\r\n</p>",
+  "videos": [],
+  "images": []
+ }
+]

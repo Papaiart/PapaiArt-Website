@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level Modeller 1.4.2 GPU Lightbake — Level Modeller devlog</title>
+    <meta name="description" content="Until now the lightmap was one texture, and a bigger level simply meant coarser shadows — the same 2048 px stretched over more square meters. That is backwards: texel density is the quality setting , ">
+    <meta name="author" content="Babhár Kft.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#a594ff">
+    <meta name="color-scheme" content="dark">
+    <link rel="canonical" href="https://www.papaiart.com/devlog/1625876-level-modeller-1-4-2-gpu-lightbake.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="PapaiArt">
+    <meta property="og:title" content="Level Modeller 1.4.2 GPU Lightbake — Level Modeller devlog">
+    <meta property="og:description" content="Until now the lightmap was one texture, and a bigger level simply meant coarser shadows — the same 2048 px stretched over more square meters. That is backwards: texel density is the quality setting , ">
+    <meta property="og:url" content="https://www.papaiart.com/devlog/1625876-level-modeller-1-4-2-gpu-lightbake.html">
+    <meta property="og:image" content="https://www.papaiart.com/assets/images/og/home.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Level Modeller 1.4.2 GPU Lightbake — Level Modeller devlog">
+    <meta name="twitter:description" content="Until now the lightmap was one texture, and a bigger level simply meant coarser shadows — the same 2048 px stretched over more square meters. That is backwards: texel density is the quality setting , ">
+    <meta name="twitter:image" content="https://www.papaiart.com/assets/images/og/home.png">
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="../site.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/site.css">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Level Modeller 1.4.2 GPU Lightbake", "datePublished": "2026-08-12", "url": "https://www.papaiart.com/devlog/1625876-level-modeller-1-4-2-gpu-lightbake.html", "author": {"@type": "Person", "name": "Bence Pápai"}, "publisher": {"@type": "Organization", "name": "Babhár Kft."}, "about": {"@type": "SoftwareApplication", "name": "PapaiArt Tools – Level Modeller", "url": "https://www.papaiart.com/software/level-modeller.html"}, "isBasedOn": "https://papaiart.itch.io/papaiart-tools-level-modeller/devlog/1625876/level-modeller-142-gpu-lightbake"}</script>
+    <link rel="alternate" href="https://papaiart.itch.io/papaiart-tools-level-modeller/devlog/1625876/level-modeller-142-gpu-lightbake" title="Original post on itch.io">
+</head>
+<body class="pa-dark" style="--p:#a594ff;--p-ink:#0e0a1f">
+<nav class="pa-nav" aria-label="Main">
+    <div class="pa-nav__inner">
+        <a class="pa-brand" href="../index.html" aria-label="PapaiArt home">
+            <img src="../assets/images/pa-mark.png" alt="" width="30" height="27">
+            <span><b>PapaiArt</b><small>Software</small></span>
+        </a>
+        <button class="pa-nav__toggle" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+        <ul class="pa-menu">
+            <li class="pa-has-mega"><button aria-haspopup="true">Software <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="pa-mega"><div class="pa-mega__group">Game development</div><a href="../software/fps-lab.html"><img src="../assets/images/icons/fps-lab.png" alt="" width="38" height="38"><div><b>FPS Lab</b><span>Game engine</span></div></a><a href="../software/level-editor.html"><img src="../assets/images/icons/level-editor.png" alt="" width="38" height="38"><div><b>Level Editor</b><span>Doom-style level editor</span></div></a><a href="../software/level-modeller.html"><img src="../assets/images/icons/level-modeller.png" alt="" width="38" height="38"><div><b>Level Modeller</b><span>CSG level editor</span></div></a><a href="../software/terrain-generator.html"><img src="../assets/images/icons/terrain-generator.png" alt="" width="38" height="38"><div><b>Terrain Generator</b><span>Landscape generator</span></div></a><div class="pa-mega__group">Art &amp; animation</div><a href="../software/animation-studio.html"><img src="../assets/images/icons/animation-studio.png" alt="" width="38" height="38"><div><b>Animation Studio</b><span>Hybrid 2D/3D animation</span></div></a><a href="../software/pixelpaint-98-pro.html"><img src="../assets/images/icons/pixelpaint-98-pro.png" alt="" width="38" height="38"><div><b>PixelPaint 98 Pro</b><span>Pixel art editor</span></div></a></div>
+            </li>
+            <li><a href="../devlog.html" class="is-active">Devlog</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="https://papaiart.itch.io" target="_blank" rel="noopener">itch.io</a></li>
+            <li class="pa-menu__mobile-cta"><a class="pa-btn pa-btn--primary" href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg> Join the Discord</a></li>
+        </ul>
+        <a class="pa-btn pa-btn--primary pa-btn--sm pa-nav__cta" href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg> Discord</a>
+    </div>
+</nav>
+
+<header class="post-hero">
+    
+    <div class="pa-wrap">
+        <div class="post-crumb"><a href="../devlog.html">Devlog</a><span>/</span><a href="../software/level-modeller.html">Level Modeller</a></div>
+        <h1>Level Modeller 1.4.2 GPU Lightbake</h1>
+        <div class="post-hero__meta">
+            <span class="pa-chip"><img src="../assets/images/icons/level-modeller.png" alt="" width="16" height="16" style="width:16px;height:16px">Level Modeller</span>
+            <span class="pa-chip pa-chip--accent">v1.4.2</span>
+            <span class="pa-chip"><time datetime="2026-08-12">August 12, 2026</time></span>
+            <span class="pa-chip">5 min read</span>
+        </div>
+    </div>
+</header>
+
+
+
+<article class="pa-wrap"><div class="pa-prose"><h3>The atlas grows in pages</h3>
+<p>Until now the lightmap was one texture, and a bigger level simply meant coarser shadows — the same 2048 px stretched over more square meters. That is backwards: <b>texel density is the quality setting</b>, and the atlas should grow to hold it.</p>
+<p>So it does. The Lightmap menu now offers:</p>
+<ul>
+<li><b>Texel density</b> (texels per world unit) — the real quality knob, with the centimeter equivalent spelled out under it (<code>1 texel = 5.0 cm</code>). Set it to 0 for the old behavior: everything squeezed into a single page.</li>
+</ul>
+<ul>
+<li><b>Page size</b> — how big <em>one</em> page is (256…4096 px). The atlas adds pages as needed to keep the density.</li>
+</ul>
+<ul>
+<li>A <b>page estimate before you bake</b>: <code>~12 pages (48 MB)</code>, turning orange past 32 pages, so a density that would cost hours is visible up front. Generating the atlas once calibrates the estimate against the real unwrap instead of the theoretical maximum.</li>
+</ul>
+<p>Everything downstream followed: the baker outputs one image per page, the preview thumbnail and the full-size viewer got a page stepper, Save PNG names the page, the OBJ atlas export rasterizes per page, and the export bundle ships <code>&lt;map&gt;_lightmap_0.png</code>, <code>_1.png</code>, … next to the map.</p>
+<h3>Big flat surfaces no longer lose their detail</h3>
+<p>A subtle one that cost real quality: xatlas merges coplanar faces into a single planar chart, and silently scales down anything that will not fit a page — measured at <b>66% of the requested density on a 200×200 m floor</b>. Cell ids fed as per-face materials break those charts up, but only if the geometry is actually cut at the cell borders.</p>
+<p>So there is now a grid clipper: triangles are cut along a <b>global</b> cell grid, so two triangles sharing an edge are cut at the same point on it and the surface stays watertight. (Bisecting each triangle on its own terms would leave T-vertices, which show up in the bake as black seams along every cut.) Covered by its own test.</p>
+<h3>Per-object lightmap density</h3>
+<p>New Inspector slider under Material: <b>Density</b>, a multiplier on the scene's texel density for that object (Unity calls it <em>Scale In Lightmap</em>). Pages are the budget — spend texels on the feature wall the player studies, save them on the ceiling. It rides through the CSG boolean the same way per-face textures do, so a cut surface inherits the cutter's density.</p>
+<h3>The bake finally tells you what it did</h3>
+<p>The Lightmap panel stopped being optimistic:</p>
+<ul>
+<li><code>Tris: 8412 of 8590 atlased</code> — a gap means xatlas rejected faces (degenerate or duplicate); those surfaces carry no lightmap at all.</li>
+</ul>
+<ul>
+<li><code>Density: 6.2 of 8.0 tx/unit (78%)</code> — what the atlas actually delivers versus what you asked for.</li>
+</ul>
+<ul>
+<li><code>3 charts shrunk to fit a page</code> — the surfaces that lost detail, with the hint that a bigger page size keeps them intact.</li>
+</ul>
+<ul>
+<li>A warning when the mesh hits the vertex cap.</li>
+</ul>
+<h3>Indirect Only</h3>
+<p>New bake mode: bake <b>ambient and bounced light only</b> and leave the direct term to the engine's realtime lights. Indirect light is soft, so it needs far less texel density — a much cheaper bake for a game that lights itself in realtime.</p>
+<p>The editor's baked view adds a stand-in direct term on top, otherwise the preview would be near-black and tell you nothing. The Unity importer knows about it too: the package's Baked Lit shader <em>replaces</em> lighting and takes no realtime light, so an indirect-only map is imported with plain lit materials + realtime lights, and the import log explains why.</p>
+<h3>GPU bake</h3>
+<p>The whole ray-tracing part of the bake now runs in a compute shader (<code>lightmap.comp</code>), one invocation per texel — same math as the CPU worker. Only the tracing moved; the atlas rasterization, the BVH build and the final dilate stay on the CPU, where they are cheap.</p>
+<p>The interesting part is <em>how</em> it runs. A bake is not one dispatch — it is a state machine stepped once per frame from the main thread (a Vulkan queue may only be used from one thread at a time, and the renderer owns it). Each step submits one batch of texels and returns; the next frame polls the fence. That keeps the editor drawing, keeps progress and cancel working, and keeps every submit far below the OS GPU watchdog timeout — the one that resets your GPU after ~2 seconds and takes the whole application with it. The batch size adapts to the measured time per batch.</p>
+<p>Two command buffers, not one: with a single slot the GPU sat idle from the moment a batch finished until the next frame noticed, and at 120 fps that idle time dominated enough to make the "GPU" bake <em>slower</em> than the CPU one.</p>
+<p>Both devices now share one bake core, so they cannot drift apart on what a texel is — and that shared BVH got a <b><strong></b><b>binned SAH split</b><b></strong></b> instead of the old median split (2–3× fewer node visits per ray; the build itself is milliseconds either way) plus triangles reordered into leaf order for the cache.</p>
+<p>Pick the device in <b>Lightmap → Device</b>. Anything that stops the GPU path (no compute, does not fit in VRAM) falls back to the CPU silently and says why right there, and the menu reports <code>Last bake: 12.4 s on the GPU</code>. Two new test harnesses came with it: a correctness test (CPU vs GPU on small scenes) and a benchmark on a scene with a genuinely deep BVH, printing rays/second for both — so a change can be judged instead of guessed at.</p>
+<h3>Unity package 0.2.0</h3>
+<p>Kept in step with all of the above: multi-page lightmaps (one material per texture × page, so every surface samples the page its UV1 belongs to), the per-page PNG sidecars, indirect-only handling with a proper import warning, and an importer version bump so existing maps re-import cleanly.</p></div></article>
+
+
+
+<div class="pa-wrap" style="max-width:760px;margin-top:56px;display:flex;gap:12px;flex-wrap:wrap">
+    <a class="pa-btn pa-btn--primary" href="https://papaiart.itch.io/papaiart-tools-level-modeller" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg> Get Level Modeller</a>
+    <a class="pa-btn pa-btn--ghost" href="https://papaiart.itch.io/papaiart-tools-level-modeller/devlog/1625876/level-modeller-142-gpu-lightbake" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg> Comment on itch.io</a>
+    <a class="pa-btn pa-btn--ghost" href="../software/level-modeller.html">Level Modeller overview</a>
+</div>
+<div class="pa-wrap" style="margin-top:72px"><div class="post-nav"><a class="prev" href="../devlog/1621070-papaiart-tools-level-modeller-1-3-1.html"><small>← Older</small><b>PapaiArt Tools - Level Modeller - 1.3.1</b></a><a class="next" href="../devlog/1629848-papaiart-tools-level-modeller-1-5-2.html"><small>Newer →</small><b>PapaiArt Tools - Level Modeller - 1.5.2</b></a></div></div>
+
+<div style="height:100px"></div>
+<footer class="pa-footer">
+    <div class="pa-footer__grid">
+        <div>
+            <a class="pa-brand" href="../index.html"><img src="../assets/images/pa-mark.png" alt="" width="30" height="27"><span><b>PapaiArt</b><small>Software</small></span></a>
+            <p>Independent creative software for animators, level designers and game developers. Built by Babhár Kft. in Hungary.</p>
+            <div class="pa-footer__social">
+                <a href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener" aria-label="Discord"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg></a>
+                <a href="https://patreon.com/PapaiArt" target="_blank" rel="noopener" aria-label="Patreon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5.4 5.4 0 0 0-7.7 0L12 6.7l-1.1-1.1a5.4 5.4 0 0 0-7.7 7.7L12 22l8.8-8.7a5.4 5.4 0 0 0 0-7.7z"/></svg></a>
+                <a href="https://papaiart.itch.io" target="_blank" rel="noopener" aria-label="itch.io"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9M3 9h18M3 9v11h18V9M9 20v-6h6v6"/></svg></a>
+                <a href="https://www.linkedin.com/in/bence-papai-papaiart/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.6 8.65 22 11.3 22 14.1V21h-4v-6.1c0-1.46-.03-3.33-2.03-3.33-2.03 0-2.34 1.59-2.34 3.23V21h-4z"/></svg></a>
+            </div>
+        </div>
+        <div><h4>Game development</h4><ul><li><a href="../software/fps-lab.html">FPS Lab</a></li><li><a href="../software/level-editor.html">Level Editor</a></li><li><a href="../software/level-modeller.html">Level Modeller</a></li><li><a href="../software/terrain-generator.html">Terrain Generator</a></li></ul></div>
+        <div><h4>Art &amp; animation</h4><ul><li><a href="../software/animation-studio.html">Animation Studio</a></li><li><a href="../software/pixelpaint-98-pro.html">PixelPaint 98 Pro</a></li></ul></div>
+        <div><h4>PapaiArt</h4><ul>
+            <li><a href="../devlog.html">Devlog</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../about.html#contact">Contact</a></li>
+            <li><a href="../learn.html">Animation Studio articles</a></li>
+            <li><a href="https://papaiart.itch.io" target="_blank" rel="noopener">All downloads on itch.io</a></li>
+        </ul></div>
+    </div>
+    <div class="pa-footer__base">
+        <span>© 2026 Babhár Kft. All rights reserved.</span>
+        <span>Made in Hungary · <a href="mailto:babharkft@gmail.com">babharkft@gmail.com</a></span>
+    </div>
+</footer>
+<script src="../assets/js/site.js" defer></script>
+</body>
+</html>

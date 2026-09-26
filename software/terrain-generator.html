@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PapaiArt Tools – Terrain Generator — Landscape generator</title>
+    <meta name="description" content="Start from noise and erosion, shape the result by hand, look at it as a full 3D world with sky, sea and weather, then export something your engine, renderer or printer can use.">
+    <meta name="author" content="Babhár Kft.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#eaa640">
+    <meta name="color-scheme" content="dark">
+    <link rel="canonical" href="https://www.papaiart.com/software/terrain-generator.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="PapaiArt">
+    <meta property="og:title" content="PapaiArt Tools – Terrain Generator — Landscape generator">
+    <meta property="og:description" content="Start from noise and erosion, shape the result by hand, look at it as a full 3D world with sky, sea and weather, then export something your engine, renderer or printer can use.">
+    <meta property="og:url" content="https://www.papaiart.com/software/terrain-generator.html">
+    <meta property="og:image" content="https://www.papaiart.com/assets/images/og/terrain-generator.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PapaiArt Tools – Terrain Generator — Landscape generator">
+    <meta name="twitter:description" content="Start from noise and erosion, shape the result by hand, look at it as a full 3D world with sky, sea and weather, then export something your engine, renderer or printer can use.">
+    <meta name="twitter:image" content="https://www.papaiart.com/assets/images/og/terrain-generator.png">
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="../site.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/site.css">
+    <script type="importmap">
+    { "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    } }
+    </script>
+    <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" crossorigin>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "PapaiArt Tools – Terrain Generator", "url": "https://www.papaiart.com/software/terrain-generator.html", "applicationCategory": "DeveloperApplication", "operatingSystem": "Windows", "description": "Start from noise and erosion, shape the result by hand, look at it as a full 3D world with sky, sea and weather, then export something your engine, renderer or printer can use.", "image": "https://www.papaiart.com/assets/images/products/terrain-generator/shot-01.webp", "screenshot": ["https://www.papaiart.com/assets/images/products/terrain-generator/shot-01.webp", "https://www.papaiart.com/assets/images/products/terrain-generator/shot-02.webp", "https://www.papaiart.com/assets/images/products/terrain-generator/shot-03.webp", "https://www.papaiart.com/assets/images/products/terrain-generator/shot-04.webp", "https://www.papaiart.com/assets/images/products/terrain-generator/shot-05.webp", "https://www.papaiart.com/assets/images/products/terrain-generator/shot-06.webp"], "offers": {"@type": "Offer", "price": "15", "priceCurrency": "USD", "url": "https://papaiart.itch.io/papaiart-tools-terrain-generator"}, "publisher": {"@type": "Organization", "name": "Babhár Kft.", "url": "https://www.papaiart.com/"}}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.papaiart.com/"}, {"@type": "ListItem", "position": 2, "name": "Terrain Generator", "item": "https://www.papaiart.com/software/terrain-generator.html"}]}</script>
+</head>
+<body class="pa-dark" style="--p:#eaa640;--p-ink:#1a1004">
+<nav class="pa-nav" aria-label="Main">
+    <div class="pa-nav__inner">
+        <a class="pa-brand" href="../index.html" aria-label="PapaiArt home">
+            <img src="../assets/images/pa-mark.png" alt="" width="30" height="27">
+            <span><b>PapaiArt</b><small>Software</small></span>
+        </a>
+        <button class="pa-nav__toggle" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+        <ul class="pa-menu">
+            <li class="pa-has-mega"><button class="is-active" aria-haspopup="true">Software <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="pa-mega"><div class="pa-mega__group">Game development</div><a href="../software/fps-lab.html"><img src="../assets/images/icons/fps-lab.png" alt="" width="38" height="38"><div><b>FPS Lab</b><span>Game engine</span></div></a><a href="../software/level-editor.html"><img src="../assets/images/icons/level-editor.png" alt="" width="38" height="38"><div><b>Level Editor</b><span>Doom-style level editor</span></div></a><a href="../software/level-modeller.html"><img src="../assets/images/icons/level-modeller.png" alt="" width="38" height="38"><div><b>Level Modeller</b><span>CSG level editor</span></div></a><a href="../software/terrain-generator.html"><img src="../assets/images/icons/terrain-generator.png" alt="" width="38" height="38"><div><b>Terrain Generator</b><span>Landscape generator</span></div></a><div class="pa-mega__group">Art &amp; animation</div><a href="../software/animation-studio.html"><img src="../assets/images/icons/animation-studio.png" alt="" width="38" height="38"><div><b>Animation Studio</b><span>Hybrid 2D/3D animation</span></div></a><a href="../software/pixelpaint-98-pro.html"><img src="../assets/images/icons/pixelpaint-98-pro.png" alt="" width="38" height="38"><div><b>PixelPaint 98 Pro</b><span>Pixel art editor</span></div></a></div>
+            </li>
+            <li><a href="../devlog.html">Devlog</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="https://papaiart.itch.io" target="_blank" rel="noopener">itch.io</a></li>
+            <li class="pa-menu__mobile-cta"><a class="pa-btn pa-btn--primary" href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg> Join the Discord</a></li>
+        </ul>
+        <a class="pa-btn pa-btn--primary pa-btn--sm pa-nav__cta" href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg> Discord</a>
+    </div>
+</nav>
+
+<header class="pa-hero prod-hero" data-hero="terrain" data-shift="0.22">
+    
+    <div class="pa-wrap prod-hero__grid">
+        <div>
+            <div class="prod-hero__id"><img src="../assets/images/icons/terrain-generator.png" alt="" width="64" height="64"><span class="pa-eyebrow">Landscape generator</span></div>
+            <h1><small>PapaiArt Tools</small>Terrain Generator</h1>
+            <p class="prod-hero__tagline">Start from noise and erosion, shape the result by hand, look at it as a full 3D world with sky, sea and weather, then export something your engine, renderer or printer can use.</p>
+            <div class="prod-hero__ctas"><a class="pa-btn pa-btn--primary pa-btn--lg" href="https://papaiart.itch.io/papaiart-tools-terrain-generator" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg> Get it for $15</a><a class="pa-btn pa-btn--ghost pa-btn--lg" href="#video"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l6-3.5z"/></svg> Watch video</a></div>
+            <div class="prod-hero__chips"><span class="pa-chip pa-chip--accent"><span class="dot"></span>New release</span><span class="pa-chip">Windows</span><span class="pa-chip">$15 · One-time purchase</span></div>
+        </div>
+    </div>
+</header>
+
+<div class="pa-wrap prod-showcase">
+    <div class="pa-window">
+        <div class="pa-window__bar"><i></i><i></i><i></i><span>PapaiArt Tools – Terrain Generator</span></div>
+        <img src="../assets/images/products/terrain-generator/shot-01.webp" data-zoom="../assets/images/products/terrain-generator/shot-01.webp" alt="Terrain Generator interface" fetchpriority="high">
+    </div>
+    <dl class="pa-facts reveal"><div><dt>Status</dt><dd>New release</dd></div><div><dt>Latest version</dt><dd>—</dd></div><div><dt>Platform</dt><dd>Windows</dd></div><div><dt>Price</dt><dd>$15</dd></div><div><dt>Last update</dt><dd>See itch.io</dd></div></dl>
+</div>
+
+<section class="pa-section">
+    <div class="pa-wrap pa-overview">
+        <div class="pa-overview__body reveal">
+            <span class="pa-eyebrow">Overview</span>
+            <h2>Build eroded landscapes, walk around in them, and export heightmaps, meshes, skies and print-and-play maps.</h2>
+            <p>Terrain Generator is a standalone desktop tool for building landscapes. It starts with a fractal base with ridged crests, then runs a water simulation that cuts real drainage into it. Thermal erosion, river incision, terracing and domain warp are separate steps you can reorder.</p><p>When the sliders aren't enough, there is a node graph with Voronoi cells, fault scarps, fold ranges, impact craters, mesas, karst towers, volcanoes, and blend, mask and remap nodes. About 45 presets cover mountains, coasts, deserts, karst, plains and volcanic land.</p><p>The viewport shows the finished look, not a proxy. Walk mode drops you into the landscape as a first-person avatar, so you can walk or swim across it.</p>
+            
+        </div>
+        <aside class="pa-callout reveal"><h3>Export targets</h3><ul><li>Heightmaps: PNG 8/16-bit, RAW r16 / r32, Radiance HDR</li><li>Normal, AO, hillshade, rivers, contours, splat masks</li><li>Meshes: OBJ, FBX, glTF/GLB, STL, PLY with LOD tiles</li><li>Skies: HDRI panoramas, cube maps, engine skyboxes</li><li>Print-and-play hex or square board maps</li></ul></aside>
+    </div>
+</section>
+
+<section class="pa-section pa-section--alt">
+    <div class="pa-wrap">
+        <div class="pa-head reveal"><span class="pa-eyebrow">Features</span><h2>What's inside</h2></div>
+        <div class="pa-feature">
+    <div class="pa-feature__copy reveal">
+        <span class="pa-feature__num">01 / 05</span>
+        <h3>Generate</h3>
+        <p class="pa-feature__lead">Noise, erosion and landforms, each as its own step you can reorder.</p>
+        <ul><li>Noise and <strong>droplet erosion</strong> that cuts real drainage</li><li>Thermal erosion, river incision, terracing and domain warp</li><li>A node graph for craters, mesas, karst towers, volcanoes, fault scarps and more</li><li>Import a heightmap as a node and build on top of it</li><li>~45 presets grouped by landscape type</li></ul>
+    </div>
+    <div class="pa-feature__media reveal"><img src="../assets/images/products/terrain-generator/shot-02.webp" data-zoom="../assets/images/products/terrain-generator/shot-02.webp" data-group="features" alt="Terrain Generator: Generate" loading="lazy" decoding="async"></div>
+</div><div class="pa-feature pa-feature--flip">
+    <div class="pa-feature__copy reveal">
+        <span class="pa-feature__num">02 / 05</span>
+        <h3>Shape it by hand</h3>
+        <p class="pa-feature__lead">A non-destructive curve stack over the generated land.</p>
+        <ul><li>Draw a line to flatten a road, raise a ridge or dig a trench</li><li>Cut-only and fill-only modes, four falloff profiles, width and feather per curve</li><li>Re-roll the terrain underneath and the curves still hold</li><li>Worlds up to 8 × 8 sectors, 10 m to 20 km per sector edge</li></ul>
+    </div>
+    <div class="pa-feature__media reveal"><img src="../assets/images/products/terrain-generator/shot-01.webp" data-zoom="../assets/images/products/terrain-generator/shot-01.webp" data-group="features" alt="Terrain Generator: Shape it by hand" loading="lazy" decoding="async"></div>
+</div><div class="pa-feature">
+    <div class="pa-feature__copy reveal">
+        <span class="pa-feature__num">03 / 05</span>
+        <h3>See it before you export</h3>
+        <p class="pa-feature__lead">The viewport is the final look, with sky, sea and weather.</p>
+        <ul><li>Four authorable material layers with noise-broken transitions</li><li>Sea with waves, foam, wet shorelines, caustics and an underwater look</li><li>Volumetric clouds, cloud shadows, haze, sun shafts and ground mist</li><li>Procedural grass, rocks and pebbles that thin out with distance</li><li><strong>Walk mode</strong>: walk or swim across the site in first person</li></ul>
+    </div>
+    <div class="pa-feature__media reveal"><img src="../assets/images/products/terrain-generator/shot-04.webp" data-zoom="../assets/images/products/terrain-generator/shot-04.webp" data-group="features" alt="Terrain Generator: See it before you export" loading="lazy" decoding="async"></div>
+</div><div class="pa-feature pa-feature--flip">
+    <div class="pa-feature__copy reveal">
+        <span class="pa-feature__num">04 / 05</span>
+        <h3>Export anywhere</h3>
+        <p class="pa-feature__lead">Maps, meshes and skies, with ready-made presets for the big engines.</p>
+        <ul><li>Presets for <strong>Unity, Unreal</strong> (Z-up, centimetres), <strong>Godot</strong> and <strong>Blender</strong></li><li>One mesh, one per sector, or streaming tiles with an LOD ladder and skirts</li><li>Equirectangular panoramas, cube maps in five layouts, six-face skyboxes</li><li>Up axis, handedness, scale and UV layout are all yours</li></ul>
+    </div>
+    <div class="pa-feature__media reveal"><img src="../assets/images/products/terrain-generator/shot-03.webp" data-zoom="../assets/images/products/terrain-generator/shot-03.webp" data-group="features" alt="Terrain Generator: Export anywhere" loading="lazy" decoding="async"></div>
+</div><div class="pa-feature">
+    <div class="pa-feature__copy reveal">
+        <span class="pa-feature__num">05 / 05</span>
+        <h3>Tabletop maps</h3>
+        <p class="pa-feature__lead">A full print-and-play board export for your next campaign.</p>
+        <ul><li>Hex (pointy or flat top) or square grids</li><li>A4, Letter, Tabloid and A2 multi-sheet layouts</li><li>Coordinate labels, legend, compass, scale bar, elevation key and movement cost</li><li>Fantasy-antique, blueprint, contour ink, cartographic or phosphor-terminal styles</li></ul>
+    </div>
+    <div class="pa-feature__media reveal"><img src="../assets/images/products/terrain-generator/shot-05.webp" data-zoom="../assets/images/products/terrain-generator/shot-05.webp" data-group="features" alt="Terrain Generator: Tabletop maps" loading="lazy" decoding="async"></div>
+</div>
+    </div>
+</section>
+
+
+
+<section class="pa-section" id="video">
+    <div class="pa-wrap">
+        <div class="pa-head pa-head--center reveal"><span class="pa-eyebrow">See it in action</span><h2>Watch Terrain Generator</h2></div>
+        <div class="reveal"><div class="pa-video" data-yt="hi7Nh1JPMOo" data-title="Terrain Generator overview"><button aria-label="Play video: Terrain Generator overview"><span><svg viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></svg></span></button><span class="pa-video__label">▶ Terrain Generator overview</span></div></div>
+        
+    </div>
+</section>
+
+<section class="pa-section pa-section--alt">
+    <div class="pa-wrap">
+        <div class="pa-head reveal"><span class="pa-eyebrow">Gallery</span><h2>Screenshots</h2></div>
+        <div class="pa-gallery"><a href="../assets/images/products/terrain-generator/shot-01.webp" data-zoom="../assets/images/products/terrain-generator/shot-01.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/terrain-generator/shot-01.webp" alt="Terrain Generator screenshot 1" loading="lazy" decoding="async"></a><a href="../assets/images/products/terrain-generator/shot-02.webp" data-zoom="../assets/images/products/terrain-generator/shot-02.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/terrain-generator/shot-02.webp" alt="Terrain Generator screenshot 2" loading="lazy" decoding="async"></a><a href="../assets/images/products/terrain-generator/shot-03.webp" data-zoom="../assets/images/products/terrain-generator/shot-03.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/terrain-generator/shot-03.webp" alt="Terrain Generator screenshot 3" loading="lazy" decoding="async"></a><a href="../assets/images/products/terrain-generator/shot-04.webp" data-zoom="../assets/images/products/terrain-generator/shot-04.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/terrain-generator/shot-04.webp" alt="Terrain Generator screenshot 4" loading="lazy" decoding="async"></a><a href="../assets/images/products/terrain-generator/shot-05.webp" data-zoom="../assets/images/products/terrain-generator/shot-05.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/terrain-generator/shot-05.webp" alt="Terrain Generator screenshot 5" loading="lazy" decoding="async"></a><a href="../assets/images/products/terrain-generator/shot-06.webp" data-zoom="../assets/images/products/terrain-generator/shot-06.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/terrain-generator/shot-06.webp" alt="Terrain Generator screenshot 6" loading="lazy" decoding="async"></a><a href="../assets/images/products/terrain-generator/shot-07.webp" data-zoom="../assets/images/products/terrain-generator/shot-07.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/terrain-generator/shot-07.webp" alt="Terrain Generator screenshot 7" loading="lazy" decoding="async"></a></div>
+    </div>
+</section>
+
+
+
+<section class="pa-section">
+    <div class="pa-wrap">
+        <div class="pa-cta reveal">
+            <img class="pa-cta__icon" src="../assets/images/icons/terrain-generator.png" alt="">
+            <div>
+                <h2>Get Terrain Generator</h2>
+                <p>Build eroded landscapes, walk around in them, and export heightmaps, meshes, skies and print-and-play maps.</p>
+                <div class="pa-cta__meta"><span>Windows 10 / 11, 64-bit</span><span>A graphics card from roughly the last decade, up-to-date drivers</span><span>No installer, no dependencies, no account, no internet connection</span></div>
+            </div>
+            <div class="pa-cta__actions">
+                <a class="pa-btn pa-btn--primary pa-btn--lg" href="https://papaiart.itch.io/papaiart-tools-terrain-generator" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg> $15 on itch.io</a>
+                <a class="pa-btn pa-btn--ghost" href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg> Ask on Discord</a>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pa-section pa-section--tight" style="padding-top:0">
+    <div class="pa-wrap">
+        <div class="pa-group-title"><h3>More from PapaiArt</h3></div>
+        <div class="pa-more"><a href="fps-lab.html" style="--p:#34c47e"><img src="../assets/images/icons/fps-lab.png" alt=""><div><b>FPS Lab</b><span>Game engine</span></div></a><a href="level-editor.html" style="--p:#ffc800"><img src="../assets/images/icons/level-editor.png" alt=""><div><b>Level Editor</b><span>Doom-style level editor</span></div></a><a href="level-modeller.html" style="--p:#a594ff"><img src="../assets/images/icons/level-modeller.png" alt=""><div><b>Level Modeller</b><span>CSG level editor</span></div></a><a href="animation-studio.html" style="--p:#2ea4f5"><img src="../assets/images/icons/animation-studio.png" alt=""><div><b>Animation Studio</b><span>Hybrid 2D/3D animation</span></div></a><a href="pixelpaint-98-pro.html" style="--p:#1fc1c1"><img src="../assets/images/icons/pixelpaint-98-pro.png" alt=""><div><b>PixelPaint 98 Pro</b><span>Pixel art editor</span></div></a></div>
+    </div>
+</section>
+
+<footer class="pa-footer">
+    <div class="pa-footer__grid">
+        <div>
+            <a class="pa-brand" href="../index.html"><img src="../assets/images/pa-mark.png" alt="" width="30" height="27"><span><b>PapaiArt</b><small>Software</small></span></a>
+            <p>Independent creative software for animators, level designers and game developers. Built by Babhár Kft. in Hungary.</p>
+            <div class="pa-footer__social">
+                <a href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener" aria-label="Discord"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg></a>
+                <a href="https://patreon.com/PapaiArt" target="_blank" rel="noopener" aria-label="Patreon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5.4 5.4 0 0 0-7.7 0L12 6.7l-1.1-1.1a5.4 5.4 0 0 0-7.7 7.7L12 22l8.8-8.7a5.4 5.4 0 0 0 0-7.7z"/></svg></a>
+                <a href="https://papaiart.itch.io" target="_blank" rel="noopener" aria-label="itch.io"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9M3 9h18M3 9v11h18V9M9 20v-6h6v6"/></svg></a>
+                <a href="https://www.linkedin.com/in/bence-papai-papaiart/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.6 8.65 22 11.3 22 14.1V21h-4v-6.1c0-1.46-.03-3.33-2.03-3.33-2.03 0-2.34 1.59-2.34 3.23V21h-4z"/></svg></a>
+            </div>
+        </div>
+        <div><h4>Game development</h4><ul><li><a href="../software/fps-lab.html">FPS Lab</a></li><li><a href="../software/level-editor.html">Level Editor</a></li><li><a href="../software/level-modeller.html">Level Modeller</a></li><li><a href="../software/terrain-generator.html">Terrain Generator</a></li></ul></div>
+        <div><h4>Art &amp; animation</h4><ul><li><a href="../software/animation-studio.html">Animation Studio</a></li><li><a href="../software/pixelpaint-98-pro.html">PixelPaint 98 Pro</a></li></ul></div>
+        <div><h4>PapaiArt</h4><ul>
+            <li><a href="../devlog.html">Devlog</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../about.html#contact">Contact</a></li>
+            <li><a href="../learn.html">Animation Studio articles</a></li>
+            <li><a href="https://papaiart.itch.io" target="_blank" rel="noopener">All downloads on itch.io</a></li>
+        </ul></div>
+    </div>
+    <div class="pa-footer__base">
+        <span>© 2026 Babhár Kft. All rights reserved.</span>
+        <span>Made in Hungary · <a href="mailto:babharkft@gmail.com">babharkft@gmail.com</a></span>
+    </div>
+</footer>
+<script src="../assets/js/site.js" defer></script>
+<script type="module" src="../assets/js/heroes.js"></script>
+</body>
+</html>

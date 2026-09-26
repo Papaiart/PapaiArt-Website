@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FPS Lab 0.8.8 - New animation features — FPS Lab devlog</title>
+    <meta name="description" content="This update is all about the animation system. Three things, and each one removes a workaround you were probably already writing. The Play Animation node has a new Blend input: how long, in seconds, t">
+    <meta name="author" content="Babhár Kft.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#34c47e">
+    <meta name="color-scheme" content="dark">
+    <link rel="canonical" href="https://www.papaiart.com/devlog/1653463-fps-lab-0-8-8-new-animation-features.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="PapaiArt">
+    <meta property="og:title" content="FPS Lab 0.8.8 - New animation features — FPS Lab devlog">
+    <meta property="og:description" content="This update is all about the animation system. Three things, and each one removes a workaround you were probably already writing. The Play Animation node has a new Blend input: how long, in seconds, t">
+    <meta property="og:url" content="https://www.papaiart.com/devlog/1653463-fps-lab-0-8-8-new-animation-features.html">
+    <meta property="og:image" content="https://www.papaiart.com/assets/images/devlog/1653463-1.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FPS Lab 0.8.8 - New animation features — FPS Lab devlog">
+    <meta name="twitter:description" content="This update is all about the animation system. Three things, and each one removes a workaround you were probably already writing. The Play Animation node has a new Blend input: how long, in seconds, t">
+    <meta name="twitter:image" content="https://www.papaiart.com/assets/images/devlog/1653463-1.webp">
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="../site.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/site.css">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "FPS Lab 0.8.8 - New animation features", "datePublished": "2026-09-05", "url": "https://www.papaiart.com/devlog/1653463-fps-lab-0-8-8-new-animation-features.html", "author": {"@type": "Person", "name": "Bence Pápai"}, "publisher": {"@type": "Organization", "name": "Babhár Kft."}, "about": {"@type": "SoftwareApplication", "name": "PapaiArt Tools – FPS Lab", "url": "https://www.papaiart.com/software/fps-lab.html"}, "isBasedOn": "https://papaiart.itch.io/papaiart-tools-fps-lab/devlog/1653463/fps-lab-088-new-animation-features", "image": "https://www.papaiart.com/assets/images/devlog/1653463-1.webp"}</script>
+    <link rel="alternate" href="https://papaiart.itch.io/papaiart-tools-fps-lab/devlog/1653463/fps-lab-088-new-animation-features" title="Original post on itch.io">
+</head>
+<body class="pa-dark" style="--p:#34c47e;--p-ink:#03140b">
+<nav class="pa-nav" aria-label="Main">
+    <div class="pa-nav__inner">
+        <a class="pa-brand" href="../index.html" aria-label="PapaiArt home">
+            <img src="../assets/images/pa-mark.png" alt="" width="30" height="27">
+            <span><b>PapaiArt</b><small>Software</small></span>
+        </a>
+        <button class="pa-nav__toggle" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+        <ul class="pa-menu">
+            <li class="pa-has-mega"><button aria-haspopup="true">Software <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="pa-mega"><div class="pa-mega__group">Game development</div><a href="../software/fps-lab.html"><img src="../assets/images/icons/fps-lab.png" alt="" width="38" height="38"><div><b>FPS Lab</b><span>Game engine</span></div></a><a href="../software/level-editor.html"><img src="../assets/images/icons/level-editor.png" alt="" width="38" height="38"><div><b>Level Editor</b><span>Doom-style level editor</span></div></a><a href="../software/level-modeller.html"><img src="../assets/images/icons/level-modeller.png" alt="" width="38" height="38"><div><b>Level Modeller</b><span>CSG level editor</span></div></a><a href="../software/terrain-generator.html"><img src="../assets/images/icons/terrain-generator.png" alt="" width="38" height="38"><div><b>Terrain Generator</b><span>Landscape generator</span></div></a><div class="pa-mega__group">Art &amp; animation</div><a href="../software/animation-studio.html"><img src="../assets/images/icons/animation-studio.png" alt="" width="38" height="38"><div><b>Animation Studio</b><span>Hybrid 2D/3D animation</span></div></a><a href="../software/pixelpaint-98-pro.html"><img src="../assets/images/icons/pixelpaint-98-pro.png" alt="" width="38" height="38"><div><b>PixelPaint 98 Pro</b><span>Pixel art editor</span></div></a></div>
+            </li>
+            <li><a href="../devlog.html" class="is-active">Devlog</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="https://papaiart.itch.io" target="_blank" rel="noopener">itch.io</a></li>
+            <li class="pa-menu__mobile-cta"><a class="pa-btn pa-btn--primary" href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg> Join the Discord</a></li>
+        </ul>
+        <a class="pa-btn pa-btn--primary pa-btn--sm pa-nav__cta" href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg> Discord</a>
+    </div>
+</nav>
+
+<header class="post-hero">
+    <div class="post-hero__bg" style="background-image:url(../assets/images/devlog/1653463-1.webp)"></div>
+    <div class="pa-wrap">
+        <div class="post-crumb"><a href="../devlog.html">Devlog</a><span>/</span><a href="../software/fps-lab.html">FPS Lab</a></div>
+        <h1>FPS Lab 0.8.8 - New animation features</h1>
+        <div class="post-hero__meta">
+            <span class="pa-chip"><img src="../assets/images/icons/fps-lab.png" alt="" width="16" height="16" style="width:16px;height:16px">FPS Lab</span>
+            <span class="pa-chip pa-chip--accent">v0.8.8</span>
+            <span class="pa-chip"><time datetime="2026-09-05">September 5, 2026</time></span>
+            <span class="pa-chip">3 min read</span>
+        </div>
+    </div>
+</header>
+
+<figure class="post-cover pa-wrap reveal"><img src="../assets/images/devlog/1653463-1.webp" data-zoom="../assets/images/devlog/1653463-1.webp" data-group="post" width="1400" height="786" alt="FPS Lab 0.8.8 - New animation features"></figure>
+
+<article class="pa-wrap"><div class="pa-prose"><h3>Animation that doesn't snap</h3>
+<p>This update is all about the animation system. Three things, and each one removes a workaround you were probably already writing.</p>
+<h3>Clips can now blend into each other</h3>
+<p>The <strong>Play Animation</strong> node has a new <strong>Blend</strong> input: how long, in seconds, the object takes to drift from the pose it's in into the new clip. Leave it empty and you get the old behaviour — an instant switch.</p>
+<p><code>0.15</code> to <code>0.3</code> is the range you want. On a door nobody ever noticed the snap; on a character it's a visible pop — the gun jerks, the foot slides. Now it doesn't.</p>
+<p>The fade starts from the pose your objects are <strong>actually in</strong>, not from where the outgoing clip happens to be. That matters more than it sounds: it means blending works correctly out of a clip that already finished and is holding its last pose, out of a rest pose no clip ever played, and out of a transform a script just moved. Rotations take the short way round too — fading from 350° to 10° crosses zero instead of unwinding backwards.</p>
+<h3>On Animation End</h3>
+<p>A new event node. When a non-looping clip reaches its last frame, it fires — and its <strong>Clip</strong> output tells you which one finished.</p>
+<p>That's the end of polling <code>Is Animation Playing</code> in every <code>On Update</code> just to know when a reload is done. Wire <code>On Animation End</code> straight into <code>Play Animation</code> with your idle clip and a small Blend, and the weapon settles back by itself. (A looping clip never ends, so it never fires — and Stop Animation isn't an ending either.)</p>
+<h3>Frame events: "play the footstep <em>here</em>"</h3>
+<p>Often it isn't the end of a clip that matters but one moment in the middle — the bullet leaving the barrel, the boot landing, the magazine clicking home.</p>
+<p>The Animation tab has a new <strong>Events</strong> row. Put the playhead where it should happen, press <strong>+ Event</strong>, double-click the marker to name it. Drag markers to move them, right-click to delete.</p>
+<p>When playback reaches one, the name is broadcast: <strong>any</strong> script with a matching <code>On &lt;name&gt;</code> node runs. So the script that plays your footstep sound doesn't have to live on the animator — it can stay on the character, on the weapon, even on the HUD.</p>
+<p>Some details worth knowing:</p>
+<ul><li>A frame event fires <strong>even when the game skips over it</strong>. A hitch won't swallow your gunshot.
+</li><li>On a looping clip they fire every lap — put two footsteps in a walk cycle and the walk clicks along by itself.
+</li><li>Events live on the <strong>clip</strong>, not on its keyframes. So if you carved Idle / Reload / Fire out of one long imported take with <strong>Slice</strong>, each slice gets its own events, and Reload's magazine click won't go off during Idle.
+</li><li>Markers that fall outside the clip's play window are drawn faded — those can never fire.
+</li></ul>
+<p>Existing projects load unchanged: Blend starts at 0, and a clip with no events behaves exactly as before.</p>
+<h3>Also: two new handbook chapters</h3>
+<p>The beginner handbook got a chapter on all of the above, and a second one on things that were in the editor but never written down:</p>
+<ul><li>the four viewport display modes — <strong>Wireframe</strong>, <strong>Material Preview</strong>, <strong>Rendered</strong>, and <strong>Rendered + Post Processing</strong> (which runs your post-process chain live in the editor, so you can tune fog and vignette with the camera still in your hands)
+</li><li>the <strong>Statistics</strong> overlay, and what its numbers actually tell you — the gap between <em>draws</em> and <em>objects</em> is your batching, and <em>culled</em> is what the camera's field of view saved you
+</li><li><strong>LOD</strong>: cheaper meshes at a distance, why it switches on screen size rather than distance, and the one thing it deliberately doesn't change — collision, navigation and your shots always use the full-detail mesh
+</li><li>the <strong>collision matrix</strong> in Game Settings, which is the single rule for what collides, what a bullet can hit, and what navigation sees
+</li></ul></div></article>
+
+
+
+<div class="pa-wrap" style="max-width:760px;margin-top:56px;display:flex;gap:12px;flex-wrap:wrap">
+    <a class="pa-btn pa-btn--primary" href="https://papaiart.itch.io/papaiart-tools-fps-lab" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg> Get FPS Lab</a>
+    <a class="pa-btn pa-btn--ghost" href="https://papaiart.itch.io/papaiart-tools-fps-lab/devlog/1653463/fps-lab-088-new-animation-features" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg> Comment on itch.io</a>
+    <a class="pa-btn pa-btn--ghost" href="../software/fps-lab.html">FPS Lab overview</a>
+</div>
+<div class="pa-wrap" style="margin-top:72px"><div class="post-nav"><a class="prev" href="../devlog/1638664-fps-lab-0-8-1-lod-ui-prformance-optimalization.html"><small>← Older</small><b>FPS Lab 0.8.1 - LOD - UI - Prformance optimalization</b></a></div></div>
+
+<div style="height:100px"></div>
+<footer class="pa-footer">
+    <div class="pa-footer__grid">
+        <div>
+            <a class="pa-brand" href="../index.html"><img src="../assets/images/pa-mark.png" alt="" width="30" height="27"><span><b>PapaiArt</b><small>Software</small></span></a>
+            <p>Independent creative software for animators, level designers and game developers. Built by Babhár Kft. in Hungary.</p>
+            <div class="pa-footer__social">
+                <a href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener" aria-label="Discord"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg></a>
+                <a href="https://patreon.com/PapaiArt" target="_blank" rel="noopener" aria-label="Patreon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5.4 5.4 0 0 0-7.7 0L12 6.7l-1.1-1.1a5.4 5.4 0 0 0-7.7 7.7L12 22l8.8-8.7a5.4 5.4 0 0 0 0-7.7z"/></svg></a>
+                <a href="https://papaiart.itch.io" target="_blank" rel="noopener" aria-label="itch.io"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9M3 9h18M3 9v11h18V9M9 20v-6h6v6"/></svg></a>
+                <a href="https://www.linkedin.com/in/bence-papai-papaiart/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.6 8.65 22 11.3 22 14.1V21h-4v-6.1c0-1.46-.03-3.33-2.03-3.33-2.03 0-2.34 1.59-2.34 3.23V21h-4z"/></svg></a>
+            </div>
+        </div>
+        <div><h4>Game development</h4><ul><li><a href="../software/fps-lab.html">FPS Lab</a></li><li><a href="../software/level-editor.html">Level Editor</a></li><li><a href="../software/level-modeller.html">Level Modeller</a></li><li><a href="../software/terrain-generator.html">Terrain Generator</a></li></ul></div>
+        <div><h4>Art &amp; animation</h4><ul><li><a href="../software/animation-studio.html">Animation Studio</a></li><li><a href="../software/pixelpaint-98-pro.html">PixelPaint 98 Pro</a></li></ul></div>
+        <div><h4>PapaiArt</h4><ul>
+            <li><a href="../devlog.html">Devlog</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../about.html#contact">Contact</a></li>
+            <li><a href="../learn.html">Animation Studio articles</a></li>
+            <li><a href="https://papaiart.itch.io" target="_blank" rel="noopener">All downloads on itch.io</a></li>
+        </ul></div>
+    </div>
+    <div class="pa-footer__base">
+        <span>© 2026 Babhár Kft. All rights reserved.</span>
+        <span>Made in Hungary · <a href="mailto:babharkft@gmail.com">babharkft@gmail.com</a></span>
+    </div>
+</footer>
+<script src="../assets/js/site.js" defer></script>
+</body>
+</html>

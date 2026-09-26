@@ -3,379 +3,283 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>PapaiArt Animation Studio — Hybrid 2D/3D Animation Software | Open Beta 2026</title>
-    <meta name="description" content="PapaiArt Animation Studio is a lightweight hybrid 2D/3D animation software: draw in 3D space, model non-destructively, rig with IK, render to MP4 in one click. Open beta launches May 28, 2026.">
-    <meta name="keywords" content="PapaiArt Animation Studio, hybrid 2D 3D animation software, 2.5D animation, frame-by-frame animation, 3D modeling, vector drawing in 3D, inverse kinematics rigging, MP4 H.264 export, animation software for artists, Babhár Kft.">
+    <title>PapaiArt — Creative tools for building worlds</title>
+    <meta name="description" content="Independent desktop software by PapaiArt: FPS Lab game engine, Doom-style Level Editor, CSG Level Modeller, Terrain Generator, Animation Studio and PixelPaint 98 Pro.">
     <meta name="author" content="Babhár Kft.">
-    <meta name="publisher" content="Babhár Kft.">
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1">
-    <meta name="application-name" content="PapaiArt Animation Studio">
-    <meta name="theme-color" content="#0b0d12">
-    <meta name="color-scheme" content="dark light">
-    <meta name="format-detection" content="telephone=no">
-
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#0a0b10">
+    <meta name="color-scheme" content="dark">
     <link rel="canonical" href="https://www.papaiart.com/">
-    <link rel="alternate" hreflang="en" href="https://www.papaiart.com/">
-    <link rel="alternate" hreflang="hu" href="https://www.papaiart.com/">
-    <link rel="alternate" hreflang="x-default" href="https://www.papaiart.com/">
-
-    <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="PapaiArt Animation Studio">
-    <meta property="og:title" content="PapaiArt Animation Studio — Hybrid 2D/3D Animation Software">
-    <meta property="og:description" content="Draw in 3D space, model non-destructively, rig with IK, render to MP4 in one click. Open beta launches May 28, 2026.">
+    <meta property="og:site_name" content="PapaiArt">
+    <meta property="og:title" content="PapaiArt — Creative tools for building worlds">
+    <meta property="og:description" content="Independent desktop software by PapaiArt: FPS Lab game engine, Doom-style Level Editor, CSG Level Modeller, Terrain Generator, Animation Studio and PixelPaint 98 Pro.">
     <meta property="og:url" content="https://www.papaiart.com/">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:locale:alternate" content="hu_HU">
-    <meta property="og:image" content="https://www.papaiart.com/assets/images/screenshot-hero.png">
-    <meta property="og:image:secure_url" content="https://www.papaiart.com/assets/images/screenshot-hero.png">
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="PapaiArt Animation Studio — hybrid 2D/3D animation workspace">
-
-    <!-- Twitter Card -->
+    <meta property="og:image" content="https://www.papaiart.com/assets/images/og/home.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="PapaiArt Animation Studio — Hybrid 2D/3D Animation Software">
-    <meta name="twitter:description" content="Draw in 3D space, model non-destructively, rig with IK, render to MP4 in one click. Open beta — May 28, 2026.">
-    <meta name="twitter:image" content="https://www.papaiart.com/assets/images/screenshot-hero.png">
-    <meta name="twitter:image:alt" content="PapaiArt Animation Studio screenshot">
-
-    <link rel="icon" type="image/png" href="assets/images/software-icon.png">
-    <link rel="apple-touch-icon" href="assets/images/software-icon.png">
-    <link rel="manifest" href="/site.webmanifest">
-
-    <!-- Performance hints -->
+    <meta name="twitter:title" content="PapaiArt — Creative tools for building worlds">
+    <meta name="twitter:description" content="Independent desktop software by PapaiArt: FPS Lab game engine, Doom-style Level Editor, CSG Level Modeller, Terrain Generator, Animation Studio and PixelPaint 98 Pro.">
+    <meta name="twitter:image" content="https://www.papaiart.com/assets/images/og/home.png">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="dns-prefetch" href="https://esm.sh">
-    <link rel="preload" as="image" href="assets/images/software-title.png" fetchpriority="high">
-
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- JSON-LD: Organization -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "@id": "https://www.papaiart.com/#organization",
-        "name": "Babhár Kft.",
-        "alternateName": "PapaiArt",
-        "url": "https://www.papaiart.com/",
-        "logo": {
-            "@type": "ImageObject",
-            "url": "https://www.papaiart.com/assets/images/company-logo.png",
-            "width": 512,
-            "height": 512
-        },
-        "email": "babharkft@gmail.com",
-        "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "HU"
-        },
-        "founder": {
-            "@type": "Person",
-            "name": "Bence Pápai",
-            "jobTitle": "Lead Engine Developer & Founder",
-            "sameAs": "https://www.linkedin.com/in/bence-papai-papaiart/"
-        },
-        "sameAs": [
-            "https://discord.gg/yaThtpnD5N",
-            "https://www.linkedin.com/in/bence-papai-papaiart/"
-        ]
-    }
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/site.css">
+    <script type="importmap">
+    { "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    } }
     </script>
-
-    <!-- JSON-LD: WebSite (with SearchAction sitelinks SearchBox-ready) -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "@id": "https://www.papaiart.com/#website",
-        "url": "https://www.papaiart.com/",
-        "name": "PapaiArt Animation Studio",
-        "description": "Hybrid 2D/3D animation software by Babhár Kft.",
-        "inLanguage": ["en", "hu"],
-        "publisher": { "@id": "https://www.papaiart.com/#organization" }
-    }
-    </script>
-
-    <!-- JSON-LD: SoftwareApplication -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "@id": "https://www.papaiart.com/#software",
-        "name": "PapaiArt Animation Studio",
-        "alternateName": "PapaiArt",
-        "applicationCategory": "MultimediaApplication",
-        "applicationSubCategory": "Animation Software",
-        "operatingSystem": "Windows 10/11, macOS, Linux",
-        "softwareVersion": "Open Beta",
-        "releaseNotes": "Open beta launches on 2026-05-28.",
-        "datePublished": "2026-05-28",
-        "url": "https://www.papaiart.com/",
-        "downloadUrl": "https://www.papaiart.com/beta.html",
-        "installUrl": "https://www.papaiart.com/beta.html",
-        "image": "https://www.papaiart.com/assets/images/screenshot-hero.png",
-        "screenshot": [
-            "https://www.papaiart.com/assets/images/screenshot-2d.png",
-            "https://www.papaiart.com/assets/images/screenshot-viewport.png",
-            "https://www.papaiart.com/assets/images/screenshot-render.png",
-            "https://www.papaiart.com/assets/images/screenshot-rig.png"
-        ],
-        "description": "Hybrid 2D/3D animation software combining frame-by-frame drawing in 3D space, non-destructive polygonal modeling, IK rigging, and built-in H.264 MP4 export.",
-        "featureList": [
-            "2D vector drawing in 3D space",
-            "Non-destructive polygonal modeling with modifier stack",
-            "Frame-by-frame animation with onion skinning",
-            "Inverse Kinematics, TrackTo, ChildOf, Limit constraints",
-            "Real-time rendering engine",
-            "Built-in MP4 (H.264) and PNG sequence export",
-            "Modular dockable UI with infinite Undo/Redo"
-        ],
-        "publisher": { "@id": "https://www.papaiart.com/#organization" },
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD",
-            "availability": "https://schema.org/PreOrder",
-            "url": "https://www.papaiart.com/beta.html",
-            "availabilityStarts": "2026-05-28"
-        }
-    }
-    </script>
-
-    <!-- JSON-LD: BreadcrumbList -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.papaiart.com/" }
-        ]
-    }
-    </script>
+    <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" crossorigin>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://www.papaiart.com/#organization", "name": "Babhár Kft.", "alternateName": "PapaiArt", "url": "https://www.papaiart.com/", "logo": "https://www.papaiart.com/assets/images/company-logo.png", "email": "babharkft@gmail.com", "founder": {"@type": "Person", "name": "Bence Pápai", "sameAs": "https://www.linkedin.com/in/bence-papai-papaiart/"}, "sameAs": ["https://papaiart.itch.io", "https://discord.gg/ecC59ZpbQ3", "https://patreon.com/PapaiArt", "https://www.linkedin.com/in/bence-papai-papaiart/"]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ItemList", "name": "PapaiArt software", "itemListElement": [{"@type": "ListItem", "position": 1, "url": "https://www.papaiart.com/software/fps-lab.html", "name": "PapaiArt Tools – FPS Lab"}, {"@type": "ListItem", "position": 2, "url": "https://www.papaiart.com/software/level-editor.html", "name": "PapaiArt Tools – Level Editor"}, {"@type": "ListItem", "position": 3, "url": "https://www.papaiart.com/software/level-modeller.html", "name": "PapaiArt Tools – Level Modeller"}, {"@type": "ListItem", "position": 4, "url": "https://www.papaiart.com/software/terrain-generator.html", "name": "PapaiArt Tools – Terrain Generator"}, {"@type": "ListItem", "position": 5, "url": "https://www.papaiart.com/software/animation-studio.html", "name": "PapaiArt Animation Studio"}, {"@type": "ListItem", "position": 6, "url": "https://www.papaiart.com/software/pixelpaint-98-pro.html", "name": "PapaiArt PixelPaint 98 Pro"}]}</script>
 </head>
-<body>
-
-<nav class="site-nav">
-    <div class="site-nav__inner">
-        <a class="brand-mark" href="index.html">
-            <img src="assets/images/software-icon.png" alt="PapaiArt Animation Studio icon" width="32" height="32">
-            <span>PapaiArt Animation Studio<small data-i18n="by.babhar">by Babhár Kft.</small></span>
+<body class="pa-dark">
+<nav class="pa-nav" aria-label="Main">
+    <div class="pa-nav__inner">
+        <a class="pa-brand" href="index.html" aria-label="PapaiArt home">
+            <img src="assets/images/pa-mark.png" alt="" width="30" height="27">
+            <span><b>PapaiArt</b><small>Software</small></span>
         </a>
-        <ul class="nav-links">
-            <li><a href="index.html" class="is-active" data-i18n="nav.home">Home</a></li>
-            <li><a href="features.html" data-i18n="nav.features">Features</a></li>
-            <li><a href="learn.html" data-i18n="nav.learn">Learn</a></li>
-            <li><a href="about.html" data-i18n="nav.about">About</a></li>
+        <button class="pa-nav__toggle" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+        <ul class="pa-menu">
+            <li class="pa-has-mega"><button aria-haspopup="true">Software <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="pa-mega"><div class="pa-mega__group">Game development</div><a href="software/fps-lab.html"><img src="assets/images/icons/fps-lab.png" alt="" width="38" height="38"><div><b>FPS Lab</b><span>Game engine</span></div></a><a href="software/level-editor.html"><img src="assets/images/icons/level-editor.png" alt="" width="38" height="38"><div><b>Level Editor</b><span>Doom-style level editor</span></div></a><a href="software/level-modeller.html"><img src="assets/images/icons/level-modeller.png" alt="" width="38" height="38"><div><b>Level Modeller</b><span>CSG level editor</span></div></a><a href="software/terrain-generator.html"><img src="assets/images/icons/terrain-generator.png" alt="" width="38" height="38"><div><b>Terrain Generator</b><span>Landscape generator</span></div></a><div class="pa-mega__group">Art &amp; animation</div><a href="software/animation-studio.html"><img src="assets/images/icons/animation-studio.png" alt="" width="38" height="38"><div><b>Animation Studio</b><span>Hybrid 2D/3D animation</span></div></a><a href="software/pixelpaint-98-pro.html"><img src="assets/images/icons/pixelpaint-98-pro.png" alt="" width="38" height="38"><div><b>PixelPaint 98 Pro</b><span>Pixel art editor</span></div></a></div>
+            </li>
+            <li><a href="devlog.html">Devlog</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="https://papaiart.itch.io" target="_blank" rel="noopener">itch.io</a></li>
+            <li class="pa-menu__mobile-cta"><a class="pa-btn pa-btn--primary" href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg> Join the Discord</a></li>
         </ul>
-        <a class="btn btn--primary" href="beta.html">Join the Beta</a>
+        <a class="pa-btn pa-btn--primary pa-btn--sm pa-nav__cta" href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg> Discord</a>
     </div>
 </nav>
 
-<section class="hero">
-    <div class="hero__inner">
+<header class="pa-hero pa-hero--center hub-hero" data-hero="hub" style="--p:#5fb8f5">
+    <div class="pa-wrap">
+        <span class="pa-eyebrow">Independent creative software · Made in Hungary</span>
+        <h1>Tools for<br><span class="grad">building worlds.</span></h1>
+        <p class="hub-hero__lead">Six desktop tools for level designers, game developers and animators, each built from scratch on its own native engine. Sketch a level, carve it, grow a landscape around it, script it into a game, and animate whatever lives inside.</p>
+        <div class="hub-hero__ctas">
+            <a class="pa-btn pa-btn--primary pa-btn--lg" href="#software">Explore the software <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+            <a class="pa-btn pa-btn--ghost pa-btn--lg" href="devlog.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16M4 12h10M4 19h13"/></svg> Read the devlog</a>
+        </div>
+        <nav class="pa-dock" aria-label="Products"><a href="software/fps-lab.html"><img src="assets/images/icons/fps-lab.png" alt="FPS Lab" width="58" height="58"><span>FPS Lab</span></a><a href="software/level-editor.html"><img src="assets/images/icons/level-editor.png" alt="Level Editor" width="58" height="58"><span>Level Editor</span></a><a href="software/level-modeller.html"><img src="assets/images/icons/level-modeller.png" alt="Level Modeller" width="58" height="58"><span>Level Modeller</span></a><a href="software/terrain-generator.html"><img src="assets/images/icons/terrain-generator.png" alt="Terrain Generator" width="58" height="58"><span>Terrain Generator</span></a><a href="software/animation-studio.html"><img src="assets/images/icons/animation-studio.png" alt="Animation Studio" width="58" height="58"><span>Animation Studio</span></a><a href="software/pixelpaint-98-pro.html"><img src="assets/images/icons/pixelpaint-98-pro.png" alt="PixelPaint 98 Pro" width="58" height="58"><span>PixelPaint 98 Pro</span></a></nav>
+        <div class="pa-stats">
+            <div><b>6</b><span>desktop tools</span></div>
+            <div><b>32</b><span>devlog posts</span></div>
+            <div><b>6</b><span>months of updates</span></div>
+            <div><b>0</b><span>installers needed</span></div>
+        </div>
+    </div>
+</header>
+
+<section class="pa-section" id="software">
+    <div class="pa-wrap">
+        <div class="pa-head reveal">
+            <span class="pa-eyebrow">The software</span>
+            <h2>Small, fast, focused tools</h2>
+            <p>Native C++ on Vulkan and OpenGL. No installer, no account, no launcher: unzip, run, and it starts in seconds.</p>
+        </div>
+        <div class="pa-group-title reveal"><h3>Game development</h3></div><div class="pa-products" style="--cols:4"><a class="pa-product reveal" href="software/fps-lab.html" style="--p:#34c47e;--p-ink:#03140b">
+    <div class="pa-product__top">
+        <div class="pa-product__media"><img src="assets/images/products/fps-lab/shot-01.webp" alt="FPS Lab screenshot" loading="lazy" decoding="async"></div>
+        <img class="pa-product__icon" src="assets/images/icons/fps-lab.png" alt="" width="64" height="64">
+        <div class="pa-product__badge"><span class="pa-chip pa-chip--accent"><span class="dot"></span>In development · v0.8.8</span></div>
+    </div>
+    <div class="pa-product__body">
+        <span class="pa-product__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        <h3>FPS Lab</h3>
+        <p>Visual-scripting game engine for first-person games. Scene, logic, UI and a one-click Windows build.</p>
+        <div class="pa-product__meta"><span class="price">Free</span><span class="upd">Updated Sep 5, 2026</span></div>
+    </div>
+</a><a class="pa-product reveal" href="software/level-editor.html" style="--p:#ffc800;--p-ink:#161100">
+    <div class="pa-product__top">
+        <div class="pa-product__media"><img src="assets/images/products/level-editor/shot-02.webp" alt="Level Editor screenshot" loading="lazy" decoding="async"></div>
+        <img class="pa-product__icon" src="assets/images/icons/level-editor.png" alt="" width="64" height="64">
+        <div class="pa-product__badge"><span class="pa-chip pa-chip--accent"><span class="dot"></span>Released · v2.0.0</span></div>
+    </div>
+    <div class="pa-product__body">
+        <span class="pa-product__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        <h3>Level Editor</h3>
+        <p>Doom-style sector editor: sketch in 2D, walk in 3D, export to Unity, Quake .map, EFPSE, OBJ and GLB.</p>
+        <div class="pa-product__meta"><span class="price">$20</span><span class="upd">Updated Sep 19, 2026</span></div>
+    </div>
+</a><a class="pa-product reveal" href="software/level-modeller.html" style="--p:#a594ff;--p-ink:#0e0a1f">
+    <div class="pa-product__top">
+        <div class="pa-product__media"><img src="assets/images/products/level-modeller/shot-03.webp" alt="Level Modeller screenshot" loading="lazy" decoding="async"></div>
+        <img class="pa-product__icon" src="assets/images/icons/level-modeller.png" alt="" width="64" height="64">
+        <div class="pa-product__badge"><span class="pa-chip pa-chip--accent"><span class="dot"></span>Released · v1.7.2</span></div>
+    </div>
+    <div class="pa-product__body">
+        <span class="pa-product__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        <h3>Level Modeller</h3>
+        <p>Standalone CSG level editor with live booleans, per-face texturing, GPU lightmap baking and clean exports.</p>
+        <div class="pa-product__meta"><span class="price">$20</span><span class="upd">Updated Sep 12, 2026</span></div>
+    </div>
+</a><a class="pa-product reveal" href="software/terrain-generator.html" style="--p:#eaa640;--p-ink:#1a1004">
+    <div class="pa-product__top">
+        <div class="pa-product__media"><img src="assets/images/products/terrain-generator/shot-01.webp" alt="Terrain Generator screenshot" loading="lazy" decoding="async"></div>
+        <img class="pa-product__icon" src="assets/images/icons/terrain-generator.png" alt="" width="64" height="64">
+        <div class="pa-product__badge"><span class="pa-chip pa-chip--accent"><span class="dot"></span>New release</span></div>
+    </div>
+    <div class="pa-product__body">
+        <span class="pa-product__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        <h3>Terrain Generator</h3>
+        <p>Noise, erosion and a node graph for landscapes. Walk them in 3D, then export maps, meshes, skies or board-game sheets.</p>
+        <div class="pa-product__meta"><span class="price">$15</span><span class="upd">Windows</span></div>
+    </div>
+</a></div><div class="pa-group-title reveal"><h3>Art &amp; animation</h3></div><div class="pa-products" style="--cols:2"><a class="pa-product reveal" href="software/animation-studio.html" style="--p:#2ea4f5;--p-ink:#ffffff">
+    <div class="pa-product__top">
+        <div class="pa-product__media"><img src="assets/images/products/animation-studio/shot-05.webp" alt="Animation Studio screenshot" loading="lazy" decoding="async"></div>
+        <img class="pa-product__icon" src="assets/images/icons/animation-studio.png" alt="" width="64" height="64">
+        <div class="pa-product__badge"><span class="pa-chip pa-chip--accent"><span class="dot"></span>Open Beta · v1.0.1</span></div>
+    </div>
+    <div class="pa-product__body">
+        <span class="pa-product__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        <h3>Animation Studio</h3>
+        <p>Frame-by-frame drawing inside a real 3D scene, non-destructive modelling, IK rigging and MP4 export.</p>
+        <div class="pa-product__meta"><span class="price">Free</span><span class="upd">Updated Jun 25, 2026</span></div>
+    </div>
+</a><a class="pa-product reveal" href="software/pixelpaint-98-pro.html" style="--p:#1fc1c1;--p-ink:#021717">
+    <div class="pa-product__top">
+        <div class="pa-product__media"><img src="assets/images/products/pixelpaint-98-pro/shot-02.webp" alt="PixelPaint 98 Pro screenshot" loading="lazy" decoding="async"></div>
+        <img class="pa-product__icon" src="assets/images/icons/pixelpaint-98-pro.png" alt="" width="64" height="64">
+        <div class="pa-product__badge"><span class="pa-chip pa-chip--accent"><span class="dot"></span>Released</span></div>
+    </div>
+    <div class="pa-product__body">
+        <span class="pa-product__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        <h3>PixelPaint 98 Pro</h3>
+        <p>Pixel art editor with a composable brush engine, sprite sheets and atlases, and a full Python API.</p>
+        <div class="pa-product__meta"><span class="price">Free</span><span class="upd">Windows</span></div>
+    </div>
+</a></div>
+    </div>
+</section>
+
+<section class="pa-section pa-section--alt">
+    <div class="pa-wrap">
+        <div class="pa-head reveal">
+            <span class="pa-eyebrow">One pipeline</span>
+            <h2>From a sketch on a grid to a game you can ship</h2>
+            <p>The game-development tools are designed to hand work to each other. Level Editor maps import into Level Modeller as real meshes. FPS Lab loads both, baked lighting included. Everything also exports to the engine you already use.</p>
+        </div>
+        <div class="pa-pipe"><a class="pa-pipe__node reveal" href="software/level-editor.html" style="--p:#ffc800"><span class="pa-pipe__step">01</span><img src="assets/images/icons/level-editor.png" alt="" width="48" height="48"><h3>Level Editor</h3><p><b style="color:#fff">Sketch the layout.</b> Draw sectors in 2D, walk them in 3D. The fastest way from idea to playable space.</p><div class="pa-pipe__io"><span>.pamap</span><span>Quake .map</span><span>EFPSE</span><span>WAD in</span></div></a><a class="pa-pipe__node reveal" href="software/level-modeller.html" style="--p:#a594ff"><span class="pa-pipe__step">02</span><img src="assets/images/icons/level-modeller.png" alt="" width="48" height="48"><h3>Level Modeller</h3><p><b style="color:#fff">Carve &amp; light it.</b> Import the map as a mesh, carve it with booleans, texture every face and bake light on the GPU.</p><div class="pa-pipe__io"><span>CSG</span><span>lightmaps</span><span>GLB</span><span>OBJ</span></div></a><a class="pa-pipe__node reveal" href="software/terrain-generator.html" style="--p:#eaa640"><span class="pa-pipe__step">03</span><img src="assets/images/icons/terrain-generator.png" alt="" width="48" height="48"><h3>Terrain Generator</h3><p><b style="color:#fff">Grow the world.</b> Eroded landscapes, skies and splat maps with presets for every major engine.</p><div class="pa-pipe__io"><span>heightmaps</span><span>FBX</span><span>HDRI</span><span>splat</span></div></a><a class="pa-pipe__node reveal" href="software/fps-lab.html" style="--p:#34c47e"><span class="pa-pipe__step">04</span><img src="assets/images/icons/fps-lab.png" alt="" width="48" height="48"><h3>FPS Lab</h3><p><b style="color:#fff">Make it a game.</b> Bring levels in with baked lighting, script the gameplay with nodes, build a standalone .exe.</p><div class="pa-pipe__io"><span>visual script</span><span>nav AI</span><span>.exe</span></div></a></div>
+        <div class="pa-pipe__engines reveal"><b>Also exports to</b><span>Unity</span><span>Unreal</span><span>Godot</span><span>Blender</span><span>TrenchBroom</span><span>EasyFPSEditor</span></div>
+    </div>
+</section>
+
+<section class="pa-section">
+    <div class="pa-wrap">
+        <div class="pa-head reveal" style="display:flex;justify-content:space-between;align-items:end;gap:24px;max-width:none;flex-wrap:wrap">
+            <div style="max-width:640px"><span class="pa-eyebrow">Devlog</span><h2>Shipping every week</h2><p style="margin:0">Release notes and deep dives, straight from development.</p></div>
+            <a class="pa-btn pa-btn--ghost" href="devlog.html">All 32 posts <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        </div>
+        <div class="pa-posts"><a class="pa-post reveal" href="devlog/1670151-patool-leveleditor-2-0-0.html" data-product="level-editor" style="--p:#ffc800;--p-ink:#161100">
+    <div class="pa-post__media"><img src="assets/images/devlog/1670151-1.webp" alt="" loading="lazy" decoding="async"></div>
+    <div class="pa-post__body">
+        <div class="pa-post__top"><span class="pa-post__prod"><img src="assets/images/icons/level-editor.png" alt="">Level Editor</span><time class="pa-post__date" datetime="2026-09-19">Sep 19, 2026</time></div>
+        <h3>PaTool LevelEditor 2.0.0</h3>
+        <p>This is 2.0, and it is a milestone for the editor. Rooms are no longer uniformly lit boxes: a sector has a brightness and a colour. A wall can show a different texture above and below a doorway. Walls can stand on their…</p>
+    </div>
+</a><a class="pa-post reveal" href="devlog/1661756-patool-leveleditor-1-9-3-quake-map-export.html" data-product="level-editor" style="--p:#ffc800;--p-ink:#161100">
+    <div class="pa-post__media"><img src="assets/images/devlog/1661756-1.webp" alt="" loading="lazy" decoding="async"></div>
+    <div class="pa-post__body">
+        <div class="pa-post__top"><span class="pa-post__prod"><img src="assets/images/icons/level-editor.png" alt="">Level Editor</span><time class="pa-post__date" datetime="2026-09-12">Sep 12, 2026</time></div>
+        <h3>PaTool LevelEditor 1.9.3 - Quake .map export</h3>
+        <p>This build adds one menu item: File &gt; Export to Quake .map. Your map comes out as a level that other tools can open and compile. There is also Tile Mode for floors and ceilings, and a texture bug that had been turning…</p>
+    </div>
+</a><a class="pa-post reveal" href="devlog/1661174-papaiart-tools-level-modeller-1-7-2-snapping.html" data-product="level-modeller" style="--p:#a594ff;--p-ink:#0e0a1f">
+    <div class="pa-post__media"><img src="assets/images/devlog/1661174-1.webp" alt="" loading="lazy" decoding="async"></div>
+    <div class="pa-post__body">
+        <div class="pa-post__top"><span class="pa-post__prod"><img src="assets/images/icons/level-modeller.png" alt="">Level Modeller</span><time class="pa-post__date" datetime="2026-09-12">Sep 12, 2026</time></div>
+        <h3>PapaiArt Tools - Level Modeller - 1.7.2 snapping</h3>
+        <p>Up to now, putting a wall next to another wall in PapaiArt Tools – Level Modeller meant eyeballing it, squinting at the seam, and then typing coordinates into the Inspector until the gap went away. Your box landed at x…</p>
+    </div>
+</a><a class="pa-post reveal" href="devlog/1653463-fps-lab-0-8-8-new-animation-features.html" data-product="fps-lab" style="--p:#34c47e;--p-ink:#03140b">
+    <div class="pa-post__media"><img src="assets/images/devlog/1653463-1.webp" alt="" loading="lazy" decoding="async"></div>
+    <div class="pa-post__body">
+        <div class="pa-post__top"><span class="pa-post__prod"><img src="assets/images/icons/fps-lab.png" alt="">FPS Lab</span><time class="pa-post__date" datetime="2026-09-05">Sep 5, 2026</time></div>
+        <h3>FPS Lab 0.8.8 - New animation features</h3>
+        <p>This update is all about the animation system. Three things, and each one removes a workaround you were probably already writing. The Play Animation node has a new Blend input: how long, in seconds, the object takes to…</p>
+    </div>
+</a><a class="pa-post reveal" href="devlog/1647790-papaiart-tools-level-modeller-1-7-0.html" data-product="level-modeller" style="--p:#a594ff;--p-ink:#0e0a1f">
+    <div class="pa-post__media"><img src="assets/images/devlog/1647790-1.webp" alt="" loading="lazy" decoding="async"></div>
+    <div class="pa-post__body">
+        <div class="pa-post__top"><span class="pa-post__prod"><img src="assets/images/icons/level-modeller.png" alt="">Level Modeller</span><time class="pa-post__date" datetime="2026-08-31">Aug 31, 2026</time></div>
+        <h3>PapaiArt Tools - Level Modeller - 1.7.0</h3>
+        <p>The Spline Profile editor grew up The newest build is mostly about one thing: the profile editor on Spline Mesh objects was too cramped to actually shape anything in. You can now navigate it, select properly, and…</p>
+    </div>
+</a><a class="pa-post reveal" href="devlog/1642873-patool-leveleditor-1-9-efpse-export-2-0.html" data-product="level-editor" style="--p:#ffc800;--p-ink:#161100">
+    <div class="pa-post__media"><img src="assets/images/devlog/1642873-1.webp" alt="" loading="lazy" decoding="async"></div>
+    <div class="pa-post__body">
+        <div class="pa-post__top"><span class="pa-post__prod"><img src="assets/images/icons/level-editor.png" alt="">Level Editor</span><time class="pa-post__date" datetime="2026-08-27">Aug 27, 2026</time></div>
+        <h3>PaTool LevelEditor 1.9 - EFPSE Export 2.0</h3>
+        <p>Until now, exporting to EasyFPSEditor meant surrendering to its 64-unit cube grid: a diagonal wall came out as a staircase, and any floor height that wasn&#x27;t a whole tile got rounded to one. That&#x27;s over. Angled walls…</p>
+    </div>
+</a></div>
+    </div>
+</section>
+
+<section class="pa-section pa-section--alt">
+    <div class="pa-wrap pa-maker">
+        <div class="pa-maker__photo reveal"><img src="assets/images/creator_profil_picture.png" alt="Bence Pápai, founder and lead engine developer" width="220" height="220" loading="lazy"></div>
+        <div class="reveal">
+            <span class="pa-eyebrow">Built from scratch</span>
+            <h2>One developer, his own engines</h2>
+            <p style="font-size:1.1rem">PapaiArt is the software label of Bence Pápai and Babhár Kft. Every tool here runs on its own engine, written for real-time use. There are no heavyweight frameworks and no feature creep, just the features the job needs, built properly.</p>
+            <div class="pa-principles">
+                <div><b>Performance first</b><span>Instant startup, low memory, responsive on modest hardware.</span></div>
+                <div><b>Yours to keep</b><span>No accounts, no DRM launchers, no revenue share on what you make.</span></div>
+                <div><b>Built in the open</b><span>Weekly devlogs and a Discord where bug reports become features.</span></div>
+            </div>
+            <p style="margin-top:26px"><a class="pa-btn pa-btn--ghost" href="about.html">About PapaiArt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></p>
+        </div>
+    </div>
+</section>
+
+<section class="pa-section">
+    <div class="pa-wrap">
+        <div class="pa-head pa-head--center reveal"><span class="pa-eyebrow">Community</span><h2>Build it with us</h2><p>Report a bug, request a node, show off a level. The last bug report turned into two new features.</p></div>
+        <div class="pa-community">
+            <a class="reveal" href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener" style="--c:#5865f2"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg><h3>Discord</h3><p>Support, feature requests, work-in-progress screenshots and release announcements.</p><span>Join the server →</span></a>
+            <a class="reveal" href="https://patreon.com/PapaiArt" target="_blank" rel="noopener" style="--c:#ff7a66"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5.4 5.4 0 0 0-7.7 0L12 6.7l-1.1-1.1a5.4 5.4 0 0 0-7.7 7.7L12 22l8.8-8.7a5.4 5.4 0 0 0 0-7.7z"/></svg><h3>Patreon</h3><p>FPS Lab and PixelPaint are free. Community support pays for the next version.</p><span>Support development →</span></a>
+            <a class="reveal" href="https://papaiart.itch.io" target="_blank" rel="noopener" style="--c:#ff5c6e"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9M3 9h18M3 9v11h18V9M9 20v-6h6v6"/></svg><h3>itch.io</h3><p>Every tool is downloaded from itch.io. Follow to get notified about new builds.</p><span>Visit the store →</span></a>
+        </div>
+    </div>
+</section>
+
+<footer class="pa-footer">
+    <div class="pa-footer__grid">
         <div>
-            <span class="tagline tagline--on-dark" data-i18n="hero.tag">Open Beta · launching May 28, 2026</span>
-            <h1 class="visually-hidden" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">PapaiArt Animation Studio — Hybrid 2D/3D Animation Software</h1>
-            <img class="hero__title-img" src="assets/images/software-title.png" alt="PapaiArt Animation Studio — hybrid 2D/3D animation software" fetchpriority="high" decoding="async">
-            <p class="hero__lead" data-i18n="hero.lead">
-                A single tool for 2D and 3D animation. Draw in 3D space, model non-destructively, rig with inverse kinematics, and render straight to MP4.
-            </p>
-            <div class="hero__ctas">
-                <a class="btn btn--primary btn--lg" href="beta.html" data-i18n="hero.cta.primary">Register for the open beta</a>
-                <a class="btn btn--ghost btn--lg" href="features.html" style="color:#fff;border-color:rgba(255,255,255,.2);" data-i18n="hero.cta.secondary">View features</a>
-            </div>
-            <div class="hero__meta" data-i18n="hero.meta">
-                <strong>High performance</strong> &nbsp;·&nbsp; low memory footprint &nbsp;·&nbsp; instant startup
+            <a class="pa-brand" href="index.html"><img src="assets/images/pa-mark.png" alt="" width="30" height="27"><span><b>PapaiArt</b><small>Software</small></span></a>
+            <p>Independent creative software for animators, level designers and game developers. Built by Babhár Kft. in Hungary.</p>
+            <div class="pa-footer__social">
+                <a href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener" aria-label="Discord"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg></a>
+                <a href="https://patreon.com/PapaiArt" target="_blank" rel="noopener" aria-label="Patreon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5.4 5.4 0 0 0-7.7 0L12 6.7l-1.1-1.1a5.4 5.4 0 0 0-7.7 7.7L12 22l8.8-8.7a5.4 5.4 0 0 0 0-7.7z"/></svg></a>
+                <a href="https://papaiart.itch.io" target="_blank" rel="noopener" aria-label="itch.io"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9M3 9h18M3 9v11h18V9M9 20v-6h6v6"/></svg></a>
+                <a href="https://www.linkedin.com/in/bence-papai-papaiart/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.6 8.65 22 11.3 22 14.1V21h-4v-6.1c0-1.46-.03-3.33-2.03-3.33-2.03 0-2.34 1.59-2.34 3.23V21h-4z"/></svg></a>
             </div>
         </div>
-        <div class="hero__shot hero__shot--overflow">
-            <img src="assets/images/mrTeapot.png" alt="PapaiArt Animation Studio screenshot showing 3D modeling and 2D drawing layers" data-i18n-attr="alt:hero.shot.alt" decoding="async">
-        </div>
+        <div><h4>Game development</h4><ul><li><a href="software/fps-lab.html">FPS Lab</a></li><li><a href="software/level-editor.html">Level Editor</a></li><li><a href="software/level-modeller.html">Level Modeller</a></li><li><a href="software/terrain-generator.html">Terrain Generator</a></li></ul></div>
+        <div><h4>Art &amp; animation</h4><ul><li><a href="software/animation-studio.html">Animation Studio</a></li><li><a href="software/pixelpaint-98-pro.html">PixelPaint 98 Pro</a></li></ul></div>
+        <div><h4>PapaiArt</h4><ul>
+            <li><a href="devlog.html">Devlog</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="about.html#contact">Contact</a></li>
+            <li><a href="learn.html">Animation Studio articles</a></li>
+            <li><a href="https://papaiart.itch.io" target="_blank" rel="noopener">All downloads on itch.io</a></li>
+        </ul></div>
     </div>
-</section>
-
-<section class="section">
-    <div class="container">
-
-        <div class="alt-row">
-            <div class="alt-row__media">
-                <img src="assets/images/screenshot-2d.png" alt="PapaiArt Animation Studio — frame-by-frame 2D vector drawing inside the 3D viewport" loading="lazy" decoding="async">
-            </div>
-            <div class="alt-row__copy">
-                <span class="section__eyebrow" data-i18n="alt.2d.eyebrow">2D drawing</span>
-                <h2 data-i18n="alt.2d.title">Drawing in real 3D space</h2>
-                <p data-i18n="alt.2d.body">2D drawings sit inside the 3D viewport, with cameras, depth and lighting. Vector strokes stay editable, and the brushes (Pencil, Pen, Calligraphy, Rough) respond to tilt and pressure.</p>
-                <ul>
-                    <li data-i18n="alt.2d.li1">Drawing tracks and clips (exposure-sheet logic)</li>
-                    <li data-i18n="alt.2d.li2">Onion skinning with customisable ink colours</li>
-                    <li data-i18n="alt.2d.li3">Independent stroke and fill, for flat-design styles</li>
-                    <li data-i18n="alt.2d.li4">Drawing Layers panel: lines, shapes and images as separate sub-layers</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="alt-row alt-row--reverse">
-            <div class="alt-row__media">
-                <img src="assets/images/screenshot-viewport.png" alt="3D viewport, hierarchy panel and modifier stack in PapaiArt Animation Studio" loading="lazy" decoding="async">
-            </div>
-            <div class="alt-row__copy">
-                <span class="section__eyebrow" data-i18n="alt.3d.eyebrow">3D modeling</span>
-                <h2 data-i18n="alt.3d.title">Non-destructive 3D workflow</h2>
-                <p data-i18n="alt.3d.body">A clean hierarchy panel and a real-time modifier stack. Mirror and Subdivision Surface refresh instantly. Bevel and Knife work interactively on the mesh.</p>
-                <ul>
-                    <li data-i18n="alt.3d.li1">Polygon mesh editing &amp; topology operations</li>
-                    <li data-i18n="alt.3d.li2">Primitive generators</li>
-                    <li data-i18n="alt.3d.li3">Custom shader and material system</li>
-                    <li data-i18n="alt.3d.li4">Viewport overlays: grid, axes, selection outlines</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="alt-row">
-            <div class="alt-row__media">
-                <img src="assets/images/screenshot-render.png" alt="Render panel: H.264 MP4 video export and PNG image sequences from PapaiArt Animation Studio" loading="lazy" decoding="async">
-            </div>
-            <div class="alt-row__copy">
-                <span class="section__eyebrow" data-i18n="alt.render.eyebrow">Render &amp; Export</span>
-                <h2 data-i18n="alt.render.title">From timeline to MP4 in one click</h2>
-                <p data-i18n="alt.render.body">Real-time viewport renderer with configurable resolutions. Export image sequences (PNG) or H.264 MP4 directly. No external editor needed.</p>
-                <ul>
-                    <li data-i18n="alt.render.li1">Built-in VideoEncoder with MP4 (H.264) support</li>
-                    <li data-i18n="alt.render.li2">Image Sequence output (PNG)</li>
-                    <li data-i18n="alt.render.li3">FHD presets and custom resolutions</li>
-                    <li data-i18n="alt.render.li4">Render Animation / Render Single Frame at one click</li>
-                </ul>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-<section class="section section--soft">
-    <div class="container">
-        <div class="section__head">
-            <span class="section__eyebrow" data-i18n="intro.eyebrow">Why this software?</span>
-            <h2 data-i18n="intro.title">One tool for both 2D and 3D</h2>
-            <p data-i18n="intro.lead">Most industry-standard tools specialise in either 2D or 3D. PapaiArt Animation Studio puts both into one workflow.</p>
-        </div>
-
-        <div class="feature-grid">
-            <div class="feature-card">
-                <div class="ico">2D</div>
-                <h3 data-i18n="feat.2d.title">Drawing in 3D space</h3>
-                <p data-i18n="feat.2d.body">A 2D vector engine inside the 3D viewport. Frame-by-frame animation, onion skinning, and vector brushes (Grease Pencil-style).</p>
-            </div>
-            <div class="feature-card">
-                <div class="ico">3D</div>
-                <h3 data-i18n="feat.3d.title">Non-destructive modeling</h3>
-                <p data-i18n="feat.3d.body">Polygonal mesh editing, Bevel and Knife tools, Mirror and Subdivision Surface modifiers in real time.</p>
-            </div>
-            <div class="feature-card">
-                <div class="ico">IK</div>
-                <h3 data-i18n="feat.ik.title">Rigging and constraints</h3>
-                <p data-i18n="feat.ik.body">Inverse Kinematics, TrackTo, ChildOf and Limit constraints. Enough to handle complex character animation.</p>
-            </div>
-            <div class="feature-card">
-                <div class="ico">▶</div>
-                <h3 data-i18n="feat.export.title">Built-in MP4 export</h3>
-                <p data-i18n="feat.export.body">Native H.264 video encoder. Render the timeline to a shareable video in one click.</p>
-            </div>
-            <div class="feature-card">
-                <div class="ico">⚡</div>
-                <h3 data-i18n="feat.fast.title">Quick startup, low memory use</h3>
-                <p data-i18n="feat.fast.body">The engine was written for real-time use. The program starts in seconds and stays responsive on modest hardware.</p>
-            </div>
-            <div class="feature-card">
-                <div class="ico">⎘</div>
-                <h3 data-i18n="feat.ui.title">Modular interface</h3>
-                <p data-i18n="feat.ui.body">Dockable panels (Inspector, Viewport, Timeline, Hierarchy). Entity-component scene management, infinite Undo/Redo.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="section">
-    <div class="container">
-        <div class="section__head">
-            <span class="section__eyebrow" data-i18n="showcase.eyebrow">Showcase</span>
-            <h2 data-i18n="showcase.title">What can you create with it?</h2>
-            <p data-i18n="showcase.lead">Characters, hybrid 2D/3D shorts, concept art. The toolset is built around 2.5D visual styles.</p>
-        </div>
-
-        <div class="gallery">
-            <img src="assets/images/screenshot-uv.png" alt="UV editor and texture coordinate manipulation in PapaiArt Animation Studio" loading="lazy" decoding="async">
-            <img src="assets/images/screenshot-modelling.png" alt="Polygonal 3D modeling workflow with bevel and knife tools" loading="lazy" decoding="async">
-            <img src="assets/images/screenshot-rig.png" alt="Character rigging with Inverse Kinematics and constraints" loading="lazy" decoding="async">
-        </div>
-    </div>
-</section>
-
-<section class="section section--soft">
-    <div class="container">
-        <div class="dl-card">
-            <div>
-                <h2 data-i18n="cta.title">The open beta launches on May 28, 2026</h2>
-                <p data-i18n="cta.body">Pre-register now to get early access on launch day. Slots are limited, and beta participants get priority pricing on the full release.</p>
-                <div class="dl-meta">
-                    <span data-i18n="cta.meta1">Windows, macOS, Linux (Tablet versions planned)</span>
-                    <span data-i18n="cta.meta2">Beta participants: priority pricing</span>
-                    <span data-i18n="cta.meta3">No commitment to register</span>
-                </div>
-            </div>
-            <div style="text-align:right;">
-                <a class="btn btn--primary btn--lg" href="beta.html" data-i18n="cta.button">Register for the open beta</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<footer class="site-footer">
-    <div class="container">
-        <div class="site-footer__grid">
-            <div class="site-footer__brand">
-                <img src="assets/images/company-logo.png" alt="Babhár Kft. company logo" style="width:140px;filter:invert(1);margin-bottom:12px;" loading="lazy" decoding="async">
-                <p data-i18n="footer.tagline">PapaiArt Animation Studio is built by Babhár Kft., a Hungarian IT and publishing company.</p>
-            </div>
-            <div>
-                <h4 data-i18n="footer.software">Software</h4>
-                <ul>
-                    <li><a href="features.html" data-i18n="footer.features">Features</a></li>
-                    <li><a href="beta.html" data-i18n="footer.beta">Open Beta</a></li>
-                    <li><a href="features.html#capabilities" data-i18n="footer.capabilities">Detailed capabilities</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 data-i18n="footer.learn">Learn</h4>
-                <ul>
-                    <li><a href="learn.html" data-i18n="footer.articles">Articles</a></li>
-                    <li><a href="cikkek/articles.html" data-i18n="footer.overview">Overview</a></li>
-                    <li><a href="cikkek/2d_workflow_articles.html" data-i18n="footer.workflow_2d">2D workflow</a></li>
-                    <li><a href="cikkek/3d_workflow_articles.html" data-i18n="footer.workflow_3d">3D workflow</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 data-i18n="footer.company">Company</h4>
-                <ul>
-                    <li><a href="about.html" data-i18n="footer.about">About</a></li>
-                    <li><a href="about.html#contact" data-i18n="footer.contact">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="site-footer__base">
-            <span data-i18n="footer.copyright">© 2026 Babhár Kft. All rights reserved.</span>
-            <span data-i18n="footer.version">PapaiArt Animation Studio · Open Beta 2026-05-28</span>
-        </div>
+    <div class="pa-footer__base">
+        <span>© 2026 Babhár Kft. All rights reserved.</span>
+        <span>Made in Hungary · <a href="mailto:babharkft@gmail.com">babharkft@gmail.com</a></span>
     </div>
 </footer>
-
-<script type="module" src="assets/js/hero-effect.js"></script>
-
+<script src="assets/js/site.js" defer></script>
+<script type="module" src="assets/js/heroes.js"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-# PapaiArt Animation Studio — robots.txt
+# PapaiArt — robots.txt
 # https://www.papaiart.com/
 
 User-agent: *
@@ -6,6 +6,9 @@ Allow: /
 Disallow: /process.py
 Disallow: /process_cap.py
 Disallow: /build_articles.py
+Disallow: /build_site.py
+Disallow: /tools/
+Disallow: /data/
 Disallow: /interview/about.txt
 
 # Common AI / scraper bots — explicitly allowed (remove if you wish to opt out)

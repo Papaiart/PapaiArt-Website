@@ -43,6 +43,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/site.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <script type="application/ld+json">
@@ -78,19 +80,23 @@
 </head>
 <body>
 
-<nav class="site-nav">
-    <div class="site-nav__inner">
-        <a class="brand-mark" href="index.html">
-            <img src="assets/images/software-icon.png" alt="PapaiArt Animation Studio icon" width="32" height="32">
-            <span>PapaiArt Animation Studio<small data-i18n="by.babhar">by Babhár Kft.</small></span>
+<nav class="pa-nav" aria-label="Main">
+    <div class="pa-nav__inner">
+        <a class="pa-brand" href="index.html" aria-label="PapaiArt home">
+            <img src="assets/images/pa-mark.png" alt="" width="30" height="27">
+            <span><b>PapaiArt</b><small>Software</small></span>
         </a>
-        <ul class="nav-links">
-            <li><a href="index.html" data-i18n="nav.home">Home</a></li>
-            <li><a href="features.html" data-i18n="nav.features">Features</a></li>
-            <li><a href="learn.html" class="is-active" data-i18n="nav.learn">Learn</a></li>
-            <li><a href="about.html" data-i18n="nav.about">About</a></li>
+        <button class="pa-nav__toggle" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+        <ul class="pa-menu">
+            <li class="pa-has-mega"><button class="is-active" aria-haspopup="true">Software <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="pa-mega"><div class="pa-mega__group">Game development</div><a href="software/fps-lab.html"><img src="assets/images/icons/fps-lab.png" alt="" width="38" height="38"><div><b>FPS Lab</b><span>Game engine</span></div></a><a href="software/level-editor.html"><img src="assets/images/icons/level-editor.png" alt="" width="38" height="38"><div><b>Level Editor</b><span>Doom-style level editor</span></div></a><a href="software/level-modeller.html"><img src="assets/images/icons/level-modeller.png" alt="" width="38" height="38"><div><b>Level Modeller</b><span>CSG level editor</span></div></a><a href="software/terrain-generator.html"><img src="assets/images/icons/terrain-generator.png" alt="" width="38" height="38"><div><b>Terrain Generator</b><span>Landscape generator</span></div></a><div class="pa-mega__group">Art &amp; animation</div><a href="software/animation-studio.html"><img src="assets/images/icons/animation-studio.png" alt="" width="38" height="38"><div><b>Animation Studio</b><span>Hybrid 2D/3D animation</span></div></a><a href="software/pixelpaint-98-pro.html"><img src="assets/images/icons/pixelpaint-98-pro.png" alt="" width="38" height="38"><div><b>PixelPaint 98 Pro</b><span>Pixel art editor</span></div></a></div>
+            </li>
+            <li><a href="devlog.html">Devlog</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="https://papaiart.itch.io" target="_blank" rel="noopener">itch.io</a></li>
+            <li class="pa-menu__mobile-cta"><a class="pa-btn pa-btn--primary" href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg> Join the Discord</a></li>
         </ul>
-        <a class="btn btn--primary" href="beta.html">Join the Beta</a>
+        <a class="pa-btn pa-btn--primary pa-btn--sm pa-nav__cta" href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg> Discord</a>
     </div>
 </nav>
 
@@ -222,45 +228,36 @@
     </div>
 </section>
 
-<footer class="site-footer">
-    <div class="container">
-        <div class="site-footer__grid">
-            <div class="site-footer__brand">
-                <img src="assets/images/company-logo.png" alt="Babhár Kft. company logo" style="width:140px;filter:invert(1);margin-bottom:12px;" loading="lazy" decoding="async">
-                <p data-i18n="footer.tagline">PapaiArt Animation Studio is built by Babhár Kft.</p>
-            </div>
-            <div>
-                <h4 data-i18n="footer.software">Software</h4>
-                <ul>
-                    <li><a href="features.html" data-i18n="footer.features">Features</a></li>
-                    <li><a href="beta.html" data-i18n="footer.beta">Open Beta</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 data-i18n="footer.learn">Learn</h4>
-                <ul>
-                    <li><a href="learn.html" data-i18n="footer.articles">Articles</a></li>
-                    <li><a href="cikkek/articles.html" data-i18n="footer.overview">Overview</a></li>
-                    <li><a href="cikkek/2d_workflow_articles.html" data-i18n="footer.workflow_2d">2D workflow</a></li>
-                    <li><a href="cikkek/3d_workflow_articles.html" data-i18n="footer.workflow_3d">3D workflow</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 data-i18n="footer.company">Company</h4>
-                <ul>
-                    <li><a href="about.html" data-i18n="footer.about">About</a></li>
-                    <li><a href="about.html#contact" data-i18n="footer.contact">Contact</a></li>
-                </ul>
+<footer class="pa-footer">
+    <div class="pa-footer__grid">
+        <div>
+            <a class="pa-brand" href="index.html"><img src="assets/images/pa-mark.png" alt="" width="30" height="27"><span><b>PapaiArt</b><small>Software</small></span></a>
+            <p>Independent creative software for animators, level designers and game developers. Built by Babhár Kft. in Hungary.</p>
+            <div class="pa-footer__social">
+                <a href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener" aria-label="Discord"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg></a>
+                <a href="https://patreon.com/PapaiArt" target="_blank" rel="noopener" aria-label="Patreon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5.4 5.4 0 0 0-7.7 0L12 6.7l-1.1-1.1a5.4 5.4 0 0 0-7.7 7.7L12 22l8.8-8.7a5.4 5.4 0 0 0 0-7.7z"/></svg></a>
+                <a href="https://papaiart.itch.io" target="_blank" rel="noopener" aria-label="itch.io"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9M3 9h18M3 9v11h18V9M9 20v-6h6v6"/></svg></a>
+                <a href="https://www.linkedin.com/in/bence-papai-papaiart/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.6 8.65 22 11.3 22 14.1V21h-4v-6.1c0-1.46-.03-3.33-2.03-3.33-2.03 0-2.34 1.59-2.34 3.23V21h-4z"/></svg></a>
             </div>
         </div>
-        <div class="site-footer__base">
-            <span data-i18n="footer.copyright">© 2026 Babhár Kft. All rights reserved.</span>
-            <span data-i18n="footer.version">PapaiArt Animation Studio · Open Beta 2026-05-28</span>
-        </div>
+        <div><h4>Game development</h4><ul><li><a href="software/fps-lab.html">FPS Lab</a></li><li><a href="software/level-editor.html">Level Editor</a></li><li><a href="software/level-modeller.html">Level Modeller</a></li><li><a href="software/terrain-generator.html">Terrain Generator</a></li></ul></div>
+        <div><h4>Art &amp; animation</h4><ul><li><a href="software/animation-studio.html">Animation Studio</a></li><li><a href="software/pixelpaint-98-pro.html">PixelPaint 98 Pro</a></li></ul></div>
+        <div><h4>PapaiArt</h4><ul>
+            <li><a href="devlog.html">Devlog</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="about.html#contact">Contact</a></li>
+            <li><a href="learn.html">Animation Studio articles</a></li>
+            <li><a href="https://papaiart.itch.io" target="_blank" rel="noopener">All downloads on itch.io</a></li>
+        </ul></div>
+    </div>
+    <div class="pa-footer__base">
+        <span>© 2026 Babhár Kft. All rights reserved.</span>
+        <span>Made in Hungary · <a href="mailto:babharkft@gmail.com">babharkft@gmail.com</a></span>
     </div>
 </footer>
 
-<script type="module" src="assets/js/hero-effect.js"></script>
 
+
+<script src="assets/js/site.js" defer></script>
 </body>
 </html>

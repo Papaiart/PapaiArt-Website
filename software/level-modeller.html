@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PapaiArt Tools – Level Modeller — CSG level editor</title>
+    <meta name="description" content="Build levels from primitives and boolean operations the way Quake-era editors did, with a Vulkan renderer, automatic lightmap UVs and a clean mesh at the end.">
+    <meta name="author" content="Babhár Kft.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#a594ff">
+    <meta name="color-scheme" content="dark">
+    <link rel="canonical" href="https://www.papaiart.com/software/level-modeller.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="PapaiArt">
+    <meta property="og:title" content="PapaiArt Tools – Level Modeller — CSG level editor">
+    <meta property="og:description" content="Build levels from primitives and boolean operations the way Quake-era editors did, with a Vulkan renderer, automatic lightmap UVs and a clean mesh at the end.">
+    <meta property="og:url" content="https://www.papaiart.com/software/level-modeller.html">
+    <meta property="og:image" content="https://www.papaiart.com/assets/images/og/level-modeller.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PapaiArt Tools – Level Modeller — CSG level editor">
+    <meta name="twitter:description" content="Build levels from primitives and boolean operations the way Quake-era editors did, with a Vulkan renderer, automatic lightmap UVs and a clean mesh at the end.">
+    <meta name="twitter:image" content="https://www.papaiart.com/assets/images/og/level-modeller.png">
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="../site.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/site.css">
+    <script type="importmap">
+    { "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    } }
+    </script>
+    <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" crossorigin>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "PapaiArt Tools – Level Modeller", "url": "https://www.papaiart.com/software/level-modeller.html", "applicationCategory": "DeveloperApplication", "operatingSystem": "Windows", "description": "Build levels from primitives and boolean operations the way Quake-era editors did, with a Vulkan renderer, automatic lightmap UVs and a clean mesh at the end.", "image": "https://www.papaiart.com/assets/images/products/level-modeller/shot-03.webp", "screenshot": ["https://www.papaiart.com/assets/images/products/level-modeller/shot-01.webp", "https://www.papaiart.com/assets/images/products/level-modeller/shot-02.webp", "https://www.papaiart.com/assets/images/products/level-modeller/shot-03.webp", "https://www.papaiart.com/assets/images/products/level-modeller/shot-04.webp", "https://www.papaiart.com/assets/images/products/level-modeller/shot-05.webp", "https://www.papaiart.com/assets/images/products/level-modeller/shot-06.webp"], "offers": {"@type": "Offer", "price": "20", "priceCurrency": "USD", "url": "https://papaiart.itch.io/papaiart-tools-level-modeller"}, "publisher": {"@type": "Organization", "name": "Babhár Kft.", "url": "https://www.papaiart.com/"}, "softwareVersion": "1.7.2"}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.papaiart.com/"}, {"@type": "ListItem", "position": 2, "name": "Level Modeller", "item": "https://www.papaiart.com/software/level-modeller.html"}]}</script>
+</head>
+<body class="pa-dark" style="--p:#a594ff;--p-ink:#0e0a1f">
+<nav class="pa-nav" aria-label="Main">
+    <div class="pa-nav__inner">
+        <a class="pa-brand" href="../index.html" aria-label="PapaiArt home">
+            <img src="../assets/images/pa-mark.png" alt="" width="30" height="27">
+            <span><b>PapaiArt</b><small>Software</small></span>
+        </a>
+        <button class="pa-nav__toggle" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+        <ul class="pa-menu">
+            <li class="pa-has-mega"><button class="is-active" aria-haspopup="true">Software <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="pa-mega"><div class="pa-mega__group">Game development</div><a href="../software/fps-lab.html"><img src="../assets/images/icons/fps-lab.png" alt="" width="38" height="38"><div><b>FPS Lab</b><span>Game engine</span></div></a><a href="../software/level-editor.html"><img src="../assets/images/icons/level-editor.png" alt="" width="38" height="38"><div><b>Level Editor</b><span>Doom-style level editor</span></div></a><a href="../software/level-modeller.html"><img src="../assets/images/icons/level-modeller.png" alt="" width="38" height="38"><div><b>Level Modeller</b><span>CSG level editor</span></div></a><a href="../software/terrain-generator.html"><img src="../assets/images/icons/terrain-generator.png" alt="" width="38" height="38"><div><b>Terrain Generator</b><span>Landscape generator</span></div></a><div class="pa-mega__group">Art &amp; animation</div><a href="../software/animation-studio.html"><img src="../assets/images/icons/animation-studio.png" alt="" width="38" height="38"><div><b>Animation Studio</b><span>Hybrid 2D/3D animation</span></div></a><a href="../software/pixelpaint-98-pro.html"><img src="../assets/images/icons/pixelpaint-98-pro.png" alt="" width="38" height="38"><div><b>PixelPaint 98 Pro</b><span>Pixel art editor</span></div></a></div>
+            </li>
+            <li><a href="../devlog.html">Devlog</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="https://papaiart.itch.io" target="_blank" rel="noopener">itch.io</a></li>
+            <li class="pa-menu__mobile-cta"><a class="pa-btn pa-btn--primary" href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg> Join the Discord</a></li>
+        </ul>
+        <a class="pa-btn pa-btn--primary pa-btn--sm pa-nav__cta" href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg> Discord</a>
+    </div>
+</nav>
+
+<header class="pa-hero prod-hero" data-hero="modeller" data-shift="0.2">
+    
+    <div class="pa-wrap prod-hero__grid">
+        <div>
+            <div class="prod-hero__id"><img src="../assets/images/icons/level-modeller.png" alt="" width="64" height="64"><span class="pa-eyebrow">CSG level editor</span></div>
+            <h1><small>PapaiArt Tools</small>Level Modeller</h1>
+            <p class="prod-hero__tagline">Build levels from primitives and boolean operations the way Quake-era editors did, with a Vulkan renderer, automatic lightmap UVs and a clean mesh at the end.</p>
+            <div class="prod-hero__ctas"><a class="pa-btn pa-btn--primary pa-btn--lg" href="https://papaiart.itch.io/papaiart-tools-level-modeller" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg> Get it for $20</a><a class="pa-btn pa-btn--ghost pa-btn--lg" href="#video"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l6-3.5z"/></svg> Watch video</a></div>
+            <div class="prod-hero__chips"><span class="pa-chip pa-chip--accent"><span class="dot"></span>Released</span><span class="pa-chip">v1.7.2</span><span class="pa-chip">Windows</span><span class="pa-chip">$20 · One-time purchase</span></div>
+        </div>
+    </div>
+</header>
+
+<div class="pa-wrap prod-showcase">
+    <div class="pa-window">
+        <div class="pa-window__bar"><i></i><i></i><i></i><span>PapaiArt Tools – Level Modeller</span></div>
+        <img src="../assets/images/products/level-modeller/shot-03.webp" data-zoom="../assets/images/products/level-modeller/shot-03.webp" alt="Level Modeller interface" fetchpriority="high">
+    </div>
+    <dl class="pa-facts reveal"><div><dt>Status</dt><dd>Released</dd></div><div><dt>Latest version</dt><dd>v1.7.2</dd></div><div><dt>Platform</dt><dd>Windows</dd></div><div><dt>Price</dt><dd>$20</dd></div><div><dt>Last update</dt><dd>Sep 12, 2026</dd></div></dl>
+</div>
+
+<section class="pa-section">
+    <div class="pa-wrap pa-overview">
+        <div class="pa-overview__body reveal">
+            <span class="pa-eyebrow">Overview</span>
+            <h2>CSG level design with GPU light baking. Block out, carve, texture, bake and export.</h2>
+            <p>Level Modeller is a standalone CSG level editor. Additive shapes add volume, and subtractive shapes cut doorways, windows and corridors out of it. It's the workflow of TrenchBroom or ProBuilder, as a dedicated tool with a Vulkan renderer. Every shape stays a live object in the hierarchy: move it later and the booleans re-evaluate in real time.</p><p>Texture with box-projected UVs from a project-wide library, place lights, and bake. The tool generates the lightmap UV channel itself (xatlas) and bakes on the GPU, so there is no manual unwrapping. Export to OBJ, GLB or a Unity bundle and go straight into Unity, Unreal or Godot.</p><p>The boolean output goes through a cleanup pass that merges coplanar faces and retriangulates them, so what you export is a clean mesh, not triangle soup. Projects are a single JSON .lmmap file, easy to back up and easy to put in git.</p>
+            
+        </div>
+        <aside class="pa-callout reveal"><h3>Details that matter</h3><ul><li>Real-time booleans on a live object hierarchy</li><li>GPU lightmap baking with multi-page atlases</li><li>Level Editor maps import as real meshes</li><li>Blender-style controls: Q / W / E / R</li><li>Prefabs reusable across projects</li></ul></aside>
+    </div>
+</section>
+
+<section class="pa-section pa-section--alt">
+    <div class="pa-wrap">
+        <div class="pa-head reveal"><span class="pa-eyebrow">Features</span><h2>What's inside</h2></div>
+        <div class="pa-feature">
+    <div class="pa-feature__copy reveal">
+        <span class="pa-feature__num">01 / 05</span>
+        <h3>Block out with live booleans</h3>
+        <p class="pa-feature__lead">Primitives, positive and negative shapes, and a hierarchy that re-evaluates as you work.</p>
+        <ul><li>Box, cylinder, sphere, staircase, terrain and spline primitives</li><li>Flip an object inside-out and a single box becomes a finished room</li><li>Box select, group move and Ctrl+D duplicate of whole rooms</li><li><strong>Snapping</strong> to the grid, corners, edges, surfaces, pivots and bounds</li><li>A CSG core that handles thousands of polygons without freezing</li></ul>
+    </div>
+    <div class="pa-feature__media reveal"><img src="../assets/images/products/level-modeller/shot-02.webp" data-zoom="../assets/images/products/level-modeller/shot-02.webp" data-group="features" alt="Level Modeller: Block out with live booleans" loading="lazy" decoding="async"></div>
+</div><div class="pa-feature pa-feature--flip">
+    <div class="pa-feature__copy reveal">
+        <span class="pa-feature__num">02 / 05</span>
+        <h3>Texture every face</h3>
+        <p class="pa-feature__lead">A project-wide texture library, box-projected UVs, and per-face control when you need it.</p>
+        <ul><li>Face Select mode: its own texture, scale and UV transform per face</li><li>Cut surfaces keep their textures through booleans</li><li>Import OBJ meshes as first-class primitives, with their own UVs or ours</li><li>Multi-material objects</li></ul>
+    </div>
+    <div class="pa-feature__media reveal"><img src="../assets/images/products/level-modeller/shot-10.webp" data-zoom="../assets/images/products/level-modeller/shot-10.webp" data-group="features" alt="Level Modeller: Texture every face" loading="lazy" decoding="async"></div>
+</div><div class="pa-feature">
+    <div class="pa-feature__copy reveal">
+        <span class="pa-feature__num">03 / 05</span>
+        <h3>Bake the light</h3>
+        <p class="pa-feature__lead">Place point, spot and directional lights and hit Bake. The unwrap happens by itself.</p>
+        <ul><li>Automatic lightmap UVs (xatlas) in an atlas that grows in pages to keep texel density</li><li><strong>GPU bake</strong> in a compute shader, with a silent CPU fallback</li><li>Per-object lightmap density and honest bake statistics</li><li>Indirect-only mode for games that light themselves in realtime</li></ul>
+    </div>
+    <div class="pa-feature__media reveal"><img src="../assets/images/products/level-modeller/shot-12.webp" data-zoom="../assets/images/products/level-modeller/shot-12.webp" data-group="features" alt="Level Modeller: Bake the light" loading="lazy" decoding="async"></div>
+</div><div class="pa-feature pa-feature--flip">
+    <div class="pa-feature__copy reveal">
+        <span class="pa-feature__num">04 / 05</span>
+        <h3>Shapes boxes can&#x27;t make</h3>
+        <p class="pa-feature__lead">Curves, spirals and ground, all of which still take part in the booleans.</p>
+        <ul><li><strong>Spline Mesh</strong>: sweep a profile along Poly, Bezier or Catmull-Rom curves</li><li>Spiral staircases with a centre pole and open risers</li><li>Terrain objects with a height brush and four paint layers; carve caves into them</li><li>A profile editor with zoom, pan, multi-select and a transform box</li></ul>
+    </div>
+    <div class="pa-feature__media reveal"><img src="../assets/images/products/level-modeller/shot-08.webp" data-zoom="../assets/images/products/level-modeller/shot-08.webp" data-group="features" alt="Level Modeller: Shapes boxes can&#x27;t make" loading="lazy" decoding="async"></div>
+</div><div class="pa-feature">
+    <div class="pa-feature__copy reveal">
+        <span class="pa-feature__num">05 / 05</span>
+        <h3>Walk it, then ship it</h3>
+        <p class="pa-feature__lead">Playtest in first person with the character your game will use, then export.</p>
+        <ul><li>Walk Mode with collision, jumping, step-up and a configurable FPS avatar</li><li>OBJ + MTL, or GLB with two UV channels and embedded or external textures</li><li>Optional single-atlas export with the lightmap multiplied in</li><li>Unity package with multi-page lightmaps; levels also open in <strong>FPS Lab</strong></li></ul>
+    </div>
+    <div class="pa-feature__media reveal"><img src="../assets/images/products/level-modeller/shot-11.webp" data-zoom="../assets/images/products/level-modeller/shot-11.webp" data-group="features" alt="Level Modeller: Walk it, then ship it" loading="lazy" decoding="async"></div>
+</div>
+    </div>
+</section>
+
+
+
+<section class="pa-section" id="video">
+    <div class="pa-wrap">
+        <div class="pa-head pa-head--center reveal"><span class="pa-eyebrow">See it in action</span><h2>Watch Level Modeller</h2></div>
+        <div class="reveal"><div class="pa-video" data-yt="SXYM_jGtDL4" data-title="Level Modeller trailer"><button aria-label="Play video: Level Modeller trailer"><span><svg viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></svg></span></button><span class="pa-video__label">▶ Level Modeller trailer</span></div></div>
+        <div class="pa-videos"><div class="pa-video" data-yt="WLpI8_h8byA" data-title="Feature walkthrough"><button aria-label="Play video: Feature walkthrough"><span><svg viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></svg></span></button><span class="pa-video__label">▶ Feature walkthrough</span></div></div>
+    </div>
+</section>
+
+<section class="pa-section pa-section--alt">
+    <div class="pa-wrap">
+        <div class="pa-head reveal"><span class="pa-eyebrow">Gallery</span><h2>Screenshots</h2></div>
+        <div class="pa-gallery"><a href="../assets/images/products/level-modeller/shot-01.webp" data-zoom="../assets/images/products/level-modeller/shot-01.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/level-modeller/shot-01.webp" alt="Level Modeller screenshot 1" loading="lazy" decoding="async"></a><a href="../assets/images/products/level-modeller/shot-02.webp" data-zoom="../assets/images/products/level-modeller/shot-02.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/level-modeller/shot-02.webp" alt="Level Modeller screenshot 2" loading="lazy" decoding="async"></a><a href="../assets/images/products/level-modeller/shot-03.webp" data-zoom="../assets/images/products/level-modeller/shot-03.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/level-modeller/shot-03.webp" alt="Level Modeller screenshot 3" loading="lazy" decoding="async"></a><a href="../assets/images/products/level-modeller/shot-04.webp" data-zoom="../assets/images/products/level-modeller/shot-04.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/level-modeller/shot-04.webp" alt="Level Modeller screenshot 4" loading="lazy" decoding="async"></a><a href="../assets/images/products/level-modeller/shot-05.webp" data-zoom="../assets/images/products/level-modeller/shot-05.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/level-modeller/shot-05.webp" alt="Level Modeller screenshot 5" loading="lazy" decoding="async"></a><a href="../assets/images/products/level-modeller/shot-06.webp" data-zoom="../assets/images/products/level-modeller/shot-06.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/level-modeller/shot-06.webp" alt="Level Modeller screenshot 6" loading="lazy" decoding="async"></a><a href="../assets/images/products/level-modeller/shot-07.webp" data-zoom="../assets/images/products/level-modeller/shot-07.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/level-modeller/shot-07.webp" alt="Level Modeller screenshot 7" loading="lazy" decoding="async"></a><a href="../assets/images/products/level-modeller/shot-08.webp" data-zoom="../assets/images/products/level-modeller/shot-08.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/level-modeller/shot-08.webp" alt="Level Modeller screenshot 8" loading="lazy" decoding="async"></a><a href="../assets/images/products/level-modeller/shot-09.webp" data-zoom="../assets/images/products/level-modeller/shot-09.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/level-modeller/shot-09.webp" alt="Level Modeller screenshot 9" loading="lazy" decoding="async"></a><a href="../assets/images/products/level-modeller/shot-10.webp" data-zoom="../assets/images/products/level-modeller/shot-10.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/level-modeller/shot-10.webp" alt="Level Modeller screenshot 10" loading="lazy" decoding="async"></a><a href="../assets/images/products/level-modeller/shot-11.webp" data-zoom="../assets/images/products/level-modeller/shot-11.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/level-modeller/shot-11.webp" alt="Level Modeller screenshot 11" loading="lazy" decoding="async"></a><a href="../assets/images/products/level-modeller/shot-12.webp" data-zoom="../assets/images/products/level-modeller/shot-12.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/level-modeller/shot-12.webp" alt="Level Modeller screenshot 12" loading="lazy" decoding="async"></a></div>
+    </div>
+</section>
+
+<section class="pa-section pa-section--alt" id="devlog">
+    <div class="pa-wrap" style="max-width:980px">
+        <div class="pa-head reveal"><span class="pa-eyebrow">Devlog</span><h2>Development timeline</h2><p>12 updates since July 3, 2026. Newest first.</p></div>
+        <ol class="pa-timeline"><li class="reveal"><a href="../devlog/1661174-papaiart-tools-level-modeller-1-7-2-snapping.html"><div class="pa-timeline__img"><img src="../assets/images/devlog/1661174-1.webp" alt="" loading="lazy"></div><div>
+    <div class="pa-timeline__meta"><span class="pa-chip pa-chip--accent">v1.7.2</span><time datetime="2026-09-12">September 12, 2026</time></div>
+    <h3>PapaiArt Tools - Level Modeller - 1.7.2 snapping</h3><p>Up to now, putting a wall next to another wall in PapaiArt Tools – Level Modeller meant eyeballing it, squinting at the seam, and then typing coordinates into the Inspector until the gap went away. Your box landed at x…</p></div></a></li><li class="reveal"><a href="../devlog/1647790-papaiart-tools-level-modeller-1-7-0.html"><div class="pa-timeline__img"><img src="../assets/images/devlog/1647790-1.webp" alt="" loading="lazy"></div><div>
+    <div class="pa-timeline__meta"><span class="pa-chip pa-chip--accent">v1.7.0</span><time datetime="2026-08-31">August 31, 2026</time></div>
+    <h3>PapaiArt Tools - Level Modeller - 1.7.0</h3><p>The Spline Profile editor grew up The newest build is mostly about one thing: the profile editor on Spline Mesh objects was too cramped to actually shape anything in. You can now navigate it, select properly, and…</p></div></a></li><li class="reveal"><a href="../devlog/1637012-papaiart-tools-level-modeller-1-6-3.html"><div class="pa-timeline__img"><img src="../assets/images/devlog/1637012-1.webp" alt="" loading="lazy"></div><div>
+    <div class="pa-timeline__meta"><span class="pa-chip pa-chip--accent">v1.6.3</span><time datetime="2026-08-22">August 22, 2026</time></div>
+    <h3>PapaiArt Tools - Level Modeller - 1.6.3</h3><p>Some shapes are miserable to build out of boxes. A curved tunnel. A road that bends around a hill. A handrail following a staircase. A pipe run along a ceiling. You can do all of it by hand-placing forty rotated…</p></div></a></li><li class="reveal"><a href="../devlog/1629848-papaiart-tools-level-modeller-1-5-2.html"><div class="pa-timeline__img"><img src="../assets/images/devlog/1629848-1.webp" alt="" loading="lazy"></div><div>
+    <div class="pa-timeline__meta"><span class="pa-chip pa-chip--accent">v1.5.2</span><time datetime="2026-08-15">August 15, 2026</time></div>
+    <h3>PapaiArt Tools - Level Modeller - 1.5.2</h3><p>Terrain, and a hard look under the hood The feature the level layout has been missing is here, and alongside it went a lot of work on editor speed and on getting the lighting right. Terrain Terrain is a new object type…</p></div></a></li><li class="reveal"><a href="../devlog/1625876-level-modeller-1-4-2-gpu-lightbake.html"><div class="pa-timeline__img"><img src="../assets/images/icons/level-modeller.png" alt="" style="object-fit:contain;padding:18px"></div><div>
+    <div class="pa-timeline__meta"><span class="pa-chip pa-chip--accent">v1.4.2</span><time datetime="2026-08-12">August 12, 2026</time></div>
+    <h3>Level Modeller 1.4.2 GPU Lightbake</h3><p>Until now the lightmap was one texture, and a bigger level simply meant coarser shadows — the same 2048 px stretched over more square meters. That is backwards: texel density is the quality setting , and the atlas…</p></div></a></li><li class="reveal"><a href="../devlog/1621070-papaiart-tools-level-modeller-1-3-1.html"><div class="pa-timeline__img"><img src="../assets/images/devlog/1621070-1.webp" alt="" loading="lazy"></div><div>
+    <div class="pa-timeline__meta"><span class="pa-chip pa-chip--accent">v1.3.1</span><time datetime="2026-08-08">August 8, 2026</time></div>
+    <h3>PapaiArt Tools - Level Modeller - 1.3.1</h3><p>Level Modeller devlog - July 12 to August 8 Four weeks of work on PapaiArt Tools - Level Modeller. Less flash this time, more foundation: the boolean result got noticeably cleaner, saved maps got a lot smaller, and a…</p></div></a></li><li class="reveal"><a href="../devlog/1581010-papaiart-tools-level-modeller-1-2-0.html"><div class="pa-timeline__img"><img src="../assets/images/devlog/1581010-1.webp" alt="" loading="lazy"></div><div>
+    <div class="pa-timeline__meta"><span class="pa-chip pa-chip--accent">v1.2.0</span><time datetime="2026-07-10">July 10, 2026</time></div>
+    <h3>PapaiArt Tools - Level Modeller - 1.2.0</h3><p>You can now texture individual faces! Until now a texture applied to the whole object — from this update, every wall, floor, tread and cut surface can have its own material. A new tool joined the viewport toolbar (or…</p></div></a></li><li class="reveal"><a href="../devlog/1580800-papaiart-tools-level-modeller-1-1-5.html"><div class="pa-timeline__img"><img src="../assets/images/devlog/1580800-1.webp" alt="" loading="lazy"></div><div>
+    <div class="pa-timeline__meta"><span class="pa-chip pa-chip--accent">v1.1.5</span><time datetime="2026-07-10">July 10, 2026</time></div>
+    <h3>PapaiArt Tools - Level Modeller - 1.1.5</h3><p>Two big features landed in Level Modeller over the last two days: an inside-out room workflow and a configurable FPS avatar — both carried all the way through to the Unity package. Every object now has a Flip…</p></div></a></li></ol>
+        <p style="margin-top:10px"><a class="pa-btn pa-btn--ghost" href="../devlog.html?p=level-modeller">All 12 Level Modeller posts <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></p>
+    </div>
+</section>
+
+<section class="pa-section">
+    <div class="pa-wrap">
+        <div class="pa-cta reveal">
+            <img class="pa-cta__icon" src="../assets/images/icons/level-modeller.png" alt="">
+            <div>
+                <h2>Get Level Modeller</h2>
+                <p>CSG level design with GPU light baking. Block out, carve, texture, bake and export.</p>
+                <div class="pa-cta__meta"><span>Windows 10 / 11, 64-bit</span><span>A GPU with Vulkan support</span></div>
+            </div>
+            <div class="pa-cta__actions">
+                <a class="pa-btn pa-btn--primary pa-btn--lg" href="https://papaiart.itch.io/papaiart-tools-level-modeller" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg> $20 on itch.io</a>
+                <a class="pa-btn pa-btn--ghost" href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg> Ask on Discord</a>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pa-section pa-section--tight" style="padding-top:0">
+    <div class="pa-wrap">
+        <div class="pa-group-title"><h3>More from PapaiArt</h3></div>
+        <div class="pa-more"><a href="fps-lab.html" style="--p:#34c47e"><img src="../assets/images/icons/fps-lab.png" alt=""><div><b>FPS Lab</b><span>Game engine</span></div></a><a href="level-editor.html" style="--p:#ffc800"><img src="../assets/images/icons/level-editor.png" alt=""><div><b>Level Editor</b><span>Doom-style level editor</span></div></a><a href="terrain-generator.html" style="--p:#eaa640"><img src="../assets/images/icons/terrain-generator.png" alt=""><div><b>Terrain Generator</b><span>Landscape generator</span></div></a><a href="animation-studio.html" style="--p:#2ea4f5"><img src="../assets/images/icons/animation-studio.png" alt=""><div><b>Animation Studio</b><span>Hybrid 2D/3D animation</span></div></a><a href="pixelpaint-98-pro.html" style="--p:#1fc1c1"><img src="../assets/images/icons/pixelpaint-98-pro.png" alt=""><div><b>PixelPaint 98 Pro</b><span>Pixel art editor</span></div></a></div>
+    </div>
+</section>
+
+<footer class="pa-footer">
+    <div class="pa-footer__grid">
+        <div>
+            <a class="pa-brand" href="../index.html"><img src="../assets/images/pa-mark.png" alt="" width="30" height="27"><span><b>PapaiArt</b><small>Software</small></span></a>
+            <p>Independent creative software for animators, level designers and game developers. Built by Babhár Kft. in Hungary.</p>
+            <div class="pa-footer__social">
+                <a href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener" aria-label="Discord"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg></a>
+                <a href="https://patreon.com/PapaiArt" target="_blank" rel="noopener" aria-label="Patreon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5.4 5.4 0 0 0-7.7 0L12 6.7l-1.1-1.1a5.4 5.4 0 0 0-7.7 7.7L12 22l8.8-8.7a5.4 5.4 0 0 0 0-7.7z"/></svg></a>
+                <a href="https://papaiart.itch.io" target="_blank" rel="noopener" aria-label="itch.io"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9M3 9h18M3 9v11h18V9M9 20v-6h6v6"/></svg></a>
+                <a href="https://www.linkedin.com/in/bence-papai-papaiart/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.6 8.65 22 11.3 22 14.1V21h-4v-6.1c0-1.46-.03-3.33-2.03-3.33-2.03 0-2.34 1.59-2.34 3.23V21h-4z"/></svg></a>
+            </div>
+        </div>
+        <div><h4>Game development</h4><ul><li><a href="../software/fps-lab.html">FPS Lab</a></li><li><a href="../software/level-editor.html">Level Editor</a></li><li><a href="../software/level-modeller.html">Level Modeller</a></li><li><a href="../software/terrain-generator.html">Terrain Generator</a></li></ul></div>
+        <div><h4>Art &amp; animation</h4><ul><li><a href="../software/animation-studio.html">Animation Studio</a></li><li><a href="../software/pixelpaint-98-pro.html">PixelPaint 98 Pro</a></li></ul></div>
+        <div><h4>PapaiArt</h4><ul>
+            <li><a href="../devlog.html">Devlog</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../about.html#contact">Contact</a></li>
+            <li><a href="../learn.html">Animation Studio articles</a></li>
+            <li><a href="https://papaiart.itch.io" target="_blank" rel="noopener">All downloads on itch.io</a></li>
+        </ul></div>
+    </div>
+    <div class="pa-footer__base">
+        <span>© 2026 Babhár Kft. All rights reserved.</span>
+        <span>Made in Hungary · <a href="mailto:babharkft@gmail.com">babharkft@gmail.com</a></span>
+    </div>
+</footer>
+<script src="../assets/js/site.js" defer></script>
+<script type="module" src="../assets/js/heroes.js"></script>
+</body>
+</html>

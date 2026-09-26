@@ -3,296 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>About Babhár Kft. & the Creator — PapaiArt Animation Studio</title>
-    <meta name="description" content="Meet Babhár Kft. and lead engine developer Bence Pápai — the Hungarian team building PapaiArt Animation Studio, a focused hybrid 2D/3D animation tool for modern artists.">
-    <meta name="keywords" content="Babhár Kft., Bence Pápai, PapaiArt creator, Hungarian animation software, hybrid animation studio, indie animation tool, animation engine developer">
+    <title>About — PapaiArt</title>
+    <meta name="description" content="PapaiArt is the software label of Bence Pápai and Babhár Kft., a Hungarian IT and publishing company building independent creative tools.">
     <meta name="author" content="Babhár Kft.">
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
-    <meta name="theme-color" content="#0b0d12">
-    <meta name="color-scheme" content="dark light">
-
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#0a0b10">
+    <meta name="color-scheme" content="dark">
     <link rel="canonical" href="https://www.papaiart.com/about.html">
-    <link rel="alternate" hreflang="en" href="https://www.papaiart.com/about.html">
-    <link rel="alternate" hreflang="hu" href="https://www.papaiart.com/about.html">
-    <link rel="alternate" hreflang="x-default" href="https://www.papaiart.com/about.html">
-
-    <meta property="og:type" content="profile">
-    <meta property="profile:first_name" content="Bence">
-    <meta property="profile:last_name" content="Pápai">
-    <meta property="og:site_name" content="PapaiArt Animation Studio">
-    <meta property="og:title" content="About Babhár Kft. & the Creator — PapaiArt Animation Studio">
-    <meta property="og:description" content="The Hungarian team building PapaiArt Animation Studio. Read the founder interview with Bence Pápai.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="PapaiArt">
+    <meta property="og:title" content="About — PapaiArt">
+    <meta property="og:description" content="PapaiArt is the software label of Bence Pápai and Babhár Kft., a Hungarian IT and publishing company building independent creative tools.">
     <meta property="og:url" content="https://www.papaiart.com/about.html">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:locale:alternate" content="hu_HU">
-    <meta property="og:image" content="https://www.papaiart.com/assets/images/creator_profil_picture.png">
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:image:alt" content="Bence Pápai — Lead Engine Developer & Founder of PapaiArt Animation Studio">
-
+    <meta property="og:image" content="https://www.papaiart.com/assets/images/og/home.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="About — PapaiArt Animation Studio">
-    <meta name="twitter:description" content="Meet Babhár Kft. and the founder behind PapaiArt Animation Studio.">
-    <meta name="twitter:image" content="https://www.papaiart.com/assets/images/creator_profil_picture.png">
-
-    <link rel="icon" type="image/png" href="assets/images/software-icon.png">
-    <link rel="apple-touch-icon" href="assets/images/software-icon.png">
-    <link rel="manifest" href="/site.webmanifest">
-
+    <meta name="twitter:title" content="About — PapaiArt">
+    <meta name="twitter:description" content="PapaiArt is the software label of Bence Pápai and Babhár Kft., a Hungarian IT and publishing company building independent creative tools.">
+    <meta name="twitter:image" content="https://www.papaiart.com/assets/images/og/home.png">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.papaiart.com/" },
-            { "@type": "ListItem", "position": 2, "name": "About", "item": "https://www.papaiart.com/about.html" }
-        ]
-    }
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/site.css">
+    <script type="importmap">
+    { "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    } }
     </script>
+    <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" crossorigin>
 
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "AboutPage",
-        "name": "About — PapaiArt Animation Studio",
-        "url": "https://www.papaiart.com/about.html",
-        "inLanguage": ["en", "hu"],
-        "mainEntity": {
-            "@type": "Organization",
-            "name": "Babhár Kft.",
-            "alternateName": "PapaiArt",
-            "url": "https://www.papaiart.com/",
-            "logo": "https://www.papaiart.com/assets/images/company-logo.png",
-            "email": "babharkft@gmail.com",
-            "address": { "@type": "PostalAddress", "addressCountry": "HU" },
-            "founder": {
-                "@type": "Person",
-                "name": "Bence Pápai",
-                "jobTitle": "Lead Engine Developer & Founder",
-                "image": "https://www.papaiart.com/assets/images/creator_profil_picture.png",
-                "sameAs": "https://www.linkedin.com/in/bence-papai-papaiart/"
-            },
-            "sameAs": [
-                "https://discord.gg/yaThtpnD5N",
-                "https://www.linkedin.com/in/bence-papai-papaiart/"
-            ]
-        }
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Bence Pápai",
-        "jobTitle": "Lead Engine Developer & Founder",
-        "worksFor": { "@type": "Organization", "name": "Babhár Kft." },
-        "image": "https://www.papaiart.com/assets/images/creator_profil_picture.png",
-        "url": "https://www.papaiart.com/about.html",
-        "sameAs": "https://www.linkedin.com/in/bence-papai-papaiart/"
-    }
-    </script>
 </head>
-<body>
-
-<nav class="site-nav">
-    <div class="site-nav__inner">
-        <a class="brand-mark" href="index.html">
-            <img src="assets/images/software-icon.png" alt="PapaiArt Animation Studio icon" width="32" height="32">
-            <span>PapaiArt Animation Studio<small data-i18n="by.babhar">by Babhár Kft.</small></span>
+<body class="pa-dark">
+<nav class="pa-nav" aria-label="Main">
+    <div class="pa-nav__inner">
+        <a class="pa-brand" href="index.html" aria-label="PapaiArt home">
+            <img src="assets/images/pa-mark.png" alt="" width="30" height="27">
+            <span><b>PapaiArt</b><small>Software</small></span>
         </a>
-        <ul class="nav-links">
-            <li><a href="index.html" data-i18n="nav.home">Home</a></li>
-            <li><a href="features.html" data-i18n="nav.features">Features</a></li>
-            <li><a href="learn.html" data-i18n="nav.learn">Learn</a></li>
-            <li><a href="about.html" class="is-active" data-i18n="nav.about">About</a></li>
+        <button class="pa-nav__toggle" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+        <ul class="pa-menu">
+            <li class="pa-has-mega"><button aria-haspopup="true">Software <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="pa-mega"><div class="pa-mega__group">Game development</div><a href="software/fps-lab.html"><img src="assets/images/icons/fps-lab.png" alt="" width="38" height="38"><div><b>FPS Lab</b><span>Game engine</span></div></a><a href="software/level-editor.html"><img src="assets/images/icons/level-editor.png" alt="" width="38" height="38"><div><b>Level Editor</b><span>Doom-style level editor</span></div></a><a href="software/level-modeller.html"><img src="assets/images/icons/level-modeller.png" alt="" width="38" height="38"><div><b>Level Modeller</b><span>CSG level editor</span></div></a><a href="software/terrain-generator.html"><img src="assets/images/icons/terrain-generator.png" alt="" width="38" height="38"><div><b>Terrain Generator</b><span>Landscape generator</span></div></a><div class="pa-mega__group">Art &amp; animation</div><a href="software/animation-studio.html"><img src="assets/images/icons/animation-studio.png" alt="" width="38" height="38"><div><b>Animation Studio</b><span>Hybrid 2D/3D animation</span></div></a><a href="software/pixelpaint-98-pro.html"><img src="assets/images/icons/pixelpaint-98-pro.png" alt="" width="38" height="38"><div><b>PixelPaint 98 Pro</b><span>Pixel art editor</span></div></a></div>
+            </li>
+            <li><a href="devlog.html">Devlog</a></li>
+            <li><a href="about.html" class="is-active">About</a></li>
+            <li><a href="https://papaiart.itch.io" target="_blank" rel="noopener">itch.io</a></li>
+            <li class="pa-menu__mobile-cta"><a class="pa-btn pa-btn--primary" href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg> Join the Discord</a></li>
         </ul>
-        <a class="btn btn--primary" href="beta.html">Join the Beta</a>
+        <a class="pa-btn pa-btn--primary pa-btn--sm pa-nav__cta" href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg> Discord</a>
     </div>
 </nav>
 
-<section class="about-hero">
-    <div class="container">
-        <span class="tagline tagline--on-dark" data-i18n="about.tag">About</span>
-        <h1 data-i18n="about.title">A Hungarian IT and publishing company, building one focused animation tool</h1>
-        <p data-i18n="about.lead">Babhár Kft. is a Hungarian IT and publishing company. PapaiArt Animation Studio was built to remove the boundary between 2D and 3D animation, in a compact program that does only what you actually need.</p>
+<header class="pa-hero pa-hero--center hub-hero" data-hero="hub" style="--p:#5fb8f5;min-height:0;padding:130px 0 100px">
+    <div class="pa-wrap">
+        <span class="pa-eyebrow">About</span>
+        <h1>Independent tools,<br><span class="grad">built from scratch.</span></h1>
+        <p class="hub-hero__lead">PapaiArt is the software label of Babhár Kft., a Hungarian IT and publishing company, and its founder, engine developer Bence Pápai.</p>
     </div>
-</section>
+</header>
 
-<section class="section">
-    <div class="container">
-        <div class="alt-row">
-            <div class="alt-row__media">
-                <img src="assets/images/company-logo.png" alt="Babhár Kft. — Hungarian IT and publishing company" style="background:#fff;padding:32px;" loading="lazy" decoding="async">
-            </div>
-            <div class="alt-row__copy">
-                <span class="section__eyebrow" data-i18n="about.mission.eyebrow">Our mission</span>
-                <h2 data-i18n="about.mission.title">Tools for hybrid creators</h2>
-                <p data-i18n="about.mission.p1">Digital art has long kept 2D drawing and 3D modeling apart, pushing artists into two different software ecosystems. We don't think that's necessary.</p>
-                <p data-i18n="about.mission.p2">PapaiArt Animation Studio combines both in one compact program, without turning into bloatware. We build it on our own engine so we don't have to compromise on performance.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="section section--soft">
-    <div class="container">
-        <div class="section__head">
-            <span class="section__eyebrow" data-i18n="about.values.eyebrow">Our principles</span>
-            <h2 data-i18n="about.values.title">What the team stands for</h2>
-        </div>
-
-        <div class="feature-grid">
-            <div class="feature-card">
-                <div class="ico">⚡</div>
-                <h3 data-i18n="about.val1.title">Performance first</h3>
-                <p data-i18n="about.val1.body">An animation tool has to start fast and stay responsive. Every feature is built against that requirement.</p>
-            </div>
-            <div class="feature-card">
-                <div class="ico">⊙</div>
-                <h3 data-i18n="about.val2.title">Focus over feature creep</h3>
-                <p data-i18n="about.val2.body">Fewer, well-built features over a thousand half-finished options. No feature creep.</p>
-            </div>
-            <div class="feature-card">
-                <div class="ico">⌨</div>
-                <h3 data-i18n="about.val3.title">Artist-friendly UX</h3>
-                <p data-i18n="about.val3.body">Panels, tools and shortcuts all serve the creator, not the developers' convenience.</p>
-            </div>
-            <div class="feature-card">
-                <div class="ico">★</div>
-                <h3 data-i18n="about.val4.title">Fair for beta participants</h3>
-                <p data-i18n="about.val4.body">Pre-registered beta testers receive priority pricing on the full release as a thank-you.</p>
-            </div>
+<section class="pa-section" style="padding-top:40px">
+    <div class="pa-wrap pa-maker">
+        <div class="pa-maker__photo reveal"><img src="assets/images/creator_profil_picture.png" alt="Bence Pápai" width="220" height="220"></div>
+        <div class="reveal">
+            <span class="pa-eyebrow">The maker</span>
+            <h2>Bence Pápai</h2>
+            <p style="font-size:1.1rem">Founder and lead engine developer. He started with PapaiArt Animation Studio after watching his university students struggle with heavyweight software. Since then, the lineup has grown into a family of game-development tools that hand work to each other, plus a pixel art editor with a Windows 98 soul.</p>
+            <p style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px">
+                <a class="pa-btn pa-btn--ghost" href="https://www.linkedin.com/in/bence-papai-papaiart/" target="_blank" rel="noopener"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.6 8.65 22 11.3 22 14.1V21h-4v-6.1c0-1.46-.03-3.33-2.03-3.33-2.03 0-2.34 1.59-2.34 3.23V21h-4z"/></svg> LinkedIn</a>
+                <a class="pa-btn pa-btn--ghost" href="https://papaiart.itch.io" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9M3 9h18M3 9v11h18V9M9 20v-6h6v6"/></svg> itch.io</a>
+            </p>
         </div>
     </div>
 </section>
 
-<section class="section" id="interview">
-    <div class="container">
-        <div class="section__head">
-            <span class="section__eyebrow" data-i18n="about.interview.eyebrow">Behind the Scenes</span>
-            <h2 data-i18n="about.interview.title">Interview with the Creator</h2>
-        </div>
-        
-        <div style="background: var(--bg-soft); padding: 40px; border-radius: 12px; border: 1px solid var(--border);">
-            <div style="display: flex; align-items: center; gap: 24px; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid var(--border);">
-                <img src="assets/images/creator_profil_picture.png" alt="Bence Pápai — Lead Engine Developer & Founder of PapaiArt Animation Studio" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary);" loading="lazy" decoding="async" width="80" height="80">
-                <div>
-                    <h3 style="margin: 0 0 4px 0; font-size: 20px;">Bence Pápai</h3>
-                    <p style="margin: 0; color: var(--text-muted); font-size: 15px;">Lead Engine Developer & Founder · <a href="https://www.linkedin.com/in/bence-papai-papaiart/" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: none;">LinkedIn Profile</a></p>
-                </div>
-            </div>
-
-            <p><strong>Q: What was the spark that ignited the idea for PapaiArt Animation Studio?</strong></p>
-            <p style="margin-bottom: 24px; color: var(--text-muted);">A: I felt there was a need for an animation software alongside Blender that supports the fusion of 2D and 3D animation, but as a much simpler program built specifically for this purpose. Perhaps the spark was seeing my university students struggle with having to learn so many overly complex softwares just to realize their ideas. This software, on the other hand, tries to offer a lighter and more user-friendly alternative for most tasks.</p>
-
-            <p><strong>Q: You built the core engine from scratch. What was the hardest part of that engineering journey?</strong></p>
-            <p style="margin-bottom: 24px; color: var(--text-muted);">A: Designing the user interface, as I had to translate a new concept into functional and intuitive layouts. What you see now evolved after a lot of redesigning and rethinking.</p>
-
-            <p><strong>Q: PapaiArt Animation Studio includes advanced rigging tools like IK (Inverse Kinematics). Why include that in a lightweight package?</strong></p>
-            <p style="margin-bottom: 24px; color: var(--text-muted);">A: Good question! I believe rigging and complex mechanics are essential parts of 3D animation. These features simply expand the user's possibilities. I am trying to make these professional tools as user-friendly as possible, and I plan to integrate similar modifiers to achieve a better workflow.</p>
-
-            <p><strong>Q: What are you most excited to see users create once the beta launches?</strong></p>
-            <p style="margin-bottom: 0; color: var(--text-muted);">A: I built the canvas, but I can't wait to see the art. I'm hoping to see entirely new visual styles, true "2.5D" shorts where the line between traditional hand-drawn animation and dynamic 3D environments completely blurs. The tool is ready; now it's up to the community's imagination.</p>
+<section class="pa-section pa-section--alt">
+    <div class="pa-wrap">
+        <div class="pa-head reveal"><span class="pa-eyebrow">Principles</span><h2>What every tool has in common</h2></div>
+        <div class="pa-cards">
+            <div class="pa-card reveal"><div class="pa-card__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div><h3>Performance first</h3><p>Native engines written for real-time use. Everything starts in seconds and stays responsive on modest hardware.</p></div>
+            <div class="pa-card reveal"><div class="pa-card__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg></div><h3>Focus over feature creep</h3><p>Fewer, well-built features instead of a thousand half-finished options.</p></div>
+            <div class="pa-card reveal"><div class="pa-card__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><h3>Yours to keep</h3><p>No installer, no account, no launcher. What you make with the tools belongs to you.</p></div>
+            <div class="pa-card reveal"><div class="pa-card__ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg></div><h3>Built with the community</h3><p>32 devlog posts so far. Bug reports and requests on Discord shape what gets built next.</p></div>
         </div>
     </div>
 </section>
 
-<section class="section section--soft" id="contact">
-    <div class="container">
-        <div class="section__head">
-            <span class="section__eyebrow" data-i18n="about.contact.eyebrow">Contact</span>
-            <h2 data-i18n="about.contact.title">Get in touch</h2>
-            <p data-i18n="about.contact.lead">Bug reports, suggestions, partnerships, every kind of feedback is welcome.</p>
-        </div>
-
-        <div class="feature-grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));">
-            <div class="about-card">
-                <h3 data-i18n="about.contact.email.h">E-mail &amp; Bug reports</h3>
-                <p style="color:var(--text-muted);" data-i18n="about.contact.email.body">General questions, press, partnerships, and bug reports.</p>
-                <a href="mailto:babharkft@gmail.com">babharkft@gmail.com</a>
-            </div>
-            <div class="about-card">
-                <h3 data-i18n="about.contact.community.h">Community</h3>
-                <p style="color:var(--text-muted);" data-i18n="about.contact.community.body">Join the user community.</p>
-                <a href="https://discord.gg/yaThtpnD5N" target="_blank" rel="noopener noreferrer" data-i18n="about.contact.community.link">Discord server</a>
-            </div>
-            <div class="about-card">
-                <h3 data-i18n="about.contact.beta.h">Open beta</h3>
-                <p style="color:var(--text-muted);" data-i18n="about.contact.beta.body">Pre-register for May 28, 2026.</p>
-                <a href="beta.html" data-i18n="about.contact.beta.link">Beta sign-up</a>
-            </div>
-        </div>
+<section class="pa-section">
+    <div class="pa-wrap" style="max-width:860px">
+        <div class="pa-head reveal"><span class="pa-eyebrow">Behind the scenes</span><h2>Interview with the creator</h2></div>
+        <div class="pa-prose reveal" style="margin:0"><h3>What was the spark behind the first tool, PapaiArt Animation Studio?</h3><p>I felt there was a need for an animation program alongside Blender that supports the fusion of 2D and 3D animation, but as a much simpler program built specifically for that purpose. Perhaps the spark was seeing my university students struggle with learning so many overly complex programs just to realise their ideas.</p><h3>You build the engines from scratch. What was the hardest part?</h3><p>Designing the user interface. I had to translate a new concept into functional and intuitive layouts. What you see now evolved after a lot of redesigning and rethinking.</p><h3>Why include advanced features like IK in a lightweight package?</h3><p>Rigging and complex mechanics are essential parts of 3D animation. These features simply expand what users can do. I try to make professional tools as user-friendly as possible.</p><h3>What are you most excited to see people create?</h3><p>I built the canvas, but I can&#x27;t wait to see the art: entirely new visual styles, true &quot;2.5D&quot; work where the line between hand-drawn and dynamic 3D blurs. The tools are ready; now it&#x27;s up to the community&#x27;s imagination.</p></div>
     </div>
 </section>
 
-<section class="section section--soft" id="credits" style="padding-top: 24px; padding-bottom: 24px;">
-    <div class="container">
-        <p style="margin: 0; color: var(--text-muted); font-size: 14px; text-align: center;">
-            <strong>Credits &amp; Attributions:</strong> 3D model assets featured in promotional screenshots are used under the Creative Commons Attribution (CC BY) license. Models by <a href="https://posthuman.artstation.com/" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted); text-decoration: underline;">Dmitry Tamko</a>, <a href="https://sketchfab.com/Obambulatesart" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted); text-decoration: underline;">Obambulatesart</a>, and <a href="https://sketchfab.com/mossycrossings" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted); text-decoration: underline;">Mossycrossings</a>.
-        </p>
+<section class="pa-section pa-section--alt">
+    <div class="pa-wrap">
+        <div class="pa-head reveal"><span class="pa-eyebrow">The lineup</span><h2>6 tools and counting</h2></div>
+        <div class="pa-more"><a href="software/fps-lab.html" style="--p:#34c47e"><img src="assets/images/icons/fps-lab.png" alt=""><div><b>FPS Lab</b><span>Game engine</span></div></a><a href="software/level-editor.html" style="--p:#ffc800"><img src="assets/images/icons/level-editor.png" alt=""><div><b>Level Editor</b><span>Doom-style level editor</span></div></a><a href="software/level-modeller.html" style="--p:#a594ff"><img src="assets/images/icons/level-modeller.png" alt=""><div><b>Level Modeller</b><span>CSG level editor</span></div></a><a href="software/terrain-generator.html" style="--p:#eaa640"><img src="assets/images/icons/terrain-generator.png" alt=""><div><b>Terrain Generator</b><span>Landscape generator</span></div></a><a href="software/animation-studio.html" style="--p:#2ea4f5"><img src="assets/images/icons/animation-studio.png" alt=""><div><b>Animation Studio</b><span>Hybrid 2D/3D animation</span></div></a><a href="software/pixelpaint-98-pro.html" style="--p:#1fc1c1"><img src="assets/images/icons/pixelpaint-98-pro.png" alt=""><div><b>PixelPaint 98 Pro</b><span>Pixel art editor</span></div></a></div>
     </div>
 </section>
 
-<section class="section">
-    <div class="container">
-        <div class="dl-card">
-            <div>
-                <h2 data-i18n="about.cta.title">Ready when you are</h2>
-                <p data-i18n="about.cta.body">The open beta launches May 28, 2026. Pre-registration is open now.</p>
-            </div>
-            <div style="text-align:right;">
-                <a class="btn btn--primary btn--lg" href="beta.html" data-i18n="about.cta.button">Register for the beta</a>
-            </div>
+<section class="pa-section" id="contact">
+    <div class="pa-wrap">
+        <div class="pa-head pa-head--center reveal"><span class="pa-eyebrow">Contact</span><h2>Get in touch</h2><p>Bug reports, suggestions, press and partnerships. Every kind of feedback is welcome.</p></div>
+        <div class="pa-community">
+            <a class="reveal" href="mailto:babharkft@gmail.com" style="--c:#5fb8f5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><h3>E-mail</h3><p>General questions, press, partnerships and bug reports.</p><span>babharkft@gmail.com</span></a>
+            <a class="reveal" href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener" style="--c:#5865f2"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg><h3>Discord</h3><p>The fastest way to get help and talk to other users.</p><span>Join the server →</span></a>
+            <a class="reveal" href="https://patreon.com/PapaiArt" target="_blank" rel="noopener" style="--c:#ff7a66"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5.4 5.4 0 0 0-7.7 0L12 6.7l-1.1-1.1a5.4 5.4 0 0 0-7.7 7.7L12 22l8.8-8.7a5.4 5.4 0 0 0 0-7.7z"/></svg><h3>Patreon</h3><p>Help fund development of the free tools.</p><span>Support →</span></a>
         </div>
+        <p class="reveal" style="text-align:center;margin-top:48px;color:var(--pa-dim);font-size:.9rem">Babhár Kft. · Hungary · <img src="assets/images/company-logo.png" alt="Babhár Kft. logo" style="display:inline-block;height:28px;width:auto;vertical-align:middle;filter:invert(1);opacity:.7;margin-left:6px"></p>
     </div>
 </section>
 
-<footer class="site-footer">
-    <div class="container">
-        <div class="site-footer__grid">
-            <div class="site-footer__brand">
-                <img src="assets/images/company-logo.png" alt="Babhár Kft. company logo" style="width:140px;filter:invert(1);margin-bottom:12px;" loading="lazy" decoding="async">
-                <p data-i18n="footer.tagline">PapaiArt Animation Studio is built by Babhár Kft.</p>
-            </div>
-            <div>
-                <h4 data-i18n="footer.software">Software</h4>
-                <ul>
-                    <li><a href="features.html" data-i18n="footer.features">Features</a></li>
-                    <li><a href="beta.html" data-i18n="footer.beta">Open Beta</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 data-i18n="footer.learn">Learn</h4>
-                <ul>
-                    <li><a href="learn.html" data-i18n="footer.articles">Articles</a></li>
-                    <li><a href="cikkek/articles.html" data-i18n="footer.overview">Overview</a></li>
-                    <li><a href="cikkek/2d_workflow_articles.html" data-i18n="footer.workflow_2d">2D workflow</a></li>
-                    <li><a href="cikkek/3d_workflow_articles.html" data-i18n="footer.workflow_3d">3D workflow</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 data-i18n="footer.company">Company</h4>
-                <ul>
-                    <li><a href="about.html" data-i18n="footer.about">About</a></li>
-                    <li><a href="about.html#contact" data-i18n="footer.contact">Contact</a></li>
-                </ul>
+<footer class="pa-footer">
+    <div class="pa-footer__grid">
+        <div>
+            <a class="pa-brand" href="index.html"><img src="assets/images/pa-mark.png" alt="" width="30" height="27"><span><b>PapaiArt</b><small>Software</small></span></a>
+            <p>Independent creative software for animators, level designers and game developers. Built by Babhár Kft. in Hungary.</p>
+            <div class="pa-footer__social">
+                <a href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener" aria-label="Discord"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg></a>
+                <a href="https://patreon.com/PapaiArt" target="_blank" rel="noopener" aria-label="Patreon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5.4 5.4 0 0 0-7.7 0L12 6.7l-1.1-1.1a5.4 5.4 0 0 0-7.7 7.7L12 22l8.8-8.7a5.4 5.4 0 0 0 0-7.7z"/></svg></a>
+                <a href="https://papaiart.itch.io" target="_blank" rel="noopener" aria-label="itch.io"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9M3 9h18M3 9v11h18V9M9 20v-6h6v6"/></svg></a>
+                <a href="https://www.linkedin.com/in/bence-papai-papaiart/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.6 8.65 22 11.3 22 14.1V21h-4v-6.1c0-1.46-.03-3.33-2.03-3.33-2.03 0-2.34 1.59-2.34 3.23V21h-4z"/></svg></a>
             </div>
         </div>
-        <div class="site-footer__base">
-            <span data-i18n="footer.copyright">© 2026 Babhár Kft. All rights reserved.</span>
-            <span data-i18n="footer.version">PapaiArt Animation Studio · Open Beta 2026-05-28</span>
-        </div>
+        <div><h4>Game development</h4><ul><li><a href="software/fps-lab.html">FPS Lab</a></li><li><a href="software/level-editor.html">Level Editor</a></li><li><a href="software/level-modeller.html">Level Modeller</a></li><li><a href="software/terrain-generator.html">Terrain Generator</a></li></ul></div>
+        <div><h4>Art &amp; animation</h4><ul><li><a href="software/animation-studio.html">Animation Studio</a></li><li><a href="software/pixelpaint-98-pro.html">PixelPaint 98 Pro</a></li></ul></div>
+        <div><h4>PapaiArt</h4><ul>
+            <li><a href="devlog.html">Devlog</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="about.html#contact">Contact</a></li>
+            <li><a href="learn.html">Animation Studio articles</a></li>
+            <li><a href="https://papaiart.itch.io" target="_blank" rel="noopener">All downloads on itch.io</a></li>
+        </ul></div>
+    </div>
+    <div class="pa-footer__base">
+        <span>© 2026 Babhár Kft. All rights reserved.</span>
+        <span>Made in Hungary · <a href="mailto:babharkft@gmail.com">babharkft@gmail.com</a></span>
     </div>
 </footer>
-
-<script type="module" src="assets/js/hero-effect.js"></script>
-
+<script src="assets/js/site.js" defer></script>
+<script type="module" src="assets/js/heroes.js"></script>
 </body>
 </html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PapaiArt Tools - Level Modeller - 1.5.2 — Level Modeller devlog</title>
+    <meta name="description" content="Terrain, and a hard look under the hood The feature the level layout has been missing is here, and alongside it went a lot of work on editor speed and on getting the lighting right. Terrain Terrain is">
+    <meta name="author" content="Babhár Kft.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#a594ff">
+    <meta name="color-scheme" content="dark">
+    <link rel="canonical" href="https://www.papaiart.com/devlog/1629848-papaiart-tools-level-modeller-1-5-2.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="PapaiArt">
+    <meta property="og:title" content="PapaiArt Tools - Level Modeller - 1.5.2 — Level Modeller devlog">
+    <meta property="og:description" content="Terrain, and a hard look under the hood The feature the level layout has been missing is here, and alongside it went a lot of work on editor speed and on getting the lighting right. Terrain Terrain is">
+    <meta property="og:url" content="https://www.papaiart.com/devlog/1629848-papaiart-tools-level-modeller-1-5-2.html">
+    <meta property="og:image" content="https://www.papaiart.com/assets/images/devlog/1629848-1.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PapaiArt Tools - Level Modeller - 1.5.2 — Level Modeller devlog">
+    <meta name="twitter:description" content="Terrain, and a hard look under the hood The feature the level layout has been missing is here, and alongside it went a lot of work on editor speed and on getting the lighting right. Terrain Terrain is">
+    <meta name="twitter:image" content="https://www.papaiart.com/assets/images/devlog/1629848-1.webp">
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="../site.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/site.css">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "PapaiArt Tools - Level Modeller - 1.5.2", "datePublished": "2026-08-15", "url": "https://www.papaiart.com/devlog/1629848-papaiart-tools-level-modeller-1-5-2.html", "author": {"@type": "Person", "name": "Bence Pápai"}, "publisher": {"@type": "Organization", "name": "Babhár Kft."}, "about": {"@type": "SoftwareApplication", "name": "PapaiArt Tools – Level Modeller", "url": "https://www.papaiart.com/software/level-modeller.html"}, "isBasedOn": "https://papaiart.itch.io/papaiart-tools-level-modeller/devlog/1629848/papaiart-tools-level-modeller-152", "image": "https://www.papaiart.com/assets/images/devlog/1629848-1.webp"}</script>
+    <link rel="alternate" href="https://papaiart.itch.io/papaiart-tools-level-modeller/devlog/1629848/papaiart-tools-level-modeller-152" title="Original post on itch.io">
+</head>
+<body class="pa-dark" style="--p:#a594ff;--p-ink:#0e0a1f">
+<nav class="pa-nav" aria-label="Main">
+    <div class="pa-nav__inner">
+        <a class="pa-brand" href="../index.html" aria-label="PapaiArt home">
+            <img src="../assets/images/pa-mark.png" alt="" width="30" height="27">
+            <span><b>PapaiArt</b><small>Software</small></span>
+        </a>
+        <button class="pa-nav__toggle" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+        <ul class="pa-menu">
+            <li class="pa-has-mega"><button aria-haspopup="true">Software <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="pa-mega"><div class="pa-mega__group">Game development</div><a href="../software/fps-lab.html"><img src="../assets/images/icons/fps-lab.png" alt="" width="38" height="38"><div><b>FPS Lab</b><span>Game engine</span></div></a><a href="../software/level-editor.html"><img src="../assets/images/icons/level-editor.png" alt="" width="38" height="38"><div><b>Level Editor</b><span>Doom-style level editor</span></div></a><a href="../software/level-modeller.html"><img src="../assets/images/icons/level-modeller.png" alt="" width="38" height="38"><div><b>Level Modeller</b><span>CSG level editor</span></div></a><a href="../software/terrain-generator.html"><img src="../assets/images/icons/terrain-generator.png" alt="" width="38" height="38"><div><b>Terrain Generator</b><span>Landscape generator</span></div></a><div class="pa-mega__group">Art &amp; animation</div><a href="../software/animation-studio.html"><img src="../assets/images/icons/animation-studio.png" alt="" width="38" height="38"><div><b>Animation Studio</b><span>Hybrid 2D/3D animation</span></div></a><a href="../software/pixelpaint-98-pro.html"><img src="../assets/images/icons/pixelpaint-98-pro.png" alt="" width="38" height="38"><div><b>PixelPaint 98 Pro</b><span>Pixel art editor</span></div></a></div>
+            </li>
+            <li><a href="../devlog.html" class="is-active">Devlog</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="https://papaiart.itch.io" target="_blank" rel="noopener">itch.io</a></li>
+            <li class="pa-menu__mobile-cta"><a class="pa-btn pa-btn--primary" href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg> Join the Discord</a></li>
+        </ul>
+        <a class="pa-btn pa-btn--primary pa-btn--sm pa-nav__cta" href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg> Discord</a>
+    </div>
+</nav>
+
+<header class="post-hero">
+    <div class="post-hero__bg" style="background-image:url(../assets/images/devlog/1629848-1.webp)"></div>
+    <div class="pa-wrap">
+        <div class="post-crumb"><a href="../devlog.html">Devlog</a><span>/</span><a href="../software/level-modeller.html">Level Modeller</a></div>
+        <h1>PapaiArt Tools - Level Modeller - 1.5.2</h1>
+        <div class="post-hero__meta">
+            <span class="pa-chip"><img src="../assets/images/icons/level-modeller.png" alt="" width="16" height="16" style="width:16px;height:16px">Level Modeller</span>
+            <span class="pa-chip pa-chip--accent">v1.5.2</span>
+            <span class="pa-chip"><time datetime="2026-08-15">August 15, 2026</time></span>
+            <span class="pa-chip">4 min read</span>
+        </div>
+    </div>
+</header>
+
+<figure class="post-cover pa-wrap reveal"><img src="../assets/images/devlog/1629848-1.webp" data-zoom="../assets/images/devlog/1629848-1.webp" data-group="post" width="1276" height="724" alt="PapaiArt Tools - Level Modeller - 1.5.2"></figure>
+
+<article class="pa-wrap"><div class="pa-prose"><p>Terrain, and a hard look under the hood The feature the level layout has been missing is here, and alongside it went a lot of work on editor speed and on getting the lighting right.</p>
+<p>Terrain</p>
+<p>Terrain is a new object type, not a separate editing mode. A heightfield is built as a closed solid, with a surface, a skirt and a bottom cap, so it is an ordinary participant in the boolean: a Negative box carves a cave or a building foundation straight into the ground, a Positive wall unions onto it. Nothing downstream needed a special case.</p>
+<p>The Field settings run from 32x32 to 192x192 cells, with Size, Height and Base, the last of which decides how deep the solid runs below the lowest point. The Height brush works in Raise, Lower, Smooth and Flatten modes; Flatten levels to the height you click first, so a building pad takes one stroke. Ground Layers gives you four layers. Layer 0 is the object's own Material texture, so an unpainted terrain looks exactly like any other object, while layers 1 to 3 are painted in with their own tiling. Paint resolution is independent of the mesh: the weights live in a texture rather than in vertices, so you get crisp material edges on a low-poly heightfield. The choices run from 256 up to 2048, saved as a PNG next to the map. Exports carry the result. On OBJ, glTF/GLB and the Unity bundle, each terrain's splat is composited into a single albedo texture, so engines with no terrain shader of their own still show what you painted. Lightmaps bake over terrain like any other geometry. Two light leaks, both fixed If a point light sat exactly above a receiver, or lined up with an axis-aligned wall, a bright line ran across the shadow. One divide was to blame: a ray direction component of exactly zero makes its reciprocal infinite, and multiplying that by the difference of bound and origin gives NaN. GLSL leaves min and max undefined for NaN, so the BVH node quietly failed its test, the occluder inside it was never traced, and those texels stayed lit. The reciprocal is now clamped to a large finite value: the search slab on that axis simply becomes very wide, which for a ray that does not move along the axis is also the correct answer. The second one was thinner and meaner. Two triangles sharing an edge do not evaluate that edge from the same numbers, so a ray aimed exactly at it could be rejected by both and pass through a surface with no hole in it, and a light straight over the diagonal of a quad did it every time. The edge tests now carry a small tolerance: erring towards a hit costs a millionth of a triangle, while the alternative was an unshadowed line across the floor. Both now have headless regression tests, so neither can come back unnoticed.</p>
+<p>Speed</p>
+<p>Bake preparation is multithreaded. Texel rasterization and page assembly run per atlas page in parallel; on a level with hundreds of pages this was the bulk of the wait before a single ray was traced. Cancel also does what it says now, where before it did nothing until the whole preparation stage was over. Walk mode and face hover trace an acceleration structure instead of scanning every triangle in the level, and picking rejects whole objects by their world bounding box first. Selection outlines cache their edge table; it used to be rebuilt from scratch, every frame, for every selected object, even though the topology it comes from does not change per frame. Vertex buffers upload only when the mesh actually changed, which on a big level saves pushing around 19 MB per frame of data that had not moved. Terrain painting streams through a per-frame staging buffer. Every brush dab used to be its own submit with a full pipeline drain, and that stall was the hitch you could feel mid-stroke.</p>
+<p>Fixes Present synchronisation now uses one semaphore per swapchain image rather than one per frame in flight. The CSG cache is keyed by object id instead of by pointer: a deleted object's address could be reused by a different one, which in the wrong circumstances rendered somebody else's baked geometry. Gizmo handles scale correctly in orthographic views and follow the avatar's field of view in walk mode. A reopened map redraws its terrain splatted in the baked view and keeps its own painting instead of, in one unlucky case, the previous map's. Terrain layer textures now refresh when a project is opened: every other object resolves its texture by name each frame, but a terrain's splat descriptor caches the image, and a document opened mid-frame could leave it holding the fallback checker for good.</p>
+<p>As always, a bug report with a .lmmap attached is worth ten without one.</p></div></article>
+
+
+
+<div class="pa-wrap" style="max-width:760px;margin-top:56px;display:flex;gap:12px;flex-wrap:wrap">
+    <a class="pa-btn pa-btn--primary" href="https://papaiart.itch.io/papaiart-tools-level-modeller" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg> Get Level Modeller</a>
+    <a class="pa-btn pa-btn--ghost" href="https://papaiart.itch.io/papaiart-tools-level-modeller/devlog/1629848/papaiart-tools-level-modeller-152" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg> Comment on itch.io</a>
+    <a class="pa-btn pa-btn--ghost" href="../software/level-modeller.html">Level Modeller overview</a>
+</div>
+<div class="pa-wrap" style="margin-top:72px"><div class="post-nav"><a class="prev" href="../devlog/1625876-level-modeller-1-4-2-gpu-lightbake.html"><small>← Older</small><b>Level Modeller 1.4.2 GPU Lightbake</b></a><a class="next" href="../devlog/1637012-papaiart-tools-level-modeller-1-6-3.html"><small>Newer →</small><b>PapaiArt Tools - Level Modeller - 1.6.3</b></a></div></div>
+
+<div style="height:100px"></div>
+<footer class="pa-footer">
+    <div class="pa-footer__grid">
+        <div>
+            <a class="pa-brand" href="../index.html"><img src="../assets/images/pa-mark.png" alt="" width="30" height="27"><span><b>PapaiArt</b><small>Software</small></span></a>
+            <p>Independent creative software for animators, level designers and game developers. Built by Babhár Kft. in Hungary.</p>
+            <div class="pa-footer__social">
+                <a href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener" aria-label="Discord"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg></a>
+                <a href="https://patreon.com/PapaiArt" target="_blank" rel="noopener" aria-label="Patreon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5.4 5.4 0 0 0-7.7 0L12 6.7l-1.1-1.1a5.4 5.4 0 0 0-7.7 7.7L12 22l8.8-8.7a5.4 5.4 0 0 0 0-7.7z"/></svg></a>
+                <a href="https://papaiart.itch.io" target="_blank" rel="noopener" aria-label="itch.io"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9M3 9h18M3 9v11h18V9M9 20v-6h6v6"/></svg></a>
+                <a href="https://www.linkedin.com/in/bence-papai-papaiart/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.6 8.65 22 11.3 22 14.1V21h-4v-6.1c0-1.46-.03-3.33-2.03-3.33-2.03 0-2.34 1.59-2.34 3.23V21h-4z"/></svg></a>
+            </div>
+        </div>
+        <div><h4>Game development</h4><ul><li><a href="../software/fps-lab.html">FPS Lab</a></li><li><a href="../software/level-editor.html">Level Editor</a></li><li><a href="../software/level-modeller.html">Level Modeller</a></li><li><a href="../software/terrain-generator.html">Terrain Generator</a></li></ul></div>
+        <div><h4>Art &amp; animation</h4><ul><li><a href="../software/animation-studio.html">Animation Studio</a></li><li><a href="../software/pixelpaint-98-pro.html">PixelPaint 98 Pro</a></li></ul></div>
+        <div><h4>PapaiArt</h4><ul>
+            <li><a href="../devlog.html">Devlog</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../about.html#contact">Contact</a></li>
+            <li><a href="../learn.html">Animation Studio articles</a></li>
+            <li><a href="https://papaiart.itch.io" target="_blank" rel="noopener">All downloads on itch.io</a></li>
+        </ul></div>
+    </div>
+    <div class="pa-footer__base">
+        <span>© 2026 Babhár Kft. All rights reserved.</span>
+        <span>Made in Hungary · <a href="mailto:babharkft@gmail.com">babharkft@gmail.com</a></span>
+    </div>
+</footer>
+<script src="../assets/js/site.js" defer></script>
+</body>
+</html>

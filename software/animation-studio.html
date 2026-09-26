@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PapaiArt Animation Studio — Hybrid 2D/3D animation</title>
+    <meta name="description" content="Built for the Spider-Verse look: frame-by-frame 2D drawing inside a real 3D scene, non-destructive modelling, IK rigging and one-click MP4 export, on a lightweight engine that starts in seconds.">
+    <meta name="author" content="Babhár Kft.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#2ea4f5">
+    <meta name="color-scheme" content="dark">
+    <link rel="canonical" href="https://www.papaiart.com/software/animation-studio.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="PapaiArt">
+    <meta property="og:title" content="PapaiArt Animation Studio — Hybrid 2D/3D animation">
+    <meta property="og:description" content="Built for the Spider-Verse look: frame-by-frame 2D drawing inside a real 3D scene, non-destructive modelling, IK rigging and one-click MP4 export, on a lightweight engine that starts in seconds.">
+    <meta property="og:url" content="https://www.papaiart.com/software/animation-studio.html">
+    <meta property="og:image" content="https://www.papaiart.com/assets/images/og/animation-studio.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PapaiArt Animation Studio — Hybrid 2D/3D animation">
+    <meta name="twitter:description" content="Built for the Spider-Verse look: frame-by-frame 2D drawing inside a real 3D scene, non-destructive modelling, IK rigging and one-click MP4 export, on a lightweight engine that starts in seconds.">
+    <meta name="twitter:image" content="https://www.papaiart.com/assets/images/og/animation-studio.png">
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="../site.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/site.css">
+    <script type="importmap">
+    { "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    } }
+    </script>
+    <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" crossorigin>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "PapaiArt Animation Studio", "url": "https://www.papaiart.com/software/animation-studio.html", "applicationCategory": "MultimediaApplication", "operatingSystem": "Windows, macOS, Linux", "description": "Built for the Spider-Verse look: frame-by-frame 2D drawing inside a real 3D scene, non-destructive modelling, IK rigging and one-click MP4 export, on a lightweight engine that starts in seconds.", "image": "https://www.papaiart.com/assets/images/products/animation-studio/shot-05.webp", "screenshot": ["https://www.papaiart.com/assets/images/products/animation-studio/shot-01.webp", "https://www.papaiart.com/assets/images/products/animation-studio/shot-02.webp", "https://www.papaiart.com/assets/images/products/animation-studio/shot-03.webp", "https://www.papaiart.com/assets/images/products/animation-studio/shot-04.webp", "https://www.papaiart.com/assets/images/products/animation-studio/shot-05.webp", "https://www.papaiart.com/assets/images/products/animation-studio/shot-06.webp"], "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "url": "https://papaiart.itch.io/papaiart-animation-studio-open-beta"}, "publisher": {"@type": "Organization", "name": "Babhár Kft.", "url": "https://www.papaiart.com/"}, "softwareVersion": "1.0.1"}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.papaiart.com/"}, {"@type": "ListItem", "position": 2, "name": "Animation Studio", "item": "https://www.papaiart.com/software/animation-studio.html"}]}</script>
+</head>
+<body class="pa-dark" style="--p:#2ea4f5;--p-ink:#ffffff">
+<nav class="pa-nav" aria-label="Main">
+    <div class="pa-nav__inner">
+        <a class="pa-brand" href="../index.html" aria-label="PapaiArt home">
+            <img src="../assets/images/pa-mark.png" alt="" width="30" height="27">
+            <span><b>PapaiArt</b><small>Software</small></span>
+        </a>
+        <button class="pa-nav__toggle" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+        <ul class="pa-menu">
+            <li class="pa-has-mega"><button class="is-active" aria-haspopup="true">Software <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="pa-mega"><div class="pa-mega__group">Game development</div><a href="../software/fps-lab.html"><img src="../assets/images/icons/fps-lab.png" alt="" width="38" height="38"><div><b>FPS Lab</b><span>Game engine</span></div></a><a href="../software/level-editor.html"><img src="../assets/images/icons/level-editor.png" alt="" width="38" height="38"><div><b>Level Editor</b><span>Doom-style level editor</span></div></a><a href="../software/level-modeller.html"><img src="../assets/images/icons/level-modeller.png" alt="" width="38" height="38"><div><b>Level Modeller</b><span>CSG level editor</span></div></a><a href="../software/terrain-generator.html"><img src="../assets/images/icons/terrain-generator.png" alt="" width="38" height="38"><div><b>Terrain Generator</b><span>Landscape generator</span></div></a><div class="pa-mega__group">Art &amp; animation</div><a href="../software/animation-studio.html"><img src="../assets/images/icons/animation-studio.png" alt="" width="38" height="38"><div><b>Animation Studio</b><span>Hybrid 2D/3D animation</span></div></a><a href="../software/pixelpaint-98-pro.html"><img src="../assets/images/icons/pixelpaint-98-pro.png" alt="" width="38" height="38"><div><b>PixelPaint 98 Pro</b><span>Pixel art editor</span></div></a></div>
+            </li>
+            <li><a href="../devlog.html">Devlog</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="https://papaiart.itch.io" target="_blank" rel="noopener">itch.io</a></li>
+            <li class="pa-menu__mobile-cta"><a class="pa-btn pa-btn--primary" href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg> Join the Discord</a></li>
+        </ul>
+        <a class="pa-btn pa-btn--primary pa-btn--sm pa-nav__cta" href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg> Discord</a>
+    </div>
+</nav>
+
+<header class="pa-hero prod-hero" data-hero="animation" data-shift="0.2">
+    
+    <div class="pa-wrap prod-hero__grid">
+        <div>
+            <div class="prod-hero__id"><img src="../assets/images/icons/animation-studio.png" alt="" width="64" height="64"><span class="pa-eyebrow">Hybrid 2D/3D animation</span></div>
+            <h1><small>PapaiArt</small>Animation Studio</h1>
+            <p class="prod-hero__tagline">Built for the Spider-Verse look: frame-by-frame 2D drawing inside a real 3D scene, non-destructive modelling, IK rigging and one-click MP4 export, on a lightweight engine that starts in seconds.</p>
+            <div class="prod-hero__ctas"><a class="pa-btn pa-btn--primary pa-btn--lg" href="https://papaiart.itch.io/papaiart-animation-studio-open-beta" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg> Download free</a><a class="pa-btn pa-btn--ghost pa-btn--lg" href="#video"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l6-3.5z"/></svg> Watch video</a></div>
+            <div class="prod-hero__chips"><span class="pa-chip pa-chip--accent"><span class="dot"></span>Open Beta</span><span class="pa-chip">v1.0.1</span><span class="pa-chip">Windows · macOS · Linux</span><span class="pa-chip">Free · During the open beta</span></div>
+        </div>
+    </div>
+</header>
+
+<div class="pa-wrap prod-showcase">
+    <div class="pa-window">
+        <div class="pa-window__bar"><i></i><i></i><i></i><span>PapaiArt Animation Studio</span></div>
+        <img src="../assets/images/products/animation-studio/shot-05.webp" data-zoom="../assets/images/products/animation-studio/shot-05.webp" alt="Animation Studio interface" fetchpriority="high">
+    </div>
+    <dl class="pa-facts reveal"><div><dt>Status</dt><dd>Open Beta</dd></div><div><dt>Latest version</dt><dd>v1.0.1</dd></div><div><dt>Platform</dt><dd>Windows · macOS · Linux</dd></div><div><dt>Price</dt><dd>Free</dd></div><div><dt>Last update</dt><dd>Jun 25, 2026</dd></div></dl>
+</div>
+
+<section class="pa-section">
+    <div class="pa-wrap pa-overview">
+        <div class="pa-overview__body reveal">
+            <span class="pa-eyebrow">Overview</span>
+            <h2>Hybrid 2D/3D animation: draw in 3D space, model, rig and render straight to MP4.</h2>
+            <p>PapaiArt Animation Studio combines 2D and 3D animation in a new way. Think of the look of <em>Spider-Man: Across the Spider-Verse</em> or <em>Star Wars: Maul – Shadow Lord</em>, where hand-drawn lines live inside dimensional scenes. The program aims to become the dedicated tool for that style.</p><p>The closed beta is over and the open beta is free for everyone. Version 1.0 was the first big milestone, with a new FBX pipeline, multi-material and multi-UV support and a GPU-buffer based renderer. The free period ends once all 1.5 features are ready.</p><p>Made something cool with it? Send a screenshot or video that can be featured, and the Open Beta watermark will be removed for you. You also get a free key when the program launches on Steam.</p>
+            <p style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px"><a class="pa-btn pa-btn--ghost pa-btn--sm" href="../features.html">Full capability list <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a class="pa-btn pa-btn--ghost pa-btn--sm" href="../learn.html">Articles &amp; tutorials <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></p>
+        </div>
+        <aside class="pa-callout reveal"><h3>Highlights</h3><ul><li>2D vector drawing inside the 3D viewport</li><li>Non-destructive modelling with a modifier stack</li><li>IK rigging and constraints</li><li>FBX and OBJ import/export with presets</li><li>Built-in H.264 MP4 export</li><li>Blender-style G / R / S hotkeys</li></ul></aside>
+    </div>
+</section>
+
+<section class="pa-section pa-section--alt">
+    <div class="pa-wrap">
+        <div class="pa-head reveal"><span class="pa-eyebrow">Features</span><h2>What's inside</h2></div>
+        <div class="pa-feature">
+    <div class="pa-feature__copy reveal">
+        <span class="pa-feature__num">01 / 04</span>
+        <h3>Drawing in real 3D space</h3>
+        <p class="pa-feature__lead">2D drawings sit inside the 3D viewport, with cameras, depth and lighting. Vector strokes stay editable.</p>
+        <ul><li>Drawing tracks and clips with exposure-sheet logic</li><li>Onion skinning with customisable ink colours</li><li>Pencil, Pen, Calligraphy and Rough brushes with pressure and tilt</li><li>Independent stroke and fill for flat-design styles</li><li>Drawing Layers: lines, shapes and images as separate sub-layers</li></ul>
+    </div>
+    <div class="pa-feature__media reveal"><img src="../assets/images/products/animation-studio/shot-07.webp" data-zoom="../assets/images/products/animation-studio/shot-07.webp" data-group="features" alt="Animation Studio: Drawing in real 3D space" loading="lazy" decoding="async"></div>
+</div><div class="pa-feature pa-feature--flip">
+    <div class="pa-feature__copy reveal">
+        <span class="pa-feature__num">02 / 04</span>
+        <h3>Non-destructive 3D modelling</h3>
+        <p class="pa-feature__lead">A clean hierarchy and a real-time modifier stack, with the hotkeys Blender users already know.</p>
+        <ul><li>Mirror and Subdivision Surface modifiers refresh instantly</li><li>Interactive Bevel and Knife tools on the mesh</li><li>Multi-material objects and multiple UV channels with a rewritten UV editor</li><li>Modal <strong>G / R / S</strong> transforms with axis locks and typed values</li><li>A pivot dot that shows exactly what you rotate and scale around</li></ul>
+    </div>
+    <div class="pa-feature__media reveal"><img src="../assets/images/products/animation-studio/shot-08.webp" data-zoom="../assets/images/products/animation-studio/shot-08.webp" data-group="features" alt="Animation Studio: Non-destructive 3D modelling" loading="lazy" decoding="async"></div>
+</div><div class="pa-feature">
+    <div class="pa-feature__copy reveal">
+        <span class="pa-feature__num">03 / 04</span>
+        <h3>Rigging and animation</h3>
+        <p class="pa-feature__lead">Enough rigging to handle complex character animation, without leaving the program.</p>
+        <ul><li>Inverse Kinematics, TrackTo, ChildOf and Limit constraints</li><li>Timeline with keyframes, and infinite undo/redo</li><li>Bone, skinning and animation export to FBX</li><li>Dockable panels: Inspector, Viewport, Timeline, Hierarchy</li></ul>
+    </div>
+    <div class="pa-feature__media reveal"><img src="../assets/images/products/animation-studio/shot-02.webp" data-zoom="../assets/images/products/animation-studio/shot-02.webp" data-group="features" alt="Animation Studio: Rigging and animation" loading="lazy" decoding="async"></div>
+</div><div class="pa-feature pa-feature--flip">
+    <div class="pa-feature__copy reveal">
+        <span class="pa-feature__num">04 / 04</span>
+        <h3>FBX pipeline and one-click render</h3>
+        <p class="pa-feature__lead">Move assets in and out of other tools, and render the timeline without an external editor.</p>
+        <ul><li>New FBX exporter with Blender-style presets: axes, scale, apply transform, triangulation</li><li>Diffuse, normal and emissive maps, PBR scalars and per-face multi-material</li><li>Texture path modes: absolute, relative, strip, or copy next to the FBX</li><li>Built-in <strong>H.264 MP4</strong> and PNG sequence export at FHD or custom resolutions</li></ul>
+    </div>
+    <div class="pa-feature__media reveal"><img src="../assets/images/products/animation-studio/shot-06.webp" data-zoom="../assets/images/products/animation-studio/shot-06.webp" data-group="features" alt="Animation Studio: FBX pipeline and one-click render" loading="lazy" decoding="async"></div>
+</div>
+    </div>
+</section>
+
+
+
+<section class="pa-section" id="video">
+    <div class="pa-wrap">
+        <div class="pa-head pa-head--center reveal"><span class="pa-eyebrow">See it in action</span><h2>Watch Animation Studio</h2></div>
+        <div class="reveal"><div class="pa-video" data-yt="Ne7pDUHR164" data-title="Animation Studio open beta"><button aria-label="Play video: Animation Studio open beta"><span><svg viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></svg></span></button><span class="pa-video__label">▶ Animation Studio open beta</span></div></div>
+        
+    </div>
+</section>
+
+<section class="pa-section pa-section--alt">
+    <div class="pa-wrap">
+        <div class="pa-head reveal"><span class="pa-eyebrow">Gallery</span><h2>Screenshots</h2></div>
+        <div class="pa-gallery"><a href="../assets/images/products/animation-studio/shot-01.webp" data-zoom="../assets/images/products/animation-studio/shot-01.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/animation-studio/shot-01.webp" alt="Animation Studio screenshot 1" loading="lazy" decoding="async"></a><a href="../assets/images/products/animation-studio/shot-02.webp" data-zoom="../assets/images/products/animation-studio/shot-02.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/animation-studio/shot-02.webp" alt="Animation Studio screenshot 2" loading="lazy" decoding="async"></a><a href="../assets/images/products/animation-studio/shot-03.webp" data-zoom="../assets/images/products/animation-studio/shot-03.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/animation-studio/shot-03.webp" alt="Animation Studio screenshot 3" loading="lazy" decoding="async"></a><a href="../assets/images/products/animation-studio/shot-04.webp" data-zoom="../assets/images/products/animation-studio/shot-04.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/animation-studio/shot-04.webp" alt="Animation Studio screenshot 4" loading="lazy" decoding="async"></a><a href="../assets/images/products/animation-studio/shot-05.webp" data-zoom="../assets/images/products/animation-studio/shot-05.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/animation-studio/shot-05.webp" alt="Animation Studio screenshot 5" loading="lazy" decoding="async"></a><a href="../assets/images/products/animation-studio/shot-06.webp" data-zoom="../assets/images/products/animation-studio/shot-06.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/animation-studio/shot-06.webp" alt="Animation Studio screenshot 6" loading="lazy" decoding="async"></a><a href="../assets/images/products/animation-studio/shot-07.webp" data-zoom="../assets/images/products/animation-studio/shot-07.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/animation-studio/shot-07.webp" alt="Animation Studio screenshot 7" loading="lazy" decoding="async"></a><a href="../assets/images/products/animation-studio/shot-08.webp" data-zoom="../assets/images/products/animation-studio/shot-08.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/animation-studio/shot-08.webp" alt="Animation Studio screenshot 8" loading="lazy" decoding="async"></a><a href="../assets/images/products/animation-studio/shot-09.webp" data-zoom="../assets/images/products/animation-studio/shot-09.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/animation-studio/shot-09.webp" alt="Animation Studio screenshot 9" loading="lazy" decoding="async"></a><a href="../assets/images/products/animation-studio/shot-10.webp" data-zoom="../assets/images/products/animation-studio/shot-10.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/animation-studio/shot-10.webp" alt="Animation Studio screenshot 10" loading="lazy" decoding="async"></a></div>
+    </div>
+</section>
+
+<section class="pa-section pa-section--alt" id="devlog">
+    <div class="pa-wrap" style="max-width:980px">
+        <div class="pa-head reveal"><span class="pa-eyebrow">Devlog</span><h2>Development timeline</h2><p>2 updates since June 25, 2026. Newest first.</p></div>
+        <ol class="pa-timeline"><li class="reveal"><a href="../devlog/1564295-blender-style-transform-hotkeys-g-r-s-in-v1-0-1.html"><div class="pa-timeline__img"><img src="../assets/images/devlog/1564295-1.webp" alt="" loading="lazy"></div><div>
+    <div class="pa-timeline__meta"><span class="pa-chip pa-chip--accent">v1.0.1</span><time datetime="2026-06-25">June 25, 2026</time></div>
+    <h3>Blender-style transform hotkeys (G / R / S) in v1.0.1</h3><p>This is the bigger one: we added modal transforms, just like you&#x27;re used to in Blender. No more dragging gizmo arrows — one key press and a mouse move, and you&#x27;re transforming instantly. The basics: G – grab (move) R –…</p></div></a></li><li class="reveal"><a href="../devlog/1563631-papaiart-animation-studio-1-0.html"><div class="pa-timeline__img"><img src="../assets/images/devlog/1563631-1.webp" alt="" loading="lazy"></div><div>
+    <div class="pa-timeline__meta"><span class="pa-chip pa-chip--accent">v1.0</span><time datetime="2026-06-25">June 25, 2026</time></div>
+    <h3>Papaiart Animation Studio 1.0</h3><p>We have reached the first milestone. Version 1.0 is already a highly useful tool for animators and game developers alike. What is an even bigger step forward: FBX export — brand-new system (the biggest item) New…</p></div></a></li></ol>
+        
+    </div>
+</section>
+
+<section class="pa-section">
+    <div class="pa-wrap">
+        <div class="pa-cta reveal">
+            <img class="pa-cta__icon" src="../assets/images/icons/animation-studio.png" alt="">
+            <div>
+                <h2>Get Animation Studio free</h2>
+                <p>Hybrid 2D/3D animation: draw in 3D space, model, rig and render straight to MP4.</p>
+                <div class="pa-cta__meta"><span>Windows 10 / 11, macOS or Linux</span><span>A GPU with up-to-date drivers</span><span>Tablet versions are planned</span></div>
+            </div>
+            <div class="pa-cta__actions">
+                <a class="pa-btn pa-btn--primary pa-btn--lg" href="https://papaiart.itch.io/papaiart-animation-studio-open-beta" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg> Download on itch.io</a>
+                <a class="pa-btn pa-btn--ghost" href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg> Ask on Discord</a>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pa-section pa-section--tight" style="padding-top:0">
+    <div class="pa-wrap">
+        <div class="pa-group-title"><h3>More from PapaiArt</h3></div>
+        <div class="pa-more"><a href="fps-lab.html" style="--p:#34c47e"><img src="../assets/images/icons/fps-lab.png" alt=""><div><b>FPS Lab</b><span>Game engine</span></div></a><a href="level-editor.html" style="--p:#ffc800"><img src="../assets/images/icons/level-editor.png" alt=""><div><b>Level Editor</b><span>Doom-style level editor</span></div></a><a href="level-modeller.html" style="--p:#a594ff"><img src="../assets/images/icons/level-modeller.png" alt=""><div><b>Level Modeller</b><span>CSG level editor</span></div></a><a href="terrain-generator.html" style="--p:#eaa640"><img src="../assets/images/icons/terrain-generator.png" alt=""><div><b>Terrain Generator</b><span>Landscape generator</span></div></a><a href="pixelpaint-98-pro.html" style="--p:#1fc1c1"><img src="../assets/images/icons/pixelpaint-98-pro.png" alt=""><div><b>PixelPaint 98 Pro</b><span>Pixel art editor</span></div></a></div>
+    </div>
+</section>
+
+<footer class="pa-footer">
+    <div class="pa-footer__grid">
+        <div>
+            <a class="pa-brand" href="../index.html"><img src="../assets/images/pa-mark.png" alt="" width="30" height="27"><span><b>PapaiArt</b><small>Software</small></span></a>
+            <p>Independent creative software for animators, level designers and game developers. Built by Babhár Kft. in Hungary.</p>
+            <div class="pa-footer__social">
+                <a href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener" aria-label="Discord"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg></a>
+                <a href="https://patreon.com/PapaiArt" target="_blank" rel="noopener" aria-label="Patreon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5.4 5.4 0 0 0-7.7 0L12 6.7l-1.1-1.1a5.4 5.4 0 0 0-7.7 7.7L12 22l8.8-8.7a5.4 5.4 0 0 0 0-7.7z"/></svg></a>
+                <a href="https://papaiart.itch.io" target="_blank" rel="noopener" aria-label="itch.io"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9M3 9h18M3 9v11h18V9M9 20v-6h6v6"/></svg></a>
+                <a href="https://www.linkedin.com/in/bence-papai-papaiart/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.6 8.65 22 11.3 22 14.1V21h-4v-6.1c0-1.46-.03-3.33-2.03-3.33-2.03 0-2.34 1.59-2.34 3.23V21h-4z"/></svg></a>
+            </div>
+        </div>
+        <div><h4>Game development</h4><ul><li><a href="../software/fps-lab.html">FPS Lab</a></li><li><a href="../software/level-editor.html">Level Editor</a></li><li><a href="../software/level-modeller.html">Level Modeller</a></li><li><a href="../software/terrain-generator.html">Terrain Generator</a></li></ul></div>
+        <div><h4>Art &amp; animation</h4><ul><li><a href="../software/animation-studio.html">Animation Studio</a></li><li><a href="../software/pixelpaint-98-pro.html">PixelPaint 98 Pro</a></li></ul></div>
+        <div><h4>PapaiArt</h4><ul>
+            <li><a href="../devlog.html">Devlog</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../about.html#contact">Contact</a></li>
+            <li><a href="../learn.html">Animation Studio articles</a></li>
+            <li><a href="https://papaiart.itch.io" target="_blank" rel="noopener">All downloads on itch.io</a></li>
+        </ul></div>
+    </div>
+    <div class="pa-footer__base">
+        <span>© 2026 Babhár Kft. All rights reserved.</span>
+        <span>Made in Hungary · <a href="mailto:babharkft@gmail.com">babharkft@gmail.com</a></span>
+    </div>
+</footer>
+<script src="../assets/js/site.js" defer></script>
+<script type="module" src="../assets/js/heroes.js"></script>
+</body>
+</html>

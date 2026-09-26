@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FPS Lab 0.7.3 - Navigation Volume and Agent System — FPS Lab devlog</title>
+    <meta name="description" content="Until this build, an enemy in FPS Lab could only walk the straight line to you. That is what Move Towards does, and it is what the zombie in the handbook&#x27;s project 4 does — which works beautifully in ">
+    <meta name="author" content="Babhár Kft.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#34c47e">
+    <meta name="color-scheme" content="dark">
+    <link rel="canonical" href="https://www.papaiart.com/devlog/1620655-fps-lab-0-7-3-navigation-volume-and-agent-system.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="PapaiArt">
+    <meta property="og:title" content="FPS Lab 0.7.3 - Navigation Volume and Agent System — FPS Lab devlog">
+    <meta property="og:description" content="Until this build, an enemy in FPS Lab could only walk the straight line to you. That is what Move Towards does, and it is what the zombie in the handbook&#x27;s project 4 does — which works beautifully in ">
+    <meta property="og:url" content="https://www.papaiart.com/devlog/1620655-fps-lab-0-7-3-navigation-volume-and-agent-system.html">
+    <meta property="og:image" content="https://www.papaiart.com/assets/images/devlog/1620655-1.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FPS Lab 0.7.3 - Navigation Volume and Agent System — FPS Lab devlog">
+    <meta name="twitter:description" content="Until this build, an enemy in FPS Lab could only walk the straight line to you. That is what Move Towards does, and it is what the zombie in the handbook&#x27;s project 4 does — which works beautifully in ">
+    <meta name="twitter:image" content="https://www.papaiart.com/assets/images/devlog/1620655-1.webp">
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="../site.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/site.css">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "FPS Lab 0.7.3 - Navigation Volume and Agent System", "datePublished": "2026-08-07", "url": "https://www.papaiart.com/devlog/1620655-fps-lab-0-7-3-navigation-volume-and-agent-system.html", "author": {"@type": "Person", "name": "Bence Pápai"}, "publisher": {"@type": "Organization", "name": "Babhár Kft."}, "about": {"@type": "SoftwareApplication", "name": "PapaiArt Tools – FPS Lab", "url": "https://www.papaiart.com/software/fps-lab.html"}, "isBasedOn": "https://papaiart.itch.io/papaiart-tools-fps-lab/devlog/1620655/fps-lab-073-navigation-volume-and-agent-system", "image": "https://www.papaiart.com/assets/images/devlog/1620655-1.webp"}</script>
+    <link rel="alternate" href="https://papaiart.itch.io/papaiart-tools-fps-lab/devlog/1620655/fps-lab-073-navigation-volume-and-agent-system" title="Original post on itch.io">
+</head>
+<body class="pa-dark" style="--p:#34c47e;--p-ink:#03140b">
+<nav class="pa-nav" aria-label="Main">
+    <div class="pa-nav__inner">
+        <a class="pa-brand" href="../index.html" aria-label="PapaiArt home">
+            <img src="../assets/images/pa-mark.png" alt="" width="30" height="27">
+            <span><b>PapaiArt</b><small>Software</small></span>
+        </a>
+        <button class="pa-nav__toggle" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+        <ul class="pa-menu">
+            <li class="pa-has-mega"><button aria-haspopup="true">Software <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="pa-mega"><div class="pa-mega__group">Game development</div><a href="../software/fps-lab.html"><img src="../assets/images/icons/fps-lab.png" alt="" width="38" height="38"><div><b>FPS Lab</b><span>Game engine</span></div></a><a href="../software/level-editor.html"><img src="../assets/images/icons/level-editor.png" alt="" width="38" height="38"><div><b>Level Editor</b><span>Doom-style level editor</span></div></a><a href="../software/level-modeller.html"><img src="../assets/images/icons/level-modeller.png" alt="" width="38" height="38"><div><b>Level Modeller</b><span>CSG level editor</span></div></a><a href="../software/terrain-generator.html"><img src="../assets/images/icons/terrain-generator.png" alt="" width="38" height="38"><div><b>Terrain Generator</b><span>Landscape generator</span></div></a><div class="pa-mega__group">Art &amp; animation</div><a href="../software/animation-studio.html"><img src="../assets/images/icons/animation-studio.png" alt="" width="38" height="38"><div><b>Animation Studio</b><span>Hybrid 2D/3D animation</span></div></a><a href="../software/pixelpaint-98-pro.html"><img src="../assets/images/icons/pixelpaint-98-pro.png" alt="" width="38" height="38"><div><b>PixelPaint 98 Pro</b><span>Pixel art editor</span></div></a></div>
+            </li>
+            <li><a href="../devlog.html" class="is-active">Devlog</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="https://papaiart.itch.io" target="_blank" rel="noopener">itch.io</a></li>
+            <li class="pa-menu__mobile-cta"><a class="pa-btn pa-btn--primary" href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg> Join the Discord</a></li>
+        </ul>
+        <a class="pa-btn pa-btn--primary pa-btn--sm pa-nav__cta" href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg> Discord</a>
+    </div>
+</nav>
+
+<header class="post-hero">
+    <div class="post-hero__bg" style="background-image:url(../assets/images/devlog/1620655-1.webp)"></div>
+    <div class="pa-wrap">
+        <div class="post-crumb"><a href="../devlog.html">Devlog</a><span>/</span><a href="../software/fps-lab.html">FPS Lab</a></div>
+        <h1>FPS Lab 0.7.3 - Navigation Volume and Agent System</h1>
+        <div class="post-hero__meta">
+            <span class="pa-chip"><img src="../assets/images/icons/fps-lab.png" alt="" width="16" height="16" style="width:16px;height:16px">FPS Lab</span>
+            <span class="pa-chip pa-chip--accent">v0.7.3</span>
+            <span class="pa-chip"><time datetime="2026-08-07">August 7, 2026</time></span>
+            <span class="pa-chip">4 min read</span>
+        </div>
+    </div>
+</header>
+
+<figure class="post-cover pa-wrap reveal"><img src="../assets/images/devlog/1620655-1.webp" data-zoom="../assets/images/devlog/1620655-1.webp" data-group="post" width="1400" height="845" alt="FPS Lab 0.7.3 - Navigation Volume and Agent System"></figure>
+
+<article class="pa-wrap"><div class="pa-prose"><h3>Enemies that find their own way</h3>
+<p>Until this build, an enemy in FPS Lab could only walk the straight line to you. That is what Move Towards does, and it is what the zombie in the handbook's project 4 does — which works beautifully in an open room and stops dead at the first wall.</p>
+<p>This build adds navigation: your monsters can now work out a route through the level themselves.</p>
+<h3>Nav Volume — the map</h3>
+<p>Place a Nav Volume over your level, press Bake, and the engine chops everything inside the box into cells and works out where a body of a given size can actually stand. Tick Show Cells and the walkable floor is drawn in the viewport in green — the floor pulls back from every wall by the agent's radius, closes under anything too low to stand beneath, follows stairs up to Max Step and stops a step short of a drop deeper than Max Drop.</p>
+<p>It's a voxel field rather than a navigation mesh, and that's a deliberate trade. A flying enemy needs no second structure — the free space <em>is</em> the flight graph. A rebake is a rasterization rather than a global mesh regeneration. And there is no mesh-generation step that can quietly invent a surface your level doesn't have: what you see in green is what the search runs on. The cost is memory, which the cell budget bounds.</p>
+<h3>Nav Agent — the walker</h3>
+<p>Add a Nav Agent, parent the monster's model under it, and give it a destination. It walks (or flies) the route: turning at its own turn rate, accelerating, braking into its stopping distance, and stepping around the other agents on the way.</p>
+<p>Eleven script nodes drive it, plus an arrival event:</p>
+<ul><li>Set Nav Destination, Nav Follow (chase — it re-reads where the target went by itself), Nav Stop / Nav Resume, Nav Set Speed
+</li><li>Nav Has Path, Nav Remaining Distance, Nav Is At Destination, On Nav Destination Reached
+</li><li>Random Nav Point — a patrol in three nodes, no waypoints to author
+</li><li>Sample Nav Position — place a spawn somewhere the AI can actually stand
+</li><li>Nav Raycast — "could I charge straight at the player, or do I have to go around?"
+</li></ul>
+<p>While the game runs, the agent's Inspector tells you what it is doing — moving, arrived, stopped, or NO ROUTE — and the route it is following is drawn in the viewport. Searches are budgeted per tick, so a room full of enemies noticing you at once costs a frame's worth of planning instead of a stall, and the volume's Inspector shows that load while you play.</p>
+<h3>The settings draw themselves</h3>
+<p>Both components draw a live diagram in the Inspector, the way the FPS Avatar already did.</p>
+<p>The Nav Volume's is a side view: the agent standing against a wall, a step it can climb, a ledge it can drop off, and the green walkable line the bake would actually produce. It shows one rule that is invisible in the numbers — the floor is eroded a radius from the wall and from the drop, but <em>not</em> at the step, because something you climb onto is not something you keep your distance from.</p>
+<p>The Nav Agent's is top-down: a route with the corner rounded by its turn rate, the ring it counts as arrived in, and a dot for every fixed slice of time. Those dots are the agent's own acceleration and braking laws run forward, so Speed and Acceleration stop being two numbers and become one picture — how far apart the dots settle, how long the ramp-up takes, how early it starts bunching up before the target.</p>
+<h3>Level Editor maps import</h3>
+<p>Both PapaiArt level tools now land in the engine: Level Modeller levels with their baked lighting, and Level Editor maps (.pamap) straight out of the level editor. If a map changes extension on disk, the references in your scene are repointed at the file that replaced it instead of silently breaking.</p>
+<h3>Objects land where you're looking</h3>
+<p>Small change, noticed every day: a new object — from the Add menu or dragged in from the Project panel — now appears on the surface in front of the camera rather than at the world origin. It lands on whatever you're looking at; failing that, on the ground under the view; failing that, a few metres ahead.</p>
+<h3>Handbook</h3>
+<p>The beginner handbook has a new chapter on navigation: from the first bake to a patrolling guard, with a settings table for each component, the script nodes, and a troubleshooting list for the questions this feature actually generates ("why is the whole room empty?" — the ceiling is lower than your Agent Height).</p>
+<p>Both language versions also got an accuracy pass. Node names in the book now match the editor exactly, including the ones the editor builds from your own names: a variable called Health gives you Get Health / Set Health, an event called Hit gives you On Hit / Send Hit, and the book now says so instead of showing a placeholder.</p>
+<h3>Fixes worth naming</h3>
+<ul><li>You could jump through a ceiling and end up standing on top of the level. The player controller tested walls and the floor but nothing above it — rising is now a collision test too, so a low ceiling stops your jump instead of being scenery.
+</li><li>The rotation gizmo grabbed the ring segment hidden behind the object. The back-facing half of each ring is rejected now, so the ring you click is the one you meant.
+</li></ul></div></article>
+
+<div class="pa-wrap" style="max-width:1100px;margin-top:56px"><div class="pa-gallery"><a href="../assets/images/devlog/1620655-2.webp" data-zoom="../assets/images/devlog/1620655-2.webp" data-group="post"><img src="../assets/images/devlog/1620655-2.webp" alt="FPS Lab 0.7.3 - Navigation Volume and Agent System screenshot 2" loading="lazy" decoding="async"></a><a href="../assets/images/devlog/1620655-3.webp" data-zoom="../assets/images/devlog/1620655-3.webp" data-group="post"><img src="../assets/images/devlog/1620655-3.webp" alt="FPS Lab 0.7.3 - Navigation Volume and Agent System screenshot 3" loading="lazy" decoding="async"></a><a href="../assets/images/devlog/1620655-4.webp" data-zoom="../assets/images/devlog/1620655-4.webp" data-group="post"><img src="../assets/images/devlog/1620655-4.webp" alt="FPS Lab 0.7.3 - Navigation Volume and Agent System screenshot 4" loading="lazy" decoding="async"></a></div></div>
+
+<div class="pa-wrap" style="max-width:760px;margin-top:56px;display:flex;gap:12px;flex-wrap:wrap">
+    <a class="pa-btn pa-btn--primary" href="https://papaiart.itch.io/papaiart-tools-fps-lab" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg> Get FPS Lab</a>
+    <a class="pa-btn pa-btn--ghost" href="https://papaiart.itch.io/papaiart-tools-fps-lab/devlog/1620655/fps-lab-073-navigation-volume-and-agent-system" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg> Comment on itch.io</a>
+    <a class="pa-btn pa-btn--ghost" href="../software/fps-lab.html">FPS Lab overview</a>
+</div>
+<div class="pa-wrap" style="margin-top:72px"><div class="post-nav"><a class="next" href="../devlog/1625852-fps-lab-0-7-7-updates.html"><small>Newer →</small><b>FPS Lab 0.7.7 Updates</b></a></div></div>
+
+<div style="height:100px"></div>
+<footer class="pa-footer">
+    <div class="pa-footer__grid">
+        <div>
+            <a class="pa-brand" href="../index.html"><img src="../assets/images/pa-mark.png" alt="" width="30" height="27"><span><b>PapaiArt</b><small>Software</small></span></a>
+            <p>Independent creative software for animators, level designers and game developers. Built by Babhár Kft. in Hungary.</p>
+            <div class="pa-footer__social">
+                <a href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener" aria-label="Discord"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg></a>
+                <a href="https://patreon.com/PapaiArt" target="_blank" rel="noopener" aria-label="Patreon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5.4 5.4 0 0 0-7.7 0L12 6.7l-1.1-1.1a5.4 5.4 0 0 0-7.7 7.7L12 22l8.8-8.7a5.4 5.4 0 0 0 0-7.7z"/></svg></a>
+                <a href="https://papaiart.itch.io" target="_blank" rel="noopener" aria-label="itch.io"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9M3 9h18M3 9v11h18V9M9 20v-6h6v6"/></svg></a>
+                <a href="https://www.linkedin.com/in/bence-papai-papaiart/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.6 8.65 22 11.3 22 14.1V21h-4v-6.1c0-1.46-.03-3.33-2.03-3.33-2.03 0-2.34 1.59-2.34 3.23V21h-4z"/></svg></a>
+            </div>
+        </div>
+        <div><h4>Game development</h4><ul><li><a href="../software/fps-lab.html">FPS Lab</a></li><li><a href="../software/level-editor.html">Level Editor</a></li><li><a href="../software/level-modeller.html">Level Modeller</a></li><li><a href="../software/terrain-generator.html">Terrain Generator</a></li></ul></div>
+        <div><h4>Art &amp; animation</h4><ul><li><a href="../software/animation-studio.html">Animation Studio</a></li><li><a href="../software/pixelpaint-98-pro.html">PixelPaint 98 Pro</a></li></ul></div>
+        <div><h4>PapaiArt</h4><ul>
+            <li><a href="../devlog.html">Devlog</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../about.html#contact">Contact</a></li>
+            <li><a href="../learn.html">Animation Studio articles</a></li>
+            <li><a href="https://papaiart.itch.io" target="_blank" rel="noopener">All downloads on itch.io</a></li>
+        </ul></div>
+    </div>
+    <div class="pa-footer__base">
+        <span>© 2026 Babhár Kft. All rights reserved.</span>
+        <span>Made in Hungary · <a href="mailto:babharkft@gmail.com">babharkft@gmail.com</a></span>
+    </div>
+</footer>
+<script src="../assets/js/site.js" defer></script>
+</body>
+</html>

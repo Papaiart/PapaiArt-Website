@@ -1,20 +1,30 @@
 {
-  "name": "PapaiArt Animation Studio",
+  "name": "PapaiArt",
   "short_name": "PapaiArt",
-  "description": "Hybrid 2D/3D animation software by Babhár Kft. Draw in 3D space, model non-destructively, rig with IK, render to MP4 in one click.",
+  "description": "Independent creative software by PapaiArt: game engine, level editors, terrain generator, animation, pixel art and typography tools.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#0b0d12",
-  "theme_color": "#0b0d12",
+  "background_color": "#0a0b10",
+  "theme_color": "#0a0b10",
   "lang": "en",
-  "categories": ["graphics", "productivity", "design", "art"],
+  "categories": [
+    "graphics",
+    "productivity",
+    "design",
+    "developer"
+  ],
   "icons": [
     {
-      "src": "/assets/images/software-icon.png",
+      "src": "/assets/images/apple-touch-icon.png",
       "type": "image/png",
-      "sizes": "any",
+      "sizes": "180x180"
+    },
+    {
+      "src": "/assets/images/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
       "purpose": "any"
     }
   ]

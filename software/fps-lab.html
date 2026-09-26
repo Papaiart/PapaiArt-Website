@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PapaiArt Tools – FPS Lab — Game engine</title>
+    <meta name="description" content="Assemble a scene, wire up behaviour with visual scripting, press Play, and export a standalone Windows game. Native Vulkan, fast startup, no project import step.">
+    <meta name="author" content="Babhár Kft.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#34c47e">
+    <meta name="color-scheme" content="dark">
+    <link rel="canonical" href="https://www.papaiart.com/software/fps-lab.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="PapaiArt">
+    <meta property="og:title" content="PapaiArt Tools – FPS Lab — Game engine">
+    <meta property="og:description" content="Assemble a scene, wire up behaviour with visual scripting, press Play, and export a standalone Windows game. Native Vulkan, fast startup, no project import step.">
+    <meta property="og:url" content="https://www.papaiart.com/software/fps-lab.html">
+    <meta property="og:image" content="https://www.papaiart.com/assets/images/og/fps-lab.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PapaiArt Tools – FPS Lab — Game engine">
+    <meta name="twitter:description" content="Assemble a scene, wire up behaviour with visual scripting, press Play, and export a standalone Windows game. Native Vulkan, fast startup, no project import step.">
+    <meta name="twitter:image" content="https://www.papaiart.com/assets/images/og/fps-lab.png">
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="../site.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/site.css">
+    <script type="importmap">
+    { "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    } }
+    </script>
+    <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" crossorigin>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "PapaiArt Tools – FPS Lab", "url": "https://www.papaiart.com/software/fps-lab.html", "applicationCategory": "DeveloperApplication", "operatingSystem": "Windows", "description": "Assemble a scene, wire up behaviour with visual scripting, press Play, and export a standalone Windows game. Native Vulkan, fast startup, no project import step.", "image": "https://www.papaiart.com/assets/images/products/fps-lab/shot-01.webp", "screenshot": ["https://www.papaiart.com/assets/images/products/fps-lab/shot-01.webp", "https://www.papaiart.com/assets/images/products/fps-lab/shot-02.webp", "https://www.papaiart.com/assets/images/products/fps-lab/shot-03.webp", "https://www.papaiart.com/assets/images/products/fps-lab/shot-04.webp", "https://www.papaiart.com/assets/images/products/fps-lab/shot-05.webp", "https://www.papaiart.com/assets/images/products/fps-lab/shot-06.webp"], "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "url": "https://papaiart.itch.io/papaiart-tools-fps-lab"}, "publisher": {"@type": "Organization", "name": "Babhár Kft.", "url": "https://www.papaiart.com/"}, "softwareVersion": "0.8.8"}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.papaiart.com/"}, {"@type": "ListItem", "position": 2, "name": "FPS Lab", "item": "https://www.papaiart.com/software/fps-lab.html"}]}</script>
+</head>
+<body class="pa-dark" style="--p:#34c47e;--p-ink:#03140b">
+<nav class="pa-nav" aria-label="Main">
+    <div class="pa-nav__inner">
+        <a class="pa-brand" href="../index.html" aria-label="PapaiArt home">
+            <img src="../assets/images/pa-mark.png" alt="" width="30" height="27">
+            <span><b>PapaiArt</b><small>Software</small></span>
+        </a>
+        <button class="pa-nav__toggle" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+        <ul class="pa-menu">
+            <li class="pa-has-mega"><button class="is-active" aria-haspopup="true">Software <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="pa-mega"><div class="pa-mega__group">Game development</div><a href="../software/fps-lab.html"><img src="../assets/images/icons/fps-lab.png" alt="" width="38" height="38"><div><b>FPS Lab</b><span>Game engine</span></div></a><a href="../software/level-editor.html"><img src="../assets/images/icons/level-editor.png" alt="" width="38" height="38"><div><b>Level Editor</b><span>Doom-style level editor</span></div></a><a href="../software/level-modeller.html"><img src="../assets/images/icons/level-modeller.png" alt="" width="38" height="38"><div><b>Level Modeller</b><span>CSG level editor</span></div></a><a href="../software/terrain-generator.html"><img src="../assets/images/icons/terrain-generator.png" alt="" width="38" height="38"><div><b>Terrain Generator</b><span>Landscape generator</span></div></a><div class="pa-mega__group">Art &amp; animation</div><a href="../software/animation-studio.html"><img src="../assets/images/icons/animation-studio.png" alt="" width="38" height="38"><div><b>Animation Studio</b><span>Hybrid 2D/3D animation</span></div></a><a href="../software/pixelpaint-98-pro.html"><img src="../assets/images/icons/pixelpaint-98-pro.png" alt="" width="38" height="38"><div><b>PixelPaint 98 Pro</b><span>Pixel art editor</span></div></a></div>
+            </li>
+            <li><a href="../devlog.html">Devlog</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="https://papaiart.itch.io" target="_blank" rel="noopener">itch.io</a></li>
+            <li class="pa-menu__mobile-cta"><a class="pa-btn pa-btn--primary" href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg> Join the Discord</a></li>
+        </ul>
+        <a class="pa-btn pa-btn--primary pa-btn--sm pa-nav__cta" href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg> Discord</a>
+    </div>
+</nav>
+
+<header class="pa-hero prod-hero" data-hero="fps" data-shift="0.2">
+    <div class="fps-hud" aria-hidden="true"><i></i><i></i><i></i><i></i><b>PLAY</b></div>
+    <div class="pa-wrap prod-hero__grid">
+        <div>
+            <div class="prod-hero__id"><img src="../assets/images/icons/fps-lab.png" alt="" width="64" height="64"><span class="pa-eyebrow">Game engine</span></div>
+            <h1><small>PapaiArt Tools</small>FPS Lab</h1>
+            <p class="prod-hero__tagline">Assemble a scene, wire up behaviour with visual scripting, press Play, and export a standalone Windows game. Native Vulkan, fast startup, no project import step.</p>
+            <div class="prod-hero__ctas"><a class="pa-btn pa-btn--primary pa-btn--lg" href="https://papaiart.itch.io/papaiart-tools-fps-lab" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg> Download free</a><a class="pa-btn pa-btn--ghost pa-btn--lg" href="#video"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l6-3.5z"/></svg> Watch video</a></div>
+            <div class="prod-hero__chips"><span class="pa-chip pa-chip--accent"><span class="dot"></span>In development</span><span class="pa-chip">v0.8.8</span><span class="pa-chip">Windows</span><span class="pa-chip">Free · Pay what you want</span></div>
+        </div>
+    </div>
+</header>
+
+<div class="pa-wrap prod-showcase">
+    <div class="pa-window">
+        <div class="pa-window__bar"><i></i><i></i><i></i><span>PapaiArt Tools – FPS Lab</span></div>
+        <img src="../assets/images/products/fps-lab/shot-01.webp" data-zoom="../assets/images/products/fps-lab/shot-01.webp" alt="FPS Lab interface" fetchpriority="high">
+    </div>
+    <dl class="pa-facts reveal"><div><dt>Status</dt><dd>In development</dd></div><div><dt>Latest version</dt><dd>v0.8.8</dd></div><div><dt>Platform</dt><dd>Windows</dd></div><div><dt>Price</dt><dd>Free</dd></div><div><dt>Last update</dt><dd>Sep 5, 2026</dd></div></dl>
+</div>
+
+<section class="pa-section">
+    <div class="pa-wrap pa-overview">
+        <div class="pa-overview__body reveal">
+            <span class="pa-eyebrow">Overview</span>
+            <h2>A free game engine for first-person games. Build by connecting nodes, not by writing code.</h2>
+            <p>FPS Lab is a game engine where you build the game by connecting visual nodes instead of writing code. The player controller, the weapon handling and most of the built-in tooling are built for first-person games. The scene, scripting, UI and build systems are general, so third-person games, walking sims and puzzle games work too.</p><p>It's aimed mostly at people making their first game. Everything happens in one editor window with a few tabs. A beginner handbook starts from an empty scene and works up to a zombie shooter and a horror game. The first project, a room you can walk around in, takes about ten minutes.</p><p>The engine is free, with no paid unlock, no watermark on your builds and no revenue share. What you make is yours: an exported game is a standalone program with no engine, launcher or licence check behind it. Development is funded by the community.</p>
+            
+        </div>
+        <aside class="pa-callout reveal"><h3>Who it&#x27;s for</h3><ul><li>First-time game makers: a handbook takes you from zero to a finished shooter</li><li>Retro and modern first-person shooters</li><li>Walking sims, horror and puzzle games</li><li>Experienced devs who want a fast, native editor</li></ul></aside>
+    </div>
+</section>
+
+<section class="pa-section pa-section--alt">
+    <div class="pa-wrap">
+        <div class="pa-head reveal"><span class="pa-eyebrow">Features</span><h2>What's inside</h2></div>
+        <div class="pa-feature">
+    <div class="pa-feature__copy reveal">
+        <span class="pa-feature__num">01 / 06</span>
+        <h3>Scene and objects</h3>
+        <p class="pa-feature__lead">Build your level from a hierarchy of objects, bring in your own models, and pull in finished maps from the other PapaiArt tools.</p>
+        <ul><li>Move, rotate and edit several objects at once</li><li><strong>FBX and glTF/GLB</strong> import, skeletons and animations included</li><li>Prefabs you can place in the editor or spawn while the game runs</li><li>Import finished levels from <strong>Level Modeller</strong> with baked lighting, or a <strong>Level Editor</strong> map</li><li>New objects appear where you are looking, not at the world origin</li></ul>
+    </div>
+    <div class="pa-feature__media reveal"><img src="../assets/images/products/fps-lab/shot-03.webp" data-zoom="../assets/images/products/fps-lab/shot-03.webp" data-group="features" alt="FPS Lab: Scene and objects" loading="lazy" decoding="async"></div>
+</div><div class="pa-feature pa-feature--flip">
+    <div class="pa-feature__copy reveal">
+        <span class="pa-feature__num">02 / 06</span>
+        <h3>Visual scripting</h3>
+        <p class="pa-feature__lead">Events, flow, variables, arrays and globals: enough for pickups, an inventory, enemy AI and keeping score.</p>
+        <ul><li>A player who walks, collides with walls and sets off triggers</li><li>Raycast shooting and collision layers that decide what hits what</li><li><strong>Jolt</strong> rigid-body physics for things that fall, roll and get pushed</li><li>Sound placed in 3D space, with mixer buses for music and effects</li><li>Name your controls once in the Input Manager and rebinding becomes a settings screen</li></ul>
+    </div>
+    <div class="pa-feature__media reveal"><img src="../assets/images/products/fps-lab/shot-08.webp" data-zoom="../assets/images/products/fps-lab/shot-08.webp" data-group="features" alt="FPS Lab: Visual scripting" loading="lazy" decoding="async"></div>
+</div><div class="pa-feature">
+    <div class="pa-feature__copy reveal">
+        <span class="pa-feature__num">03 / 06</span>
+        <h3>Enemies that find their own way</h3>
+        <p class="pa-feature__lead">Place a Nav Volume, press Bake, and a Nav Agent walks (or flies) to wherever you send it.</p>
+        <ul><li>Around walls, up stairs, off ledges and around the other agents</li><li>Chase, patrol, stop, "could it even reach me from there?", all from script nodes</li><li>The floor the AI can actually use is drawn in the editor, so you see what it sees</li><li>A voxel field instead of a navmesh, so flying enemies need no extra setup</li></ul>
+    </div>
+    <div class="pa-feature__media reveal"><img src="../assets/images/products/fps-lab/shot-09.webp" data-zoom="../assets/images/products/fps-lab/shot-09.webp" data-group="features" alt="FPS Lab: Enemies that find their own way" loading="lazy" decoding="async"></div>
+</div><div class="pa-feature pa-feature--flip">
+    <div class="pa-feature__copy reveal">
+        <span class="pa-feature__num">04 / 06</span>
+        <h3>How it looks</h3>
+        <p class="pa-feature__lead">Shared PBR materials, node-built material effects and screen effects you can see live in the editor.</p>
+        <ul><li>Build material effects by connecting nodes, with a live preview and no shader code</li><li>Lights, shadows and baked lighting; mipmapping and anisotropic filtering</li><li>Fog, vignette, VHS and other screen effects, live in the editor, not only in play</li><li>Classic 2D sprite enemies with eight viewing angles from a single image sheet</li><li>Particles, 3D text and level of detail that never changes collision</li></ul>
+    </div>
+    <div class="pa-feature__media reveal"><img src="../assets/images/products/fps-lab/shot-06.webp" data-zoom="../assets/images/products/fps-lab/shot-06.webp" data-group="features" alt="FPS Lab: How it looks" loading="lazy" decoding="async"></div>
+</div><div class="pa-feature">
+    <div class="pa-feature__copy reveal">
+        <span class="pa-feature__num">05 / 06</span>
+        <h3>Animation that doesn&#x27;t snap</h3>
+        <p class="pa-feature__lead">Keyframe anything on a timeline, cut long takes into clips and blend between them.</p>
+        <ul><li><strong>Blend</strong> input on Play Animation, so a weapon or a door never pops between poses</li><li><strong>On Animation End</strong> event: no more polling every frame</li><li>Frame events: a footstep on the frame the boot lands, a muzzle flash on the exact frame</li><li>A weapon held in view that sways and bobs as you move</li></ul>
+    </div>
+    <div class="pa-feature__media reveal"><img src="../assets/images/products/fps-lab/shot-01.webp" data-zoom="../assets/images/products/fps-lab/shot-01.webp" data-group="features" alt="FPS Lab: Animation that doesn&#x27;t snap" loading="lazy" decoding="async"></div>
+</div><div class="pa-feature pa-feature--flip">
+    <div class="pa-feature__copy reveal">
+        <span class="pa-feature__num">06 / 06</span>
+        <h3>Turning it into a game</h3>
+        <p class="pa-feature__lead">Menus, scene flow and a single build step that produces a real Windows program.</p>
+        <ul><li>On-screen UI: health bar, score, pause screen and a settings menu that works</li><li>Chain your scenes together with the <strong>Game Flow</strong> graph</li><li>Game-wide settings for collision layers, controls and frame rate</li><li>One build step produces a standalone <strong>.exe</strong> that runs without FPS Lab</li></ul>
+    </div>
+    <div class="pa-feature__media reveal"><img src="../assets/images/products/fps-lab/shot-05.webp" data-zoom="../assets/images/products/fps-lab/shot-05.webp" data-group="features" alt="FPS Lab: Turning it into a game" loading="lazy" decoding="async"></div>
+</div>
+    </div>
+</section>
+
+<section class="pa-section pa-section--tight pa-section--alt">
+    <div class="pa-wrap"><div class="pa-head reveal"><span class="pa-eyebrow">What&#x27;s next</span></div><div class="pa-cards"><div class="pa-card reveal"><div class="pa-card__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div><h3>Linux &amp; macOS export</h3><p>Builds for more platforms are next on the list.</p></div><div class="pa-card reveal"><div class="pa-card__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg></div><h3>More script nodes</h3><p>New nodes, prioritised by what people ask for.</p></div><div class="pa-card reveal"><div class="pa-card__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></svg></div><h3>More handbook</h3><p>More chapters and example projects for beginners.</p></div></div></div>
+</section>
+
+<section class="pa-section" id="video">
+    <div class="pa-wrap">
+        <div class="pa-head pa-head--center reveal"><span class="pa-eyebrow">See it in action</span><h2>Watch FPS Lab</h2></div>
+        <div class="reveal"><div class="pa-video" data-yt="V1Sor9d_8Ys" data-title="FPS Lab trailer"><button aria-label="Play video: FPS Lab trailer"><span><svg viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></svg></span></button><span class="pa-video__label">▶ FPS Lab trailer</span></div></div>
+        
+    </div>
+</section>
+
+<section class="pa-section pa-section--alt">
+    <div class="pa-wrap">
+        <div class="pa-head reveal"><span class="pa-eyebrow">Gallery</span><h2>Screenshots</h2></div>
+        <div class="pa-gallery"><a href="../assets/images/products/fps-lab/shot-01.webp" data-zoom="../assets/images/products/fps-lab/shot-01.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/fps-lab/shot-01.webp" alt="FPS Lab screenshot 1" loading="lazy" decoding="async"></a><a href="../assets/images/products/fps-lab/shot-02.webp" data-zoom="../assets/images/products/fps-lab/shot-02.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/fps-lab/shot-02.webp" alt="FPS Lab screenshot 2" loading="lazy" decoding="async"></a><a href="../assets/images/products/fps-lab/shot-03.webp" data-zoom="../assets/images/products/fps-lab/shot-03.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/fps-lab/shot-03.webp" alt="FPS Lab screenshot 3" loading="lazy" decoding="async"></a><a href="../assets/images/products/fps-lab/shot-04.webp" data-zoom="../assets/images/products/fps-lab/shot-04.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/fps-lab/shot-04.webp" alt="FPS Lab screenshot 4" loading="lazy" decoding="async"></a><a href="../assets/images/products/fps-lab/shot-05.webp" data-zoom="../assets/images/products/fps-lab/shot-05.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/fps-lab/shot-05.webp" alt="FPS Lab screenshot 5" loading="lazy" decoding="async"></a><a href="../assets/images/products/fps-lab/shot-06.webp" data-zoom="../assets/images/products/fps-lab/shot-06.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/fps-lab/shot-06.webp" alt="FPS Lab screenshot 6" loading="lazy" decoding="async"></a><a href="../assets/images/products/fps-lab/shot-07.webp" data-zoom="../assets/images/products/fps-lab/shot-07.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/fps-lab/shot-07.webp" alt="FPS Lab screenshot 7" loading="lazy" decoding="async"></a><a href="../assets/images/products/fps-lab/shot-08.webp" data-zoom="../assets/images/products/fps-lab/shot-08.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/fps-lab/shot-08.webp" alt="FPS Lab screenshot 8" loading="lazy" decoding="async"></a><a href="../assets/images/products/fps-lab/shot-09.webp" data-zoom="../assets/images/products/fps-lab/shot-09.webp" data-group="gallery" class="reveal"><img src="../assets/images/products/fps-lab/shot-09.webp" alt="FPS Lab screenshot 9" loading="lazy" decoding="async"></a></div>
+    </div>
+</section>
+
+<section class="pa-section pa-section--alt" id="devlog">
+    <div class="pa-wrap" style="max-width:980px">
+        <div class="pa-head reveal"><span class="pa-eyebrow">Devlog</span><h2>Development timeline</h2><p>4 updates since August 7, 2026. Newest first.</p></div>
+        <ol class="pa-timeline"><li class="reveal"><a href="../devlog/1653463-fps-lab-0-8-8-new-animation-features.html"><div class="pa-timeline__img"><img src="../assets/images/devlog/1653463-1.webp" alt="" loading="lazy"></div><div>
+    <div class="pa-timeline__meta"><span class="pa-chip pa-chip--accent">v0.8.8</span><time datetime="2026-09-05">September 5, 2026</time></div>
+    <h3>FPS Lab 0.8.8 - New animation features</h3><p>This update is all about the animation system. Three things, and each one removes a workaround you were probably already writing. The Play Animation node has a new Blend input: how long, in seconds, the object takes to…</p></div></a></li><li class="reveal"><a href="../devlog/1638664-fps-lab-0-8-1-lod-ui-prformance-optimalization.html"><div class="pa-timeline__img"><img src="../assets/images/devlog/1638664-1.webp" alt="" loading="lazy"></div><div>
+    <div class="pa-timeline__meta"><span class="pa-chip pa-chip--accent">v0.8.1</span><time datetime="2026-08-23">August 23, 2026</time></div>
+    <h3>FPS Lab 0.8.1 - LOD - UI - Prformance optimalization</h3><p>Mesh objects can now carry cheaper stand-in geometry. LOD0 stays SceneObject::mesh ; the extra levels live in a new lods list, each with the relative screen height below which it takes over. Screen height rather than…</p></div></a></li><li class="reveal"><a href="../devlog/1625852-fps-lab-0-7-7-updates.html"><div class="pa-timeline__img"><img src="../assets/images/devlog/1625852-1.webp" alt="" loading="lazy"></div><div>
+    <div class="pa-timeline__meta"><span class="pa-chip pa-chip--accent">v0.7.7</span><time datetime="2026-08-12">August 12, 2026</time></div>
+    <h3>FPS Lab 0.7.7 Updates</h3><p>Prefab Mode got a new toolbar toggle. With it on, the camera preview no longer shows a selected camera object — it looks through the player&#x27;s eye : the stage origin is the eye the weapon hangs off, framed with the…</p></div></a></li><li class="reveal"><a href="../devlog/1620655-fps-lab-0-7-3-navigation-volume-and-agent-system.html"><div class="pa-timeline__img"><img src="../assets/images/devlog/1620655-1.webp" alt="" loading="lazy"></div><div>
+    <div class="pa-timeline__meta"><span class="pa-chip pa-chip--accent">v0.7.3</span><time datetime="2026-08-07">August 7, 2026</time></div>
+    <h3>FPS Lab 0.7.3 - Navigation Volume and Agent System</h3><p>Until this build, an enemy in FPS Lab could only walk the straight line to you. That is what Move Towards does, and it is what the zombie in the handbook&#x27;s project 4 does — which works beautifully in an open room and…</p></div></a></li></ol>
+        
+    </div>
+</section>
+
+<section class="pa-section">
+    <div class="pa-wrap">
+        <div class="pa-cta reveal">
+            <img class="pa-cta__icon" src="../assets/images/icons/fps-lab.png" alt="">
+            <div>
+                <h2>Get FPS Lab free</h2>
+                <p>A free game engine for first-person games. Build by connecting nodes, not by writing code.</p>
+                <div class="pa-cta__meta"><span>Windows 10 or newer, 64-bit</span><span>A GPU with Vulkan support</span><span>No installer and no account: unzip and run</span></div>
+            </div>
+            <div class="pa-cta__actions">
+                <a class="pa-btn pa-btn--primary pa-btn--lg" href="https://papaiart.itch.io/papaiart-tools-fps-lab" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg> Download on itch.io</a>
+                <a class="pa-btn pa-btn--ghost" href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg> Ask on Discord</a>
+                <a class="pa-btn pa-btn--ghost" href="https://patreon.com/PapaiArt" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5.4 5.4 0 0 0-7.7 0L12 6.7l-1.1-1.1a5.4 5.4 0 0 0-7.7 7.7L12 22l8.8-8.7a5.4 5.4 0 0 0 0-7.7z"/></svg> Support on Patreon</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pa-section pa-section--tight" style="padding-top:0">
+    <div class="pa-wrap">
+        <div class="pa-group-title"><h3>More from PapaiArt</h3></div>
+        <div class="pa-more"><a href="level-editor.html" style="--p:#ffc800"><img src="../assets/images/icons/level-editor.png" alt=""><div><b>Level Editor</b><span>Doom-style level editor</span></div></a><a href="level-modeller.html" style="--p:#a594ff"><img src="../assets/images/icons/level-modeller.png" alt=""><div><b>Level Modeller</b><span>CSG level editor</span></div></a><a href="terrain-generator.html" style="--p:#eaa640"><img src="../assets/images/icons/terrain-generator.png" alt=""><div><b>Terrain Generator</b><span>Landscape generator</span></div></a><a href="animation-studio.html" style="--p:#2ea4f5"><img src="../assets/images/icons/animation-studio.png" alt=""><div><b>Animation Studio</b><span>Hybrid 2D/3D animation</span></div></a><a href="pixelpaint-98-pro.html" style="--p:#1fc1c1"><img src="../assets/images/icons/pixelpaint-98-pro.png" alt=""><div><b>PixelPaint 98 Pro</b><span>Pixel art editor</span></div></a></div>
+    </div>
+</section>
+
+<footer class="pa-footer">
+    <div class="pa-footer__grid">
+        <div>
+            <a class="pa-brand" href="../index.html"><img src="../assets/images/pa-mark.png" alt="" width="30" height="27"><span><b>PapaiArt</b><small>Software</small></span></a>
+            <p>Independent creative software for animators, level designers and game developers. Built by Babhár Kft. in Hungary.</p>
+            <div class="pa-footer__social">
+                <a href="https://discord.gg/ecC59ZpbQ3" target="_blank" rel="noopener" aria-label="Discord"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.011c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .079.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg></a>
+                <a href="https://patreon.com/PapaiArt" target="_blank" rel="noopener" aria-label="Patreon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5.4 5.4 0 0 0-7.7 0L12 6.7l-1.1-1.1a5.4 5.4 0 0 0-7.7 7.7L12 22l8.8-8.7a5.4 5.4 0 0 0 0-7.7z"/></svg></a>
+                <a href="https://papaiart.itch.io" target="_blank" rel="noopener" aria-label="itch.io"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9M3 9h18M3 9v11h18V9M9 20v-6h6v6"/></svg></a>
+                <a href="https://www.linkedin.com/in/bence-papai-papaiart/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.6 8.65 22 11.3 22 14.1V21h-4v-6.1c0-1.46-.03-3.33-2.03-3.33-2.03 0-2.34 1.59-2.34 3.23V21h-4z"/></svg></a>
+            </div>
+        </div>
+        <div><h4>Game development</h4><ul><li><a href="../software/fps-lab.html">FPS Lab</a></li><li><a href="../software/level-editor.html">Level Editor</a></li><li><a href="../software/level-modeller.html">Level Modeller</a></li><li><a href="../software/terrain-generator.html">Terrain Generator</a></li></ul></div>
+        <div><h4>Art &amp; animation</h4><ul><li><a href="../software/animation-studio.html">Animation Studio</a></li><li><a href="../software/pixelpaint-98-pro.html">PixelPaint 98 Pro</a></li></ul></div>
+        <div><h4>PapaiArt</h4><ul>
+            <li><a href="../devlog.html">Devlog</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../about.html#contact">Contact</a></li>
+            <li><a href="../learn.html">Animation Studio articles</a></li>
+            <li><a href="https://papaiart.itch.io" target="_blank" rel="noopener">All downloads on itch.io</a></li>
+        </ul></div>
+    </div>
+    <div class="pa-footer__base">
+        <span>© 2026 Babhár Kft. All rights reserved.</span>
+        <span>Made in Hungary · <a href="mailto:babharkft@gmail.com">babharkft@gmail.com</a></span>
+    </div>
+</footer>
+<script src="../assets/js/site.js" defer></script>
+<script type="module" src="../assets/js/heroes.js"></script>
+</body>
+</html>
