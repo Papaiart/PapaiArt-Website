@@ -102,15 +102,17 @@ async function run3D(canvas, build, accent) {
         if (shift && w > 980) s.camera.setViewOffset(w, h, -w * shift, 0, w, h);
         else s.camera.clearViewOffset();
         s.camera.updateProjectionMatrix();
+        // resizing clears the canvas; with reduced motion there is no next frame to repaint it
+        if (reduced) frame(6, 0);
     };
-    resize();
-    new ResizeObserver(resize).observe(hero);
-
-    loop((t, dt) => {
+    const frame = (t, dt) => {
         ctx.pointer.step();
         s.update(t, dt);
         renderer.render(s.scene, s.camera);
-    });
+    };
+    resize();
+    new ResizeObserver(resize).observe(hero);
+    loop(frame);
 }
 
 function wire(THREE, geo, color, opacity = 0.5, additive = true) {
@@ -444,90 +446,176 @@ const SCENES_3D = {
         };
     },
 
-    // Level Modeller: checker-textured CSG blocks, red negative brushes and a spiral staircase.
-    modeller({ THREE, pointer }) {
+    // Level Modeller: a small CSG level. The room blocks itself out, then red negative
+    // brushes slide into the walls, carve a doorway and a window, and slide out again
+    // (the booleans re-evaluate live). UVs are box-projected in world space, like the tool.
+    modeller({ THREE, renderer, pointer }) {
         const scene = new THREE.Scene();
-        scene.fog = new THREE.Fog(0x14111c, 18, 48);
-        const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 200);
-        scene.add(new THREE.HemisphereLight(0xcfc4ff, 0x1b1426, 1.1));
-        const sun = new THREE.DirectionalLight(0xfff1d6, 2.2);
-        sun.position.set(6, 10, 4);
+        scene.fog = new THREE.Fog(0x14111c, 24, 56);
+        const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 200);
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+        scene.add(new THREE.HemisphereLight(0xd9d0ff, 0x1d1628, 1.25));
+        const sun = new THREE.DirectionalLight(0xfff0dc, 2.4);
+        sun.position.set(9, 14, 7);
+        sun.castShadow = true;
+        sun.shadow.mapSize.set(2048, 2048);
+        Object.assign(sun.shadow.camera, { left: -9, right: 9, top: 9, bottom: -9, near: 1, far: 40 });
+        sun.shadow.bias = -0.0008;
         scene.add(sun);
+        const lamp = new THREE.PointLight(0xffa860, 0, 0, 1.6);
+        lamp.position.set(0.6, 2.7, -0.4);
+        scene.add(lamp);
 
-        const tex = checkerTexture(THREE, '#8f8aa3', '#b9b4c9');
-        const mat = (rx, ry) => {
-            const t = tex.clone();
-            t.repeat.set(rx, ry);
-            t.needsUpdate = true;
-            return new THREE.MeshLambertMaterial({ map: t });
-        };
-        const root = new THREE.Group();
-        scene.add(root);
+        const tex = checkerTexture(THREE, '#8e88a6', '#bbb5cf', 8, 256);
+        tex.magFilter = THREE.LinearFilter;
+        tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+        const TILE = 2;                                   // metres per texture repeat
+        const matWall = new THREE.MeshStandardMaterial({ map: tex, roughness: 0.92 });
+        const matFloor = new THREE.MeshStandardMaterial({ map: tex, roughness: 0.85, color: 0xd8d2ea });
 
-        const grid = new THREE.GridHelper(60, 60, 0x4b4260, 0x2a2438);
-        grid.position.y = -0.01;
-        root.add(grid);
-
-        // a room with a doorway: walls built around the cutter gap
-        const box = (w, h, d, x, y, z) => {
-            const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat(Math.max(w, d) / 1.5, h / 1.5));
-            m.position.set(x, y + h / 2, z);
-            root.add(m);
+        // Axis-aligned box whose UVs are projected from its coordinates, so textures line up
+        // across neighbouring pieces and never stretch when a piece is resized.
+        const boxMesh = (mat) => {
+            const geo = new THREE.BoxGeometry(1, 1, 1);
+            const m = new THREE.Mesh(geo, mat);
+            m.userData.unit = Float32Array.from(geo.attributes.position.array);
+            m.castShadow = m.receiveShadow = true;
             return m;
         };
-        box(8, 0.4, 7, 0, 0, 0);
-        box(8, 3.4, 0.4, 0, 0.4, -3.3);
-        box(0.4, 3.4, 7, -3.8, 0.4, 0);
-        box(0.4, 3.4, 2.6, 3.8, 0.4, -2.2);
-        box(0.4, 3.4, 2.0, 3.8, 0.4, 2.5);
-        box(0.4, 1.2, 1.8, 3.8, 2.6, 0.1);
+        const setBox = (mesh, x0, x1, y0, y1, z0, z1) => {
+            const pos = mesh.geometry.attributes.position, uv = mesh.geometry.attributes.uv, nrm = mesh.geometry.attributes.normal;
+            const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2, cz = (z0 + z1) / 2;
+            const sx = x1 - x0, sy = y1 - y0, sz = z1 - z0;
+            const u = mesh.userData.unit;
+            for (let i = 0; i < pos.count; i++) {
+                const x = cx + u[i * 3] * sx, y = cy + u[i * 3 + 1] * sy, z = cz + u[i * 3 + 2] * sz;
+                pos.setXYZ(i, x, y, z);
+                if (Math.abs(nrm.getX(i)) > 0.5) uv.setXY(i, z / TILE, y / TILE);
+                else if (Math.abs(nrm.getY(i)) > 0.5) uv.setXY(i, x / TILE, z / TILE);
+                else uv.setXY(i, x / TILE, y / TILE);
+            }
+            pos.needsUpdate = uv.needsUpdate = true;
+            mesh.geometry.computeBoundingSphere();
+            mesh.visible = sx > 0.01 && sy > 0.01 && sz > 0.01;
+        };
+        const grow = [];                                  // [object, delay] for the block-out intro
+        const box = (b, mat, delay) => {
+            const m = boxMesh(mat);
+            setBox(m, ...b);
+            scene.add(m);
+            grow.push([m, delay]);
+            return m;
+        };
 
-        const cutterMat = new THREE.LineBasicMaterial({ color: 0xff4d6d, transparent: true, opacity: 0.9 });
-        const cutter = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(1.2, 2.2, 1.8)), cutterMat);
-        cutter.position.set(3.8, 1.5, 0.1);
-        root.add(cutter);
-        const windowCut = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(2.2, 1.2, 1)), cutterMat);
-        windowCut.position.set(-0.6, 2.2, -3.3);
-        root.add(windowCut);
+        const grid = new THREE.GridHelper(80, 80, 0x4b4260, 0x251f33);
+        grid.position.y = -0.01;
+        scene.add(grid);
+        const catcher = new THREE.Mesh(new THREE.PlaneGeometry(60, 60).rotateX(-Math.PI / 2), new THREE.ShadowMaterial({ opacity: 0.35 }));
+        catcher.receiveShadow = true;
+        scene.add(catcher);
 
-        // spiral staircase
-        const stairs = new THREE.Group();
-        const stepMat = mat(1, 0.3);
-        for (let i = 0; i < 22; i++) {
-            const step = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.16, 0.55), stepMat);
-            const a = i * 0.36;
-            step.position.set(Math.cos(a) * 1.05, 0.5 + i * 0.2, Math.sin(a) * 1.05);
-            step.rotation.y = -a;
-            stairs.add(step);
+        // floor slab and entry steps
+        box([-5, 5, 0, 0.4, -4, 4], matFloor, 0);
+        box([5, 5.5, 0, 0.27, -0.9, 0.9], matFloor, 0.3);
+        box([5.5, 6, 0, 0.13, -0.9, 0.9], matFloor, 0.35);
+
+        // walls (0.4 thick, y 0.4 .. 3.6); each opening has an infill block that a brush carves
+        const Y0 = 0.4, Y1 = 3.6;
+        box([-5, -2.2, Y0, Y1, -4, -3.6], matWall, 0.4);                  // back wall + window
+        box([0.2, 5, Y0, Y1, -4, -3.6], matWall, 0.5);
+        box([-2.2, 0.2, Y0, 1.5, -4, -3.6], matWall, 0.55);
+        box([-2.2, 0.2, 2.9, Y1, -4, -3.6], matWall, 0.6);
+        const winFill = boxMesh(matWall);
+        scene.add(winFill);
+        box([-5, -4.6, Y0, Y1, -3.6, 4], matWall, 0.7);                   // left wall
+        box([4.6, 5, Y0, Y1, -3.6, -0.9], matWall, 0.8);                  // right wall + door
+        box([4.6, 5, Y0, Y1, 0.9, 4], matWall, 0.85);
+        box([4.6, 5, 2.7, Y1, -0.9, 0.9], matWall, 0.9);
+        const doorFill = boxMesh(matWall);
+        scene.add(doorFill);
+        box([-4.6, -2.3, Y0, 1.3, 3.6, 4], matWall, 1.0);                 // low front parapet
+        box([1.1, 4.6, Y0, 1.3, 3.6, 4], matWall, 1.05);
+
+        // columns at the front opening
+        [-2.0, 0.5].forEach((x, i) => {
+            const c = new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.32, Y1 - Y0, 24).translate(0, (Y1 - Y0) / 2, 0), matWall);
+            c.position.set(x, Y0, 3.8);
+            c.castShadow = c.receiveShadow = true;
+            scene.add(c);
+            grow.push([c, 1.1 + i * 0.05]);
+        });
+
+        // spiral staircase in the back-left corner
+        const STEPS = 16, sx = -3.25, sz = -2.2;
+        for (let i = 0; i < STEPS; i++) {
+            const step = boxMesh(matFloor);
+            setBox(step, 0.18, 1.3, -0.07, 0.07, -0.26, 0.26);
+            const pivot = new THREE.Group();
+            pivot.position.set(sx, Y0 + 0.22 + i * (2.9 / STEPS), sz);
+            pivot.rotation.y = Math.PI * 0.5 - i * (Math.PI * 1.55 / STEPS);
+            pivot.add(step);
+            scene.add(pivot);
+            grow.push([pivot, 1.2 + i * 0.05, true]);
         }
-        const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.16, 5.2, 16), mat(1, 4));
-        pole.position.y = 2.6;
-        stairs.add(pole);
-        stairs.position.set(-1.2, 0, 0.2);
-        root.add(stairs);
+        const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.16, Y1 - Y0 + 0.3, 20).translate(0, (Y1 - Y0 + 0.3) / 2, 0), matFloor);
+        pole.position.set(sx, Y0, sz);
+        pole.castShadow = true;
+        scene.add(pole);
+        grow.push([pole, 1.15]);
 
-        // floating primitives with wireframe overlays
-        const orb = new THREE.Mesh(new THREE.SphereGeometry(0.8, 24, 16), mat(4, 2));
-        orb.position.set(7.2, 3.2, -1.5);
-        root.add(orb);
-        const orbCut = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(0.9, 0.9, 0.9)), cutterMat);
-        root.add(orbCut);
-        const pos = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.CylinderGeometry(0.7, 0.7, 1.6, 12)), new THREE.LineBasicMaterial({ color: 0x9d8cff }));
-        pos.position.set(6.5, 1.2, 3.8);
-        root.add(pos);
+        // negative brushes: red outline plus a faint fill
+        const cutMat = new THREE.LineBasicMaterial({ color: 0xff4d6d, transparent: true });
+        const fillMat = new THREE.MeshBasicMaterial({ color: 0xff4d6d, transparent: true, opacity: 0.07, depthWrite: false });
+        const brush = (w, h, d) => {
+            const g = new THREE.Group();
+            g.add(new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(w, h, d)), cutMat));
+            g.add(new THREE.Mesh(new THREE.BoxGeometry(w, h, d), fillMat));
+            scene.add(g);
+            return g;
+        };
+        const doorCut = brush(1.0, 2.3, 1.8);
+        const winCut = brush(2.4, 1.4, 1.0);
 
+        const bulb = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.OctahedronGeometry(0.22)), new THREE.LineBasicMaterial({ color: 0xffd27a }));
+        bulb.position.copy(lamp.position);
+        scene.add(bulb);
+
+        const ease = (x) => 1 - Math.pow(1 - Math.min(1, Math.max(0, x)), 3);
         return {
             scene, camera,
             update(t) {
-                cutterMat.opacity = 0.55 + Math.sin(t * 3) * 0.35;
-                stairs.rotation.y = t * 0.25;
-                orb.rotation.y = t * 0.4;
-                orbCut.position.set(7.2 + Math.sin(t * 0.9) * 0.6, 3.2 + Math.cos(t * 0.7) * 0.4, -1.5 + 0.4);
-                orbCut.rotation.set(t * 0.3, t * 0.5, 0);
-                pos.rotation.y = -t * 0.3;
-                const yaw = 0.7 + Math.sin(t * 0.1) * 0.45 + pointer.x * 0.5;
-                camera.position.set(Math.sin(yaw) * 17, 8.5 - pointer.y * 3, Math.cos(yaw) * 17);
-                camera.lookAt(1.5, 1.6, 0);
+                const intro = reduced ? 99 : t;
+
+                // 1) block-out: pieces grow up from the floor, staggered
+                grow.forEach(([o, delay, uniform]) => {
+                    const k = Math.max(0.001, ease((intro - delay) / 0.55));
+                    if (uniform) o.scale.setScalar(k); else o.scale.y = k;
+                });
+
+                // 2) carve: brushes slide in, hold, slide out (10 s loop after the intro)
+                const lt = reduced ? 4 : Math.max(0, t - 2.2) % 10;
+                const k = ease(lt / 1.8) * (1 - ease((lt - 7.4) / 1.8));
+                doorCut.position.set(THREE.MathUtils.lerp(6.9, 4.8, k), Y0 + 1.15, 0);
+                winCut.position.set(-1.0, 2.2, THREE.MathUtils.lerp(-5.6, -3.8, k));
+                // what is left of each opening = the wall slab minus the brush's extent
+                setBox(doorFill, 4.6, Math.min(5, Math.max(4.6, doorCut.position.x - 0.5)), Y0, 2.7, -0.9, 0.9);
+                setBox(winFill, -2.2, 0.2, 1.5, 2.9, Math.max(-4, Math.min(-3.6, winCut.position.z + 0.5)), -3.6);
+                const walls = ease((intro - 0.9) / 0.55);
+                doorFill.scale.y = winFill.scale.y = Math.max(0.001, walls);
+                const brushes = ease((intro - 1.8) / 0.5);
+                doorCut.visible = winCut.visible = brushes > 0;
+                cutMat.opacity = brushes * (0.6 + 0.35 * Math.abs(Math.sin(t * 2.2)));
+
+                // 3) the bake: a warm lamp comes up once the room is carved
+                lamp.intensity = 14 * ease((intro - 2.4) / 1.2) * (0.94 + 0.06 * Math.sin(t * 3.1));
+                bulb.visible = intro > 2.4;
+                bulb.rotation.y = t;
+
+                const yaw = 0.62 + Math.sin(t * 0.09) * 0.28 + pointer.x * 0.45;
+                camera.position.set(Math.sin(yaw) * 21, 10.5 - pointer.y * 3, Math.cos(yaw) * 21);
+                camera.lookAt(0.4, 1.3, -0.3);
             },
         };
     },
@@ -623,6 +711,7 @@ function run2D(canvas, scene, accent) {
         canvas.height = state.h * state.dpr;
         g.setTransform(state.dpr, 0, 0, state.dpr, 0, 0);
         scene.resize?.(state, g);
+        if (reduced) scene.draw(g, state, 6, 0);
     };
     const go = () => {
         resize();
