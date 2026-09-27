@@ -725,41 +725,37 @@ const SCENES_2D = {
 
     // PixelPaint 98 Pro: a Win98-style window where pixel art gets painted one pixel at a time.
     pixelpaint: (() => {
-        const SPRITES = [
-            {
-                pal: { k: '#1b1b1b', w: '#ffffff', r: '#e8413c', R: '#a31d1d', p: '#ffb3c7', s: '#f5d7a1' },
-                rows: [
-                    '.....kkkkkk.....', '...kkrrrrrrkk...', '..krrwwrrrrrrk..', '.krrwwwrrrwwrrk.',
-                    '.krrrwrrrrwwwrk.', 'krrrrrrrrrrwrrrk', 'kRrrrwwrrrrrrrRk', 'kRRrwwwwrrrrrRRk',
-                    '.kkkkkkkkkkkkkk.', '....kssssssk....', '....kskssksk....', '....kssssssk....',
-                    '....ksspssk.....', '.....kssssk.....', '......kkkk......', '................',
-                ],
-            },
-            {
-                pal: { k: '#1b1b1b', b: '#1e88e5', B: '#0d5aa7', w: '#ffffff', g: '#c0c0c0' },
-                rows: [
-                    '................', '.......kk.......', '......kwwk......', '...kkkkbbkkkk...',
-                    '..kbbbbbbbbbbk.k', '.kbbwbbbbbbbbbkk', 'kbbwbbbbbbbbbbkb', 'kbbbbbbbbbbbbbkb',
-                    'kBbbbbbbbbbbbBkk', 'kBBbbbbbbbbbBBk.', '.kBBbbbbbbbBBk..', '..kkBBBBBBBBkk..',
-                    '....kkkkkkkk....', '................', '................', '................',
-                ],
-            },
-            {
-                pal: { k: '#1b1b1b', y: '#ffd23f', o: '#f08a24', w: '#ffffff', g: '#3fb36b', G: '#23804a' },
-                rows: [
-                    '................', '.......kk.......', '......kyyk......', '......kyyk......',
-                    '.kkkkkyyyykkkkk.', '.kyyyyyyyyyyyyk.', '..kyyywyywyyyk..', '...kyyyyyyyyk...',
-                    '....kyyoooyk....', '...kyyyyyyyyk...', '...kyyykkyyyk...', '..kyyk....kyyk..',
-                    '..kkk......kkk..', '......kGGk......', '.....kggggk.....', '......kkkk......',
-                ],
-            },
-        ];
+        // 32x32 character sprite
+        const SPRITE = {
+            pal: { k: '#000000', p: '#9c1f98', P: '#671465', m: '#bf00ba', t: '#b6a273', T: '#74684c', d: '#332e21' },
+            rows: [
+                '................................', '.................k..............',
+                '................ktkk............', '...............kttttk...........',
+                '...............ktdTttk..........', '...............ktdTTttk.........',
+                '...............ktdTTdtk.........', '...............ktdkTTdtkkk......',
+                '.............kkkktktttttttk.....', '...........kkppkktkttttttttk....',
+                '.........kkppppkkttttttttdTtk...', '........kppppppmmkttttTTdkdttk..',
+                '.......kppppppmmmmkktTTTdddtdk..', '.......kpppppmmmmmmmkTTTTTtddk..',
+                '........kkkkkmmmmmmmmkTTTtddddk.', '........kPPPkkkPPPPPPPkTTdddddk.',
+                '......kkPPPPPPPPPPPpppPkTTTdkk..', '....kkpppmpPPPPPPppppppktttkk...',
+                '...kpppmmmpppppppppppppkkkk.....', '..kppmmmmpppppmppppppppkPPk.....',
+                '.kppmmmppppppmppppppmpkkPPk.....', '.kpmmmppppppmmppppmmpkdkPk......',
+                '.kppppppppmmmmmmmmmmkdkPk.......', '.kkkkmmmkkkmmmkkkkkkdkPk........',
+                '.kPPPkkkPPPkkkPPPkddkPk.........', '.kPPPPPPPPkddkPPkddkPk..........',
+                '..kPPPPPkkTdkPPkTTkPk...........', '...kkkPPTTTkPPkTTkkk............',
+                '......kkTTkkkkkTTk..............', '........kk.....kk...............',
+                '................................', '................................',
+            ],
+        };
+        const N = SPRITE.rows.length;
+        const filled = [];
+        SPRITE.rows.forEach((row, y) => [...row].forEach((ch, x) => { if (ch !== '.') filled.push([x, y, SPRITE.pal[ch]]); }));
         let cell = 16, ox = 0, oy = 0, win = null;
         return {
             resize(s) {
                 const area = Math.min(s.h * 0.62, s.w * (s.w > 980 ? 0.36 : 0.8));
-                cell = Math.max(8, Math.floor(area / 16));
-                const size = cell * 16;
+                cell = Math.max(4, Math.floor(area / N));
+                const size = cell * N;
                 const cx = s.w > 980 ? s.w * 0.72 : s.w / 2;
                 ox = Math.round(cx - size / 2);
                 oy = Math.round(s.h * 0.5 - size / 2 + 14);
@@ -794,15 +790,13 @@ const SCENES_2D = {
                 g.font = '12px Tahoma, Verdana, sans-serif';
                 ['File', 'Edit', 'Image', 'Layer', 'Scripts'].reduce((x, m) => { g.fillText(m, x, win.y + 38); return x + g.measureText(m).width + 14; }, win.x + 10);
 
-                const size = cell * 16;
+                const size = cell * N;
                 // transparent checkerboard canvas
-                for (let y = 0; y < 16; y++) for (let x = 0; x < 16; x++) {
+                for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) {
                     g.fillStyle = (x + y) % 2 ? '#d9d9d9' : '#f2f2f2';
                     g.fillRect(ox + x * cell, oy + y * cell, cell, cell);
                 }
-                const PER = 12, spr = SPRITES[Math.floor(t / PER) % SPRITES.length], ph = (t % PER) / PER;
-                const filled = [];
-                spr.rows.forEach((row, y) => [...row].forEach((ch, x) => { if (ch !== '.') filled.push([x, y, spr.pal[ch]]); }));
+                const PER = 14, ph = (t % PER) / PER;
                 const shown = Math.floor(smooth(0.02, 0.62, ph) * filled.length);
                 const fade = 1 - smooth(0.9, 1, ph);
                 g.globalAlpha = fade;
@@ -815,7 +809,7 @@ const SCENES_2D = {
                 g.strokeStyle = 'rgba(0,0,0,.08)';
                 g.lineWidth = 1;
                 g.beginPath();
-                for (let i = 1; i < 16; i++) {
+                for (let i = 1; i < N; i++) {
                     g.moveTo(ox + i * cell + 0.5, oy); g.lineTo(ox + i * cell + 0.5, oy + size);
                     g.moveTo(ox, oy + i * cell + 0.5); g.lineTo(ox + size, oy + i * cell + 0.5);
                 }
@@ -824,7 +818,7 @@ const SCENES_2D = {
                 const cur = filled[Math.min(filled.length - 1, Math.max(0, shown - 1))];
                 if (cur && ph < 0.66) drawPencil(g, ox + cur[0] * cell + cell * 0.6, oy + cur[1] * cell + cell * 0.4);
                 // palette strip
-                const pal = Object.values(spr.pal);
+                const pal = Object.values(SPRITE.pal);
                 pal.forEach((c, i) => { bevelBox(g, win.x + 12 + i * 22, win.y + win.h - 28, 18, 18, true); g.fillStyle = c; g.fillRect(win.x + 15 + i * 22, win.y + win.h - 25, 12, 12); });
                 g.restore();
             },
